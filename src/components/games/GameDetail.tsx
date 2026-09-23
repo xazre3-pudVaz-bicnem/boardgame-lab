@@ -165,11 +165,25 @@ export default function GameDetail({ game }: { game: Game }) {
                   時間内であれば、何本遊んでも料金は変わりません。
                 </p>
                 <div className="mt-5">
-                  <ConfirmNote>
-                    {shop.gameCount.rotationNote}
-                    そのため、ご来店時にこのタイトルが店内にあるとは限りません。
-                    遊びたいゲームが決まっている場合は、事前にお問い合わせいただけると確実です。
-                  </ConfirmNote>
+                  {game.stock === 'available' ? (
+                    <p className="rounded-lg border border-cyan/35 bg-cyan-wash px-4 py-3 text-[0.8rem] leading-relaxed text-cyan-ink">
+                      店舗で確認済み：このタイトルは店内にあります
+                      {game.stockCheckedAt ? `（${game.stockCheckedAt.replace(/-/g, '/')}時点）` : ''}。
+                      その後入れ替わっている場合がありますので、確実にしたい場合は事前にお問い合わせください。
+                    </p>
+                  ) : game.stock === 'unavailable' ? (
+                    <ConfirmNote>
+                      現在このタイトルは店内にありません
+                      {game.stockCheckedAt ? `（${game.stockCheckedAt.replace(/-/g, '/')}時点）` : ''}。
+                      入荷のご希望はお問い合わせフォームからお知らせください。
+                    </ConfirmNote>
+                  ) : (
+                    <ConfirmNote>
+                      {shop.gameCount.rotationNote}
+                      そのため、ご来店時にこのタイトルが店内にあるとは限りません。
+                      遊びたいゲームが決まっている場合は、事前にお問い合わせいただけると確実です。
+                    </ConfirmNote>
+                  )}
                 </div>
                 <div className="mt-6 flex flex-wrap gap-3">
                   <Button href={shop.reservationUrl} variant="solid" external>

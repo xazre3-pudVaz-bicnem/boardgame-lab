@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import GameTile from '@/components/GameTile';
 
@@ -10,11 +10,17 @@ import GameTile from '@/components/GameTile';
  * 全件の本文をクライアントへ送ると重いので、
  * public/games-index.json（名前・人数・時間・ジャンルだけの軽い配列、人気順）を
  * 最初の操作のタイミングで取りに行く。読み込み前でもサーバーが描いた一覧は読める。
+ *
+ * 絞り込みの状態は URL の検索文字列にも書く（?players=2&time=s30 など）。
+ * 「2人で30分以内」のような条件を、そのままリンクとして共有したり、
+ * 他のページから条件つきで飛ばしたりできるようにするため。
+ * canonical は常に /games なので、条件つきURLが重複ページとして登録されることはない。
  */
 
 type Row = {
   s: string;
   n: string;
+  /** 英名と別名（通称・略称）をまとめた検索用文字列。表示には使わない */
   e: string | null;
   p: [number, number] | null;
   t: [number, number] | null;
@@ -41,134 +47,184 @@ const TIME_FILTERS = [
   { key: 's60', label: '60分以内', test: (r: Row) => Boolean(r.t && r.t[1] <= 60) },
   { key: 'l60', label: '60分以上', test: (r: Row) => Boolean(r.t && r.t[1] > 60) },
 ] as const;
+type TimeKey = (typeof TIME_FILTERS)[number]['key'];
 
 const PLAYERS = [1, 2, 3, 4, 5, 6, 7, 8] as const;
 
-/** カタカナ→ひらがな、全角英数→半角、大文字→小文字。表記ゆれを吸収する。 */
+/** カタカナ→ひらがな、全角英数→半角、大文字→小文字、記号と空白を除く。表記ゆれを吸収する。 */
 function normalize(s: string) {
   return s
     .replace(/[ァ-ヶ]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60))
     .replace(/[Ａ-Ｚａ-ｚ０-９]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0))
-    .replace(/[・･\s：:！!？?'’"”（）()【】「」]/g, '')
+    .replace(/[・･\s：:！!？?'’"”（）()【】「」\-‐−–—/／]/g, '')
     .toLowerCase();
 }
 
 const chipBase =
-  'ease-out-expo min-h-9 rounded-full px-3.5 py-1.5 text-[0.78rem] font-medium transition-all duration-200 border';
-const chipOn = 'border-navy bg-navy text-white';
+  'ease-out-expo min-h-10 rounded-full px-3.5 py-2 text-[0.8rem] font-medium transition-all duration-200 border select-none';
+const chipOn = 'border-navy bg-navy text-white shadow-[0_2px_10px_rgba(0,56,112,0.2)]';
 const chipOff = 'border-line bg-white text-ink-soft hover:border-navy/40 hover:text-ink';
 
+type State = {
+  q: string;
+  players: number | null;
+  time: TimeKey;
+  genre: string | null;
+  beginner: boolean;
+  sort: 'popular' | 'name';
+};
+
+const EMPTY: State = { q: '', players: null, time: 'any', genre: null, beginner: false, sort: 'popular' };
+
+/** URLの検索文字列から状態を復元する。不正な値は無視する。 */
+function fromSearch(search: string, genreKeys: Set<string>): State {
+  const sp = new URLSearchParams(search);
+  const players = Number(sp.get('players'));
+  const time = sp.get('time') as TimeKey | null;
+  const genre = sp.get('genre');
+  return {
+    q: sp.get('q') ?? '',
+    players: PLAYERS.includes(players as (typeof PLAYERS)[number]) ? players : null,
+    time: time && TIME_FILTERS.some((t) => t.key === time) ? time : 'any',
+    genre: genre && genreKeys.has(genre) ? genre : null,
+    beginner: sp.get('beginner') === '1',
+    sort: sp.get('sort') === 'name' ? 'name' : 'popular',
+  };
+}
+
+function toSearch(st: State) {
+  const sp = new URLSearchParams();
+  if (st.q) sp.set('q', st.q);
+  if (st.players) sp.set('players', String(st.players));
+  if (st.time !== 'any') sp.set('time', st.time);
+  if (st.genre) sp.set('genre', st.genre);
+  if (st.beginner) sp.set('beginner', '1');
+  if (st.sort !== 'popular') sp.set('sort', st.sort);
+  const s = sp.toString();
+  return s ? `?${s}` : '';
+}
+
 export default function GameSearch({ genres, total }: Props) {
+  const genreKeys = useMemo(() => new Set(genres.map((g) => g.key)), [genres]);
   const [rows, setRows] = useState<Row[] | null>(null);
   const [loading, setLoading] = useState(false);
-  const [q, setQ] = useState('');
-  const [players, setPlayers] = useState<number | null>(null);
-  const [time, setTime] = useState<(typeof TIME_FILTERS)[number]['key']>('any');
-  const [genre, setGenre] = useState<string | null>(null);
-  const [beginner, setBeginner] = useState(false);
-  const [sort, setSort] = useState<'popular' | 'name'>('popular');
+  const [st, setSt] = useState<State>(EMPTY);
   const [shown, setShown] = useState(PAGE);
   const loaded = useRef(false);
 
-  /** 索引の取得。最初の操作、またはURLに ?q= が付いていたときに読む。 */
-  const ensureLoaded = useMemo(
-    () => () => {
-      if (loaded.current) return;
-      loaded.current = true;
-      setLoading(true);
-      fetch('/games-index.json')
-        .then((r) => r.json())
-        .then((d: Row[]) => setRows(d))
-        .catch(() => setRows([]))
-        .finally(() => setLoading(false));
-    },
-    [],
-  );
+  /** 索引の取得。最初の操作、またはURLに条件が付いていたときに読む。 */
+  const ensureLoaded = useCallback(() => {
+    if (loaded.current) return;
+    loaded.current = true;
+    setLoading(true);
+    fetch('/games-index.json')
+      .then((r) => r.json())
+      .then((d: Row[]) => setRows(d))
+      .catch(() => setRows([]))
+      .finally(() => setLoading(false));
+  }, []);
 
+  // URLに条件が付いて開かれたら、その状態で始める
   useEffect(() => {
-    const initial = new URLSearchParams(window.location.search).get('q');
-    if (initial) {
-      setQ(initial);
+    const initial = fromSearch(window.location.search, genreKeys);
+    if (toSearch(initial)) {
+      setSt(initial);
       ensureLoaded();
     }
-  }, [ensureLoaded]);
+  }, [ensureLoaded, genreKeys]);
 
-  /** 入力内容をURLに残す。履歴は増やさない（canonicalは常に /games）。 */
+  // 状態をURLに写す。履歴は増やさない（戻るボタンが条件の数だけ増えないように）。
   useEffect(() => {
     const id = window.setTimeout(() => {
       const url = new URL(window.location.href);
-      if (q) url.searchParams.set('q', q);
-      else url.searchParams.delete('q');
+      url.search = toSearch(st);
       window.history.replaceState(null, '', url.toString());
-    }, 400);
+    }, 300);
     return () => window.clearTimeout(id);
-  }, [q]);
+  }, [st]);
 
-  const active = Boolean(q || players || time !== 'any' || genre || beginner || sort !== 'popular');
+  const update = (patch: Partial<State>) => {
+    ensureLoaded();
+    setShown(PAGE);
+    setSt((prev) => ({ ...prev, ...patch }));
+  };
+  const reset = () => {
+    setSt(EMPTY);
+    setShown(PAGE);
+  };
+
+  const active = Boolean(st.q || st.players || st.time !== 'any' || st.genre || st.beginner || st.sort !== 'popular');
 
   const results = useMemo(() => {
     if (!rows) return null;
-    const nq = normalize(q.trim());
-    const timeTest = TIME_FILTERS.find((t) => t.key === time)!.test;
+    const nq = normalize(st.q.trim());
+    const timeTest = TIME_FILTERS.find((t) => t.key === st.time)!.test;
 
     let out = rows.filter((r) => {
       if (nq && !normalize(r.n).includes(nq) && !(r.e && normalize(r.e).includes(nq))) return false;
-      if (players && !(r.p && r.p[0] <= players && players <= r.p[1])) return false;
+      if (st.players && !(r.p && r.p[0] <= st.players && st.players <= r.p[1])) return false;
       if (!timeTest(r)) return false;
-      if (genre && r.g !== genre) return false;
-      if (beginner && !r.b) return false;
+      if (st.genre && r.g !== st.genre) return false;
+      if (st.beginner && !r.b) return false;
       return true;
     });
-    if (sort === 'name') out = [...out].sort((a, b) => a.n.localeCompare(b.n, 'ja'));
+    if (st.sort === 'name') out = [...out].sort((a, b) => a.n.localeCompare(b.n, 'ja'));
     return out;
-  }, [rows, q, players, time, genre, beginner, sort]);
+  }, [rows, st]);
 
-  const reset = () => {
-    setQ('');
-    setPlayers(null);
-    setTime('any');
-    setGenre(null);
-    setBeginner(false);
-    setSort('popular');
-    setShown(PAGE);
-  };
-
-  const touch = () => {
-    ensureLoaded();
-    setShown(PAGE);
-  };
+  /** いま効いている条件を、人が読める形にする（結果の見出しに出す） */
+  const summary = useMemo(() => {
+    const parts: string[] = [];
+    if (st.players) parts.push(`${st.players}人`);
+    if (st.time !== 'any') parts.push(TIME_FILTERS.find((t) => t.key === st.time)!.label);
+    if (st.genre) parts.push(genres.find((g) => g.key === st.genre)?.label ?? '');
+    if (st.beginner) parts.push('初心者向け');
+    if (st.q.trim()) parts.push(`「${st.q.trim()}」`);
+    return parts.filter(Boolean).join(' × ');
+  }, [st, genres]);
 
   return (
     <div>
       {/* ------------------------------------------------ 入力 */}
-      <div className="rounded-2xl border border-line bg-white p-5 sm:p-7">
+      <div className="rounded-2xl border border-line bg-white p-5 shadow-[0_2px_20px_rgba(0,40,79,0.04)] sm:p-7">
         <label htmlFor="game-q" className="mb-2 block text-[0.8rem] font-medium text-ink">
           ゲーム名で探す
+          <span className="ml-2 text-[0.7rem] font-normal text-ink-faint">ひらがな・カタカナ・英語名・通称でも</span>
         </label>
-        <input
-          id="game-q"
-          type="search"
-          value={q}
-          placeholder="カタン、ito、ワードバスケット…"
-          onChange={(e) => {
-            setQ(e.target.value);
-            touch();
-          }}
-          onFocus={ensureLoaded}
-          className="w-full rounded-lg border border-line bg-paper px-4 py-3 text-[0.92rem] text-ink transition-colors placeholder:text-ink-faint focus:border-cyan focus:ring-2 focus:ring-cyan/25 focus:outline-none"
-        />
+        <div className="relative">
+          <input
+            id="game-q"
+            type="search"
+            value={st.q}
+            placeholder="カタン、ito、ニムト、ごきポ…"
+            onChange={(e) => update({ q: e.target.value })}
+            onFocus={ensureLoaded}
+            enterKeyHint="search"
+            className="w-full rounded-xl border border-line bg-paper py-3.5 pr-4 pl-11 text-[1rem] text-ink transition-colors placeholder:text-ink-faint focus:border-cyan focus:bg-white focus:ring-2 focus:ring-cyan/25 focus:outline-none"
+          />
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            className="pointer-events-none absolute top-1/2 left-4 h-4 w-4 -translate-y-1/2 text-ink-faint"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <circle cx="11" cy="11" r="7" />
+            <path d="m20 20-3.5-3.5" strokeLinecap="round" />
+          </svg>
+        </div>
 
         <div className="mt-6 space-y-5">
-          <fieldset>
+          {/* fieldset は既定で min-width: min-content を持ち、横スクロールの行を縮めてくれない。min-w-0 で外す */}
+          <fieldset className="min-w-0">
             <legend className="mb-2.5 text-[0.8rem] font-medium text-ink">人数</legend>
-            <div className="flex flex-wrap gap-2">
+            {/* スマホでは横に流して、9個のチップが3段に折り返さないようにする */}
+            <div className="hide-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0">
               <button
                 type="button"
-                onClick={() => {
-                  setPlayers(null);
-                  touch();
-                }}
-                className={`${chipBase} ${players === null ? chipOn : chipOff}`}
+                onClick={() => update({ players: null })}
+                className={`${chipBase} shrink-0 ${st.players === null ? chipOn : chipOff}`}
               >
                 指定なし
               </button>
@@ -176,32 +232,26 @@ export default function GameSearch({ genres, total }: Props) {
                 <button
                   key={n}
                   type="button"
-                  aria-pressed={players === n}
-                  onClick={() => {
-                    setPlayers(players === n ? null : n);
-                    touch();
-                  }}
-                  className={`${chipBase} ${players === n ? chipOn : chipOff}`}
+                  aria-pressed={st.players === n}
+                  onClick={() => update({ players: st.players === n ? null : n })}
+                  className={`${chipBase} shrink-0 ${st.players === n ? chipOn : chipOff}`}
                 >
-                  {n}人
+                  {n}人{n === 8 ? '〜' : ''}
                 </button>
               ))}
             </div>
           </fieldset>
 
-          <fieldset>
+          <fieldset className="min-w-0">
             <legend className="mb-2.5 text-[0.8rem] font-medium text-ink">プレイ時間</legend>
-            <div className="flex flex-wrap gap-2">
+            <div className="hide-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0">
               {TIME_FILTERS.map((t) => (
                 <button
                   key={t.key}
                   type="button"
-                  aria-pressed={time === t.key}
-                  onClick={() => {
-                    setTime(t.key);
-                    touch();
-                  }}
-                  className={`${chipBase} ${time === t.key ? chipOn : chipOff}`}
+                  aria-pressed={st.time === t.key}
+                  onClick={() => update({ time: t.key })}
+                  className={`${chipBase} shrink-0 ${st.time === t.key ? chipOn : chipOff}`}
                 >
                   {t.label}
                 </button>
@@ -214,11 +264,8 @@ export default function GameSearch({ genres, total }: Props) {
             <div className="flex flex-wrap gap-2">
               <button
                 type="button"
-                onClick={() => {
-                  setGenre(null);
-                  touch();
-                }}
-                className={`${chipBase} ${genre === null ? chipOn : chipOff}`}
+                onClick={() => update({ genre: null })}
+                className={`${chipBase} ${st.genre === null ? chipOn : chipOff}`}
               >
                 すべて
               </button>
@@ -226,12 +273,9 @@ export default function GameSearch({ genres, total }: Props) {
                 <button
                   key={g.key}
                   type="button"
-                  aria-pressed={genre === g.key}
-                  onClick={() => {
-                    setGenre(genre === g.key ? null : g.key);
-                    touch();
-                  }}
-                  className={`${chipBase} ${genre === g.key ? chipOn : chipOff}`}
+                  aria-pressed={st.genre === g.key}
+                  onClick={() => update({ genre: st.genre === g.key ? null : g.key })}
+                  className={`${chipBase} ${st.genre === g.key ? chipOn : chipOff}`}
                 >
                   {g.label}
                   <span className="ml-1 text-[0.68rem] opacity-80">{g.count}</span>
@@ -243,12 +287,9 @@ export default function GameSearch({ genres, total }: Props) {
           <div className="flex flex-wrap items-center gap-3 border-t border-line pt-5">
             <button
               type="button"
-              aria-pressed={beginner}
-              onClick={() => {
-                setBeginner(!beginner);
-                touch();
-              }}
-              className={`${chipBase} ${beginner ? 'border-amber bg-amber text-ink' : chipOff}`}
+              aria-pressed={st.beginner}
+              onClick={() => update({ beginner: !st.beginner })}
+              className={`${chipBase} ${st.beginner ? 'border-amber bg-amber text-ink shadow-[0_2px_10px_rgba(240,152,0,0.25)]' : chipOff}`}
             >
               初心者向けだけ
             </button>
@@ -258,19 +299,20 @@ export default function GameSearch({ genres, total }: Props) {
             </label>
             <select
               id="game-sort"
-              value={sort}
-              onChange={(e) => {
-                setSort(e.target.value as 'popular' | 'name');
-                touch();
-              }}
-              className="min-h-9 rounded-full border border-line bg-white px-3.5 py-1.5 text-[0.78rem] text-ink focus:border-cyan focus:outline-none"
+              value={st.sort}
+              onChange={(e) => update({ sort: e.target.value as State['sort'] })}
+              className="min-h-10 rounded-full border border-line bg-white px-3.5 py-1.5 text-[0.8rem] text-ink focus:border-cyan focus:outline-none"
             >
               <option value="popular">人気順</option>
               <option value="name">名前順</option>
             </select>
 
             {active ? (
-              <button type="button" onClick={reset} className="text-[0.78rem] text-navy underline underline-offset-4">
+              <button
+                type="button"
+                onClick={reset}
+                className="min-h-10 text-[0.8rem] text-navy underline underline-offset-4 hover:text-cyan-ink"
+              >
                 条件をリセット
               </button>
             ) : null}
@@ -279,7 +321,7 @@ export default function GameSearch({ genres, total }: Props) {
       </div>
 
       {/* ------------------------------------------------ 結果 */}
-      <div aria-live="polite" className="mt-8">
+      <div aria-live="polite" className="mt-8 scroll-mt-24">
         {!rows && !loading ? (
           <p className="text-[0.85rem] text-ink-faint">
             条件を選ぶと、{total}タイトルの中から絞り込みます。下には人気順の一覧を表示しています。
@@ -290,21 +332,33 @@ export default function GameSearch({ genres, total }: Props) {
 
         {results ? (
           <>
-            <p className="text-[0.85rem] text-ink-soft">
-              <strong className="display text-[1.1rem] text-ink">{results.length}</strong> 件
-              {active ? <span className="ml-2 text-ink-faint">／ 全{total}タイトル中</span> : null}
-            </p>
+            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <p className="text-[0.85rem] text-ink-soft">
+                <strong className="display text-[1.2rem] text-ink">{results.length}</strong> 件
+                {active ? <span className="ml-2 text-ink-faint">／ 全{total}タイトル中</span> : null}
+              </p>
+              {summary ? <p className="text-[0.8rem] text-navy">{summary}</p> : null}
+            </div>
 
             {results.length === 0 ? (
               <div className="mt-6 rounded-xl border border-line bg-white p-8 text-center">
-                <p className="text-[0.9rem] text-ink">条件に合うゲームが見つかりませんでした。</p>
-                <p className="mt-2 text-[0.82rem] text-ink-soft">
-                  条件をゆるめるか、
+                <p className="text-[0.95rem] font-semibold text-ink">条件に合うゲームが見つかりませんでした</p>
+                <p className="mt-2 text-[0.85rem] leading-[1.9] text-ink-soft">
+                  人数や時間の条件をひとつ外すか、
+                  {st.q ? '別の呼び方（カタカナ・英語名）で' : ''}お試しください。
+                  <br />
                   <Link href="/games/list" className="prose-link">
-                    全タイトルの一覧
+                    全タイトルの索引
                   </Link>
-                  からお探しください。
+                  から探すこともできます。
                 </p>
+                <button
+                  type="button"
+                  onClick={reset}
+                  className="ease-out-expo mt-5 min-h-11 rounded-full border border-navy/25 px-7 py-3 text-[0.85rem] font-semibold text-navy transition-all duration-300 hover:border-navy hover:bg-navy/5"
+                >
+                  条件をリセット
+                </button>
               </div>
             ) : (
               <>
@@ -313,29 +367,31 @@ export default function GameSearch({ genres, total }: Props) {
                     <li key={r.s}>
                       <Link
                         href={`/games/${r.s}`}
-                        className="group block overflow-hidden rounded-xl border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:border-navy/25"
+                        className="group block overflow-hidden rounded-xl border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:border-navy/25 hover:shadow-[0_10px_30px_rgba(0,40,79,0.09)]"
                       >
-                        {r.i ? (
-                          // 実寸ちょうどのwebpを事前生成しているので変換は挟まない（GameImage と同じ理由）
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img
-                            src={`/games/${r.s}-320.webp`}
-                            width={320}
-                            height={320}
-                            alt={`${r.n}のゲーム画像`}
-                            loading="lazy"
-                            decoding="async"
-                            className="aspect-square w-full bg-paper-2 object-contain"
-                          />
-                        ) : (
-                          <GameTile slug={r.s} name={r.n} nameEn={r.e} genre={r.g} />
-                        )}
+                        <div className="overflow-hidden">
+                          {r.i ? (
+                            // 実寸ちょうどのwebpを事前生成しているので変換は挟まない（GameImage と同じ理由）
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                              src={`/games/${r.s}-320.webp`}
+                              width={320}
+                              height={320}
+                              alt={`${r.n}のゲーム画像`}
+                              loading="lazy"
+                              decoding="async"
+                              className="aspect-square w-full bg-paper-2 object-contain transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.04]"
+                            />
+                          ) : (
+                            <GameTile slug={r.s} name={r.n} nameEn={r.e} genre={r.g} className="aspect-square w-full" />
+                          )}
+                        </div>
                         <div className="p-3.5">
                           <h3 className="line-clamp-2 text-[0.85rem] leading-snug font-semibold text-ink transition-colors group-hover:text-cyan-ink">
                             {r.n}
                           </h3>
                           <p className="mt-1.5 text-[0.72rem] text-ink-faint">
-                            {r.p ? `${r.p[0]}〜${r.p[1]}人` : '人数未確認'}
+                            {r.p ? (r.p[0] === r.p[1] ? `${r.p[0]}人` : `${r.p[0]}〜${r.p[1]}人`) : '人数未確認'}
                             {r.t ? ` ・ ${r.t[0] === r.t[1] ? r.t[0] : `${r.t[0]}〜${r.t[1]}`}分` : ''}
                           </p>
                         </div>
@@ -352,6 +408,9 @@ export default function GameSearch({ genres, total }: Props) {
                       className="ease-out-expo min-h-11 rounded-full border border-navy/25 px-8 py-3.5 text-[0.88rem] font-semibold text-navy transition-all duration-300 hover:border-navy hover:bg-navy/5"
                     >
                       さらに{Math.min(PAGE, results.length - shown)}件を表示
+                      <span className="ml-2 text-[0.75rem] font-normal text-ink-faint">
+                        （{shown} / {results.length}）
+                      </span>
                     </button>
                   </div>
                 ) : null}

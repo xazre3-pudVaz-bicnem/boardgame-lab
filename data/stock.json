@@ -1,0 +1,13 @@
+{
+  "_readme": [
+    "店舗で確認した『いま店内にあるか』の記録。スタッフが手で書き換えるファイル。",
+    "ここに載っていないタイトルは『未確認』として扱い、画面には在庫について何も出さない。",
+    "  available   … 店内にあることを確認した（確認日を updatedAt に入れる）",
+    "  unavailable … 店内に無いことを確認した（詳細ページに『現在店内にありません』と出る）",
+    "slug は src/data/games.json の slug と同じものを使う。存在しない slug は build-games.mjs が警告する。",
+    "ボドゲーマ側の登録が変わっても、このファイルは自動では書き換わらない（scripts/sync-games.mjs は差分を報告するだけ）。",
+    "書き換えたら node scripts/build-games.mjs を実行する。"
+  ],
+  "updatedAt": "",
+  "games": {}
+}

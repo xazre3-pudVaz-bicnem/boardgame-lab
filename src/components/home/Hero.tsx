@@ -23,14 +23,17 @@ export default function Hero() {
     <section className="relative isolate flex min-h-[86svh] items-end overflow-hidden bg-navy-deep sm:min-h-[92svh]">
       <picture className="absolute inset-0 -z-10">
         <source media="(min-width: 640px)" srcSet={pc.srcSet} sizes="100vw" />
+        {/*
+          スマホは縦位置で切り抜くので、天井ばかりにならないよう焦点を下げる（人物とテーブルが残る）。
+          src は付けない。付けるとPCで <source> が採用されたあとに src の取得が始まって中断される。
+        */}
         <img
-          src={sp.src}
           srcSet={sp.srcSet}
           sizes="100vw"
           alt={SP.alt}
           fetchPriority="high"
           decoding="async"
-          className="h-full w-full object-cover object-[60%_center] sm:object-center"
+          className="h-full w-full object-cover object-[58%_68%] sm:object-[center_55%]"
         />
       </picture>
 

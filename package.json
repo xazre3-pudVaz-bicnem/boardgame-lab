@@ -10,7 +10,9 @@
     "check:games": "node scripts/check-games.mjs",
     "blog:generate": "node scripts/generate-blog.mjs",
     "check:shop": "node scripts/check-shop-facts.mjs",
-    "check": "node scripts/check-games.mjs && node scripts/check-shop-facts.mjs && tsc --noEmit"
+    "check": "node scripts/check-games.mjs && node scripts/check-shop-facts.mjs && tsc --noEmit",
+    "games:sync": "node scripts/sync-games.mjs",
+    "images:fetch": "node scripts/fetch-game-images.mjs && node scripts/build-game-images.mjs && node scripts/build-games.mjs"
   },
   "dependencies": {
     "next": "^15.5.4",

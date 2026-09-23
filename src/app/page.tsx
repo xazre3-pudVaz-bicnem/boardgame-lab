@@ -7,9 +7,11 @@ import {
   CtaBand,
   GameCollection,
   HowToEnjoy,
+  PhotoBand,
   SceneGrid,
   SystemSummary,
   Why,
+  type MoodTile,
 } from '@/components/home/Sections';
 import { NewsPreview } from '@/components/home/NewsPreview';
 import { HomeFaq } from '@/components/home/HomeFaq';
@@ -22,7 +24,7 @@ import { HOME_FAQ } from '@/data/faq';
 export const metadata: Metadata = buildMetadata({
   title: '大阪のボードゲームカフェ・プレイスペース｜BODOlab.（ボードゲームラボ）梅田・中津',
   description:
-    '大阪メトロ中津駅から徒歩3分、梅田から徒歩10分。600種類以上のボードゲームをスタッフのルール説明つきで遊べるプレイスペース＆ショップです。1時間600円、上限は平日2,500円・土日祝3,000円。初めての方も1人でも歓迎。',
+    '大阪メトロ中津駅から徒歩3分、梅田から徒歩10分。608種類のボードゲームをスタッフのルール説明つきで遊べるプレイスペース＆ショップです。1時間600円、上限は平日2,500円・土日祝3,000円。初めての方も1人でも歓迎。',
   path: '/',
   keywords: [
     '大阪 ボードゲーム',
@@ -33,11 +35,26 @@ export const metadata: Metadata = buildMetadata({
     '中津 ボードゲーム',
     '大阪 ボードゲームショップ',
     'ボードゲーム 初心者 大阪',
+    '大阪 室内 遊び',
+    '大阪 雨の日 デート',
   ],
 });
 
-/** トップのGAME COLLECTIONに出す4つの棚 */
+/** 「目的から選ぶ」タイル。ゲーム名を知らない人の入口 */
+const MOODS: MoodTile[] = [
+  { key: 'for-beginners', label: '初めての方に', en: 'First time', href: '/games/for-beginners', photo: 'table-standing' },
+  { key: 'for-two', label: '2人で', en: 'For two', href: '/games/for-two', photo: 'table-pairs' },
+  { key: 'for-couples', label: 'カップルで', en: 'Date', href: '/games/for-couples', photo: 'players-cards' },
+  { key: 'party', label: 'みんなで盛り上がる', en: 'Party', href: '/games/party', photo: 'floor-group' },
+  { key: 'short-play', label: '30分以内で', en: 'Short play', href: '/games/short-play', photo: 'game-boxes' },
+  { key: 'heavy', label: 'じっくり戦略', en: 'Heavy', href: '/games/heavy', photo: 'players-longtable' },
+];
+
+/** トップの棚に出す4つのコレクション */
 const HOME_SHELVES = ['for-beginners', 'for-two', 'party', 'short-play'] as const;
+
+/** シーンの並び。先頭が大きく出る。残りはリンクの列に */
+const HOME_SCENES = ['first-time', 'rainy-day', 'indoor-date', 'with-friends', 'solo', 'after-work'] as const;
 
 export default function HomePage() {
   /**
@@ -51,21 +68,20 @@ export default function HomePage() {
       .filter((g) => !used.has(g.slug))
       .slice(0, 6);
     for (const g of games) used.add(g.slug);
-    return {
-      key,
-      label: def.label,
-      href: `/games/${key}`,
-      caption: def.criteria,
-      games,
-    };
+    return { key, label: def.label, href: `/games/${key}`, caption: def.criteria, games };
   });
 
-  const scenes = SCENES.map((s) => ({
+  const bySlug = new Map(SCENES.map((s) => [s.slug, s]));
+  const scenes = HOME_SCENES.map((slug) => bySlug.get(slug)!).map((s) => ({
     href: `/scene/${s.slug}`,
     label: s.label,
     en: s.en,
     body: s.card,
     photo: s.photo,
+  }));
+  const more = SCENES.filter((s) => !(HOME_SCENES as readonly string[]).includes(s.slug)).map((s) => ({
+    href: `/scene/${s.slug}`,
+    label: s.label,
   }));
 
   return (
@@ -75,9 +91,10 @@ export default function HomePage() {
       <Hero />
       <About gameCount={GAME_COUNT} />
       <Why />
-      <GameCollection groups={groups} total={GAME_COUNT} />
+      <PhotoBand />
+      <GameCollection moods={MOODS} groups={groups} total={GAME_COUNT} />
       <HowToEnjoy />
-      <SceneGrid scenes={scenes} />
+      <SceneGrid scenes={scenes} more={more} />
       <SystemSummary />
       <NewsPreview />
       <AccessSummary />

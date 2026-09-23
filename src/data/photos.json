@@ -305,6 +305,39 @@
     "height": 906,
     "src": "/photos/entrance-stairs-1600.webp"
   },
+  "group-peace": {
+    "alt": "ボードゲーム棚の前でポーズをとる参加者たちの記念写真",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/group-peace-1600.webp"
+  },
+  "room-daytime-wide": {
+    "alt": "昼間の明るい店内。プロジェクターの前でボードゲームを遊ぶ人たち",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/room-daytime-wide-1600.webp"
+  },
+  "floor-evening-wide": {
+    "alt": "夜の店内。いくつものテーブルでボードゲームが同時に進む様子",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/floor-evening-wide-1600.webp"
+  },
   "pano-a": {
     "alt": "店内を見渡したパノラマ写真。テーブル席とボードゲーム棚",
     "widths": [

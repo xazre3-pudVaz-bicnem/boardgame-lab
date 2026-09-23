@@ -93,6 +93,8 @@ function loadContent(slug) {
     // 一覧・詳細の項目が「未登録」でも、出典ページの解説文に対象年齢が書かれている
     // ことがある。その場合だけ、執筆時に読み取った値をここで補う。
     minAgeOverride: Number.isInteger(c.minAge) ? c.minAge : null,
+    // 通称・略称・別表記。「ito」「6ニムト」のように、正式名と違う呼び方で探されるものを書く。
+    aliases: Array.isArray(c.aliases) ? c.aliases.map(String) : [],
   };
 }
 
@@ -102,6 +104,20 @@ function loadContent(slug) {
  */
 const imagesPath = path.join(ROOT, 'src/data/game-images.json');
 const gameImages = fs.existsSync(imagesPath) ? JSON.parse(fs.readFileSync(imagesPath, 'utf8')).images : {};
+
+/**
+ * 店舗で確認した在庫の記録（data/stock.json）。スタッフが手で書き換える。
+ * 載っていないタイトルは 'unknown'。ボドゲーマの登録数と店内の実態は一致しないので、
+ * 「ある」と書けるのは店舗が確認したものだけにする。
+ */
+const stockPath = path.join(ROOT, 'data/stock.json');
+const stockFile = fs.existsSync(stockPath)
+  ? JSON.parse(fs.readFileSync(stockPath, 'utf8'))
+  : { updatedAt: '', games: {} };
+const STOCK_VALUES = new Set(['available', 'unavailable']);
+for (const [slug, v] of Object.entries(stockFile.games ?? {})) {
+  if (!STOCK_VALUES.has(v)) console.warn('stock.json: ' + slug + ' の値 "' + v + '" は available / unavailable のどちらかにしてください');
+}
 
 /* ------------------------------------------------------- 組み立て */
 
@@ -159,6 +175,9 @@ for (const r of raw.games) {
     sourceUrl: r.sourceUrl,
     popularity,
     hasImage: Object.hasOwn(gameImages, r.slug),
+    stock: STOCK_VALUES.has(stockFile.games?.[r.slug]) ? stockFile.games[r.slug] : 'unknown',
+    stockCheckedAt: STOCK_VALUES.has(stockFile.games?.[r.slug]) ? stockFile.updatedAt || null : null,
+    aliases: content?.aliases ?? [],
     related: [],
     catch: content?.catch ?? '',
     overview: content?.overview ?? '',
@@ -166,6 +185,14 @@ for (const r of raw.games) {
     appeal: content?.appeal ?? '',
     recommended: content?.recommended ?? '',
   });
+}
+
+// stock.json に、存在しない slug が書かれていないか
+{
+  const known = new Set(games.map((g) => g.slug));
+  for (const slug of Object.keys(stockFile.games ?? {})) {
+    if (!known.has(slug)) console.warn('stock.json: "' + slug + '" というゲームはありません（slugの綴りを確認してください）');
+  }
 }
 
 /* ------------------------------------------------------- 関連ゲーム */
@@ -250,7 +277,8 @@ const index = [...games]
   .map((g) => ({
     s: g.slug,
     n: g.nameJa,
-    e: g.nameEn ?? '',
+    // 英名と別名をまとめて検索対象にする（表示には使わない）
+    e: [g.nameEn ?? '', ...(g.aliases ?? [])].filter(Boolean).join(' / '),
     p: g.players ? [g.players.min, g.players.max] : null,
     t: g.time ? [g.time.min, g.time.max] : null,
     a: g.minAge,

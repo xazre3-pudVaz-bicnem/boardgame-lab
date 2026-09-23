@@ -27,6 +27,13 @@ export type Game = {
   /** 内部での並べ替え用。ボドゲーマの「経験あり」「持ってる」件数から算出（画面には出さない） */
   popularity: number;
   related: string[];
+  /** パッケージ画像があるか（public/games/<slug>-{320,480}.webp） */
+  hasImage: boolean;
+  /** 店舗で確認した在庫。data/stock.json 由来。載っていなければ unknown */
+  stock: 'available' | 'unavailable' | 'unknown';
+  stockCheckedAt: string | null;
+  /** 通称・略称。検索にだけ使う */
+  aliases: string[];
   /* 自社で執筆した本文 */
   catch: string;
   overview: string;
