@@ -6,3 +6,18 @@ out/
 *.tsbuildinfo
 next-env.d.ts
 .vercel
+
+# 取得したパッケージ画像の元ファイル。
+# 配信に使うのは public/games/*.webp（こちらはコミットする）なので、
+# 元ファイルはリポジトリに入れない。manifest.json は残すので、
+# `node scripts/fetch-game-images.mjs` で同じものを取り直せる。
+data/source/game-images/*.jpg
+data/source/game-images/*.jpeg
+data/source/game-images/*.png
+data/source/game-images/*.webp
+
+# 検証のたびに作り直されるもの。Lighthouseの生JSONとスクリーンショット。
+# いつでも `node scripts/audit-render.mjs` / lighthouse で作り直せるので、
+# リポジトリには入れない（合計34MBあり、clone とデプロイを重くするため）。
+data/lighthouse/
+data/shots/
