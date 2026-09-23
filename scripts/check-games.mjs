@@ -181,10 +181,50 @@ for (const [k, n] of Object.entries(genreCount)) {
 
 /* ---------------------------------------------------- 画像 */
 
-// ゲーム画像はインラインSVG（GameTile）で生成するため、外部画像への依存がないことを確認する
 for (const g of games) {
   if (typeof g.sourceUrl !== 'string' || !g.sourceUrl.startsWith('https://bodoge.hoobby.net/games/'))
     fail(`${g.slug}: 出典URLが不正`);
+}
+
+/**
+ * パッケージ画像。
+ * hasImage が立っているゲームは、2サイズとも書き出されていなければならない。
+ * 画像が無いゲームはインラインSVG（GameTile）に落ちるので、欠けていること自体は問題にしない。
+ */
+const imagesPath = path.join(ROOT, 'src/data/game-images.json');
+if (fs.existsSync(imagesPath)) {
+  const meta = JSON.parse(fs.readFileSync(imagesPath, 'utf8')).images;
+  const pubDir = path.join(ROOT, 'public/games');
+  const files = fs.existsSync(pubDir) ? new Set(fs.readdirSync(pubDir)) : new Set();
+
+  let withImage = 0;
+  for (const g of games) {
+    const declared = Boolean(g.hasImage);
+    const known = Object.hasOwn(meta, g.slug);
+    if (declared !== known) fail(`${g.slug}: hasImage と game-images.json が食い違う`);
+    if (!declared) continue;
+    withImage++;
+    for (const size of [320, 480]) {
+      if (!files.has(`${g.slug}-${size}.webp`)) fail(`${g.slug}: 画像 ${size}px が書き出されていない`);
+    }
+  }
+
+  // 同じ画像が2つ以上のゲームに割り当たっていたら、取り違えの可能性がある
+  const byHash = new Map();
+  for (const [slug, m] of Object.entries(meta)) {
+    if (!byHash.has(m.hash)) byHash.set(m.hash, []);
+    byHash.get(m.hash).push(slug);
+  }
+  for (const [, slugs] of byHash) {
+    if (slugs.length > 1) fail(`同じ画像が複数のゲームに使われている: ${slugs.join(' / ')}`);
+  }
+
+  // 使われていない画像ファイルが public に残っていないか
+  const expected = new Set();
+  for (const slug of Object.keys(meta)) for (const s of [320, 480]) expected.add(`${slug}-${s}.webp`);
+  for (const f of files) if (!expected.has(f)) warn(`public/games に不要なファイル: ${f}`);
+
+  console.log(`パッケージ画像あり: ${withImage}件 / 画像なし（SVG表示）: ${games.length - withImage}件`);
 }
 
 /* ---------------------------------------------------- 結果 */

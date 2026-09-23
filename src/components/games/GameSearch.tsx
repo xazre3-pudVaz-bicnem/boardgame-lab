@@ -23,6 +23,8 @@ type Row = {
   w: 'light' | 'middle' | 'heavy';
   b: 0 | 1;
   c: string[];
+  /** 1 ならパッケージ画像がある。0 ならSVGを描く。 */
+  i: 0 | 1;
 };
 
 type Props = {
@@ -313,7 +315,21 @@ export default function GameSearch({ genres, total }: Props) {
                         href={`/games/${r.s}`}
                         className="group block overflow-hidden rounded-xl border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:border-navy/25"
                       >
-                        <GameTile slug={r.s} name={r.n} nameEn={r.e} genre={r.g} />
+                        {r.i ? (
+                          // 実寸ちょうどのwebpを事前生成しているので変換は挟まない（GameImage と同じ理由）
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            src={`/games/${r.s}-320.webp`}
+                            width={320}
+                            height={320}
+                            alt={`${r.n}のゲーム画像`}
+                            loading="lazy"
+                            decoding="async"
+                            className="aspect-square w-full bg-paper-2 object-contain"
+                          />
+                        ) : (
+                          <GameTile slug={r.s} name={r.n} nameEn={r.e} genre={r.g} />
+                        )}
                         <div className="p-3.5">
                           <h3 className="line-clamp-2 text-[0.85rem] leading-snug font-semibold text-ink transition-colors group-hover:text-cyan-ink">
                             {r.n}

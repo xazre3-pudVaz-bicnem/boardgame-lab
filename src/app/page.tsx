@@ -40,14 +40,23 @@ export const metadata: Metadata = buildMetadata({
 const HOME_SHELVES = ['for-beginners', 'for-two', 'party', 'short-play'] as const;
 
 export default function HomePage() {
+  /**
+   * 棚ごとに人気順で6件。ただし前の棚に出したタイトルは飛ばす。
+   * 人気順のまま並べると、どの棚も同じ顔ぶれになって棚を分けた意味がなくなるため。
+   */
+  const used = new Set<string>();
   const groups = HOME_SHELVES.map((key) => {
     const def = COLLECTIONS.find((c) => c.key === key)!;
+    const games = gamesInCollection(key)
+      .filter((g) => !used.has(g.slug))
+      .slice(0, 6);
+    for (const g of games) used.add(g.slug);
     return {
       key,
       label: def.label,
       href: `/games/${key}`,
       caption: def.criteria,
-      games: gamesInCollection(key).slice(0, 6),
+      games,
     };
   });
 

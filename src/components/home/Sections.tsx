@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Photo, { type PhotoKey } from '@/components/Photo';
-import GameTile from '@/components/GameTile';
+import GameImage from '@/components/GameImage';
 import { Container, SectionHeading, Button, Chip, Eyebrow } from '@/components/ui';
 import { shop, hoursLine } from '@/data/shop';
 import type { Game } from '@/lib/games';
@@ -191,12 +191,12 @@ export function GameCollection({
                   <li key={game.slug} className="w-[42vw] shrink-0 snap-start sm:w-auto">
                     <Link href={`/games/${game.slug}`} className="group block">
                       <div className="overflow-hidden rounded-xl">
-                        <GameTile
+                        <GameImage
                           slug={game.slug}
                           name={game.nameJa}
                           nameEn={game.nameEn}
                           genre={game.genre}
-                          className="aspect-square w-full transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.05]"
+                          className="transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.05]"
                         />
                       </div>
                       <p className="mt-2.5 line-clamp-2 text-[0.78rem] leading-snug text-white/85 transition-colors group-hover:text-cyan">

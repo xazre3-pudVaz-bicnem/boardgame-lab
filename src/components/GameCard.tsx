@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import type { Game } from '@/lib/games';
 import { playersText, timeText } from '@/lib/games';
-import GameTile from './GameTile';
+import GameImage from './GameImage';
 import { Chip } from './ui';
 
 /** 一覧に並べるゲーム1件分のカード。数値が取れていない項目は出さない。 */
@@ -14,12 +14,12 @@ export function GameCard({ game, priority }: { game: Game; priority?: boolean })
       href={`/games/${game.slug}`}
       className="group ease-out-expo focus-visible:ring-cyan focus-visible:ring-offset-paper block overflow-hidden rounded-xl border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:border-navy/25 hover:shadow-[0_10px_30px_rgba(0,40,79,0.09)] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
     >
-      <GameTile
+      <GameImage
         slug={game.slug}
         name={game.nameJa}
         nameEn={game.nameEn}
         genre={game.genre}
-        className={priority ? '' : 'lazy'}
+        priority={priority}
       />
       <div className="p-4">
         <h3 className="line-clamp-2 text-[0.92rem] leading-snug font-semibold text-ink transition-colors group-hover:text-cyan-ink">
@@ -46,12 +46,19 @@ export function GameCard({ game, priority }: { game: Game; priority?: boolean })
  */
 const EAGER_ROWS = 10;
 
+/**
+ * priorityCount は受け取るが、画像の先読みには使わない。
+ * スマホではどのページでもカードは画面外から始まるので、先読みすると
+ * 本文の表示（LCP）と帯域を奪い合って遅くなる。実測で /games が 2.6s → 2.0s。
+ * 画面内に入った順に読む lazy のほうが速い。
+ */
 export function GameGrid({ games, priorityCount = 0 }: { games: Game[]; priorityCount?: number }) {
+  void priorityCount;
   return (
     <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
       {games.map((g, i) => (
         <li key={g.slug} className={i < EAGER_ROWS ? undefined : 'card-cv'}>
-          <GameCard game={g} priority={i < priorityCount} />
+          <GameCard game={g} />
         </li>
       ))}
     </ul>

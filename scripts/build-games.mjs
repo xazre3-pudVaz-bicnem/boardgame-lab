@@ -96,6 +96,13 @@ function loadContent(slug) {
   };
 }
 
+/**
+ * パッケージ画像があるかどうか。build-game-images.mjs が作るファイルを読む。
+ * まだ画像を取得していない段階でもビルドが通るよう、無ければ空として扱う。
+ */
+const imagesPath = path.join(ROOT, 'src/data/game-images.json');
+const gameImages = fs.existsSync(imagesPath) ? JSON.parse(fs.readFileSync(imagesPath, 'utf8')).images : {};
+
 /* ------------------------------------------------------- 組み立て */
 
 const games = [];
@@ -151,6 +158,7 @@ for (const r of raw.games) {
     dataStatus: players && time ? 'complete' : 'partial',
     sourceUrl: r.sourceUrl,
     popularity,
+    hasImage: Object.hasOwn(gameImages, r.slug),
     related: [],
     catch: content?.catch ?? '',
     overview: content?.overview ?? '',
@@ -250,6 +258,8 @@ const index = [...games]
     w: g.weight,
     b: g.beginner ? 1 : 0,
     c: g.collections,
+    // 1 ならパッケージ画像あり。0 の場合クライアントはSVGを描く。
+    i: Object.hasOwn(gameImages, g.slug) ? 1 : 0,
   }));
 fs.mkdirSync(path.join(ROOT, 'public'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'public/games-index.json'), JSON.stringify(index));

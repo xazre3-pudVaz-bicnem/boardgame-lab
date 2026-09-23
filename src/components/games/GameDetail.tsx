@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import GameTile from '@/components/GameTile';
+import GameImage from '@/components/GameImage';
 import { GameGrid } from '@/components/GameCard';
 import { Breadcrumbs, Button, Chip, Container, ConfirmNote, Eyebrow } from '@/components/ui';
 import { abs, shop, SITE_URL } from '@/data/shop';
@@ -99,7 +99,14 @@ export default function GameDetail({ game }: { game: Game }) {
 
           <div className="mt-8 grid gap-8 sm:grid-cols-[minmax(0,14rem)_minmax(0,1fr)] sm:items-start sm:gap-12">
             <div className="max-w-[14rem] overflow-hidden rounded-2xl shadow-[0_10px_30px_rgba(0,40,79,0.12)]">
-              <GameTile slug={game.slug} name={game.nameJa} nameEn={game.nameEn} genre={game.genre} large />
+              <GameImage
+                slug={game.slug}
+                name={game.nameJa}
+                nameEn={game.nameEn}
+                genre={game.genre}
+                large
+                priority
+              />
             </div>
 
             <div>
@@ -226,11 +233,11 @@ export default function GameDetail({ game }: { game: Game }) {
                 ) : null}
 
                 <p className="mt-6 text-[0.72rem] leading-relaxed text-ink-faint">
-                  人数・時間・対象年齢・メカニクスは
+                  人数・時間・対象年齢・メカニクスと、ゲーム画像は
                   <a href={game.sourceUrl} target="_blank" rel="noopener noreferrer nofollow" className="prose-link">
                     ボドゲーマの該当ページ
                   </a>
-                  で確認した値です。紹介文は当店が書き下ろしています。
+                  によります。画像の著作権は各出版社に帰属します。紹介文は当店が書き下ろしています。
                 </p>
               </div>
 

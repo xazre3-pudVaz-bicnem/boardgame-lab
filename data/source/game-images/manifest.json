@@ -1,0 +1,4227 @@
+{
+  "57577": {
+    "file": "57577.jpg",
+    "sourceFile": "picture_27c04a04-a693-4490-91a7-ecb81f802418.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/57577",
+    "bytes": 119645,
+    "sha256": "80d017f0341502c0d411e744580329bda19351d3024cc0a382968dd215b77f3d"
+  },
+  "cubitos": {
+    "file": "cubitos.png",
+    "sourceFile": "picture_4b4c9f99-2d58-4f54-824d-ca852eb21f28.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/cubitos",
+    "bytes": 1059207,
+    "sha256": "514f6f6ac64bd48e15ec3ec1b55f2e3def2767a736ffaa9b3f4372d143f36a6a"
+  },
+  "cubitos-fowl-play": {
+    "file": "cubitos-fowl-play.webp",
+    "sourceFile": "picture_ec794d53-a6ee-4806-9d15-46bfa8bb951f.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/cubitos-fowl-play",
+    "bytes": 61376,
+    "sha256": "2ea8bd66610bc706fc0732e22d013d5064862b43928f7625fe742de7dfddb393"
+  },
+  "hanabi-grands-feux": {
+    "file": "hanabi-grands-feux.jpg",
+    "sourceFile": "picture_d76410f8-bbdd-44a8-a82c-7feea20f23eb.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/hanabi-grands-feux",
+    "bytes": 127907,
+    "sha256": "d011204abb92f9b8249f5420d4d7d925a375c462a6ac9db1100d2067ee35ea29"
+  },
+  "time-bomb-q": {
+    "file": "time-bomb-q.jpg",
+    "sourceFile": "picture_a54772fc-ae5a-4e2e-9427-4966a7cb3631.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/time-bomb-q",
+    "bytes": 178212,
+    "sha256": "2a768ffe8a8024a0fbe9b4e7df67143d04d58d9fd51482f09ed7957c46a42398"
+  },
+  "witness-night": {
+    "file": "witness-night.jpg",
+    "sourceFile": "picture_6556359c-8933-4741-99fe-fbec28efa36f.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/witness-night",
+    "bytes": 151329,
+    "sha256": "19727fb387bdedc9755c935e88b4f2cfb5313d8347fb145e5315348bf267d94a"
+  },
+  "brass-birmingham": {
+    "file": "brass-birmingham.jpg",
+    "sourceFile": "picture_8a95e683-75c5-49c1-858b-5ef93a0966e6.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/brass-birmingham",
+    "bytes": 121527,
+    "sha256": "456d5de680ae63f6b8bfd6f382d6ed5750f918c6e7fe8bae213ac429e2580fdb"
+  },
+  "dixit-disney-edition": {
+    "file": "dixit-disney-edition.webp",
+    "sourceFile": "picture_88dbc8db-c89a-4607-84e4-0889aa575945.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dixit-disney-edition",
+    "bytes": 66514,
+    "sha256": "0c62098de36b6311f3a8cc1eff2aeaf987d77f0a84f423662ab8fd9a72283386"
+  },
+  "bluffit": {
+    "file": "bluffit.webp",
+    "sourceFile": "picture_0e32e7af-f814-4e05-9985-da5243b1d799.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/bluffit",
+    "bytes": 84620,
+    "sha256": "32e69f74a71c8df027aeb4ef75590d7cba7a6acb8c8129cfc151f7536b4ebd4a"
+  },
+  "siggi-safeknacker": {
+    "file": "siggi-safeknacker.jpg",
+    "sourceFile": "picture_a9388f9f-ef82-477c-b781-bcd73e8524e1.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/siggi-safeknacker",
+    "bytes": 62803,
+    "sha256": "734b545c2434580dc8c7d624bb0b8df0afb1e83d1e0fbe9b69c644384187872f"
+  },
+  "32ldk": {
+    "file": "32ldk.png",
+    "sourceFile": "picture_ced5d00b-d6cc-421e-be34-339b1b4b59a4.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/32ldk",
+    "bytes": 651303,
+    "sha256": "e616b4a30f2396532bde50a01af09575eb33cbebe86a025eb4791a2ff57c7298"
+  },
+  "maskmen": {
+    "file": "maskmen.jpg",
+    "sourceFile": "picture_58fe9d73-a0d2-402d-b16c-030fc18caaf7.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/maskmen",
+    "bytes": 70165,
+    "sha256": "5fe6d9c05c89a8cd66c86117b214a632830c4ba4b0c1ceb782f772c854892eae"
+  },
+  "diamond-swap": {
+    "file": "diamond-swap.jpg",
+    "sourceFile": "picture_a444adbf-c634-4d53-83df-f99571302830.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/diamond-swap",
+    "bytes": 84605,
+    "sha256": "c7166fed84972e42c85f309353f76b3489330db9687aff22782588283b94dc0d"
+  },
+  "got-five": {
+    "file": "got-five.webp",
+    "sourceFile": "picture_97519a1a-107a-4f02-8c95-c453243742ee.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/got-five",
+    "bytes": 70210,
+    "sha256": "836ed3dc41135653d4f4ab07a094fe01b9329fb2d67d39211004e7827229d768"
+  },
+  "down-down-dungeon": {
+    "file": "down-down-dungeon.jpg",
+    "sourceFile": "picture_a27e3ade-206b-4486-a630-a6ef36cfd05e.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/down-down-dungeon",
+    "bytes": 116529,
+    "sha256": "c7c7aa5f657cfbf51f44f95016b5baca8bcb20c72da5800d60bce9d612f3d474"
+  },
+  "kinsa-senbikiya": {
+    "file": "kinsa-senbikiya.png",
+    "sourceFile": "picture_efa18fb7-11a5-4000-8e2c-6177009fad5e.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/kinsa-senbikiya",
+    "bytes": 855624,
+    "sha256": "c68b6de0843cc71c806f9ff930661ca2a70def423227feb923f8190945c0b3cf"
+  },
+  "nanigoe": {
+    "file": "nanigoe.jpg",
+    "sourceFile": "picture_058d2e2f-8443-4d2c-86d0-41917a89861c.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/nanigoe",
+    "bytes": 146196,
+    "sha256": "9b3a1650b581c3045e482a29c4ac41ba503b294f1a0d9ce6c6764f57958c1cd7"
+  },
+  "sign-asoviva": {
+    "file": "sign-asoviva.jpg",
+    "sourceFile": "picture_8010ef7d-beae-4c0a-b833-b5baa797a89c.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/sign-asoviva",
+    "bytes": 168074,
+    "sha256": "9d788fde54a2c5583458e9636bf8080dfce8d2db97ae4cfe3dd1d625a9ce59e1"
+  },
+  "good-cop-bad-cop": {
+    "file": "good-cop-bad-cop.jpg",
+    "sourceFile": "picture_c6a7d6e8-e80c-44b1-981c-510c6f76d618.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/good-cop-bad-cop",
+    "bytes": 92639,
+    "sha256": "c0d638f48e50126101ee00540176a084831f1a94d492633cf1d6000e675cdd13"
+  },
+  "mascarade-second-edition": {
+    "file": "mascarade-second-edition.webp",
+    "sourceFile": "picture_58f2bd6e-d662-457d-8afc-365196a2efb1.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/mascarade-second-edition",
+    "bytes": 67630,
+    "sha256": "be3c28fd72722a55225070f74cebc64b2ec6fda63bff05aa37469d48a713c948"
+  },
+  "spots": {
+    "file": "spots.webp",
+    "sourceFile": "picture_18704d0e-c19f-48dc-8003-329b6e220850.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/spots",
+    "bytes": 57200,
+    "sha256": "af02563dc5d16afdc6650c06d514d79304960aec3d0aec67814012e17b7e6fbc"
+  },
+  "renren": {
+    "file": "renren.jpg",
+    "sourceFile": "picture_ebd8ecc2-8f67-4363-b88d-ac5618fccdd8.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/renren",
+    "bytes": 132383,
+    "sha256": "63966c8e59bf82f202e2f32e30c954436cd25365f166e7b519a160523650b750"
+  },
+  "sanrentan-deep": {
+    "file": "sanrentan-deep.jpg",
+    "sourceFile": "picture_c3ef4217-df11-414a-8388-f8d63462ea35.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/sanrentan-deep",
+    "bytes": 107206,
+    "sha256": "d83877efb6a66f171691d12aeaa4d9c69e7578b4db35da0ef5b34aec5f2423fb"
+  },
+  "sanrentan": {
+    "file": "sanrentan.jpg",
+    "sourceFile": "picture_4aae8754-2934-457d-93df-5f51ec7a6bcf.JPG",
+    "sourceUrl": "https://bodoge.hoobby.net/games/sanrentan",
+    "bytes": 139687,
+    "sha256": "960dbe99bab23f8bf77125e4610f270914cba725cbe70f5bce501e08b6be457a"
+  },
+  "haitte-ittanoni": {
+    "file": "haitte-ittanoni.jpg",
+    "sourceFile": "picture_6754d4d3-b9f1-42c6-bace-8437104d7cf0.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/haitte-ittanoni",
+    "bytes": 134542,
+    "sha256": "a42eb921acc617ea5be70764174c6be41c56360b7304701698f8902087900a3e"
+  },
+  "yes-man-wo-sagase": {
+    "file": "yes-man-wo-sagase.jpg",
+    "sourceFile": "picture_37e7b4d9-c1f0-44d4-9f4a-6618bb99fbf4.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/yes-man-wo-sagase",
+    "bytes": 105953,
+    "sha256": "637868bb0909ee54c9ba9667a3201c82ebcb3fa9c6eab8656505627679fbcc4f"
+  },
+  "emorank": {
+    "file": "emorank.jpg",
+    "sourceFile": "picture_6881aded-4a89-44a7-8241-ed18259e845c.JPG",
+    "sourceUrl": "https://bodoge.hoobby.net/games/emorank",
+    "bytes": 88565,
+    "sha256": "a816f10e2a107a4c9f11f0ea30144b89d8ccf0e720b1612a534bebb964d01007"
+  },
+  "docchi-boy": {
+    "file": "docchi-boy.jpg",
+    "sourceFile": "picture_9900c9e6-64f5-46c6-8b82-d17b58667683.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/docchi-boy",
+    "bytes": 151316,
+    "sha256": "8fcc586390d6798abbc582127bb9d654579dc58515792145700a5c222b8a0909"
+  },
+  "barten-doubt": {
+    "file": "barten-doubt.jpg",
+    "sourceFile": "picture_c3b24a38-f698-49c8-b5ed-a7aaf569c066.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/barten-doubt",
+    "bytes": 123439,
+    "sha256": "e492d7d1b312c40fc212c37bc179432ac711cda1eee8b84c464756e2ed4073c7"
+  },
+  "spy-bar": {
+    "file": "spy-bar.jpg",
+    "sourceFile": "picture_fade89bc-4480-45e1-ac00-b717d95e5ab4.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/spy-bar",
+    "bytes": 75965,
+    "sha256": "81f37511aa2ec9c8bc1e6dce530bdd428b63ed39f6935ba49c959b317f3b78e0"
+  },
+  "liquor-meister": {
+    "file": "liquor-meister.jpg",
+    "sourceFile": "picture_ef32121a-85de-4ffb-9ee6-c3cabe7cc15c.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/liquor-meister",
+    "bytes": 153337,
+    "sha256": "a437227c4b28387e91035c4e7f2faba1b7db1147ca9e793248ce5171e8e47e1d"
+  },
+  "kartel": {
+    "file": "kartel.png",
+    "sourceFile": "picture_f1f501f8-99b8-4e6b-a539-2eebd4f2dfeb.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/kartel",
+    "bytes": 836505,
+    "sha256": "2a12b230ace9750e880cc9dca9ec885db1bab2953f105f1b482cd07ff45d5a72"
+  },
+  "midnight-cocktail": {
+    "file": "midnight-cocktail.jpg",
+    "sourceFile": "picture_958d8aba-e415-4d8e-8fa6-65b5cc8da9e2.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/midnight-cocktail",
+    "bytes": 113814,
+    "sha256": "7977803eaa48063084e2f7ea97a57128bc282559dd6d4eccbbe1c38fc6006bba"
+  },
+  "shumijin": {
+    "file": "shumijin.jpg",
+    "sourceFile": "picture_d4dd33d7-fa22-44ff-ab53-8095c4911a84.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/shumijin",
+    "bytes": 89591,
+    "sha256": "6fff9232ea0320e253a74f1b33672a0094555f851b1cbb9fb667180c78e20151"
+  },
+  "wan": {
+    "file": "wan.png",
+    "sourceFile": "picture_3c025679-0387-431d-ad98-a4403fd2b1a9.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/wan",
+    "bytes": 548722,
+    "sha256": "10ae92e54a31c62b88dced83f21d584b065ab3f993a86ceaaf4adb278ed11def"
+  },
+  "nightmare-millionaire": {
+    "file": "nightmare-millionaire.jpg",
+    "sourceFile": "picture_25823f0f-8de8-4664-887e-65aa245acbcc.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/nightmare-millionaire",
+    "bytes": 124144,
+    "sha256": "f925fee457568058a22123d20c1b93f8c22e539235d7644b5686ffc66e0d7a43"
+  },
+  "pa-ha-zurui": {
+    "file": "pa-ha-zurui.png",
+    "sourceFile": "picture_e9b6ef22-d484-4c68-ae72-49ed34e0a39d.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/pa-ha-zurui",
+    "bytes": 998299,
+    "sha256": "fa034066aff217bf181a436a2703468fb2f8518936fa971d276ea96ac1756987"
+  },
+  "quizoo-land-kabool": {
+    "file": "quizoo-land-kabool.jpg",
+    "sourceFile": "picture_b0e8b3a4-3844-4b01-97f7-46b85bae482b.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/quizoo-land-kabool",
+    "bytes": 158878,
+    "sha256": "4de45c0a32c1f20376ef46ae54a200063ca3cc476f18760d643a4cf643019e46"
+  },
+  "bubbles": {
+    "file": "bubbles.jpg",
+    "sourceFile": "picture_a9de0f80-0339-4123-a45d-38add5b5e38d.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/bubbles",
+    "bytes": 107846,
+    "sha256": "d13c07a66632227912f4f258b1e2f9b1bb9918381935e1aa0472e28d2fe4fea8"
+  },
+  "tsuimotto": {
+    "file": "tsuimotto.jpg",
+    "sourceFile": "picture_3fe59073-bc6e-477b-90e8-a836af8d395e.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/tsuimotto",
+    "bytes": 97585,
+    "sha256": "c025026a68fed164fe061b5e2c7e8b74e43799950bdb9abf8d145506c0190fe8"
+  },
+  "ichigorilla": {
+    "file": "ichigorilla.jpg",
+    "sourceFile": "ichigorilla3.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/ichigorilla",
+    "bytes": 38457,
+    "sha256": "59c23ecc92d7b11460cf817177c5fb82d1a1d4324f846ab6cf134811af689e50"
+  },
+  "ruesselbande": {
+    "file": "ruesselbande.jpg",
+    "sourceFile": "picture_accf023a-121e-45be-8b2e-f7775e8815fa.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/ruesselbande",
+    "bytes": 48564,
+    "sha256": "9a7ce749494a68413c2380bcaaecd5d0cee560c5f92f079c6fe11e0d12bfd851"
+  },
+  "sai-fugo": {
+    "file": "sai-fugo.jpg",
+    "sourceFile": "picture_c0b31e95-a671-4d9e-a2ea-f790dd72daef.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/sai-fugo",
+    "bytes": 94206,
+    "sha256": "6d9915cc1cce5883e406675727aa2e863d32e171a296e365b39116ea398889a5"
+  },
+  "guess-club": {
+    "file": "guess-club.jpg",
+    "sourceFile": "picture_03180a59-5a6d-42c7-ab45-c0cbe22711cc.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/guess-club",
+    "bytes": 89952,
+    "sha256": "1f3ec3cee57ade512d075f57cbe082ec4e6e365292a927fc173c9d866743530e"
+  },
+  "densha-kujira": {
+    "file": "densha-kujira.png",
+    "sourceFile": "picture_c25cd1c1-73cc-4bb4-9f6e-643f3dddd395.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/densha-kujira",
+    "bytes": 521379,
+    "sha256": "32282e34425485959807b4c192cbf2d78a2b645ca74a86f10b64dcee74ecd383"
+  },
+  "keotoshi-jack": {
+    "file": "keotoshi-jack.png",
+    "sourceFile": "picture_66b32b97-724c-4ea3-895e-7324de3f6283.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/keotoshi-jack",
+    "bytes": 781108,
+    "sha256": "530327393688366d610d8e86096fe2715eed76666b83628c0d65afdfc204dcb5"
+  },
+  "orapa-mine": {
+    "file": "orapa-mine.webp",
+    "sourceFile": "picture_d0be69e8-d04a-4188-93e5-39df5f0aed0c.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/orapa-mine",
+    "bytes": 31818,
+    "sha256": "d0c5a5a42b9dd34beb9fb43ce3de6ca3fcec9905f8c050deb2b69a6077c92e4d"
+  },
+  "kocho-dx": {
+    "file": "kocho-dx.jpg",
+    "sourceFile": "picture_dba6275a-d0d2-48cc-8b52-417efde53140.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/kocho-dx",
+    "bytes": 95070,
+    "sha256": "ef63a73af4d555dc33f54e1a822ac8b3bde572f6ada375137a28dce87cf1f82f"
+  },
+  "linq3": {
+    "file": "linq3.webp",
+    "sourceFile": "picture_23c9fa3b-6e90-4452-aaf4-9395e4a5497d.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/linq3",
+    "bytes": 85546,
+    "sha256": "1944f7c14fc8a65bbff38d164bce69c3026e9e9c2cad76bbdea8a9df0848e478"
+  },
+  "demon-kings-move": {
+    "file": "demon-kings-move.png",
+    "sourceFile": "picture_f8208056-4cb3-483a-b23f-c99f9c9e5ff2.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/demon-kings-move",
+    "bytes": 1571740,
+    "sha256": "32423ecea4d96b05d3be0388a4452fdc74e3b0c5498e7d2b91b2f64b1b81bed2"
+  },
+  "tagiron": {
+    "file": "tagiron.jpg",
+    "sourceFile": "picture_3c8be56c-2ab6-4453-88a5-86c8d37d0283.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/tagiron",
+    "bytes": 119309,
+    "sha256": "2bdd2793b598229c8cd67405f5456406d6e1cbb180885242a0335e0eb547572d"
+  },
+  "deductio": {
+    "file": "deductio.webp",
+    "sourceFile": "picture_a782004e-c3e1-4cd0-9ede-31507fb7d0f5.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/deductio",
+    "bytes": 45196,
+    "sha256": "55d32a1697ff251722dc01ee14ea3aa63f9bb1d57100a2a0082aa7649ccaa983"
+  },
+  "mush-smash": {
+    "file": "mush-smash.jpg",
+    "sourceFile": "picture_e3bfdaef-b0bb-496c-9740-6cbe8a9f69e8.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/mush-smash",
+    "bytes": 102422,
+    "sha256": "d68f510428de12084d8acff708b9bb6999f0c40fbe976a682be265d715107268"
+  },
+  "find-cats": {
+    "file": "find-cats.png",
+    "sourceFile": "picture_8107a696-83be-43c7-bad7-0b842e619f63.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/find-cats",
+    "bytes": 1100374,
+    "sha256": "b4ce0d242b1b3074bc3f643068a71375ac0d136527090549dabcc54528379142"
+  },
+  "spell7": {
+    "file": "spell7.png",
+    "sourceFile": "picture_066189f3-599c-47c0-bf3f-e35adf72a44b.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/spell7",
+    "bytes": 1088477,
+    "sha256": "7aa226639b33a98ceb00e662e85b402a8d94a1c2c50577e82a737392822fe4cb"
+  },
+  "we-are-pirates": {
+    "file": "we-are-pirates.png",
+    "sourceFile": "picture_c52f63b9-61ed-44d8-a2a6-c02b9c9f6063.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/we-are-pirates",
+    "bytes": 640256,
+    "sha256": "fc575a56cba7cb413ff3814b3e4e53688927cd3819c7a53c0107144f37bf87b4"
+  },
+  "on-the-dot": {
+    "file": "on-the-dot.jpg",
+    "sourceFile": "picture_5c39c72c-a136-4d2f-87c0-9e60d2857ef1.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/on-the-dot",
+    "bytes": 95454,
+    "sha256": "87f4a8b71acac527fd2db3eecd2f140c7202368af48b0b908c0c00a728ce1611"
+  },
+  "so-clover": {
+    "file": "so-clover.png",
+    "sourceFile": "picture_ccb057f0-ca6b-4b70-8bb9-793bc6682a49.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/so-clover",
+    "bytes": 1524547,
+    "sha256": "6b34e8918d310aa047c65585ee37b15858934d982792ad1aa4e3b5a4456d474c"
+  },
+  "room-25": {
+    "file": "room-25.jpg",
+    "sourceFile": "picture_6198ca2f-b5fb-45e9-8822-c3ebb2228dad.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/room-25",
+    "bytes": 88160,
+    "sha256": "dff849dd7217f759ae3d9dac51f644e3507b678bcce0e6b1d476258eef2091df"
+  },
+  "wolves": {
+    "file": "wolves.webp",
+    "sourceFile": "picture_7512aa02-14d5-49a0-a9a1-008c6a05d96d.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/wolves",
+    "bytes": 45284,
+    "sha256": "13968c2de6369e971dda03bc8ae69e549684981b9f85efcc725152383b905213"
+  },
+  "fromage": {
+    "file": "fromage.webp",
+    "sourceFile": "picture_eb401e55-bd9d-4644-8cd1-54f981d9a18a.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/fromage",
+    "bytes": 120404,
+    "sha256": "b24d90a5ea0b870feb6f1b04332170a6dbc1c1b48b4df8ed4625433809b64982"
+  },
+  "sky-team": {
+    "file": "sky-team.webp",
+    "sourceFile": "picture_42b6b7d6-05f4-4c70-b5e6-7a5b768e92b1.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/sky-team",
+    "bytes": 76400,
+    "sha256": "df5b4b9900109180c8990b65d6af1c33a825979149d3e97688a75878f3db51ca"
+  },
+  "sizeup": {
+    "file": "sizeup.png",
+    "sourceFile": "picture_667e6d41-b0c8-4e7c-a801-b5925be099f4.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/sizeup",
+    "bytes": 608525,
+    "sha256": "08c646b8156aa68ed29c3516e59bcd9586b694ca36f067c0c49d833e0fa179f0"
+  },
+  "culprit-you-i-just-wanted-say-it-tokimeki-ver": {
+    "file": "culprit-you-i-just-wanted-say-it-tokimeki-ver.jpg",
+    "sourceFile": "picture_a2af5557-43dc-4852-b1f7-43701a1f6ec6.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/culprit-you-i-just-wanted-say-it-tokimeki-ver",
+    "bytes": 83920,
+    "sha256": "7ce1186cc066506dcffc6947f83dec7380503d9fb9cbd4686124f49465773e10"
+  },
+  "culprit-you-i-just-wanted-say-it": {
+    "file": "culprit-you-i-just-wanted-say-it.jpg",
+    "sourceFile": "picture_e6ca9779-33f5-4d08-bbab-ba3bcefb271f.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/culprit-you-i-just-wanted-say-it",
+    "bytes": 80387,
+    "sha256": "564daf2ed52767b22b4e4009162a7c638e6646d57f3f73b37eb9e06b027a7563"
+  },
+  "koukei-no-shojyo": {
+    "file": "koukei-no-shojyo.png",
+    "sourceFile": "picture_3c8002ab-659f-44ae-bdf8-14ca957a6426.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/koukei-no-shojyo",
+    "bytes": 481950,
+    "sha256": "7af7ff2b1e5f9d53236281dc239ad0cc05887b1dcb974fbf7d2b4eb5e55a9cb9"
+  },
+  "trick-of-spy": {
+    "file": "trick-of-spy.jpg",
+    "sourceFile": "picture_54b7de37-3996-4a31-9791-9063571c9017.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/trick-of-spy",
+    "bytes": 104846,
+    "sha256": "74b96fad88a3682e50188385028019286a0953dc737054b8de00d52dcf093482"
+  },
+  "voodoo-prince": {
+    "file": "voodoo-prince.png",
+    "sourceFile": "picture_368e7420-8f59-468d-adc4-361aae2f8c58.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/voodoo-prince",
+    "bytes": 1662561,
+    "sha256": "63828aafd391b459fd28239fe1c567deddf31ecdddffc269ea845841af7d84bc"
+  },
+  "chika-meikyu-5-tsu-no-buzoku": {
+    "file": "chika-meikyu-5-tsu-no-buzoku.jpg",
+    "sourceFile": "picture_35e80625-1bc0-4b3f-a681-ba65fdab770a.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/chika-meikyu-5-tsu-no-buzoku",
+    "bytes": 115386,
+    "sha256": "569cf1e7c114aaef8a026e11e3a0410a2d125f81efa9d3973daf4686008302d0"
+  },
+  "nokosu-dice-en": {
+    "file": "nokosu-dice-en.jpg",
+    "sourceFile": "picture_594f2e8f-4d09-40aa-a7f8-e55945aec332.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/nokosu-dice-en",
+    "bytes": 98424,
+    "sha256": "4664f41a91a0635739b2e79ae6c652963161e3c41f275fad8bf0aff4a0bebf14"
+  },
+  "cucco-21": {
+    "file": "cucco-21.jpg",
+    "sourceFile": "cucco-212.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/cucco-21",
+    "bytes": 89628,
+    "sha256": "9e75d16090038391ef9eb2f0ea24066e3accf5c10c9ed52f9098384c87426bcb"
+  },
+  "tori-tori-trend": {
+    "file": "tori-tori-trend.png",
+    "sourceFile": "picture_4c4f206b-cce0-46da-b8b0-f4ff7e2e8054.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/tori-tori-trend",
+    "bytes": 1237070,
+    "sha256": "ed0c20f0966d1d51303e41fbda4a0d8939a95942e3da282294f20a4128fab68c"
+  },
+  "triiiick-taking": {
+    "file": "triiiick-taking.jpg",
+    "sourceFile": "picture_b4fa35db-a67f-4908-98c6-3a0421be497a.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/triiiick-taking",
+    "bytes": 84020,
+    "sha256": "3e0def602622d7a837eaa7678923c8b0a6e934c94baf6e437626ce925f406ebe"
+  },
+  "dokitto-icew": {
+    "file": "dokitto-icew.jpg",
+    "sourceFile": "picture_a1b081df-6cb8-4667-989f-cf5451ce51f7.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dokitto-icew",
+    "bytes": 140767,
+    "sha256": "636be73a10ef843becd988d2339d1f29adcbe75ac213ba1d3ac2fad330f17beb"
+  },
+  "trick-viking": {
+    "file": "trick-viking.jpg",
+    "sourceFile": "picture_081f3cb5-06b3-4cee-866e-988d01351217.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/trick-viking",
+    "bytes": 139780,
+    "sha256": "b4be947001a4904543ab03dbf07120626cf19ccebfb67614ba89766f18c9e827"
+  },
+  "planet-go-round": {
+    "file": "planet-go-round.jpg",
+    "sourceFile": "picture_2021574e-0066-4bf0-a301-0be788f43219.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/planet-go-round",
+    "bytes": 76346,
+    "sha256": "c21c1524da374dbf8276f6e17489f8a099dd1115456dc0ae0a287fd912aa973c"
+  },
+  "fives": {
+    "file": "fives.jpg",
+    "sourceFile": "picture_7ec86ca4-21a5-4f95-baf8-6947345e3427.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/fives",
+    "bytes": 43034,
+    "sha256": "aea311961bd52ac4acd5ec2a905b694f1a1e8efc72e3a38789a6c896bf67c681"
+  },
+  "trash-pandas": {
+    "file": "trash-pandas.jpg",
+    "sourceFile": "picture_70d76d04-c82d-4e1d-accf-98674e32bda2.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/trash-pandas",
+    "bytes": 117413,
+    "sha256": "118e7818d9ca8e82d3bae80a6e82a842bbf5846827ca969be7109f62c9f18605"
+  },
+  "goldrush": {
+    "file": "goldrush.jpg",
+    "sourceFile": "picture_c1fa907b-beb1-415b-8069-625b1b1f4497.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/goldrush",
+    "bytes": 62987,
+    "sha256": "f3ae32294f9bef3fcf977df74ce5bb282ea2b374cbd324ae81973c17dde1319f"
+  },
+  "um-krone-und-kragen": {
+    "file": "um-krone-und-kragen.jpg",
+    "sourceFile": "picture_88ddeeaf-dbb2-4975-a615-3d383a38e820.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/um-krone-und-kragen",
+    "bytes": 38988,
+    "sha256": "0f814f09bf3780a7db5d21ad39913e85f98ceab1ea723780ad575cd7fc744951"
+  },
+  "meow-heist": {
+    "file": "meow-heist.jpg",
+    "sourceFile": "picture_42d8f211-b678-4790-84f5-580a7c493cd6.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/meow-heist",
+    "bytes": 122565,
+    "sha256": "5459d544a22173d909e31e20a18ed2fae7fb96bbd25c06a7953c8c927c170b36"
+  },
+  "daruma-atume": {
+    "file": "daruma-atume.jpg",
+    "sourceFile": "picture_3774463d-0eb3-4c12-911d-de1d595f79a9.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/daruma-atume",
+    "bytes": 66891,
+    "sha256": "f02a36493218ab3245b4abb9abb58eaeeaef9653b038ab84fcbb56b9bcca39b1"
+  },
+  "dotei-jinro": {
+    "file": "dotei-jinro.jpg",
+    "sourceFile": "picture_0a44e2d6-9b3a-4850-95a9-e91ff29c1fc3.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dotei-jinro",
+    "bytes": 52819,
+    "sha256": "3c756a90e59a4ea839b016a86387c91900859e5a656fb2bf27677c9ab535c2c0"
+  },
+  "eryngii-mashrooms": {
+    "file": "eryngii-mashrooms.png",
+    "sourceFile": "picture_91c14bb9-09f7-4be6-a4f4-ad1acc33bbdc.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/eryngii-mashrooms",
+    "bytes": 233910,
+    "sha256": "656b6dccbf862efe335f1f162e3db47fc729f5ba04ef3d016a8485ece3bb77e2"
+  },
+  "odottatto": {
+    "file": "odottatto.jpg",
+    "sourceFile": "picture_97d30705-551f-450f-bff4-16e6bd783cdf.JPG",
+    "sourceUrl": "https://bodoge.hoobby.net/games/odottatto",
+    "bytes": 160321,
+    "sha256": "a476dc65d0c872245fb5ba958541bbf330aedec5cfff72eb58dc4c5e561831e5"
+  },
+  "praise": {
+    "file": "praise.png",
+    "sourceFile": "picture_67abb04e-08e6-40cc-b225-5dec557420dd.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/praise",
+    "bytes": 780639,
+    "sha256": "c1f5546be319126bbc1483660ea02753a96b0d6ead83cf154306d8165022df65"
+  },
+  "pose-mania-avigon": {
+    "file": "pose-mania-avigon.png",
+    "sourceFile": "picture_11f24c54-b9ae-42d7-876b-20123a48e019.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/pose-mania-avigon",
+    "bytes": 573510,
+    "sha256": "1adadbe3b67657d6838404caadfadcda7d05cf53c94a921c50f89b0451063af8"
+  },
+  "fansa-killer": {
+    "file": "fansa-killer.jpg",
+    "sourceFile": "picture_2cc6ff76-a96e-4ab1-95a7-e234d4da7e07.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/fansa-killer",
+    "bytes": 151080,
+    "sha256": "56a5169a1d17d8cc48855d6532d9f66293c580a30f416d33c12be6005515b219"
+  },
+  "party-kingo": {
+    "file": "party-kingo.jpg",
+    "sourceFile": "picture_7222712b-bdb2-498b-a16a-155ed3c1f88b.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/party-kingo",
+    "bytes": 194661,
+    "sha256": "be96b56ec8ddd7bc756f51cfc8a39fa72692901072e21b02f0921e0f5b61b845"
+  },
+  "unkotteiitai": {
+    "file": "unkotteiitai.jpg",
+    "sourceFile": "picture_f31b6df4-a134-443f-bdc3-9aa36af3841f.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/unkotteiitai",
+    "bytes": 70871,
+    "sha256": "f726ec2bb24a8c151a975ef5aa17f1ce10e3c5d8439408741947fdea7333b84d"
+  },
+  "hitster": {
+    "file": "hitster.webp",
+    "sourceFile": "picture_36f6e615-4e65-40a0-a047-2fa505dfec0c.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/hitster",
+    "bytes": 41356,
+    "sha256": "61e11a09ae8c2823e14afd314ced2dd3540f465b7f70de3fb3b1ddc7523a3156"
+  },
+  "palm-reader": {
+    "file": "palm-reader.jpg",
+    "sourceFile": "picture_13decbd4-bb21-4d6e-bb3b-810f91937393.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/palm-reader",
+    "bytes": 93174,
+    "sha256": "fd65052b27e450f1d98bcb5d996dc52eaeed16846fa55c08a5e9a4889bc60f2f"
+  },
+  "legend-wendigo": {
+    "file": "legend-wendigo.jpg",
+    "sourceFile": "picture_fd6f726f-8931-4bda-8e72-7cc8c28e4305.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/legend-wendigo",
+    "bytes": 149050,
+    "sha256": "36b96903cd1279a7efd42ec807918dc19aff5a5827d9f5562332a07066e489d8"
+  },
+  "pitakko-karuta": {
+    "file": "pitakko-karuta.jpg",
+    "sourceFile": "picture_d94767d3-5c06-4ad9-9dca-cf5c9a2c1b4a.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/pitakko-karuta",
+    "bytes": 53992,
+    "sha256": "0c8c0f7b5131fa4d99ba834d38fd204f7f5bd569ba0f6303629d13197523eede"
+  },
+  "animal-jump": {
+    "file": "animal-jump.jpg",
+    "sourceFile": "picture_9c925997-afa2-40bf-9a7c-fe8487de54d6.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/animal-jump",
+    "bytes": 126927,
+    "sha256": "878976d793832a779e47962fdbac6d6f477c1bec0cd7cb043648a431de2000f8"
+  },
+  "castles-burgundy-2019": {
+    "file": "castles-burgundy-2019.jpg",
+    "sourceFile": "picture_d20210f6-80d5-46d3-95c1-6b49c1811ebb.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/castles-burgundy-2019",
+    "bytes": 54494,
+    "sha256": "ce9136aa8f212c3627543b7aebe1523f644fe73aaf451382841ecc750cd5def7"
+  },
+  "mogel-motte": {
+    "file": "mogel-motte.jpg",
+    "sourceFile": "picture_7bfa345b-3f80-47a0-b241-6214052d8177.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/mogel-motte",
+    "bytes": 73816,
+    "sha256": "36f3c098dbab2922543c544b36c805b6e568e7c6bec9026d751b7e73695e61e7"
+  },
+  "cat-th-box-hobby-japan": {
+    "file": "cat-th-box-hobby-japan.jpg",
+    "sourceFile": "picture_e9cd8423-cd26-4e23-a058-d2ce61e72d86.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/cat-th-box-hobby-japan",
+    "bytes": 67137,
+    "sha256": "f7ea89cfedd764551213033345f8c82c0ada046bf1baec6e2fad505a264bbacd"
+  },
+  "takopachi": {
+    "file": "takopachi.jpg",
+    "sourceFile": "picture_5b45b8a0-d631-4556-8c38-f3f7696aa441.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/takopachi",
+    "bytes": 55321,
+    "sha256": "c36e1177e6149b34b1bd7b6143e56204d2d005dcfc43c445174c261daba2f33d"
+  },
+  "docchi-no-shimatsu-show": {
+    "file": "docchi-no-shimatsu-show.jpg",
+    "sourceFile": "picture_5b0211b3-49e4-4553-a930-bb369052ad86.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/docchi-no-shimatsu-show",
+    "bytes": 98572,
+    "sha256": "ef33de509054db006efe6512a44cd277f034bbbbdfcba5d81e39e55db0b3e9a7"
+  },
+  "pixies": {
+    "file": "pixies.webp",
+    "sourceFile": "picture_684248b7-e9f9-4632-8193-e3b8444ffea7.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/pixies",
+    "bytes": 50672,
+    "sha256": "55875b8743787043fe54ab3bf72a09b3e2c51add35f46709e40c4de69cbf9d31"
+  },
+  "hot-streak": {
+    "file": "hot-streak.jpg",
+    "sourceFile": "picture_6d10478d-027c-4dfe-a1a5-1793f7c6f120.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/hot-streak",
+    "bytes": 67070,
+    "sha256": "89906d162ce91064945f71525385642d71be8066bb859285a75aab17a8a35238"
+  },
+  "catan-starfarers": {
+    "file": "catan-starfarers.jpg",
+    "sourceFile": "picture_29d87dd4-f4b3-4a62-acd9-8cc650707846.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/catan-starfarers",
+    "bytes": 90798,
+    "sha256": "cd5493489ca6e28439dd5853d5461970be0be7df240afb62085bb7937c232367"
+  },
+  "elder-garden": {
+    "file": "elder-garden.jpg",
+    "sourceFile": "picture_1bbd76d2-9b16-493c-815e-1fdc1d42d452.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/elder-garden",
+    "bytes": 93443,
+    "sha256": "b02ce136735105e1474d9d0d6f55cc224a02171933805e30e91996adf2f1b18d"
+  },
+  "dewan": {
+    "file": "dewan.webp",
+    "sourceFile": "picture_10d93f37-be61-4863-9066-0932d90ac48a.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dewan",
+    "bytes": 96156,
+    "sha256": "53bd711dbdc5f1c7773f6a923062dadf080825f4de05540470534597cf7daad7"
+  },
+  "spirit-island": {
+    "file": "spirit-island.png",
+    "sourceFile": "picture_c3e97f6d-e6a2-4cd5-a2d8-7d3bde90fc57.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/spirit-island",
+    "bytes": 1340242,
+    "sha256": "4caf90c3db57622cf27c6374cfb200f66c8c8892561af5df650c0ddbece49d62"
+  },
+  "daimyo-green": {
+    "file": "daimyo-green.jpg",
+    "sourceFile": "picture_5ac89eba-dd1a-4e16-bfae-86699cb80a27.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/daimyo-green",
+    "bytes": 147237,
+    "sha256": "2ec6cbddf0e6385e6192589a26d283bb258ec7877355583e435f26244360cfc9"
+  },
+  "lift-it": {
+    "file": "lift-it.jpg",
+    "sourceFile": "picture_8525aa9d-b323-4314-9e69-a1eee6a5e604.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/lift-it",
+    "bytes": 161422,
+    "sha256": "4a7d651e0bb1933e486bdf981dfdc92584d7d70f40bfae527c210b3af762a36b"
+  },
+  "my-trolley-town": {
+    "file": "my-trolley-town.webp",
+    "sourceFile": "picture_b482cba6-e94c-43f3-ba2b-f7473be1cbb2.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/my-trolley-town",
+    "bytes": 60230,
+    "sha256": "e70dfc62a73e8aa1b21ed081e4fe199fa50a347760e8d9064f74d2f565a6384e"
+  },
+  "great-western-trail": {
+    "file": "great-western-trail.jpg",
+    "sourceFile": "picture_53ca692b-285c-4f1f-8565-171c060a0f04.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/great-western-trail",
+    "bytes": 90419,
+    "sha256": "08234cbaed1ea13a0724cb714b53e2347fefffc181bc2f646bb929dab2ffe8cd"
+  },
+  "marrakech-suleika": {
+    "file": "marrakech-suleika.jpg",
+    "sourceFile": "marrakesh2.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/marrakech-suleika",
+    "bytes": 85403,
+    "sha256": "edb4b6498206254b04812f7aad8ddb90e49a979b467261b5e9d15d9ef2b5afd6"
+  },
+  "tier-auf-tier": {
+    "file": "tier-auf-tier.jpg",
+    "sourceFile": "picture_bb9171d7-30ee-4e12-9885-2e4259f7b6dd.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/tier-auf-tier",
+    "bytes": 100930,
+    "sha256": "14868154633c4ae6da893df009e3ef8e168a079b0bebe230c557aa1b26cd7971"
+  },
+  "limit-ludonaute": {
+    "file": "limit-ludonaute.webp",
+    "sourceFile": "picture_91ebde80-1c04-459b-8e31-95f9ad2a82e6.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/limit-ludonaute",
+    "bytes": 60868,
+    "sha256": "279610fff0b7f1cc4e51ddb5561d0278c64cff13ce403508ac05480b0227967a"
+  },
+  "dr-eureka": {
+    "file": "dr-eureka.jpg",
+    "sourceFile": "picture_90d7170f-6aba-42cb-babe-58a9824658c3.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dr-eureka",
+    "bytes": 99435,
+    "sha256": "95ee83d3abb879718456960b893c85c34b69c5ad596396ebea0bf29b706227aa"
+  },
+  "shadow-hunters": {
+    "file": "shadow-hunters.jpg",
+    "sourceFile": "picture_7daf5d8a-6eeb-40d3-8df6-8874d7a71122.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/shadow-hunters",
+    "bytes": 144737,
+    "sha256": "a79bc6d5754fb96955649e64933ac003213415cc6e121326574f1b4ed51b0c71"
+  },
+  "zahab": {
+    "file": "zahab.jpg",
+    "sourceFile": "picture_dd68f005-1049-4361-b7f4-37e332c92e7b.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/zahab",
+    "bytes": 111883,
+    "sha256": "31eadd9cf59dda55927929b86acf5e39dab8e746bbb4e90a7825da9394729ca6"
+  },
+  "tumblin-dice": {
+    "file": "tumblin-dice.jpg",
+    "sourceFile": "picture_9e9aab2f-e386-4ea1-8207-845605364387.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/tumblin-dice",
+    "bytes": 97570,
+    "sha256": "50e3866385589331be6a95c2ba7681ba3638007638d005081f93f5fb8aeba767"
+  },
+  "splendor-pokmon": {
+    "file": "splendor-pokmon.webp",
+    "sourceFile": "picture_a2e60079-debb-470f-a921-778d09291f49.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/splendor-pokmon",
+    "bytes": 69366,
+    "sha256": "6eb6170fa95ddbb28b3f64acb1ab216761b71d1136ee19bd17bd8bd91a185842"
+  },
+  "las-vegas": {
+    "file": "las-vegas.jpg",
+    "sourceFile": "picture_19d59c80-debc-48be-abec-e350d186dc9b.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/las-vegas",
+    "bytes": 188061,
+    "sha256": "eab1acd1131abfcf0e1852cc079b26044b048b1e9257705317ae26d37c091fd1"
+  },
+  "compania": {
+    "file": "compania.png",
+    "sourceFile": "picture_71a779d8-7992-4f53-8f15-52d552807ed0.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/compania",
+    "bytes": 1163519,
+    "sha256": "beaae28ad0e1ee3ac869212c383f8c96bf8a427c9121340aea0a53d5bbbf97e1"
+  },
+  "tamsk": {
+    "file": "tamsk.jpg",
+    "sourceFile": "picture_1e76fcef-060e-48fc-a82d-442627492818.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/tamsk",
+    "bytes": 67544,
+    "sha256": "d1fdbd2dc1b7aa447c69d9020d0da4edfd27e2e5829ba85484ba7377de273e44"
+  },
+  "challengers-beach-cup": {
+    "file": "challengers-beach-cup.webp",
+    "sourceFile": "picture_d0ccf69c-15d6-4c44-a5b0-9d605fa35423.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/challengers-beach-cup",
+    "bytes": 114902,
+    "sha256": "8b1fbd5eb68f8925c1702df7b837fcfe6218ef902dfb2f73f8e5a2267cd2fea1"
+  },
+  "potion-explosion-6th-student": {
+    "file": "potion-explosion-6th-student.jpg",
+    "sourceFile": "picture_e022b97e-4a3e-45a2-9cde-0c34e02f8a50.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/potion-explosion-6th-student",
+    "bytes": 127939,
+    "sha256": "6d6055179740188a944fc2034ff0c3846bef1f77ee5beb9c6f27c9ce266c378e"
+  },
+  "night-flowers-new-edition": {
+    "file": "night-flowers-new-edition.png",
+    "sourceFile": "picture_6d5a3356-d649-4975-bbe4-bbd2de3dda08.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/night-flowers-new-edition",
+    "bytes": 498395,
+    "sha256": "a3e62610212c608de008e188f346a9cc39042985ca932215fc703380a9d44f51"
+  },
+  "chu-han": {
+    "file": "chu-han.webp",
+    "sourceFile": "picture_e887fbf3-5ac3-45ee-a218-40324cb833a2.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/chu-han",
+    "bytes": 61266,
+    "sha256": "84c98ee5857d45fe6cd49b9ccfbfc95a3beb11f02ee0ccdfd9867d6baa2495c7"
+  },
+  "grow-sky": {
+    "file": "grow-sky.webp",
+    "sourceFile": "picture_0850832f-a5cb-4349-ace0-6a0bef2291d0.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/grow-sky",
+    "bytes": 72258,
+    "sha256": "e94b730245d2417c226b46c5f19930085c8007beddb11c491b123988c5d476ec"
+  },
+  "puerto-rico": {
+    "file": "puerto-rico.jpg",
+    "sourceFile": "picture_18a8bc43-5fdd-4e69-ba42-104ef15d07dc.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/puerto-rico",
+    "bytes": 258541,
+    "sha256": "da66f42a63d43197d61364b84bd9cf98fd6f50d179f0f5261ccc38941df8858d"
+  },
+  "khra-rise-an-empire": {
+    "file": "khra-rise-an-empire.jpg",
+    "sourceFile": "picture_c1bc1bd4-333f-4eb4-addd-8d8b6581b3db.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/khra-rise-an-empire",
+    "bytes": 123702,
+    "sha256": "8b1195111bc8599d79454428a0c9baad95873996b3948e2ef2d4eecf8165b986"
+  },
+  "religion": {
+    "file": "religion.jpg",
+    "sourceFile": "picture_fc28071a-664f-4b4d-8474-4978a7d36a6a.jfif",
+    "sourceUrl": "https://bodoge.hoobby.net/games/religion",
+    "bytes": 93323,
+    "sha256": "e491c063efafcf57c7bc70828dca9b4cd78d0fe92fb34a92ee0cced36c149837"
+  },
+  "ubongo": {
+    "file": "ubongo.jpg",
+    "sourceFile": "picture_95b0691e-8fae-48e2-939b-904a103990fc.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/ubongo",
+    "bytes": 139068,
+    "sha256": "423bd7a3410ac52a6757c8177e6a2e15d0d8553ece386a5d68caeeef8931323c"
+  },
+  "kemet-blood-and-sand": {
+    "file": "kemet-blood-and-sand.webp",
+    "sourceFile": "picture_ce9e86d0-cccd-48a7-9250-b14657ec6066.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/kemet-blood-and-sand",
+    "bytes": 61892,
+    "sha256": "3118a73595155a5aeeafa03a94f755e97de7d2bdfa4681d772585ea334b327cc"
+  },
+  "dominion-nocturne": {
+    "file": "dominion-nocturne.jpg",
+    "sourceFile": "picture_28e58504-1bbd-494f-a0c4-2aab8a34cf9e.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dominion-nocturne",
+    "bytes": 131155,
+    "sha256": "9b0dedb682201cad2a94f93ce3d58dd7f9d4f58258bd30c1db39835a64375f76"
+  },
+  "ready-set-bet": {
+    "file": "ready-set-bet.webp",
+    "sourceFile": "picture_d992861d-43e2-45f4-9fcd-fb5c572d459b.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/ready-set-bet",
+    "bytes": 62342,
+    "sha256": "5e259823315b2741d4e7cc7fe961d296dd04e4378e91838e57089331e67756f8"
+  },
+  "point-city": {
+    "file": "point-city.webp",
+    "sourceFile": "picture_f8b29f4f-671c-48ef-ad6d-621c9e3e23af.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/point-city",
+    "bytes": 64792,
+    "sha256": "35ec3864829552cd43d9b28623c38f99abeb7bda00689583d329283d8baf8568"
+  },
+  "gem-forge": {
+    "file": "gem-forge.webp",
+    "sourceFile": "picture_51515826-7e37-4463-bcc4-9ab2bc89f0a2.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/gem-forge",
+    "bytes": 102974,
+    "sha256": "dbbe42403eeca395a147dd465052525856176ae228b3ef95361e3b8df68f0924"
+  },
+  "bomb-busters": {
+    "file": "bomb-busters.webp",
+    "sourceFile": "picture_45d8e43c-2572-415b-bae4-fea6ad51a6e2.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/bomb-busters",
+    "bytes": 100926,
+    "sha256": "d61394a6bf38637d50060a75cbd8f2801c72c87b37fa8933bbece52604ccf15d"
+  },
+  "echoes-time": {
+    "file": "echoes-time.webp",
+    "sourceFile": "picture_2b45a071-a14a-4e1b-b8dd-34ae0f620bf1.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/echoes-time",
+    "bytes": 54438,
+    "sha256": "2dcfe62f7489c4fc8ba27b9934f9e15e5572289ca426dda2103ca0b90ae85e36"
+  },
+  "las-vegas-royale": {
+    "file": "las-vegas-royale.jpg",
+    "sourceFile": "picture_e7b2da16-066b-47d3-b968-a69a979af1f4.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/las-vegas-royale",
+    "bytes": 46678,
+    "sha256": "8b03b88c907e5b0eb0b84c6948a0acb55dba6f00a7325f441ae913d5d39326b1"
+  },
+  "die-siedler-von-catan-ergaenzungs-set-fuer-5-und-6-spieler": {
+    "file": "die-siedler-von-catan-ergaenzungs-set-fuer-5-und-6-spieler.jpg",
+    "sourceFile": "picture_e3b524a0-a8bd-4780-9bc9-45754a44088c.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/die-siedler-von-catan-ergaenzungs-set-fuer-5-und-6-spieler",
+    "bytes": 221702,
+    "sha256": "4d5f56aeb4aa4c87602ed577d794f98e34652ee83f253dc15b572ad20fd3e6af"
+  },
+  "dominion-allies": {
+    "file": "dominion-allies.webp",
+    "sourceFile": "picture_238e3249-ddf3-48e3-ad79-d5777d2b3244.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dominion-allies",
+    "bytes": 142728,
+    "sha256": "f015b4efa5a19e8408d2cc4dbcf2b7bd5f82caf3acc9ffc96c9f18266ae9909f"
+  },
+  "dominion-adventures": {
+    "file": "dominion-adventures.jpg",
+    "sourceFile": "picture_3c56d938-2f24-44a6-9b42-df00e5e88387.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dominion-adventures",
+    "bytes": 87220,
+    "sha256": "daab14f4274f4a785a8253a51407b10aec0511014d38975b6bfc9ecace07645a"
+  },
+  "dominion-menagerie": {
+    "file": "dominion-menagerie.jpg",
+    "sourceFile": "picture_a6d97450-99a7-4e69-9f55-6676e3d13058.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dominion-menagerie",
+    "bytes": 143143,
+    "sha256": "9b918be8a3371386a929a974768eafce65e9523d08a4b892dc376853b5674a52"
+  },
+  "everdell-pearlbrook-collectors-edition": {
+    "file": "everdell-pearlbrook-collectors-edition.jpg",
+    "sourceFile": "picture_e5706f4a-6252-489a-bea9-7e321f12ebaf.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/everdell-pearlbrook-collectors-edition",
+    "bytes": 111083,
+    "sha256": "9b35349faffff25062516917f72a5e784bbd96f0b724e10c9ac91ea5891ef998"
+  },
+  "everdell-bellfaire": {
+    "file": "everdell-bellfaire.png",
+    "sourceFile": "picture_dbea4db4-6443-415f-924d-885ab45f212e.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/everdell-bellfaire",
+    "bytes": 1110082,
+    "sha256": "d3da89fa58016ef1eef61bf64046c9c768934a3a3584731e8204f7a67b50c190"
+  },
+  "ticket-ride-germany": {
+    "file": "ticket-ride-germany.jpg",
+    "sourceFile": "picture_50ea999e-587f-460f-89c0-e9694e82b891.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/ticket-ride-germany",
+    "bytes": 158293,
+    "sha256": "19d9826d005c943616eb30d07251fc7e198b3faf50171dc7b8802a9c0da3a5f0"
+  },
+  "ticket-to-ride-europe": {
+    "file": "ticket-to-ride-europe.jpg",
+    "sourceFile": "picture_975fe286-6c24-4af8-9567-6d3738af00b2.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/ticket-to-ride-europe",
+    "bytes": 96174,
+    "sha256": "7999dc3aa957c3c15b88a73c91aa8bb348c6c323c0fbd3577368d16db5eefe65"
+  },
+  "hugo": {
+    "file": "hugo.jpg",
+    "sourceFile": "hugo_thumb_1.bing_en.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/hugo",
+    "bytes": 68000,
+    "sha256": "72884ae072a55975e9a4df72687eeb48786bd9a84f769d2397e336f020d0e167"
+  },
+  "race-for-the-galaxy": {
+    "file": "race-for-the-galaxy.jpg",
+    "sourceFile": "picture_91ffc76c-edb4-4937-b500-319fd46a8296.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/race-for-the-galaxy",
+    "bytes": 137005,
+    "sha256": "13f9df9b752902135632af97b6b923a62cebf952f07fb54151aa51fadae71b91"
+  },
+  "barrage": {
+    "file": "barrage.png",
+    "sourceFile": "picture_21216f90-2edf-4327-a728-2b8bc4a55d16.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/barrage",
+    "bytes": 1493243,
+    "sha256": "435ea965b1c74db6685ba4d05b8de4f3e84d46787c2a4275ae5d473387464ccd"
+  },
+  "disney-villains-unknown-order": {
+    "file": "disney-villains-unknown-order.jpg",
+    "sourceFile": "picture_4716d3c6-3bda-4bc4-9318-bde916f61100.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/disney-villains-unknown-order",
+    "bytes": 129800,
+    "sha256": "0d5c4cd203135feb5a231f4ff144405d9319064bdca24c6ab279e8a517065a6c"
+  },
+  "jekyll-vs-hyde": {
+    "file": "jekyll-vs-hyde.jpg",
+    "sourceFile": "picture_374986af-0601-414d-8403-871d47330c71.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/jekyll-vs-hyde",
+    "bytes": 143076,
+    "sha256": "c9181e108c9679a475c43c3f825b1f4e611379c32e37a24a8d094bdc0eaf3648"
+  },
+  "splendor-duel": {
+    "file": "splendor-duel.webp",
+    "sourceFile": "picture_9a9e6b90-3e8f-419a-9cde-3ad8c7698348.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/splendor-duel",
+    "bytes": 78438,
+    "sha256": "940b912e8ff72518e460c1fac37fe21e3061115c9805da6249c107a147a1cf21"
+  },
+  "vect-reverse": {
+    "file": "vect-reverse.jpg",
+    "sourceFile": "picture_9296bee0-14d5-4fd5-b29c-0e5d88476423.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/vect-reverse",
+    "bytes": 80682,
+    "sha256": "711fff9850c4c411bc8f5cbc7cf1b04d88599275768eb38aa6375b367ebc7055"
+  },
+  "gun-and-gun": {
+    "file": "gun-and-gun.jpg",
+    "sourceFile": "picture_dc830481-9fbe-4e1a-b4b4-327cdcc24a54.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/gun-and-gun",
+    "bytes": 181817,
+    "sha256": "7cbb12e1f6e558b72c21f9ebd88011c4d94bdaa9ce052575f58b1d9b1915c09a"
+  },
+  "geister": {
+    "file": "geister.png",
+    "sourceFile": "picture_3b1820bb-bbae-4583-b956-7101905d7da3.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/geister",
+    "bytes": 1086495,
+    "sha256": "da5ab5cfcc03eccd07f919f90e5370f32c69a3fa680bd808981a79962e99bf6a"
+  },
+  "monster-eater": {
+    "file": "monster-eater.jpg",
+    "sourceFile": "picture_f0b2925c-6be3-4ba7-8dcb-dadbedc7c26c.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/monster-eater",
+    "bytes": 122443,
+    "sha256": "af1c2b3ad793662da093e2344485431f2e553ce840cc92965dc1507200e0ad1f"
+  },
+  "kronologic-paris-1920": {
+    "file": "kronologic-paris-1920.webp",
+    "sourceFile": "picture_b4daba4f-c805-414d-8644-4073cb8a4671.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/kronologic-paris-1920",
+    "bytes": 115382,
+    "sha256": "343505345339acf8759edc17e4eaaea88819210eb1f605346dab2dc838039400"
+  },
+  "seisoin": {
+    "file": "seisoin.jpg",
+    "sourceFile": "picture_01f0d297-32eb-4d14-a7ef-9edabb2781fc.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/seisoin",
+    "bytes": 62418,
+    "sha256": "33ed4c0df78ce528e58dd1808795cfaf9b80f0a443e9d1c223b2b1098a9f3d04"
+  },
+  "bet-on": {
+    "file": "bet-on.png",
+    "sourceFile": "picture_a3857c0b-f931-42b3-9389-bcd43505a720.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/bet-on",
+    "bytes": 716531,
+    "sha256": "e86dd1732f58d1628d83660f0abf284653e7f124bb434f5713bcee98151611a5"
+  },
+  "flagenius": {
+    "file": "flagenius.png",
+    "sourceFile": "picture_ff71c1f3-2d6e-4e7d-8b15-d905e96a32d2.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/flagenius",
+    "bytes": 1492819,
+    "sha256": "08200812aa49dab47827e475a7cca94b8aae762d20081f84a47087df9025dcb0"
+  },
+  "revolve": {
+    "file": "revolve.jpg",
+    "sourceFile": "picture_64120fd8-6f22-4f37-986b-d2a724a39bb8.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/revolve",
+    "bytes": 132554,
+    "sha256": "3163f220eb819c291a5e0ba060a08db433c44601ac297ccc0307efc8e4014547"
+  },
+  "linko": {
+    "file": "linko.webp",
+    "sourceFile": "picture_03d68635-4359-4da2-974f-e9de85194406.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/linko",
+    "bytes": 21482,
+    "sha256": "be692367a1d73a4a0db523a377742a863d38e9088758feb5a0cce0eeebe5de12"
+  },
+  "ding-arclight": {
+    "file": "ding-arclight.jpg",
+    "sourceFile": "picture_a997c02d-455d-46af-a18b-6b6243d357c0.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/ding-arclight",
+    "bytes": 125621,
+    "sha256": "ff88954c9a5097f57591ca84cf52370479f5cb7ad996a65f39632be0cc3772db"
+  },
+  "halli-galli": {
+    "file": "halli-galli.jpg",
+    "sourceFile": "picture_f3bac64e-a871-46fc-bef2-1f0fc738a73e.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/halli-galli",
+    "bytes": 142020,
+    "sha256": "24bade8cab7403a9d69db7a7b0fa652d3b733e38adc0e5c8b50f87b3e007a73e"
+  },
+  "girigirichoco": {
+    "file": "girigirichoco.jpg",
+    "sourceFile": "picture_7896b2f6-a07f-4367-8d39-fb3361c61af3.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/girigirichoco",
+    "bytes": 97043,
+    "sha256": "5adb65596c81e02eac87f9a7b8bdd177708ac9cd19a9e3a09a9a6cbd9a4c8cc1"
+  },
+  "cheese-thief": {
+    "file": "cheese-thief.jpg",
+    "sourceFile": "picture_fc6726fd-90e3-4df8-9894-c6be2edca1ae.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/cheese-thief",
+    "bytes": 190913,
+    "sha256": "af0f71f93e2d1ec5c4be7c4d3a2d12a32ead360648901b5615e1054b92549c1c"
+  },
+  "cheese-master": {
+    "file": "cheese-master.webp",
+    "sourceFile": "picture_9beec613-0b59-4f7b-82f1-f20742f34364.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/cheese-master",
+    "bytes": 127710,
+    "sha256": "8853a00709c7b7fcd026686fe7abc20dbc58210a0908bde16b81ea97eb761285"
+  },
+  "10-plus": {
+    "file": "10-plus.jpg",
+    "sourceFile": "picture_8ad6d80a-e899-497a-b189-e9f4eda8891f.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/10-plus",
+    "bytes": 32016,
+    "sha256": "3a2797f2de58a76d000ef35a132624c939fd29e6eda491765863db0eb507b0b6"
+  },
+  "mitsukaruta": {
+    "file": "mitsukaruta.jpg",
+    "sourceFile": "picture_e27a3591-8817-4426-bba2-08ec338673d3.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/mitsukaruta",
+    "bytes": 88260,
+    "sha256": "719f3427a229a99c7881d49282f14a324310ba6e9b240f1505a1c77434a13f41"
+  },
+  "azato-karuta": {
+    "file": "azato-karuta.jpg",
+    "sourceFile": "picture_58fe427e-62f3-4782-91e6-108a38fbe284.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/azato-karuta",
+    "bytes": 68938,
+    "sha256": "b15191cd155293e641e2a22bcd2de049a5a98e2ac03ccf2e746784ee81ce0ca1"
+  },
+  "syzygy": {
+    "file": "syzygy.jpg",
+    "sourceFile": "picture_97beeed7-e4e1-4e2c-8051-ea87146c5f21.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/syzygy",
+    "bytes": 31942,
+    "sha256": "da6a65df6ffeb9893b80a4d479b92f4e473ffec6470ec07cc455c91c48d496a6"
+  },
+  "domemo": {
+    "file": "domemo.jpg",
+    "sourceFile": "picture_29d2b0ff-85df-4fd6-8ca1-a552ba31bc75.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/domemo",
+    "bytes": 46658,
+    "sha256": "02885a3b254f97ab54f15a89598816dcca9047deb2d13f78682719e0d6f95752"
+  },
+  "skull-and-roses": {
+    "file": "skull-and-roses.jpg",
+    "sourceFile": "picture_f000fc1f-cff6-473d-b10f-07c7b5752fd3.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/skull-and-roses",
+    "bytes": 110554,
+    "sha256": "f54fb66f19210080fd6973051772dcfd6e73b1b6b163d2d772a2c3026b0140ef"
+  },
+  "bank-robbers": {
+    "file": "bank-robbers.jpg",
+    "sourceFile": "picture_24b0e97c-0b62-4998-a157-f2d3128389b4.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/bank-robbers",
+    "bytes": 169948,
+    "sha256": "79edb640365fe52fde73b4eb24c699dc657265e1094bef8d7270cc0481bdf1a4"
+  },
+  "skull-king-granpa": {
+    "file": "skull-king-granpa.webp",
+    "sourceFile": "picture_9872e866-9ea5-4044-902d-b2729c974cfe.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/skull-king-granpa",
+    "bytes": 114836,
+    "sha256": "1edf8a72035f0c607930143c63a47d142f1f6786b289a3ee2107c64ab9261ff7"
+  },
+  "docchina": {
+    "file": "docchina.jpg",
+    "sourceFile": "picture_0df825de-c2cb-40a7-8446-559f16dd80ce.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/docchina",
+    "bytes": 72061,
+    "sha256": "da0a119cfda13c91a8e6a4a2b98617d73da6fbf76c6774442eb1d762ad3706e6"
+  },
+  "gouda-gouda-cat-attack": {
+    "file": "gouda-gouda-cat-attack.webp",
+    "sourceFile": "picture_d04d1c6f-2b69-49b4-88f1-047f954eca62.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/gouda-gouda-cat-attack",
+    "bytes": 87374,
+    "sha256": "ceb1608e92f9ca8944d51bcd8e9fce8a7f6b828a284076b651b2ac6449fa883b"
+  },
+  "color-sense-2": {
+    "file": "color-sense-2.jpg",
+    "sourceFile": "picture_3409c6f6-cd26-474f-97a8-5a07c2c212b7.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/color-sense-2",
+    "bytes": 72607,
+    "sha256": "d0d586f5cbb781248084c48784f57c0574f8840e4c976f1945096b8c7aa954b1"
+  },
+  "menhera-ojisan-message": {
+    "file": "menhera-ojisan-message.jpg",
+    "sourceFile": "picture_b6017315-e135-48d8-ba3a-a2a2a6c27aee.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/menhera-ojisan-message",
+    "bytes": 110129,
+    "sha256": "eca5d96e43e918129db6c913542efcaa9f6a3ac3bcce9a6d5664cc36fd89dd5d"
+  },
+  "who-did-it": {
+    "file": "who-did-it.jpg",
+    "sourceFile": "picture_6acc85a4-c94e-4ded-9491-bed071ae25bb.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/who-did-it",
+    "bytes": 68766,
+    "sha256": "d95491646191b4bc7fb2aed3055bdffdf4fda4bc5fa05138773120dfa57f8590"
+  },
+  "flinke-fliegen": {
+    "file": "flinke-fliegen.jpg",
+    "sourceFile": "picture_f016b028-64ac-47ed-8525-816c3d3c62cb.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/flinke-fliegen",
+    "bytes": 56890,
+    "sha256": "8fe48a4ac11377ed127d1edd5f49b1221fee14fa4511f774498807b932ea77d0"
+  },
+  "pokemon-goita": {
+    "file": "pokemon-goita.jpg",
+    "sourceFile": "picture_0582e6f7-6256-4ddb-8ddf-9f2fcd51c0ba.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/pokemon-goita",
+    "bytes": 146037,
+    "sha256": "b1e8f125253fd10ebe0d8f999e103341de7029c5b710c719cfa7a8db68889a6c"
+  },
+  "trick-raideers": {
+    "file": "trick-raideers.jpg",
+    "sourceFile": "picture_d48de1a4-6f38-473c-aa1c-29ccf3c8a112.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/trick-raideers",
+    "bytes": 84154,
+    "sha256": "3b6e43d4fc5016ac6dcde159bf344fa6c5b3483069f57ffb28c825fb1c8cbc85"
+  },
+  "dying-message-wise": {
+    "file": "dying-message-wise.png",
+    "sourceFile": "picture_9d3cf628-abfa-4221-9fee-9dec39c6697d.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dying-message-wise",
+    "bytes": 773465,
+    "sha256": "b88d01aae181f2affd84b66ff5d4d719fd74afc4ba3d38f1f04351ad4f75bae7"
+  },
+  "power-on": {
+    "file": "power-on.png",
+    "sourceFile": "picture_4f511f6b-435a-4fb4-8fd7-1e033e7cb00a.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/power-on",
+    "bytes": 851323,
+    "sha256": "762dbc22d990e522a54d432a98b768c1fb296774cf9e222646be61d7eb5e6468"
+  },
+  "savage-bowl": {
+    "file": "savage-bowl.jpg",
+    "sourceFile": "picture_3e231943-4222-4dc7-afb9-f5568b8d2da8.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/savage-bowl",
+    "bytes": 126494,
+    "sha256": "4330256d34009b2bce4aa2e5bf288d9bc477917d319a493003cd43de8350fe68"
+  },
+  "nama-ham-melon-game": {
+    "file": "nama-ham-melon-game.jpg",
+    "sourceFile": "picture_b5e378af-5d4f-45b6-bf65-baadc7d5a60d.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/nama-ham-melon-game",
+    "bytes": 861815,
+    "sha256": "df98784c359160f44d9ec38da8e04ab32154afb3cdd77d6742599e1311899c71"
+  },
+  "dangerous-sweets": {
+    "file": "dangerous-sweets.png",
+    "sourceFile": "picture_36f2b399-007c-48f9-bd05-13ab622c0199.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dangerous-sweets",
+    "bytes": 615133,
+    "sha256": "fa97b511c0f8b84019d58172386ee8b06ceac96432eea0e1660d920edff087d9"
+  },
+  "golem-chikasuzu": {
+    "file": "golem-chikasuzu.jpg",
+    "sourceFile": "picture_f8e293b9-4f5c-46d4-bbac-92b26a27c5f6.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/golem-chikasuzu",
+    "bytes": 100286,
+    "sha256": "1f1c21ee5c4f6dc76dda5104790a78e672544ca81e5a6bee84fa10a1b66580e0"
+  },
+  "matchstick-tycoon": {
+    "file": "matchstick-tycoon.png",
+    "sourceFile": "picture_cb8ab684-7c16-4567-a670-dcc53870dd35.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/matchstick-tycoon",
+    "bytes": 629484,
+    "sha256": "2b2def63bf21513e4418db63857dd00fe4c46060e81287e16282e0e32fdfbf76"
+  },
+  "ninja-korokke": {
+    "file": "ninja-korokke.png",
+    "sourceFile": "picture_75799320-39e0-408a-8cd2-03c87e663fbc.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/ninja-korokke",
+    "bytes": 592691,
+    "sha256": "5ca607e30492f0aef7359e536850233ac5ecb4ad00a3e805920c7c984c52fc71"
+  },
+  "poison": {
+    "file": "poison.jpg",
+    "sourceFile": "picture_f717d0f5-3dd8-4d5a-8a88-664b71ec6ef2.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/poison",
+    "bytes": 159639,
+    "sha256": "9537e56139a769b00597259eafc2c860e2fb62c062e19bc2eed3ae8c1a2e20f2"
+  },
+  "handelsfuersten-herren-der-meere": {
+    "file": "handelsfuersten-herren-der-meere.jpg",
+    "sourceFile": "picture_ffec34f2-580f-4816-9317-498792df253a.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/handelsfuersten-herren-der-meere",
+    "bytes": 182560,
+    "sha256": "d2146aa5586b63259e2e2514057d7d4ad1795a146eb2577429222b3bd56cb61c"
+  },
+  "gottun": {
+    "file": "gottun.jpg",
+    "sourceFile": "picture_a0c7c641-fbcf-42b5-b8e8-18bf489edbef.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/gottun",
+    "bytes": 200417,
+    "sha256": "e385fb5a52e36465d230d0aff0d272292e8e116e0c17bb34cee92c71d0e24068"
+  },
+  "tanpan": {
+    "file": "tanpan.jpg",
+    "sourceFile": "picture_24087c72-2015-4620-a891-9d56599de392.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/tanpan",
+    "bytes": 100349,
+    "sha256": "1696b3a24e626e44c77edd04f3999ef80989d5aadb69e14391b69bb4e5c13a67"
+  },
+  "mei-mei": {
+    "file": "mei-mei.jpg",
+    "sourceFile": "picture_bba48798-639f-42e1-8c9e-6d3645f570e1.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/mei-mei",
+    "bytes": 118935,
+    "sha256": "6e251d394a10d32a900316f2b49be9b6af45c61e1d66b0f02ad33b05f9679c02"
+  },
+  "panic-air": {
+    "file": "panic-air.png",
+    "sourceFile": "picture_24c84cf1-df2a-4bf6-aa00-ec45251e506e.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/panic-air",
+    "bytes": 1065196,
+    "sha256": "4787762b556b09209d2d7518903e14b00caaa658e58245bdedb508d4ef975374"
+  },
+  "katakanashi": {
+    "file": "katakanashi.jpg",
+    "sourceFile": "picture_7595574a-177c-4e9b-9781-389758dec4a0.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/katakanashi",
+    "bytes": 127493,
+    "sha256": "cd7c2a05064a09256c30d38aac0b59854ea925c4910d4bf360e0b8dc12576f00"
+  },
+  "cat-and-chocolate-everyday-life": {
+    "file": "cat-and-chocolate-everyday-life.jpg",
+    "sourceFile": "picture_26cc3fe7-f484-4d08-a012-809a5775d3a9.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/cat-and-chocolate-everyday-life",
+    "bytes": 38591,
+    "sha256": "ce1cea09014397b058bb7d8e8bc3df1abeb16fc532b56779c13d1c16a628cf9b"
+  },
+  "petiquette": {
+    "file": "petiquette.png",
+    "sourceFile": "picture_4ddf412b-e1c5-4b92-9206-017a51f1a04d.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/petiquette",
+    "bytes": 437410,
+    "sha256": "f1eb01f162b2a2ef32fc0d388c91f5df6d997f6e0bdf195e25990034befac95d"
+  },
+  "hyenas-yusha-ha-saboritai": {
+    "file": "hyenas-yusha-ha-saboritai.png",
+    "sourceFile": "picture_07581597-660f-4a41-8601-d0f9c67cb85f.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/hyenas-yusha-ha-saboritai",
+    "bytes": 595143,
+    "sha256": "f6c3f3c21e8effcfe70c85d6993e82aa641064f9485d6d69c050f5acb13a2bb0"
+  },
+  "tricks-and-phantom-oink": {
+    "file": "tricks-and-phantom-oink.png",
+    "sourceFile": "picture_0a4f50f1-d7c2-42da-b224-2dc47cc4f9b0.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/tricks-and-phantom-oink",
+    "bytes": 810356,
+    "sha256": "756ae850465d9275e4f161150d8642c9f7a581d5aaee0c25f30cf1affdd70efe"
+  },
+  "mirror-circus": {
+    "file": "mirror-circus.jpg",
+    "sourceFile": "picture_051fa891-bd02-45ce-85bb-b1d720836f0d.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/mirror-circus",
+    "bytes": 195309,
+    "sha256": "7b33876d3d93df2da3783d23c360dfef44dcb53459e316953c5e2a8370b3e622"
+  },
+  "picken-packers": {
+    "file": "picken-packers.jpg",
+    "sourceFile": "picture_9850c1df-ab90-495d-80f8-249022acef67.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/picken-packers",
+    "bytes": 68292,
+    "sha256": "95cbea91a0d60bbeb9c3cbf3e08e5ce74989a8eea1d68af0aaf169f97e734322"
+  },
+  "scout-oink": {
+    "file": "scout-oink.png",
+    "sourceFile": "picture_4f209d0f-fed6-41a9-8592-b59ea568e2cc.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/scout-oink",
+    "bytes": 1333895,
+    "sha256": "38928a878bea68ff5128a3dae8584bec159597dd37ec34d3ad24433aed264c54"
+  },
+  "hippo-that-goes-hippo-that-comes": {
+    "file": "hippo-that-goes-hippo-that-comes.jpg",
+    "sourceFile": "picture_6743aa8a-3a0f-48b9-bcd1-4c63ce582dd4.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/hippo-that-goes-hippo-that-comes",
+    "bytes": 45363,
+    "sha256": "1a88a7af53e437bbe3dbb2aa3b3e31f97a9cc4a3d00b0b3a2a55ec914bd399dc"
+  },
+  "nine-tile-pokemon-dokoda": {
+    "file": "nine-tile-pokemon-dokoda.jpg",
+    "sourceFile": "picture_69671210-dbef-4234-8020-679ceaa3df27.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/nine-tile-pokemon-dokoda",
+    "bytes": 147876,
+    "sha256": "4dc6b2a8c2bee5b7f46742f463932170e86513d0496db7b767998854bb02d638"
+  },
+  "nine-tiles-panic": {
+    "file": "nine-tiles-panic.jpg",
+    "sourceFile": "picture_3fdb431f-396d-4891-b17a-2368610165df.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/nine-tiles-panic",
+    "bytes": 60843,
+    "sha256": "9cc8475452fb1f9d11a472ce82e8c38b9dc9293e111ec164779d9259ddfc9d11"
+  },
+  "a-boar-crabdung-beatle": {
+    "file": "a-boar-crabdung-beatle.jpg",
+    "sourceFile": "picture_a3ad4d61-d4d1-4359-b144-a51a64773307.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/a-boar-crabdung-beatle",
+    "bytes": 168061,
+    "sha256": "f7144e981a083af2c837b165dfb3aeb943aeaa8f606870a55ec495d19dcc1e4e"
+  },
+  "mada": {
+    "file": "mada.webp",
+    "sourceFile": "picture_85ecdd43-8aef-4e86-8d11-865beb7cc36b.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/mada",
+    "bytes": 40532,
+    "sha256": "0bef27ac8eb0fa5abc0dc7dd0ae7c54f47cc1e34e50cc5002621e0d4ff1080e2"
+  },
+  "kariba": {
+    "file": "kariba.jpg",
+    "sourceFile": "picture_505dad7b-f5de-4f03-8d43-03f16be2ca49.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/kariba",
+    "bytes": 74113,
+    "sha256": "7d3457f27fdd62dbdd0fd2311ff968a947e6b109b176df3cc63c8183f06e48d1"
+  },
+  "kafunsho-burst": {
+    "file": "kafunsho-burst.jpg",
+    "sourceFile": "picture_83528406-3525-4326-be78-fec4139b9210.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/kafunsho-burst",
+    "bytes": 140417,
+    "sha256": "a5ca24d8e890cf165978cf51c9606e76c0bd6bf4d5188975319ed3a1fe021ae2"
+  },
+  "charge-spark": {
+    "file": "charge-spark.jpg",
+    "sourceFile": "picture_c3e2b8db-6821-4dca-939c-45863ba5e4e6.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/charge-spark",
+    "bytes": 101398,
+    "sha256": "d369dda45b67247604c8214d704ce9be48d16aec3e832c5669d06e4929d2d0b9"
+  },
+  "monster-maker-new-edition": {
+    "file": "monster-maker-new-edition.jpg",
+    "sourceFile": "picture_cf1a8aef-94c4-4252-8f10-c8a2699abdfe.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/monster-maker-new-edition",
+    "bytes": 119558,
+    "sha256": "af0444a9b0e608f1a1dfeb3f083196fe54ef88ebf9eeca9880009c55d0df5b4d"
+  },
+  "to-unlimited-beyond": {
+    "file": "to-unlimited-beyond.jpg",
+    "sourceFile": "picture_b529060c-1bf6-4b0c-8ee5-3373671c877f.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/to-unlimited-beyond",
+    "bytes": 171116,
+    "sha256": "093854064e6c3ed2ffb5b85ad828034cbe65a05a553028a72a5661c66a638a09"
+  },
+  "isis-and-osiris": {
+    "file": "isis-and-osiris.jpg",
+    "sourceFile": "picture_f5904f14-ed5f-4a66-a84e-23218fad9fe1.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/isis-and-osiris",
+    "bytes": 97974,
+    "sha256": "8a225ad854f15683713876fb1ecd5e5f9e79c1a80462648e7fa1f4486e0e00bc"
+  },
+  "ten-aeg": {
+    "file": "ten-aeg.png",
+    "sourceFile": "picture_12c0468e-5d7a-4840-8b28-c152ee5ff8e5.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/ten-aeg",
+    "bytes": 1421611,
+    "sha256": "5d1fca70c1c7cd1d9578a405f31ba92590a4b584d954a6d59f3d6396df4d77cb"
+  },
+  "dropolter": {
+    "file": "dropolter.jpg",
+    "sourceFile": "picture_7e6d894e-6cbd-4d24-b569-5cfa8306aef9.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dropolter",
+    "bytes": 58842,
+    "sha256": "e96786302316e7c8f65334e541238f8078d02481ee6a29b52d6df0f54c7c41f6"
+  },
+  "haisai-goya-habu-sisa": {
+    "file": "haisai-goya-habu-sisa.jpg",
+    "sourceFile": "picture_f55b6987-dbdf-4614-867f-55b80aa8405a.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/haisai-goya-habu-sisa",
+    "bytes": 254384,
+    "sha256": "07dd9ca9db0bb005bf4d91689623954018403e64d00678656edda0907425e939"
+  },
+  "welches-tier-bin-ich": {
+    "file": "welches-tier-bin-ich.jpg",
+    "sourceFile": "picture_4021c976-2a57-48e8-ad17-b74a9d98665d.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/welches-tier-bin-ich",
+    "bytes": 62086,
+    "sha256": "2dbf5d745a98e64169de81612968b9056421365a7e636b5c6e4a8e801608ee37"
+  },
+  "attekko-doubutsu": {
+    "file": "attekko-doubutsu.jpg",
+    "sourceFile": "picture_52d4095d-7efc-4c8f-bddc-7c3adc04336e.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/attekko-doubutsu",
+    "bytes": 137099,
+    "sha256": "6ff546bb8167b9c6cb5cea795fbf634fd4529c212de89e38dffe9ceb6c580a0b"
+  },
+  "piata-blast": {
+    "file": "piata-blast.webp",
+    "sourceFile": "picture_259928d8-c410-4ca1-81c4-af68585a3280.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/piata-blast",
+    "bytes": 83010,
+    "sha256": "fcd1ae83bf20cc6621541fe05037e4064a5dfcaf194dd9566a4c12d43726e434"
+  },
+  "dor": {
+    "file": "dor.png",
+    "sourceFile": "picture_9662a359-8ae2-41af-a5ab-de9199ff2cc9.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dor",
+    "bytes": 433882,
+    "sha256": "9c6fd57706ad9225aca66eb7f8bffd5b90d855f1873c0968f59fae4c55a87537"
+  },
+  "four-corner-detective": {
+    "file": "four-corner-detective.jpg",
+    "sourceFile": "picture_7e6c2b87-6b42-404e-bfad-e8a41e64e575.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/four-corner-detective",
+    "bytes": 94891,
+    "sha256": "13c2d822d98e48030597c4df767556e5cc0f79085ad8fc80109dccef6449f75a"
+  },
+  "happening-talk-show": {
+    "file": "happening-talk-show.jpg",
+    "sourceFile": "picture_4799b3f3-fdb2-4c35-8a02-fa76a770a662.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/happening-talk-show",
+    "bytes": 216837,
+    "sha256": "0ba984d647062b823f97462be7fd13aab0675a55da04842104d6c67fd7d9d19d"
+  },
+  "onsoku-hanten": {
+    "file": "onsoku-hanten.webp",
+    "sourceFile": "picture_ec375d42-08a1-438b-a31c-ad49df57d40a.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/onsoku-hanten",
+    "bytes": 36654,
+    "sha256": "26f54d2b0d24aca4e9bcbdcc94799bd0365e7c2f7ccd36a2adf8ecd2e70e5c5e"
+  },
+  "aimai-favorite-ranking": {
+    "file": "aimai-favorite-ranking.jpg",
+    "sourceFile": "picture_f970d736-828c-435c-aa2a-0f5a7166eaa2.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/aimai-favorite-ranking",
+    "bytes": 89635,
+    "sha256": "6eea219eba0fe979b9eea99e98f289b8635221aed6e4e972e2f1374a1d6223a1"
+  },
+  "hirameki-senshi": {
+    "file": "hirameki-senshi.jpg",
+    "sourceFile": "picture_956021fb-faa0-4824-bffd-206d420b68ef.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/hirameki-senshi",
+    "bytes": 74874,
+    "sha256": "5289dff16d98a7eec9df85301fa1bf9c9cb1db3e8787d8f1dbc44ebf9f103a39"
+  },
+  "shark-impact": {
+    "file": "shark-impact.jpg",
+    "sourceFile": "picture_5b292056-fce4-4d52-8128-8a2b813ace28.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/shark-impact",
+    "bytes": 160279,
+    "sha256": "08ce4385c19e01ba253752199eafe5e958e95e77291f02ac4a698f23eca09dda"
+  },
+  "nidoneru": {
+    "file": "nidoneru.jpg",
+    "sourceFile": "picture_4311e1ce-0281-4a47-b003-84f639adc842.JPG",
+    "sourceUrl": "https://bodoge.hoobby.net/games/nidoneru",
+    "bytes": 92119,
+    "sha256": "810e8e64866082a653f99096e2a802155a4f6139ec94696aeba30f215c9d546f"
+  },
+  "sakura-furuyoni-kettou-wo": {
+    "file": "sakura-furuyoni-kettou-wo.jpg",
+    "sourceFile": "picture_7164a370-2e50-499e-bf75-b2ffdfc2ee70.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/sakura-furuyoni-kettou-wo",
+    "bytes": 93840,
+    "sha256": "022ded3f3ae6708ed98f4ed71a07e69d1dc724bf7831f36a8a145b9fd807e694"
+  },
+  "kites": {
+    "file": "kites.webp",
+    "sourceFile": "picture_c52538d5-3f37-4dc6-b4bc-cc37d59db194.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/kites",
+    "bytes": 67770,
+    "sha256": "fa41d1828da97e21f300f06355751db5e65fd37943643e7e24acab5b2a0770b5"
+  },
+  "kluster": {
+    "file": "kluster.png",
+    "sourceFile": "picture_8cc18416-a700-4ba5-8ba7-e53898873815.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/kluster",
+    "bytes": 2072988,
+    "sha256": "c99d9793318a6bd8b08d53d7be0d83f861742464cfdd390cd0a489dd24d7e949"
+  },
+  "rikka-arklight": {
+    "file": "rikka-arklight.jpg",
+    "sourceFile": "picture_5672104f-9c7e-4367-bce4-b76f8f991368.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/rikka-arklight",
+    "bytes": 65038,
+    "sha256": "06ebc46eb4976d45159aca2f5eeb5a01e92b94efefc7ace473efaab16fb83ce0"
+  },
+  "wild-tiled-west": {
+    "file": "wild-tiled-west.webp",
+    "sourceFile": "picture_69c84d71-eee0-4c43-b6dd-874ebb5bbde3.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/wild-tiled-west",
+    "bytes": 104338,
+    "sha256": "60006c113df22982459de942c2db6a805eb41a240df6f080b4a41aa8b9806c47"
+  },
+  "thats-not-a-hat": {
+    "file": "thats-not-a-hat.jpg",
+    "sourceFile": "picture_3274a826-0690-41e7-b38f-13e98316f345.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/thats-not-a-hat",
+    "bytes": 34814,
+    "sha256": "478571e09a567f72e67440d75b572bbbf15a9c6211295410bd09efddac7a7d0c"
+  },
+  "take-a-seat": {
+    "file": "take-a-seat.webp",
+    "sourceFile": "picture_81a1fdfa-aa2c-4b44-b3ac-05690b969cb7.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/take-a-seat",
+    "bytes": 63802,
+    "sha256": "10b10238b296f8711ffcd9f82ea57a09c1d7922f180d2b6b1c60269f12db2df8"
+  },
+  "space-investers-harvest": {
+    "file": "space-investers-harvest.jpg",
+    "sourceFile": "picture_aec586dc-725a-434c-b683-6d47229a9fed.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/space-investers-harvest",
+    "bytes": 130600,
+    "sha256": "d959da74ee2a38656e350dfefc0be6fdc7c218d7534bba0dd7220b2087bec740"
+  },
+  "fit-print": {
+    "file": "fit-print.webp",
+    "sourceFile": "picture_95c75b2f-3dcd-4dfb-a245-b5177bbea097.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/fit-print",
+    "bytes": 93124,
+    "sha256": "5943d2b1cb69cdbc45bb532eef7d9fefefa33ab615540d01d57b052956baad80"
+  },
+  "dorada-new-edition": {
+    "file": "dorada-new-edition.jpg",
+    "sourceFile": "picture_0227e12f-9874-4a40-9273-58be125b563f.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dorada-new-edition",
+    "bytes": 190455,
+    "sha256": "1954da942f69585bf3aeb879c7d5ff55f09db23ac644b9789e7d7b9534304a84"
+  },
+  "5-towers": {
+    "file": "5-towers.webp",
+    "sourceFile": "picture_713be63f-29dd-4117-b947-241f9ef369fb.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/5-towers",
+    "bytes": 65260,
+    "sha256": "535664580b56d840ab015cd819eaa5ddb2a8227bd631918826565de3b9821a8e"
+  },
+  "bottle-imp-new": {
+    "file": "bottle-imp-new.webp",
+    "sourceFile": "picture_8a90a1d2-f42d-43c5-b1b6-da93e2834bf2.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/bottle-imp-new",
+    "bytes": 119792,
+    "sha256": "a95e919628f5ce26dda55c08f5a07cc2b4b8d6f62956b695d0cb77b1ad4ea933"
+  },
+  "divinare": {
+    "file": "divinare.jpg",
+    "sourceFile": "picture_8ce48bf4-63f1-4f17-bbf9-ff83bd1454af.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/divinare",
+    "bytes": 112148,
+    "sha256": "e364636ef22cbcb2811294967ef7154db21c70cd84194e7b4325007c5c7ba1ec"
+  },
+  "faraway": {
+    "file": "faraway.webp",
+    "sourceFile": "picture_cf3f6d45-20aa-43fb-90d7-92231cff4df8.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/faraway",
+    "bytes": 86036,
+    "sha256": "58b622e3328fd807390c9a2219e26c07c98fa81987b4538dfd6ba2a468ee67ab"
+  },
+  "peas": {
+    "file": "peas.jpg",
+    "sourceFile": "picture_88c5b295-0b4d-499b-be5c-4fc0a01dbc19.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/peas",
+    "bytes": 92882,
+    "sha256": "9560ecc9d805093bc9d7ae64bb629796b8cc15bf94e9bf7d372a614ca9127e1c"
+  },
+  "henken-profile": {
+    "file": "henken-profile.jpg",
+    "sourceFile": "picture_a534d1a3-c886-41c0-a0cc-e3e78f6bacd3.JPG",
+    "sourceUrl": "https://bodoge.hoobby.net/games/henken-profile",
+    "bytes": 111282,
+    "sha256": "a21ff95f7f987a0e1ac381576dbc2e941ca24864be631331ac5207aa0c5a3973"
+  },
+  "poiyone": {
+    "file": "poiyone.jpg",
+    "sourceFile": "picture_b13d8280-734b-462a-9722-cc80f481d278.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/poiyone",
+    "bytes": 74852,
+    "sha256": "06b12477d5c277c528aa4176ff98a313837239e11dc0793906880f4ddc5b933d"
+  },
+  "inochi-no-sunadokei": {
+    "file": "inochi-no-sunadokei.jpg",
+    "sourceFile": "picture_2c9d46a8-a9b0-46ea-bfde-fdb0f7b40f78.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/inochi-no-sunadokei",
+    "bytes": 85113,
+    "sha256": "4becce48a35e96315070347e59a8b0f469321d6db905d41358ba876e9d0fc3c0"
+  },
+  "quest-el-dorado": {
+    "file": "quest-el-dorado.jpg",
+    "sourceFile": "picture_29946ad4-54dd-439e-afe0-a28860f25f4e.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/quest-el-dorado",
+    "bytes": 216340,
+    "sha256": "eabf5378544be438006971d520cd527e1a99b29ed858db6050e3ed60b1a8be2a"
+  },
+  "trick-snipers": {
+    "file": "trick-snipers.jpg",
+    "sourceFile": "picture_0a80f156-bb50-42bf-bb51-548301bd1cdf.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/trick-snipers",
+    "bytes": 92219,
+    "sha256": "87ceda3aa3a34d333c4a7cd9aa8ba2cb9526d3103673b2b1354aff68da6f044d"
+  },
+  "rebel-princess": {
+    "file": "rebel-princess.webp",
+    "sourceFile": "picture_5dbef3e7-f7f3-409b-a4fd-ab619196945c.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/rebel-princess",
+    "bytes": 93714,
+    "sha256": "b42d74c13d51d8a605522874f996369c4e0caa410b7825ab7e2b2be55491ef26"
+  },
+  "we-didnt-build-decks-at-all": {
+    "file": "we-didnt-build-decks-at-all.jpg",
+    "sourceFile": "picture_dfe1b4d8-a4eb-43f0-bfd6-aa1340c332f1.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/we-didnt-build-decks-at-all",
+    "bytes": 56155,
+    "sha256": "136d65ac5181cc7401a949c0f2f6e1f69624836a695cde62eb525c6bd1ab169e"
+  },
+  "sunrise-lane": {
+    "file": "sunrise-lane.webp",
+    "sourceFile": "picture_3f3915b9-f26d-4c76-808d-c0e139c3b208.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/sunrise-lane",
+    "bytes": 86496,
+    "sha256": "aed32d87295e09e94edf51601f91d24be8c023e6a3ee552254735addd1590ebf"
+  },
+  "kyouso-bakutan": {
+    "file": "kyouso-bakutan.jpg",
+    "sourceFile": "picture_123a8340-d88c-4b86-9405-651392e68d74.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/kyouso-bakutan",
+    "bytes": 40939,
+    "sha256": "05ca8c2062c325d0381aec416e2fab41f9ea129f16f7ddced059dc3475da25ff"
+  },
+  "mojiate-aiuebattle": {
+    "file": "mojiate-aiuebattle.jpg",
+    "sourceFile": "picture_acdcb06f-8073-43e0-aadc-4f7df3adbc35.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/mojiate-aiuebattle",
+    "bytes": 105070,
+    "sha256": "a3676264ad4c90f7034c6bb1c9e1b1c4265c33324ca0570c235e3e51fb134cd8"
+  },
+  "acquire-renegade": {
+    "file": "acquire-renegade.webp",
+    "sourceFile": "picture_e59b0ad8-05a8-4438-891f-e975fb845342.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/acquire-renegade",
+    "bytes": 77414,
+    "sha256": "98cacf8bd63712c3d9a0533d27db4f10683c6ae9fb5bf3134dc29c698df05e41"
+  },
+  "r-rivals": {
+    "file": "r-rivals.jpg",
+    "sourceFile": "picture_428404b8-0404-4495-b7de-15bb01ff5da0.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/r-rivals",
+    "bytes": 135618,
+    "sha256": "14a55b351e344e8e7ec578bc95719dd121049ea84d29a83c1eee84b23690d4b6"
+  },
+  "yomerukana": {
+    "file": "yomerukana.jpg",
+    "sourceFile": "picture_4168a535-d9a3-47f8-9d9b-45562c93f4d3.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/yomerukana",
+    "bytes": 124042,
+    "sha256": "b181cbcd5d243a3e65b9bb9a64d03c756f470e79689c6e671fca06be1c3ca671"
+  },
+  "come-sail-away": {
+    "file": "come-sail-away.jpg",
+    "sourceFile": "picture_50777ac8-df1e-4419-b07a-83d45034f483.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/come-sail-away",
+    "bytes": 85231,
+    "sha256": "435563f396da5acc4a15513489e083cdd9dd764efeee06e6eefc6386fead97d6"
+  },
+  "divee": {
+    "file": "divee.jpg",
+    "sourceFile": "picture_4cb406f3-772a-4928-b593-9d6c00f74c98.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/divee",
+    "bytes": 125247,
+    "sha256": "f39bdd1221e2dc6af9e6396a9abbca42ad86054223d773822bdde20de9c58c5b"
+  },
+  "prey-another-day": {
+    "file": "prey-another-day.webp",
+    "sourceFile": "picture_736f3a9d-8da4-46b6-85f2-9dcbceb86174.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/prey-another-day",
+    "bytes": 68302,
+    "sha256": "ee2cc2552bcf0b2e1e1d143a05418165819c1e04e86e14af40cac8307dae142d"
+  },
+  "fun-facts": {
+    "file": "fun-facts.webp",
+    "sourceFile": "picture_83746259-fafd-47cb-b342-ab0ceb543c2e.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/fun-facts",
+    "bytes": 86326,
+    "sha256": "957a601eaffeca2dabf90e4e3c87d6c3cef7ca809f5b8aec34f372e3edbf1a98"
+  },
+  "el-grande-2023": {
+    "file": "el-grande-2023.webp",
+    "sourceFile": "picture_1a36b539-76b0-4edc-856b-065474f292ed.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/el-grande-2023",
+    "bytes": 60796,
+    "sha256": "dcf935e8d9c40be6dd7f4163b1bf24bb3025e839d68c5dfc295846e83ba7b446"
+  },
+  "batting-x-trick-taking": {
+    "file": "batting-x-trick-taking.jpg",
+    "sourceFile": "picture_aff0b71a-1ce2-45f7-9c3e-e99e101b68bd.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/batting-x-trick-taking",
+    "bytes": 158950,
+    "sha256": "f5b5a44408f3f7f417772b449ddddcb2bb309b949dae10354a6edaeb1b2e2f7c"
+  },
+  "lexio-neo": {
+    "file": "lexio-neo.jpg",
+    "sourceFile": "picture_95339b7a-0876-45d4-803f-0101ad249856.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/lexio-neo",
+    "bytes": 81950,
+    "sha256": "59d70c285c78c83d12bb58d821562e6e6ef5dbca7c93873bb64d023c7d62ecc4"
+  },
+  "dorfromantik-bg": {
+    "file": "dorfromantik-bg.webp",
+    "sourceFile": "picture_aa39df77-f1ac-424e-8f6c-c4f71ec247d2.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dorfromantik-bg",
+    "bytes": 67036,
+    "sha256": "24dfe84e30eb3a70d625cb2055c5ab94eaf6f4a32a34458492cb4dd0036a9b19"
+  },
+  "shinban-nukumi-onsen-hanjoki": {
+    "file": "shinban-nukumi-onsen-hanjoki.jpg",
+    "sourceFile": "picture_f21ca625-fa41-4d70-bb99-79e4f43f7530.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/shinban-nukumi-onsen-hanjoki",
+    "bytes": 108697,
+    "sha256": "b3818d2e34f20d0f00efd2914636ec2d4eb1ad15f540469d96cd0141a33bf005"
+  },
+  "challengers": {
+    "file": "challengers.webp",
+    "sourceFile": "picture_264371cf-5737-4193-8ff3-696f48bed131.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/challengers",
+    "bytes": 86692,
+    "sha256": "6cb4e2691d05dd0d5c961a08307e4abbc9e6e86266930ac7bb2836400f971ecd"
+  },
+  "super-rhino-giant-edition": {
+    "file": "super-rhino-giant-edition.jpg",
+    "sourceFile": "picture_38902614-0581-45cf-9e64-076e260fae76.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/super-rhino-giant-edition",
+    "bytes": 110786,
+    "sha256": "bec979f63b92034c641c02180e97ddaadf84c5eea301d73ecc26300f182dca21"
+  },
+  "tabetanodare": {
+    "file": "tabetanodare.jpg",
+    "sourceFile": "picture_bfdeac06-cf61-4cd2-bc94-4bcc588b4175.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/tabetanodare",
+    "bytes": 125066,
+    "sha256": "9df13c154a188f30e8068be6519cebf615bbb39b47ffcae17109920bff355eb5"
+  },
+  "mahe": {
+    "file": "mahe.jpg",
+    "sourceFile": "picture_b159296f-7baa-4520-8e25-7c08c55bd1a2.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/mahe",
+    "bytes": 132150,
+    "sha256": "725b74be93d6703fec58011f5916d029cb89a4d31037f3d2fbfeef9135105aed"
+  },
+  "potato-man": {
+    "file": "potato-man.jpg",
+    "sourceFile": "picture_a04fb94a-7238-49b4-a340-7c364e34a989.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/potato-man",
+    "bytes": 139440,
+    "sha256": "8f17b4253fff731c3191de1867fd122c044aed7487e49456a4afcc5275e0e60b"
+  },
+  "draft-poker": {
+    "file": "draft-poker.png",
+    "sourceFile": "picture_4da6c688-33d3-48ed-8e7d-275104fffd1e.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/draft-poker",
+    "bytes": 1002327,
+    "sha256": "6a014d72e77459a0a926662ac2314213c7e43e888d29e2422e76d2305a573f96"
+  },
+  "darwins-journey": {
+    "file": "darwins-journey.png",
+    "sourceFile": "picture_8f945fe1-e370-4c4c-a045-e2bcfae40ae4.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/darwins-journey",
+    "bytes": 858371,
+    "sha256": "dd9e72f8effe6ace877f1c2ba7d1cf03fe3041c3cd0650d854ee6584e36a9245"
+  },
+  "harvest-2023": {
+    "file": "harvest-2023.jpg",
+    "sourceFile": "picture_5866cde3-c119-4423-ad49-8457bdce8fb0.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/harvest-2023",
+    "bytes": 108379,
+    "sha256": "0125914392d8df0e0f1a41a8a08e1d36db0fa68ff4be1ad7d7c650d77b003047"
+  },
+  "word-drop": {
+    "file": "word-drop.png",
+    "sourceFile": "picture_eef2947e-cac4-40d5-ae71-2b03d3cac1a3.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/word-drop",
+    "bytes": 704724,
+    "sha256": "3eb990486a0ac8ad8bd35508d93e27d4261afdae6fd371f4eb79289d4bf93cfb"
+  },
+  "nana-toridori": {
+    "file": "nana-toridori.jpg",
+    "sourceFile": "picture_c390523d-8ef2-4bac-b601-db5e084e4072.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/nana-toridori",
+    "bytes": 93164,
+    "sha256": "096dc7d0a4307cbe0f93ab5ef90f32e4651e6617a5261817970fd09f1e76bc2e"
+  },
+  "great-split": {
+    "file": "great-split.webp",
+    "sourceFile": "picture_fcee18a6-00c6-4349-8876-cc610a38d527.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/great-split",
+    "bytes": 65694,
+    "sha256": "d5c8e9a290f825eafe3f00ff1a73e7fe187bab53f84789c012710b97ecc367cc"
+  },
+  "cascadia": {
+    "file": "cascadia.jpg",
+    "sourceFile": "picture_a6d4fd73-0811-4f46-aedc-faf002b6cb53.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/cascadia",
+    "bytes": 89319,
+    "sha256": "0311bbe2a0a0b185fa3187c5b4bba2421050f6b249c7c8152555e74f25bc4c37"
+  },
+  "search-planet-x": {
+    "file": "search-planet-x.jpg",
+    "sourceFile": "picture_d22294d7-970e-4357-9382-858809c29270.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/search-planet-x",
+    "bytes": 84182,
+    "sha256": "40b6762fc562a03385f78b5fbcc47ce53486d69425830cd929cb34e4b4303172"
+  },
+  "nickname-kansai": {
+    "file": "nickname-kansai.jpg",
+    "sourceFile": "picture_6032712c-301c-4630-8342-4df6a0db02aa.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/nickname-kansai",
+    "bytes": 82086,
+    "sha256": "fe2ad240583ceef3174ae4238dfea9d704b7387db6fcb6f59586546a8d2ec874"
+  },
+  "botswana-ngo": {
+    "file": "botswana-ngo.jpg",
+    "sourceFile": "picture_3693e9bd-7a44-456e-a70a-1a5821019c41.JPG",
+    "sourceUrl": "https://bodoge.hoobby.net/games/botswana-ngo",
+    "bytes": 291888,
+    "sha256": "5d286a3832363e73afe9f21e1f5fe6bd73a4c62b5700db09ebd6b768c0142493"
+  },
+  "touch-it-dearspiele": {
+    "file": "touch-it-dearspiele.png",
+    "sourceFile": "picture_9240bcb4-1d9e-41af-9aa7-c866e5fe34f1.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/touch-it-dearspiele",
+    "bytes": 453776,
+    "sha256": "8867b7975b1a6158a8f20ec13d41c1d90700e515575bed45d8cb00ed973fba72"
+  },
+  "ha-tteiu-remake": {
+    "file": "ha-tteiu-remake.jpg",
+    "sourceFile": "picture_7783007b-8645-4b73-b3f6-e35ce7b6f4fe.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/ha-tteiu-remake",
+    "bytes": 88408,
+    "sha256": "7a0a6955bc20611b912bbb6860cc2bb44a90f8c8e1001c1e4e2f6994609024b8"
+  },
+  "ciao-ciao": {
+    "file": "ciao-ciao.jpg",
+    "sourceFile": "picture_bec812e7-7249-4d6c-ad0c-0ca8338334aa.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/ciao-ciao",
+    "bytes": 83698,
+    "sha256": "dd3b31d0ee3f9b7d99239432ee2b538e3f49c116c0643b4c96603f405ae91783"
+  },
+  "cahoots": {
+    "file": "cahoots.jpg",
+    "sourceFile": "picture_435d016d-f790-4a71-9c29-303243dbaeba.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/cahoots",
+    "bytes": 49774,
+    "sha256": "f1e8f9865fae3abc0e1e410d3a38680175497e49de352145e3fe102320fa497a"
+  },
+  "ichibansaiban": {
+    "file": "ichibansaiban.jpg",
+    "sourceFile": "picture_6acc8773-5124-45d1-a742-311e884a305b.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/ichibansaiban",
+    "bytes": 57428,
+    "sha256": "a75018604965f14c0de1c6c6c9289c2f30d425409ba6047a8350b93190803b52"
+  },
+  "kayanak": {
+    "file": "kayanak.jpg",
+    "sourceFile": "picture_66a34f6a-bb2f-4e3f-b3b3-d92b8a288a99.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/kayanak",
+    "bytes": 91981,
+    "sha256": "5d940754c9083c6a7d6308586c35d60f845cb1d83bc163f8e254561479848dc5"
+  },
+  "whirling-witchcraft": {
+    "file": "whirling-witchcraft.jpg",
+    "sourceFile": "picture_c5171432-b4bd-4f47-8164-26bf353a8fea.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/whirling-witchcraft",
+    "bytes": 114761,
+    "sha256": "4558cf94f1e81e168cf24fca4183cc00d3e73edb70c2b133dc20516c29a5f487"
+  },
+  "pang-ping-pong-game": {
+    "file": "pang-ping-pong-game.jpg",
+    "sourceFile": "picture_355d04b3-208a-457d-94fe-caa350e59d3b.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/pang-ping-pong-game",
+    "bytes": 171433,
+    "sha256": "8020e5ee762080fe2b7a70646f5a9a4e0c393e202b37d76c8a38eaee8881c8d2"
+  },
+  "a-lot-gems": {
+    "file": "a-lot-gems.jpg",
+    "sourceFile": "picture_ad265986-b381-4ce6-b60e-7387754e0c67.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/a-lot-gems",
+    "bytes": 148859,
+    "sha256": "87f78935ba436de8f0d03302abf2bfa31e2102f2bcc035db91badd0b9eeca578"
+  },
+  "klask": {
+    "file": "klask.jpg",
+    "sourceFile": "picture_6a59d600-9674-4478-84b8-904ac530b322.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/klask",
+    "bytes": 40564,
+    "sha256": "f1c44d09e7680d91124335fd6d0948517b3646ffadb464663710b3e80ed8aff2"
+  },
+  "ultimate-werewolf-ultimate-edition": {
+    "file": "ultimate-werewolf-ultimate-edition.png",
+    "sourceFile": "picture_499951e4-b8b7-4692-a796-1bf6178c7c86.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/ultimate-werewolf-ultimate-edition",
+    "bytes": 738599,
+    "sha256": "8f7efe40006e7d28279b97ebef250fef62a449f754dd04a234ef32dedf81494d"
+  },
+  "illust-karuta-sanrio-sharasters": {
+    "file": "illust-karuta-sanrio-sharasters.jpg",
+    "sourceFile": "picture_4a39654d-c5e1-44cb-ba48-0ce2a79de17d.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/illust-karuta-sanrio-sharasters",
+    "bytes": 124339,
+    "sha256": "0174f3301fc83361d9c0d64252ba6d3c38595cb504e5f7678bc49313c8875092"
+  },
+  "tsuro": {
+    "file": "tsuro.jpg",
+    "sourceFile": "picture_8aa03a0a-6962-484e-ab54-4b701daac494.JPG",
+    "sourceUrl": "https://bodoge.hoobby.net/games/tsuro",
+    "bytes": 114199,
+    "sha256": "d0a3bba8aee7e3e9b585517590cab832ebe59b90a6a800824ff3013506eabf5e"
+  },
+  "super-mega-lucky-box": {
+    "file": "super-mega-lucky-box.png",
+    "sourceFile": "picture_4c65918d-0405-404c-b20c-2b4058fbc5a9.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/super-mega-lucky-box",
+    "bytes": 845648,
+    "sha256": "7306fd51dcc93474138b6f7c8a99e2ca815a359f1eb8547d5dcd0f8630f432b4"
+  },
+  "order-overload-burger": {
+    "file": "order-overload-burger.jpg",
+    "sourceFile": "picture_0d9d524d-c98f-4e6d-ae55-626669dea8c8.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/order-overload-burger",
+    "bytes": 84387,
+    "sha256": "f86195a740024a94bbd527efa1a3bb69cb03c433db8a155f12205bbb393a2634"
+  },
+  "dominion-second-edition": {
+    "file": "dominion-second-edition.jpg",
+    "sourceFile": "picture_3afd7c01-ff62-4066-bd5c-acce51dbfe88.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dominion-second-edition",
+    "bytes": 96767,
+    "sha256": "d2af9470ae305b55d45693bee653418e535205bacf071ad93bac08cc49b100a1"
+  },
+  "dominion-cornucopia-alchemy": {
+    "file": "dominion-cornucopia-alchemy.jpg",
+    "sourceFile": "picture_109943ac-82bd-4618-9048-60abc2b0adff.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dominion-cornucopia-alchemy",
+    "bytes": 114667,
+    "sha256": "70885eb1346582d9ec6f8470a87c6ef2cd187109f17355e8160fbcffb6fccdb0"
+  },
+  "komanga": {
+    "file": "komanga.jpg",
+    "sourceFile": "picture_609a92fd-4ecf-437d-914f-a5c40353f5bb.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/komanga",
+    "bytes": 109433,
+    "sha256": "218d73f41a2a8e3baebce3b40480fa8f5f0f3339bce6fa1e23881f40ffead441"
+  },
+  "paiprise-endin": {
+    "file": "paiprise-endin.jpg",
+    "sourceFile": "picture_b767c2e5-af1f-4591-8350-4bf60a82c536.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/paiprise-endin",
+    "bytes": 58097,
+    "sha256": "20c6202f6c74b3bd2f5abb2e71877534c068ba7c6aa94d6a5c62c57be0f3d974"
+  },
+  "nana-card-game": {
+    "file": "nana-card-game.jpg",
+    "sourceFile": "picture_4c95f4fa-130a-46ed-bf90-a6206d68e3a0.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/nana-card-game",
+    "bytes": 97639,
+    "sha256": "190d40bc11fab9f6a765715ff45e31724814588d9f0755f761d2798405e51e5d"
+  },
+  "dominoes-mexican-train": {
+    "file": "dominoes-mexican-train.jpg",
+    "sourceFile": "picture_5ab671e1-f946-48c6-b723-64c44bbd0aef.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dominoes-mexican-train",
+    "bytes": 106401,
+    "sha256": "dc29b60b3ec59432153b7e1d6c9b317a146fb78c78c893d71d7714dd4556f1c2"
+  },
+  "fjords-sugorokuya": {
+    "file": "fjords-sugorokuya.jpg",
+    "sourceFile": "picture_f55dbd80-04d0-4cc0-9d58-18d14b366854.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/fjords-sugorokuya",
+    "bytes": 96471,
+    "sha256": "424f9289499858cfb80cc2c3d8253478b831ff7ff426ca7de5b948558379817b"
+  },
+  "canvas": {
+    "file": "canvas.jpg",
+    "sourceFile": "picture_3a0a58eb-5cc8-48de-a6f8-909c4b2dace9.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/canvas",
+    "bytes": 102994,
+    "sha256": "a860618601095064c6b1ae7b6bfa2458c9285657d41df2466f8d278157f04a99"
+  },
+  "shirito-limit-10": {
+    "file": "shirito-limit-10.jpg",
+    "sourceFile": "picture_e9bab250-7dca-4b6a-a3ec-bdbded3071e6.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/shirito-limit-10",
+    "bytes": 206520,
+    "sha256": "e44c2c69bbd33787fdb752264ee8247c3a99558e5d17cee7ec30a4eb5eff60f6"
+  },
+  "hammer-time": {
+    "file": "hammer-time.jpg",
+    "sourceFile": "picture_5dd92307-d95f-46ac-9580-5c4a895299eb.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/hammer-time",
+    "bytes": 134642,
+    "sha256": "c9724c3bf2040db4df0230a5db449b7c238321373c3ea22914f0fa956e7e3550"
+  },
+  "linie1-japanese": {
+    "file": "linie1-japanese.png",
+    "sourceFile": "picture_8dc772cb-a181-4ca0-a55e-1cc3d5d6525b.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/linie1-japanese",
+    "bytes": 1303166,
+    "sha256": "6da34bced35ff17a54dcca8cc485da90cfd29a67185e11acd7e9ae00f139e767"
+  },
+  "ojisan-messege": {
+    "file": "ojisan-messege.jpg",
+    "sourceFile": "picture_927cd63b-044c-4e26-a189-44ea998feca4.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/ojisan-messege",
+    "bytes": 85021,
+    "sha256": "250786d409ca01e92f38749d7ea01e8bb4bed503145ed8bc5156ec4bd3799a30"
+  },
+  "lucky-numbers": {
+    "file": "lucky-numbers.jpg",
+    "sourceFile": "picture_c20a55da-f470-482e-974d-b9f03f7f589e.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/lucky-numbers",
+    "bytes": 116118,
+    "sha256": "1dc19c70e39afd1e3723c57dad2f98d889e14d6717f1ed515ac10cd8863ff5b0"
+  },
+  "patrizier": {
+    "file": "patrizier.png",
+    "sourceFile": "picture_55b5a3cf-2d0f-4563-8270-653396108e98.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/patrizier",
+    "bytes": 1710475,
+    "sha256": "cadf9f884d33fa1b13c0157598905616f87599d65911f9f6ea5ba8c6b64cb305"
+  },
+  "hibachi": {
+    "file": "hibachi.jpg",
+    "sourceFile": "picture_71f7d003-9090-4723-9bed-5bd3fe7c36a1.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/hibachi",
+    "bytes": 125006,
+    "sha256": "e118f49b007d1889c858fb88d91b908046d6d0c0995f97d993521f04dab82d0d"
+  },
+  "tiger-dragon": {
+    "file": "tiger-dragon.jpg",
+    "sourceFile": "picture_5c9be6ea-b6a1-4dec-b089-1ac498ec24ed.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/tiger-dragon",
+    "bytes": 84390,
+    "sha256": "2c73e7dbb2d21d91192b1eba984f3718efa4bcb24295fbb388636ebf02405f09"
+  },
+  "terraforming-mars-venus-next": {
+    "file": "terraforming-mars-venus-next.jpg",
+    "sourceFile": "picture_e0b8631b-3a3e-4f22-a1cc-149fa7edecb1.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/terraforming-mars-venus-next",
+    "bytes": 89217,
+    "sha256": "aec41d219808d8c87bb2002d987c96e9160338765a71341dcf667352ac5b9fb4"
+  },
+  "fox-forest-duet": {
+    "file": "fox-forest-duet.jpg",
+    "sourceFile": "picture_3c440062-676e-42af-b9da-9d5b9b92f232.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/fox-forest-duet",
+    "bytes": 146202,
+    "sha256": "477eab028c87b05c8c641888002816cf700b3b8584022a99eb5e06a8edf62798"
+  },
+  "block-ness": {
+    "file": "block-ness.jpg",
+    "sourceFile": "picture_fec0e02b-84c6-4903-8b58-1d3f553772aa.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/block-ness",
+    "bytes": 102272,
+    "sha256": "591d0f0b44411cde8bc8a9c194e59e9ff180699f3ed7b2b05b99fb5008551dd4"
+  },
+  "lost-ruins-arnak": {
+    "file": "lost-ruins-arnak.jpg",
+    "sourceFile": "picture_cd945a08-a1c6-4a92-943d-9f670244c87c.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/lost-ruins-arnak",
+    "bytes": 129820,
+    "sha256": "01f9b77c322c1351fdb545bf6badc76b605318ac206a933de68f785d8763249f"
+  },
+  "thrill-bom": {
+    "file": "thrill-bom.jpg",
+    "sourceFile": "picture_c4f2af12-94cf-4b97-a076-a44725ee814e.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/thrill-bom",
+    "bytes": 202319,
+    "sha256": "4860e1acdfa526bad90a7b9588bd653a42c26d4bab26f79b6dce39ca7b8f5415"
+  },
+  "project-l": {
+    "file": "project-l.jpg",
+    "sourceFile": "picture_624b458d-6f67-471a-bdb5-28f4d6dd75a5.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/project-l",
+    "bytes": 11905,
+    "sha256": "ac8ad02023a8dc838f43ea8df0b9a27bce46164375a3650d160aadfbfc851831"
+  },
+  "little-town-builders": {
+    "file": "little-town-builders.jpg",
+    "sourceFile": "picture_32bf49d3-9cf4-4ef1-ade8-5038466dfb83.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/little-town-builders",
+    "bytes": 61402,
+    "sha256": "def5ee801083dd7a2f74fd7388a8d2c811ec452841aa80d515feb7eccd1a0067"
+  },
+  "magnolia": {
+    "file": "magnolia.jpg",
+    "sourceFile": "picture_cd2f10e8-67f4-4540-99ed-e6a22c0a3e4b.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/magnolia",
+    "bytes": 177753,
+    "sha256": "d70e54bef14e50c9c75a2de4c3d962056865e3c1006f4eefd7190842306eae12"
+  },
+  "in-hall-mountain-king": {
+    "file": "in-hall-mountain-king.jpg",
+    "sourceFile": "picture_f15ecc48-c4e5-44fc-9225-ad010fc9294e.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/in-hall-mountain-king",
+    "bytes": 135128,
+    "sha256": "0a30dfccd422201a17b6bf82f11fc45b4bde748cf6d0422d5e33cff7eb9d73de"
+  },
+  "cat-in-the-box": {
+    "file": "cat-in-the-box.png",
+    "sourceFile": "picture_44b8f1f1-cd3c-4c66-a522-7f2ffd30fa8d.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/cat-in-the-box",
+    "bytes": 716262,
+    "sha256": "112aeb7f5d7a647f3fa39269ffdc3223a624f341ca17001e88be394f36b23308"
+  },
+  "finca": {
+    "file": "finca.jpg",
+    "sourceFile": "picture_a4e5c6e1-0439-4df1-901b-e2cd1725ad9c.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/finca",
+    "bytes": 112760,
+    "sha256": "bec9c60916010e501647769bb8050619e1d071c3ad42d557666f726ba678d640"
+  },
+  "drop-it": {
+    "file": "drop-it.jpg",
+    "sourceFile": "picture_c1ddab8d-ed13-4a99-b6f9-61fc93c51af4.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/drop-it",
+    "bytes": 70237,
+    "sha256": "7b54bb33b2e70de6676bb3813a0dcd90fc359b3662773a82b4379338eeedfde4"
+  },
+  "xing": {
+    "file": "xing.jpg",
+    "sourceFile": "picture_566b058f-016d-4640-90eb-50bbc3f3acc3.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/xing",
+    "bytes": 79537,
+    "sha256": "51fec24bcc004cfbc94db878eeb12014407f15936ad0e4e83819400ea7078f90"
+  },
+  "tekhenu-obelisk-sun": {
+    "file": "tekhenu-obelisk-sun.jpg",
+    "sourceFile": "picture_d9df5a88-2c8d-426f-b62a-da2c4b80e9c0.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/tekhenu-obelisk-sun",
+    "bytes": 88441,
+    "sha256": "71a9544c7f6af1afd588aeeea968411d3bfa105b28e40ecf8ab0456f34ed9f11"
+  },
+  "its-a-wonderful-world": {
+    "file": "its-a-wonderful-world.jpg",
+    "sourceFile": "picture_f19f6bae-81fc-46dc-acce-e7542ba36510.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/its-a-wonderful-world",
+    "bytes": 99699,
+    "sha256": "8db7989b57d2080f63dd9b350b6ca8a09c5946b4a5f145afa8120514316ac27a"
+  },
+  "marco-polo-ii-im-auftrag-des-khan": {
+    "file": "marco-polo-ii-im-auftrag-des-khan.png",
+    "sourceFile": "picture_6847795c-84be-4d94-939c-fd30e3eddb9a.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/marco-polo-ii-im-auftrag-des-khan",
+    "bytes": 1823923,
+    "sha256": "6495e8064bc5cd7b45d329db6265381b113c08f654150316109e736824c83d96"
+  },
+  "maracaibo": {
+    "file": "maracaibo.jpg",
+    "sourceFile": "picture_72890603-ec33-402d-9b4f-edc54b883b44.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/maracaibo",
+    "bytes": 117867,
+    "sha256": "1d82e2207824e37460a08f269075e4c0bafbf210f5891e265145e6b1694c2511"
+  },
+  "die-crew-reist-gemeinsam-zum-9-planeten": {
+    "file": "die-crew-reist-gemeinsam-zum-9-planeten.jpg",
+    "sourceFile": "picture_c7ff9071-73a9-42fa-922c-5ac594f10283.",
+    "sourceUrl": "https://bodoge.hoobby.net/games/die-crew-reist-gemeinsam-zum-9-planeten",
+    "bytes": 1566891,
+    "sha256": "2f786cc227f1623f5bdbe179229f42ac5caf15e6d56f35835061a16903715490"
+  },
+  "dobble-doraemon": {
+    "file": "dobble-doraemon.jpg",
+    "sourceFile": "picture_286c5f2e-523d-404c-bad5-1392f93e104b.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dobble-doraemon",
+    "bytes": 131077,
+    "sha256": "056144d7476fc93909cf18154e80c729c49ba5d0809a409dbe06a5d1e4632938"
+  },
+  "animal-marche": {
+    "file": "animal-marche.jpg",
+    "sourceFile": "picture_6f39f2c2-1a8f-4095-a37a-f2d9ec02beb5.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/animal-marche",
+    "bytes": 204946,
+    "sha256": "ae40b13468da57d0326dc22059e753eb91579428bf8c5cf3081b3cca08920247"
+  },
+  "chonmage-on-head": {
+    "file": "chonmage-on-head.jpg",
+    "sourceFile": "picture_eccf51d9-b257-4d08-b320-b93c582abbe0.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/chonmage-on-head",
+    "bytes": 43285,
+    "sha256": "474b2f873c8309140e20cfbf9084af412e3372b40a88382f7c33fd61528e92d5"
+  },
+  "coordinates": {
+    "file": "coordinates.jpg",
+    "sourceFile": "picture_ef1dbe0a-042c-4a4f-b63f-1e2c274df301.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/coordinates",
+    "bytes": 59846,
+    "sha256": "0e2dec97b177f9be685c4672f5b979109f84048eef66b653f37f4e1630540d1d"
+  },
+  "seven-vice": {
+    "file": "seven-vice.jpg",
+    "sourceFile": "picture_e37dd2ac-9a71-4210-812f-5c606f54fe73.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/seven-vice",
+    "bytes": 103714,
+    "sha256": "becf915affae1698baed462cefa192bfc1269893c657fd7e278d04c4359e0e98"
+  },
+  "just-one": {
+    "file": "just-one.jpg",
+    "sourceFile": "picture_71ca60f2-ace3-47fa-b9b2-db44beb59cd3.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/just-one",
+    "bytes": 90137,
+    "sha256": "a8b2e1ba7376ca9ce06e88ee2ee18777269aec3247b7bb85102be6010fd5cd80"
+  },
+  "cryptid": {
+    "file": "cryptid.jpg",
+    "sourceFile": "picture_e5fa773f-98f0-47b2-96bf-7a633ef06d64.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/cryptid",
+    "bytes": 96404,
+    "sha256": "33c1fb310ffbf0880251205f67ae44dd789438d3b2e26e1a708cad5df7c3a917"
+  },
+  "everdell": {
+    "file": "everdell.png",
+    "sourceFile": "picture_c2f4353d-274d-43ea-9794-d26615b5dad5.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/everdell",
+    "bytes": 1151019,
+    "sha256": "fa3e57bc90a94eadcec3c3653b703cdf0a7aba2609d25712a0d3af1714807ccc"
+  },
+  "brass-lancashire": {
+    "file": "brass-lancashire.jpg",
+    "sourceFile": "picture_75734a3a-7376-4b76-9a56-54de32cdf07b.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/brass-lancashire",
+    "bytes": 73561,
+    "sha256": "2de0f0de60810db0dce4c46aad1047d5179f8d10901d9047558928f829ce4de9"
+  },
+  "san-juan": {
+    "file": "san-juan.jpg",
+    "sourceFile": "picture_a66bd893-848d-49ac-89c0-ca4fde6c7977.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/san-juan",
+    "bytes": 217233,
+    "sha256": "e891bfe9009dc11462e20e2a9a2d2d8378df0829b99957f15a254a44c510ac9e"
+  },
+  "herb-merchant": {
+    "file": "herb-merchant.png",
+    "sourceFile": "picture_4b908459-dd0a-412c-9a95-4d252cfb278b.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/herb-merchant",
+    "bytes": 1810431,
+    "sha256": "c7800ca905734c32d506d05e7e5acf4d78302cb1e957e7ee6181edfc835c2b06"
+  },
+  "scout": {
+    "file": "scout.jpg",
+    "sourceFile": "picture_bb6b9d76-bb93-4868-a427-80eb77c81b09.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/scout",
+    "bytes": 90334,
+    "sha256": "84eddfb8649238eeedfc5fe1e7d823e63fda69212f62f377d237bb2363e6417e"
+  },
+  "wingspan": {
+    "file": "wingspan.jpg",
+    "sourceFile": "picture_aa1601fa-59ef-497c-8510-6ae7e1d530fc.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/wingspan",
+    "bytes": 46530,
+    "sha256": "410a63f6f879dfeb179358eaa77c9a336766a37227f00bdbfe9d5cfb2e2a332d"
+  },
+  "pit": {
+    "file": "pit.jpg",
+    "sourceFile": "picture_678460ee-c2ef-4a2d-af78-d8bf21ffed5e.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/pit",
+    "bytes": 151505,
+    "sha256": "f0e5a0fc59ec5c50345ea46f00caf7ac38677614d2baabff2ac8882131a3a34d"
+  },
+  "slide-quest": {
+    "file": "slide-quest.png",
+    "sourceFile": "picture_47f1e063-825b-4ee5-857b-18b0417ccb20.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/slide-quest",
+    "bytes": 823867,
+    "sha256": "22d7ddbb9c35a1cd728296eb9bf3c2cbab663799f0e4219f7797a840e8b84d22"
+  },
+  "ito": {
+    "file": "ito.jpg",
+    "sourceFile": "picture_f57b9550-a73f-474e-ad8b-2956db9895fe.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/ito",
+    "bytes": 52535,
+    "sha256": "3d4c0608b4afa8543358f63b5bb80d3cae2cf3fc482e4798c2f049e62207590e"
+  },
+  "mysterium": {
+    "file": "mysterium.jpg",
+    "sourceFile": "picture_847a7e77-fb90-411d-a352-d07ff1c5a819.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/mysterium",
+    "bytes": 90834,
+    "sha256": "8cb41f91b637456aa038c521bedf0092e436726f29e0a12bc3d9694a661404f6"
+  },
+  "dragon-quest-slime-race": {
+    "file": "dragon-quest-slime-race.jpg",
+    "sourceFile": "picture_b3c01db7-47c1-4bb7-8063-5d0209b24079.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dragon-quest-slime-race",
+    "bytes": 72252,
+    "sha256": "e088be1c861982947b14d8970c0540a23bf58ef1f7b18a80461382264cf20403"
+  },
+  "lama": {
+    "file": "lama.jpg",
+    "sourceFile": "picture_b862c226-cc1b-4810-bc3b-a6b7d34df6f5.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/lama",
+    "bytes": 111247,
+    "sha256": "fe8376d104ae1b92e484dd0d71126be81789aabe4b9c31602814d0d386810a3a"
+  },
+  "team3-pink": {
+    "file": "team3-pink.png",
+    "sourceFile": "picture_b6c82388-f737-4e66-bd4d-75a7567a5357.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/team3-pink",
+    "bytes": 747473,
+    "sha256": "40fd28a8c4f399285914c2958a753a0029aba3f7b386bf23908964e33d6aef22"
+  },
+  "bellz": {
+    "file": "bellz.jpg",
+    "sourceFile": "picture_4698716f-1f80-4b89-8924-898e1a495453.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/bellz",
+    "bytes": 99515,
+    "sha256": "53165a189adfb3edf847d69de7b6b2196fad7880bccb62115e9d2d59fd01915b"
+  },
+  "celestia": {
+    "file": "celestia.jpg",
+    "sourceFile": "picture_19c44578-d70b-43f4-a8ba-f82ea7653a00.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/celestia",
+    "bytes": 73200,
+    "sha256": "bf8fe5e03b07cb48a058d0f234478db6f7af632a40ba2476dac7b9d488f72366"
+  },
+  "terraforming-mars-colonies": {
+    "file": "terraforming-mars-colonies.jpg",
+    "sourceFile": "picture_b8b4a30a-447e-47dc-abf8-374e9ad27a48.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/terraforming-mars-colonies",
+    "bytes": 117683,
+    "sha256": "b9b4e6031a53938d1e8d898f8173ca5df866373ae4dd86fc684f160ac66a05d7"
+  },
+  "terraforming-mars-prelude": {
+    "file": "terraforming-mars-prelude.jpg",
+    "sourceFile": "picture_4cb9e5e5-1ff4-4e49-aafe-abf3a52a62d9.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/terraforming-mars-prelude",
+    "bytes": 117187,
+    "sha256": "1415c09f8fc6887ff2004faad4d76ccae554e40f627ff93ed5faf4e4980bb182"
+  },
+  "terraforming-mars-hellas-elysium": {
+    "file": "terraforming-mars-hellas-elysium.jpg",
+    "sourceFile": "picture_65b24318-5a6e-4ae2-87bf-c821701b9a40.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/terraforming-mars-hellas-elysium",
+    "bytes": 69941,
+    "sha256": "d6aedf65881546e367bdda6cbfdfbd4d39d2632b7413d958f006240537d0b485"
+  },
+  "fillit": {
+    "file": "fillit.jpg",
+    "sourceFile": "picture_c30102bb-42ce-4b4f-aa07-9427abc1d819.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/fillit",
+    "bytes": 124175,
+    "sha256": "0790885c292514a164b2ec3737ad69f1679003422f149c0c2eb2bce9e9f5d3dd"
+  },
+  "atekko": {
+    "file": "atekko.png",
+    "sourceFile": "picture_6a57d3b5-e079-4b87-aec8-f5f497217732.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/atekko",
+    "bytes": 1317670,
+    "sha256": "9f36b1d85679a7da9267d93e52d4796649dce3ffb440c2c124ed8f6da4f5ace8"
+  },
+  "national-economy-glory": {
+    "file": "national-economy-glory.jpg",
+    "sourceFile": "picture_09774630-4086-44de-8dfd-7e8ae9f4eecc.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/national-economy-glory",
+    "bytes": 98091,
+    "sha256": "75b144225a0b64210891226adc0f88550ed23836d70adb79715af6910e088ca2"
+  },
+  "jishaku": {
+    "file": "jishaku.jpg",
+    "sourceFile": "picture_bc22b4f7-c856-4f0f-9704-8c127bee3305.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/jishaku",
+    "bytes": 121898,
+    "sha256": "06981b427c6eff87a8f31ebc4328ba5cdeec6bd037e811aa681e6225d10392db"
+  },
+  "instant-propose-stalker-black": {
+    "file": "instant-propose-stalker-black.png",
+    "sourceFile": "picture_45c5ce33-2e1c-414c-b5b0-3ec778332785.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/instant-propose-stalker-black",
+    "bytes": 640917,
+    "sha256": "c9e58387ae9b74178bbce5e4419a3efec4ac0d39768ad84aa6f9e8f8c27eb03d"
+  },
+  "natsumemo": {
+    "file": "natsumemo.jpg",
+    "sourceFile": "picture_9c66dd93-c46d-4b17-b1d3-7134214dbf54.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/natsumemo",
+    "bytes": 107826,
+    "sha256": "d252aa3746c704c46a969456c4889611608661e43df35f024af4cba533aaf6ae"
+  },
+  "time-bomb-new-edition": {
+    "file": "time-bomb-new-edition.jpg",
+    "sourceFile": "picture_99be1e05-c542-4cc3-a8ae-75a867de1b30.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/time-bomb-new-edition",
+    "bytes": 221901,
+    "sha256": "d32d49d848bca47445d8b5922f1d63480f893a0efbac02959cdba8f5ede62c09"
+  },
+  "compatibility": {
+    "file": "compatibility.jpg",
+    "sourceFile": "picture_79987136-1bf1-4e55-8ad4-3e298bf1e4c3.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/compatibility",
+    "bytes": 102577,
+    "sha256": "fd69c59f8d7cd7177e58f4eed3a26f2f43bdf7dca7c4278d3d51664937ab61af"
+  },
+  "die-staufer": {
+    "file": "die-staufer.jpg",
+    "sourceFile": "picture_f11cb934-20aa-4a88-b5f4-b990e0913dba.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/die-staufer",
+    "bytes": 107166,
+    "sha256": "9d41364f42c0405efc7dfc53e9cce1a75b056da5fcb59c6ad572ff83113b9fb2"
+  },
+  "stockpile": {
+    "file": "stockpile.jpg",
+    "sourceFile": "picture_85ea88c8-0da4-47fa-8fe4-2f33e1536062.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/stockpile",
+    "bytes": 66440,
+    "sha256": "4cb45ea4278f388c4a8f8d4e063bc0e00fd56caf2fec5ac81fab231a11cf266d"
+  },
+  "concordia": {
+    "file": "concordia.jpg",
+    "sourceFile": "concordia_thumb_1.bing_boardgame.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/concordia",
+    "bytes": 176056,
+    "sha256": "cb886e45bf66d4715af25c753db51909e8e307e6a3b767a51c2f6bdaab0b7a09"
+  },
+  "mister-diamond": {
+    "file": "mister-diamond.jpg",
+    "sourceFile": "picture_6623c426-f6f9-4037-8afe-12b6d3139fe7.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/mister-diamond",
+    "bytes": 119145,
+    "sha256": "d838b8b3e93e2e7ec5b23f8d86cfebf854a8fa341293930a0f7149491d1c17fd"
+  },
+  "ethnos": {
+    "file": "ethnos.jpg",
+    "sourceFile": "picture_56078b77-3408-4fc8-82f2-daa355e5e736.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/ethnos",
+    "bytes": 114465,
+    "sha256": "dda8f042b731bd3020c019f7e715529b7a343e8224bbeb9b1b62df8cdf40f1be"
+  },
+  "gobblet-gobblers": {
+    "file": "gobblet-gobblers.jpg",
+    "sourceFile": "picture_aa73a94b-5937-4070-9629-813c1f57d6b1.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/gobblet-gobblers",
+    "bytes": 88970,
+    "sha256": "88668e4bf2977d899cdf04aed00971212d1b7dfcfee77bdea715625b2a572f75"
+  },
+  "sokuratesura": {
+    "file": "sokuratesura.png",
+    "sourceFile": "picture_e90fb6d5-9a31-4a15-837e-ed51329dc464.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/sokuratesura",
+    "bytes": 1078354,
+    "sha256": "a54a0778ff13aa5b7262540660f65945093f3bdd6db3d96de1d6c6326acaa59b"
+  },
+  "dice-forge-rebellion": {
+    "file": "dice-forge-rebellion.jpg",
+    "sourceFile": "picture_d399af47-9111-4c25-aaa7-fd742103745d.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dice-forge-rebellion",
+    "bytes": 145805,
+    "sha256": "69ec88c5f4302b0cce70775d2eaffa46a0433f394a4de077ecd3ef91f17b1acd"
+  },
+  "shuryou-no-jidai": {
+    "file": "shuryou-no-jidai.jpg",
+    "sourceFile": "picture_f792c53c-dabe-4c22-9ab5-5660ea2507f4.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/shuryou-no-jidai",
+    "bytes": 100139,
+    "sha256": "6b8d7f09d9882cfa2ef477a391e9cb302dec1bb168ab6802b09a59513bfb5dd0"
+  },
+  "naniwa-no-bob-jiten": {
+    "file": "naniwa-no-bob-jiten.jpg",
+    "sourceFile": "picture_7dd1806c-ad14-460f-b732-8f4b78a88434.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/naniwa-no-bob-jiten",
+    "bytes": 171235,
+    "sha256": "33e6ade45ce5d917b0afe7bca36cc3362ff159015062d3881fcbff25e8d5685f"
+  },
+  "face-face": {
+    "file": "face-face.jpg",
+    "sourceFile": "picture_79257dea-e477-4dd5-a10a-8ca32885f407.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/face-face",
+    "bytes": 87192,
+    "sha256": "f980ac0d9deb4ccdcee7489f95d979c7118969e51e96e103ef709cdb54dca05f"
+  },
+  "gomojin": {
+    "file": "gomojin.jpg",
+    "sourceFile": "picture_15938c78-6fbd-474e-980e-6155bb490d56.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/gomojin",
+    "bytes": 153902,
+    "sha256": "88f5eb9359b8659853b7cf58c048763e254201e63b63f132367a9eb4da78b331"
+  },
+  "welcome-to": {
+    "file": "welcome-to.jpg",
+    "sourceFile": "picture_349c741f-de6f-4c10-b043-19067612c272.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/welcome-to",
+    "bytes": 101724,
+    "sha256": "bea155cdfcdd76c685b5c86ea3f2590f8db51ce37bda7dd159d83addbc049f61"
+  },
+  "deck-tactics": {
+    "file": "deck-tactics.jpg",
+    "sourceFile": "picture_be5c076c-132b-4929-b52d-922171409d3d.",
+    "sourceUrl": "https://bodoge.hoobby.net/games/deck-tactics",
+    "bytes": 96276,
+    "sha256": "e31e45c595135a5b9dc2b426750151f1be4a1d7aef4364721f35a83f4e610314"
+  },
+  "instant-propose": {
+    "file": "instant-propose.jpg",
+    "sourceFile": "picture_1455c3b0-3b28-42e2-845e-c18f4f892826.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/instant-propose",
+    "bytes": 129644,
+    "sha256": "045936bc3a3c60e9092c7faf2c43ec26b972b9f9844c734ba14ca8a7d5ef9e8f"
+  },
+  "kachikan-monsters": {
+    "file": "kachikan-monsters.jpg",
+    "sourceFile": "picture_998bad22-fa31-44f1-a164-dcf3880964a8.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/kachikan-monsters",
+    "bytes": 60218,
+    "sha256": "3fa87c5e181d1bbb3d06456960784d99f673ac244ecf778e6cad2d983e05c88a"
+  },
+  "qui-paire-gagne-pluckin-pairs": {
+    "file": "qui-paire-gagne-pluckin-pairs.jpg",
+    "sourceFile": "picture_1b2e1683-98d4-4f9f-9a8a-39be84d9f0ff.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/qui-paire-gagne-pluckin-pairs",
+    "bytes": 79064,
+    "sha256": "007c3029e1f4e0ff5a10735c8b0577a25487f8803017b7b06c0ff051c9d3ca62"
+  },
+  "heckmeck-am-bratwurmeck": {
+    "file": "heckmeck-am-bratwurmeck.jpg",
+    "sourceFile": "picture_f2bdcc16-8aae-46e3-9481-ac3a0a56fe38.JPG",
+    "sourceUrl": "https://bodoge.hoobby.net/games/heckmeck-am-bratwurmeck",
+    "bytes": 108316,
+    "sha256": "b308c1629c6d669ff1461da74f7f5d0d238a576064310d89a83cc3ca001cf94d"
+  },
+  "blokus-duo": {
+    "file": "blokus-duo.jpg",
+    "sourceFile": "picture_9549889c-2e7a-4e4f-adf3-5285f9161ad1.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/blokus-duo",
+    "bytes": 84874,
+    "sha256": "abfc7f1a3e9849005e9d0bde60c17a88ba99621e722a1d225ab576f1d143df51"
+  },
+  "mainna-de-ponkotsu-paint": {
+    "file": "mainna-de-ponkotsu-paint.jpg",
+    "sourceFile": "picture_7c74e833-c715-4670-959c-b500f4253259.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/mainna-de-ponkotsu-paint",
+    "bytes": 128814,
+    "sha256": "f4e1eb8a0ac87a80fed5e7da4c73db065da574c762e7c06cac310a626a09a9fa"
+  },
+  "illusion": {
+    "file": "illusion.jpg",
+    "sourceFile": "picture_8018ca58-07a7-42da-a41b-60e4f2a7e6a9.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/illusion",
+    "bytes": 56885,
+    "sha256": "f12bada88553884dc79e05f8aa0d0f121389d2303593ed906296f0a2dbf07571"
+  },
+  "mind": {
+    "file": "mind.jpg",
+    "sourceFile": "picture_e5f380bc-61a2-4afa-aeb0-4c4bfded4ba4.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/mind",
+    "bytes": 48309,
+    "sha256": "c2a5218d04375a8226cf901be570869554c936f3b47b01f0dde53e64097d1255"
+  },
+  "die-quacksalber-quedlinburg": {
+    "file": "die-quacksalber-quedlinburg.png",
+    "sourceFile": "picture_a96f913f-5a51-4608-93f8-08578abcaea2.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/die-quacksalber-quedlinburg",
+    "bytes": 1305703,
+    "sha256": "a682ba17a8873243e827e5a3efceb9100036451cd9d3516efca52a6d1c95e9ca"
+  },
+  "librium": {
+    "file": "librium.jpg",
+    "sourceFile": "picture_5941eba5-de83-4ccf-a287-687a9b9ffcd8.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/librium",
+    "bytes": 74900,
+    "sha256": "81d2c91c187e58a2e7081cbc4d234cd184295634be6de3675989eb2207d3710e"
+  },
+  "decrypto": {
+    "file": "decrypto.jpg",
+    "sourceFile": "picture_468837eb-a805-4195-8a12-b08fe2ea99c8.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/decrypto",
+    "bytes": 158127,
+    "sha256": "da0bee5e11910ff6a0e245b9c94d971886cee2131a7c1cefa3464cc919305029"
+  },
+  "tomatomato": {
+    "file": "tomatomato.jpg",
+    "sourceFile": "picture_29d1ef20-3c47-4675-ad70-a5f3a0eafdba.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/tomatomato",
+    "bytes": 57322,
+    "sha256": "60dac507d691f373d5b91363c941e2901e7f31b38d543454ee891d14a6c7c326"
+  },
+  "dr-beaker": {
+    "file": "dr-beaker.jpg",
+    "sourceFile": "picture_76d4a0e0-f355-457d-8e30-62ffbbe08b9d.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dr-beaker",
+    "bytes": 82292,
+    "sha256": "f2de29987844906eb4d6b407d31d389fa0f30971ed857cc57ee06a8962df14bf"
+  },
+  "blade-rondo": {
+    "file": "blade-rondo.jpg",
+    "sourceFile": "picture_25f3d064-e1f2-4159-8f2c-a0fadefbef13.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/blade-rondo",
+    "bytes": 173107,
+    "sha256": "924fe06ffffe5b861aa3f8c2b2c1b44c1eb37bcc0e17d7ae8029e345b3e2cf38"
+  },
+  "pictell": {
+    "file": "pictell.jpg",
+    "sourceFile": "picture_b292ad7c-edac-424f-b940-7a4e5206d205.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/pictell",
+    "bytes": 28667,
+    "sha256": "6c9756dbca89efe46d066a26fc5a73f639c51be5c118bc7177de0647fba58762"
+  },
+  "word-sniper": {
+    "file": "word-sniper.jpg",
+    "sourceFile": "picture_52600334-6e94-4361-bc26-8974db82cd43.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/word-sniper",
+    "bytes": 91925,
+    "sha256": "2dab27712b56bcda45fc3504bdd4f505cd5cbb032243a355b61189ba300c9c4d"
+  },
+  "krass-kariert": {
+    "file": "krass-kariert.jpg",
+    "sourceFile": "picture_8592d72b-7e0f-46ab-abcd-d68fb6f2c42b.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/krass-kariert",
+    "bytes": 114039,
+    "sha256": "252af693afe887ccb765ef687c4ad7e03c3cc0a00cd1ae8d4d36287dca29f115"
+  },
+  "kugelblitz": {
+    "file": "kugelblitz.jpg",
+    "sourceFile": "picture_8fc1a508-54f3-42ec-9146-b8587945e44a.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/kugelblitz",
+    "bytes": 134925,
+    "sha256": "3c4a2222e3d576f9ab726288a6b93aca946e3d5705bf310e4d992c1dbfe29c47"
+  },
+  "dominion-intrigue": {
+    "file": "dominion-intrigue.jpg",
+    "sourceFile": "picture_fddb86fb-1717-42b0-a319-d1fa823a25e5.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dominion-intrigue",
+    "bytes": 98007,
+    "sha256": "bf487e2c10b343636f5d731885548d4cd674a627194a61850a40a4bed38c2a31"
+  },
+  "bob-jiten-3": {
+    "file": "bob-jiten-3.jpg",
+    "sourceFile": "picture_138f674f-3564-4e36-b5aa-c16b8eecc4c5.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/bob-jiten-3",
+    "bytes": 84277,
+    "sha256": "3d09ef13b0168198c82ee6db7761406b6b827c1e9de2dd7659aaa8ded357ca2a"
+  },
+  "targi": {
+    "file": "targi.jpg",
+    "sourceFile": "picture_8314b6d0-ad31-404f-a1ca-5029e5e8486b.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/targi",
+    "bytes": 86128,
+    "sha256": "04cc10cb175a2cc5b6168e275791334232825f81cf07dd4192aafd51fbf0a5e3"
+  },
+  "tzolkin-the-mayan-calendar": {
+    "file": "tzolkin-the-mayan-calendar.jpg",
+    "sourceFile": "picture_52fb4286-c1ac-4a12-904c-c4a4fb2d6df7.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/tzolkin-the-mayan-calendar",
+    "bytes": 172367,
+    "sha256": "225d5ffc15a895f277b4b6c213882c646d8d2cf1f3ae7c4d472cc9f319cdf723"
+  },
+  "texas-showdown": {
+    "file": "texas-showdown.jpg",
+    "sourceFile": "picture_2744dd35-72b4-4bff-941b-1a01421b3ce6.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/texas-showdown",
+    "bytes": 139021,
+    "sha256": "aa55bb36146adda23d2c7e7eedcf8bcd7f5de94526b0647982115548054a6e3f"
+  },
+  "mancala": {
+    "file": "mancala.jpg",
+    "sourceFile": "mancala3.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/mancala",
+    "bytes": 42127,
+    "sha256": "a9ab4fb667becd8f1e4be611b6069cf6080c9ac20f633a945618dd2327b7d19c"
+  },
+  "sticky-chameleons": {
+    "file": "sticky-chameleons.jpg",
+    "sourceFile": "picture_10a87f91-34f2-4343-afc0-e40ea079c178.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/sticky-chameleons",
+    "bytes": 119116,
+    "sha256": "b79af4ddc5597793c4c9985ad5977a7a8361d4e5bff3975f02420f2512c8ba38"
+  },
+  "we-didnt-playtest-this-either": {
+    "file": "we-didnt-playtest-this-either.jpg",
+    "sourceFile": "picture_9e92db39-0bc0-4127-a88e-6a7bd994a7e0.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/we-didnt-playtest-this-either",
+    "bytes": 46109,
+    "sha256": "f80534a193857e82e77c031473ca16fac21dbe20cbd9eead3a2ac629b55897ce"
+  },
+  "agricola-all-creatures-big-and-small": {
+    "file": "agricola-all-creatures-big-and-small.jpg",
+    "sourceFile": "agricola-all-creatures-big-and-small2.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/agricola-all-creatures-big-and-small",
+    "bytes": 79146,
+    "sha256": "67ada996d897522f062f501ddfac4de408cfca03c0e8f921b3217bd8f93c531f"
+  },
+  "agricola": {
+    "file": "agricola.jpg",
+    "sourceFile": "agricola-2.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/agricola",
+    "bytes": 94461,
+    "sha256": "64d024720dc0ad7296403adc1c39a81522efdd9f9b19202611ad675783462e88"
+  },
+  "encyclopaedist": {
+    "file": "encyclopaedist.jpg",
+    "sourceFile": "picture_9875dd4b-9411-4d8d-b894-f3c89a6ee460.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/encyclopaedist",
+    "bytes": 94240,
+    "sha256": "f5d34f409c8d1f7d466b482423ee31d2cb9209a64c688dba4d54f665272cdad1"
+  },
+  "bob-jiten-kids": {
+    "file": "bob-jiten-kids.jpg",
+    "sourceFile": "picture_949784b3-09ab-4a6c-9808-67b4de6afd45.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/bob-jiten-kids",
+    "bytes": 101356,
+    "sha256": "624728fe79543d50da0d6b5a671695b842509bfd0d3975468594429e066a486a"
+  },
+  "azul": {
+    "file": "azul.jpg",
+    "sourceFile": "picture_f1858e77-7867-4d37-9b90-67cb9548d22e.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/azul",
+    "bytes": 200061,
+    "sha256": "ef0a77790b32e4d27396e204aa0abd62b2f9b8afb383626daf9ad74c0e9b5067"
+  },
+  "sagrada": {
+    "file": "sagrada.png",
+    "sourceFile": "picture_729a7167-1ce4-4232-ae75-4b5378efacff.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/sagrada",
+    "bytes": 1332226,
+    "sha256": "392cee0ff054312a80dd2bc3564cb0398a59b493ed4e878726ba015940d62a53"
+  },
+  "xe-queo": {
+    "file": "xe-queo.jpg",
+    "sourceFile": "picture_b058417a-661d-41d3-9eb4-cdecd79e0a48.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/xe-queo",
+    "bytes": 70381,
+    "sha256": "4d5973276c3ee7263d164c3f3ada58526adda5954c7fedeb03d4822eeb567475"
+  },
+  "scythe": {
+    "file": "scythe.jpg",
+    "sourceFile": "picture_868b38ad-f427-40a0-b4d1-645c78fc204b.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/scythe",
+    "bytes": 72625,
+    "sha256": "04c8e1148ccb80f847080746e2aaee2b2512acaaad76c134b9d940fd82541125"
+  },
+  "not-alone": {
+    "file": "not-alone.jpg",
+    "sourceFile": "picture_4c7ab16a-75b5-4f95-9c04-e6f9d6b7ba95.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/not-alone",
+    "bytes": 197499,
+    "sha256": "9f9d53c3bc100f4231292d9480734d25481e362a5fa7dfeb65f45a778c6e1b26"
+  },
+  "codenames-duet": {
+    "file": "codenames-duet.jpg",
+    "sourceFile": "picture_73218540-32d4-451b-b3f5-d8df29dba0a7.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/codenames-duet",
+    "bytes": 73841,
+    "sha256": "f599d5a0c1971473895389d3c4b477681a3a3d0afa5d8c7de6e573818a215953"
+  },
+  "schttels": {
+    "file": "schttels.jpg",
+    "sourceFile": "picture_24a6fc8e-0971-4792-b60e-f04ed754e745.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/schttels",
+    "bytes": 184563,
+    "sha256": "146d8f52735cae8044f1fff496d0550e2204e5d7e31507b8273ba8b71a88309b"
+  },
+  "monster-maker": {
+    "file": "monster-maker.jpg",
+    "sourceFile": "picture_e75fca48-ce17-415f-a7ba-937f2cacb290.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/monster-maker",
+    "bytes": 109857,
+    "sha256": "9ba9b700685cb8bc4141f0d9289d3c106fe71f784792e40032c0d3817c184c0c"
+  },
+  "domaine": {
+    "file": "domaine.jpg",
+    "sourceFile": "picture_11cbb4ee-f0cf-40c3-9631-0326259a0b1c.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/domaine",
+    "bytes": 99196,
+    "sha256": "b8896788de3bea2fd610afc2a99bd26a8f093f4b710915aaed123b3e99aae0cb"
+  },
+  "jinsei-2016-ver": {
+    "file": "jinsei-2016-ver.jpg",
+    "sourceFile": "picture_836147c2-2330-4527-aeb5-af5d69a8bc61.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/jinsei-2016-ver",
+    "bytes": 132666,
+    "sha256": "3124a40bb87e08db2d141103f363d36b8635e43d4cfb9d1104be6c5a0fca4acc"
+  },
+  "vabanque": {
+    "file": "vabanque.jpg",
+    "sourceFile": "picture_c0f2bab3-9277-4e98-bcc1-ddb2d71943b2.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/vabanque",
+    "bytes": 95302,
+    "sha256": "f9f0783587c9d5ba586c3fc22b95b5d002e1ab3a5536cb727df8b5a74ab3c1e8"
+  },
+  "match-me": {
+    "file": "match-me.png",
+    "sourceFile": "picture_4e5d2a68-7b83-4bbb-81da-9f07ea4e4a75.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/match-me",
+    "bytes": 561150,
+    "sha256": "8d57a6d73bb523eba9d26bd7c07ba19660648bfb9ece4895aedfa48a626c9fd8"
+  },
+  "sankt-petersburg-2nd-edition": {
+    "file": "sankt-petersburg-2nd-edition.jpg",
+    "sourceFile": "picture_fe21cfc3-96d7-46cb-a965-c0db72504879.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/sankt-petersburg-2nd-edition",
+    "bytes": 214823,
+    "sha256": "70be0bc5a16464fb80480a6a63e351954c421c74e593856434f0c4fe356b015a"
+  },
+  "saboteur": {
+    "file": "saboteur.jpg",
+    "sourceFile": "picture_cbd3c428-b886-47c0-869a-1d52ab9a428b.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/saboteur",
+    "bytes": 187286,
+    "sha256": "7649d29745f0ff6907e6559d126562572148be273a3529613279e6a18012783c"
+  },
+  "nuggets": {
+    "file": "nuggets.jpg",
+    "sourceFile": "picture_9a99af64-49bf-4d47-baf3-3749196eaf07.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/nuggets",
+    "bytes": 69174,
+    "sha256": "0f62979ce25f38302a7e18173bd997de0e57a2dd36d1e83545ae37840cc30e08"
+  },
+  "cluedo": {
+    "file": "cluedo.jpg",
+    "sourceFile": "picture_1fc08399-8f0a-44ba-b462-88f885780766.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/cluedo",
+    "bytes": 80392,
+    "sha256": "889032372793a993db6b31bde09cc6586987a185c0f930daef6299d067ae7a0e"
+  },
+  "caverna-hohle-gegen-hohle": {
+    "file": "caverna-hohle-gegen-hohle.jpg",
+    "sourceFile": "picture_b906b215-ecb0-4e97-90b8-cb7f942a3942.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/caverna-hohle-gegen-hohle",
+    "bytes": 140337,
+    "sha256": "828114745fcfde52e7eadd7f0e9c4542afb931359a5e617b3c7d7de0512c43fe"
+  },
+  "bob-jiten": {
+    "file": "bob-jiten.jpg",
+    "sourceFile": "picture_31f5ee3a-34e7-461d-8700-0ac525cef58b.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/bob-jiten",
+    "bytes": 112693,
+    "sha256": "084657c75d111a4d5f09eae8d3857e18b1da075c3d18bc8cf6b24199e7555ef6"
+  },
+  "bob-jiten-2": {
+    "file": "bob-jiten-2.jpg",
+    "sourceFile": "picture_7d598242-6bb1-438d-b712-899f503f724e.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/bob-jiten-2",
+    "bytes": 168964,
+    "sha256": "fca856c15a6253dce70e7b760a291dca9e332425208917a16760c251618daa1f"
+  },
+  "fabled-fruit": {
+    "file": "fabled-fruit.jpg",
+    "sourceFile": "picture_382cda8a-4db3-4da6-b67b-6121dc8462a0.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/fabled-fruit",
+    "bytes": 222584,
+    "sha256": "d1076a1ae2e89318f6c148dd7a5927016859722a2dd3e836645a38033bf6a109"
+  },
+  "crush-ice": {
+    "file": "crush-ice.jpg",
+    "sourceFile": "picture_96173296-6a84-48d9-a1f4-3bd1d0fd6c75.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/crush-ice",
+    "bytes": 112400,
+    "sha256": "4993fe20a35aabab5c23ee956673fc21895ac061a568c08df56bf4bd8f8ffd12"
+  },
+  "nmbr-9": {
+    "file": "nmbr-9.jpg",
+    "sourceFile": "picture_ac92366c-5be5-4538-9523-e205bc36009c.jpg-large",
+    "sourceUrl": "https://bodoge.hoobby.net/games/nmbr-9",
+    "bytes": 67564,
+    "sha256": "e1dcba4d17409c35bc62d93dd840a2aa4d792961d8f9dc556e984d3814b9ba03"
+  },
+  "mountains-madness": {
+    "file": "mountains-madness.jpg",
+    "sourceFile": "picture_76d97a6d-a704-4737-bd43-58d6dfb85cef.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/mountains-madness",
+    "bytes": 90240,
+    "sha256": "6098320385994c69a70b43232a8b1b7088a3c8123e50058f9f251267541b85c2"
+  },
+  "hanamikoji": {
+    "file": "hanamikoji.jpg",
+    "sourceFile": "picture_901ba0e2-5409-4d67-922d-49010cc94235.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/hanamikoji",
+    "bytes": 249032,
+    "sha256": "a2bec46a40c4ab5ba9aa57088e8bc0ea68cc8c7b1baa6c154b1ed4ebd9baa9ec"
+  },
+  "we-didnt-playtest-this-at-all": {
+    "file": "we-didnt-playtest-this-at-all.jpg",
+    "sourceFile": "picture_4bceb620-ba21-4cbd-8505-90d4967a05cb.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/we-didnt-playtest-this-at-all",
+    "bytes": 39944,
+    "sha256": "90a197f6403d18ae2380ea680601b9444011b1bcd010cbc187966cbb7a7c45a2"
+  },
+  "bunny-kingdom": {
+    "file": "bunny-kingdom.jpg",
+    "sourceFile": "picture_0dda8e5f-e4e6-4f37-868e-925a34212042.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/bunny-kingdom",
+    "bytes": 115222,
+    "sha256": "f6e9381d754024f2b48ca9d556e753398dca1dd72e13f470bc30102c99dfc888"
+  },
+  "terraforming-mars": {
+    "file": "terraforming-mars.jpg",
+    "sourceFile": "picture_54e881df-ed6a-4865-8f08-290676842639.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/terraforming-mars",
+    "bytes": 141824,
+    "sha256": "fe7fa9367a8cbb01cc828ef0f5f45663d5953f80bef409b5a269b15d15bf0bcf"
+  },
+  "zero": {
+    "file": "zero.jpg",
+    "sourceFile": "picture_d5084db3-b078-45d8-9ab7-e7612980e0c8.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/zero",
+    "bytes": 34027,
+    "sha256": "4c1f603e50cf054e7078d0863fc1860a1505641058400d44ea3fb2cea22bb997"
+  },
+  "one-night-werewolf": {
+    "file": "one-night-werewolf.jpg",
+    "sourceFile": "picture_5759b04d-453d-4d5f-b1de-aefa75f35d9b.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/one-night-werewolf",
+    "bytes": 69813,
+    "sha256": "9f3dccd7bca7e3dc69e1776bfb98e37fbaac1174391a427e62c95d2d9ccf4fe2"
+  },
+  "cities-splendor": {
+    "file": "cities-splendor.png",
+    "sourceFile": "picture_4325b73a-938a-44d9-b77c-628042b5d496.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/cities-splendor",
+    "bytes": 691467,
+    "sha256": "d44c60e4495c96959cd3e7ba3ea4cb28cfdc5cf5ebb75b49bf18d5a37e9278a3"
+  },
+  "splendor": {
+    "file": "splendor.jpg",
+    "sourceFile": "picture_c56edf2c-3f61-478b-8e85-24fc268e2c84.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/splendor",
+    "bytes": 89038,
+    "sha256": "33e40651d063cf8faa7f6cc31fce7a6c1e7ca1d3b33707eb94b552b37195ed09"
+  },
+  "gift-trap": {
+    "file": "gift-trap.jpg",
+    "sourceFile": "picture_90488808-5825-45c1-b563-f58eddccaf94.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/gift-trap",
+    "bytes": 118277,
+    "sha256": "6f3dbc2770585510653712e2814f13f602d9f3134b4b5d3cc1622d27d01ec2ca"
+  },
+  "notre-dame-10th-anniversary": {
+    "file": "notre-dame-10th-anniversary.jpg",
+    "sourceFile": "picture_f29c7f29-ab27-44a3-a3ca-6bc713f8ee31.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/notre-dame-10th-anniversary",
+    "bytes": 235628,
+    "sha256": "105c829d5f5a93d61f5b85200a112e7653b49f651256146c3295ecebd2237477"
+  },
+  "aber-bitte-mit-sahne": {
+    "file": "aber-bitte-mit-sahne.jpg",
+    "sourceFile": "picture_86a758ec-3d2c-4b97-b6c2-03ca7267aedf.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/aber-bitte-mit-sahne",
+    "bytes": 222097,
+    "sha256": "be781f2bc03f8656681dadb74bc52fe8f7761919b8e20ecd7e0dfb9bb07b90ef"
+  },
+  "wie-ich-die-welt-sehe": {
+    "file": "wie-ich-die-welt-sehe.jpg",
+    "sourceFile": "picture_2e2bb23f-4c46-42b3-860e-0cc779a9229f.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/wie-ich-die-welt-sehe",
+    "bytes": 116290,
+    "sha256": "9ccd853e0c97a3538bed366731a91509bba55889249bd7009a2ca72d0e0bc186"
+  },
+  "decrocher-la-lune": {
+    "file": "decrocher-la-lune.png",
+    "sourceFile": "picture_91c69dd6-a763-47e6-99d7-11fa107884fe.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/decrocher-la-lune",
+    "bytes": 1447922,
+    "sha256": "4b88c888269420aebe080d6a4fbb721ed2be2adf272a178ecc7eda1b657aaaf9"
+  },
+  "clank": {
+    "file": "clank.jpg",
+    "sourceFile": "picture_c1ddcb39-5182-4145-9f61-1286ea53126d.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/clank",
+    "bytes": 134797,
+    "sha256": "078be65a91277d7ef5e5162192f047ade5318b9b0ae4e2f60bcd4b39b01a84df"
+  },
+  "tokyo-highway": {
+    "file": "tokyo-highway.jpg",
+    "sourceFile": "picture_a7e21ac9-38d4-41be-8099-2add416c2671.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/tokyo-highway",
+    "bytes": 39612,
+    "sha256": "00505ea27c28e21a5b5764a6f217a1de628ccda18669dd5957ac4a8a08ac3af4"
+  },
+  "century-spice-road": {
+    "file": "century-spice-road.jpg",
+    "sourceFile": "picture_0647ffbf-7d96-4da7-89f5-04d9ee86a721.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/century-spice-road",
+    "bytes": 111771,
+    "sha256": "61778516214b9db338dbf419bc42138378c6afbbea17148f4f72b5631221d339"
+  },
+  "shephy": {
+    "file": "shephy.jpg",
+    "sourceFile": "shephy1.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/shephy",
+    "bytes": 39850,
+    "sha256": "5202f430dee72da59fbe2fcb0e66acecb30b9e3d9d93f36f1a780ee7ccaff327"
+  },
+  "der-elefant-im-porzellanladen": {
+    "file": "der-elefant-im-porzellanladen.jpg",
+    "sourceFile": "picture_b8a80085-538f-4009-a0e7-bea687b4617e.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/der-elefant-im-porzellanladen",
+    "bytes": 41053,
+    "sha256": "43ef15404b139e727b1cde8a40d029d83735294ef8ed6398d1e3cddfe201ee0a"
+  },
+  "zack-and-pack": {
+    "file": "zack-and-pack.jpg",
+    "sourceFile": "picture_e1fa22ef-3bbc-4008-9b92-a3a37f9b37f6.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/zack-and-pack",
+    "bytes": 133478,
+    "sha256": "e623a1a182fd171f901ea2ff5dab19b340ae63b4de6fe25afbc85497f2a0d6cb"
+  },
+  "l-tiles": {
+    "file": "l-tiles.jpg",
+    "sourceFile": "picture_d6fbe3aa-21fe-47fd-990f-d01fe9c2f556.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/l-tiles",
+    "bytes": 119631,
+    "sha256": "e1974ec5dc5cc5364b1b5377d208682f41d062346b872b34ce57136354425fcc"
+  },
+  "hounded": {
+    "file": "hounded.jpg",
+    "sourceFile": "picture_c5c38acf-40d7-48fa-b29b-78465c7c73ed.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/hounded",
+    "bytes": 57080,
+    "sha256": "f2197dce0e799b63436f90c4f1faa033008f15d1e62fd040a42e36bbe06838f5"
+  },
+  "nyanto-man-kore-nyanda": {
+    "file": "nyanto-man-kore-nyanda.jpg",
+    "sourceFile": "picture_dc29b29f-7d60-4d40-9dbb-556acfd2f0a7.JPG",
+    "sourceUrl": "https://bodoge.hoobby.net/games/nyanto-man-kore-nyanda",
+    "bytes": 65638,
+    "sha256": "cb3b45cff68a2899485ef1d7cef8d41a0ac4953417cba658f581cb60cc6a11e7"
+  },
+  "zitternix": {
+    "file": "zitternix.jpg",
+    "sourceFile": "picture_ef457097-36ee-42a4-a0bd-b5388ee4392e.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/zitternix",
+    "bytes": 81340,
+    "sha256": "482e9faa365e9ca76578eaab4cbbd7165578e42af6c3898a0f8bfe8356957147"
+  },
+  "team-play": {
+    "file": "team-play.jpg",
+    "sourceFile": "picture_4b9ac3fa-f982-45c8-b162-085eea2aa8a2.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/team-play",
+    "bytes": 107555,
+    "sha256": "0abf3bf1a9e8ff935508e62e2fc07da02e5a8230ddf9ebe8bf3f5f2b31a0cbc6"
+  },
+  "take-it-easy": {
+    "file": "take-it-easy.jpg",
+    "sourceFile": "picture_b2eb785c-18eb-4694-a619-1d06aa59f465.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/take-it-easy",
+    "bytes": 94678,
+    "sha256": "2485fe23bccb9a68ba16b648333f8a5cb568bc5cf409e14a2ad7cb6e84e8681b"
+  },
+  "set": {
+    "file": "set.jpg",
+    "sourceFile": "picture_6fbe5ca9-0a03-4291-b6a6-803e9a8ad381.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/set",
+    "bytes": 95858,
+    "sha256": "b2532116247797f3ed86a9acf1d5e8ff72769411d5f892087a6fa513fe57368e"
+  },
+  "rrr": {
+    "file": "rrr.jpg",
+    "sourceFile": "picture_f392db76-e533-4404-a4ee-623408269709.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/rrr",
+    "bytes": 117720,
+    "sha256": "2334fff1377a04a5331cc4b0234a532083c5dca5f8da2bbc17b61096602be355"
+  },
+  "recurrring": {
+    "file": "recurrring.jpg",
+    "sourceFile": "picture_b78882f2-97aa-439d-a40b-7b7c10d713ac.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/recurrring",
+    "bytes": 171118,
+    "sha256": "4f42c351546a4afc5ec26214ae53be5235a18b5098f332922b0d192fb3887414"
+  },
+  "ra": {
+    "file": "ra.jpg",
+    "sourceFile": "picture_bb5f0b7e-6827-4dfb-92ea-a3caba835864.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/ra",
+    "bytes": 230450,
+    "sha256": "c8132b7bf7f8040fa9d7501496e3767002753399df475c5154388582d30b949f"
+  },
+  "painter-detective": {
+    "file": "painter-detective.jpg",
+    "sourceFile": "picture_f795b708-bc31-488a-98c7-d939e4a8a025.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/painter-detective",
+    "bytes": 178432,
+    "sha256": "397e4dd06bf2bf107d48752bf5699c425ec6f0b506c30e9cef9ea11d4e20329b"
+  },
+  "gangsi": {
+    "file": "gangsi.jpg",
+    "sourceFile": "picture_fbb53ab1-cb2c-4c5c-8613-aa79d702537c.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/gangsi",
+    "bytes": 130802,
+    "sha256": "7dffa843e89d0ce33f9ab64d2c6625b18b0a13269642472267bbad8ddc2b5c1c"
+  },
+  "dorasure": {
+    "file": "dorasure.jpg",
+    "sourceFile": "picture_33c25457-70a5-4183-a75b-b4b5c08e3b21.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dorasure",
+    "bytes": 51607,
+    "sha256": "017caa67ae220fc2c00be452800d9eaacdec3185f8e3d407107a3a62123ef6db"
+  },
+  "doodle-quest": {
+    "file": "doodle-quest.jpg",
+    "sourceFile": "picture_c2c0c2fb-1a49-4556-91a5-310f42924865.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/doodle-quest",
+    "bytes": 46110,
+    "sha256": "3e9aa6c2867d3439240f28b6e636aa10994354ece99cc63c93ea2b80994d3e55"
+  },
+  "dixit": {
+    "file": "dixit.jpg",
+    "sourceFile": "picture_8dec5f0a-bc56-4b36-a506-ea3de4107615.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dixit",
+    "bytes": 69024,
+    "sha256": "3ed153fbc79d24b6740e408181687a3322cb0c12506edc0063eb21ec4fbab454"
+  },
+  "hattari": {
+    "file": "hattari.jpg",
+    "sourceFile": "picture_9785a4ad-707a-4a06-a475-c43d3a899205.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/hattari",
+    "bytes": 56585,
+    "sha256": "fc4c4fba6587e5553d7cc792d6798a7d446bacc6affbbb883d376a58cb64d316"
+  },
+  "dancing-criminal": {
+    "file": "dancing-criminal.jpg",
+    "sourceFile": "picture_e2a8f415-4ba2-4792-b54b-3643d112426d.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dancing-criminal",
+    "bytes": 92785,
+    "sha256": "15991e5db8bb3965829d3ea80fe302ab9c3e1d0f0790ef25e4e9dd0d824e292f"
+  },
+  "know-it-all-movie-critics": {
+    "file": "know-it-all-movie-critics.jpg",
+    "sourceFile": "picture_d6f48691-088c-4050-baf1-6f9f0521bbb0.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/know-it-all-movie-critics",
+    "bytes": 84738,
+    "sha256": "d28966f556fafe27e53f1fbdf1563ba2ff6202b9919432191b62bbdb5a79352d"
+  },
+  "village": {
+    "file": "village.webp",
+    "sourceFile": "picture_41388d54-aa82-4d89-afcb-5b23c887a01e.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/village",
+    "bytes": 89856,
+    "sha256": "4f7e6aa7bcf6af80cec7eb9fbb6ac29bdd890ee78fd79739c2a304ccc85c6e74"
+  },
+  "citadels": {
+    "file": "citadels.jpg",
+    "sourceFile": "picture_1e58785e-0216-4467-8b32-348593dbeb3a.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/citadels",
+    "bytes": 217224,
+    "sha256": "64d8649f7605724802a9e3b592c70cb18a45538ebe472fd025a924ca59150d6d"
+  },
+  "hoshi-wo-wataru": {
+    "file": "hoshi-wo-wataru.jpg",
+    "sourceFile": "picture_1cab0124-fc11-4269-acf9-43156c04fd7e.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/hoshi-wo-wataru",
+    "bytes": 38032,
+    "sha256": "2ac7fdf41a63a34d35228c37b3c44253310d0c07ff4f7e828bf040b4bd03b849"
+  },
+  "funkenschlag-deluxe-europa-nordamerika": {
+    "file": "funkenschlag-deluxe-europa-nordamerika.jpg",
+    "sourceFile": "picture_2e10d17c-7c99-4a99-8a1e-1cc9aa74f269.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/funkenschlag-deluxe-europa-nordamerika",
+    "bytes": 145700,
+    "sha256": "e3b655ee863b5d2d743053b13f69e003507044167ccff22ea92e0d3e8a876234"
+  },
+  "king-of-toky-renewal": {
+    "file": "king-of-toky-renewal.jpg",
+    "sourceFile": "picture_2702e8dd-c546-4e15-bdc7-8e6247ffae0f.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/king-of-toky-renewal",
+    "bytes": 115066,
+    "sha256": "8ae171ceb0a0e4442acce318fd0aa67fd40a8c6b5ec837a84556afb0af0570cf"
+  },
+  "caru-uta": {
+    "file": "caru-uta.png",
+    "sourceFile": "picture_5ce976fc-2fd6-4fd0-aca7-c02dbacfcde0.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/caru-uta",
+    "bytes": 362407,
+    "sha256": "3713758f339680c71213097b9f274ac8c80292290807391a4b82952c310978c2"
+  },
+  "pyramids-deadline": {
+    "file": "pyramids-deadline.png",
+    "sourceFile": "picture_d3be6cac-22e1-48c3-bd67-b403ea8d9e5a.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/pyramids-deadline",
+    "bytes": 562743,
+    "sha256": "c646d355a4dcaf87be3d60fd47ae2a88b05007ba1daf4ef9604d9a4734d3279b"
+  },
+  "fuenf-gurken": {
+    "file": "fuenf-gurken.jpg",
+    "sourceFile": "fuenf-gurken2.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/fuenf-gurken",
+    "bytes": 100238,
+    "sha256": "ea6485581f48d40b270028654b0b839fd9ace3de472fde05e920a647faee8f52"
+  },
+  "stone-garden": {
+    "file": "stone-garden.jpg",
+    "sourceFile": "picture_836d5f4d-8cbd-4c6c-b59f-45d43654e0da.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/stone-garden",
+    "bytes": 76221,
+    "sha256": "48a4695caa52155798ea60224dd3b1d15c55db8689e7394ad12e44db04af3b6f"
+  },
+  "miniville": {
+    "file": "miniville.jpg",
+    "sourceFile": "picture_046b9f25-c3b5-4c02-8c28-56273948e1d6.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/miniville",
+    "bytes": 103915,
+    "sha256": "6b6f7773bb3040610b66d579f84ef5f48d20283988bda10736aeb1b1248adc8f"
+  },
+  "deep-sea-adventure": {
+    "file": "deep-sea-adventure.jpg",
+    "sourceFile": "picture_6d463539-8212-4300-a9b9-392c7b94e9aa.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/deep-sea-adventure",
+    "bytes": 34433,
+    "sha256": "dc54542ca9dd1a0b59d9234958f36595674713550c2bcec877925bb22159c7d8"
+  },
+  "hanabi": {
+    "file": "hanabi.jpg",
+    "sourceFile": "picture_9c08b03e-3d9c-4c90-9b4e-a9f598473490.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/hanabi",
+    "bytes": 134762,
+    "sha256": "be5c3a425fa1dc5d52548af7e279bc270e641ad90e4ebbe1fa6c16b38fcb8768"
+  },
+  "gold-experience-ougon-taiken": {
+    "file": "gold-experience-ougon-taiken.jpg",
+    "sourceFile": "picture_e2d362db-15a5-4f7d-87ff-fa559e90ba3e.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/gold-experience-ougon-taiken",
+    "bytes": 93241,
+    "sha256": "192fcd534b20547292873d1cea45a8257fcc0bf0c20d7875805f40b1dadb58ec"
+  },
+  "palastgefluester": {
+    "file": "palastgefluester.jpg",
+    "sourceFile": "picture_dceed9b2-6ce9-4da9-b789-2be5901aff88.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/palastgefluester",
+    "bytes": 108074,
+    "sha256": "8a9f534752fd9a94d2fba1c2e9424fc398da84854b51ea3f445f67a5e4fef285"
+  },
+  "king-jester": {
+    "file": "king-jester.jpg",
+    "sourceFile": "picture_4dc6344f-f2ba-4dd4-875d-bd2fa301e6d5.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/king-jester",
+    "bytes": 93346,
+    "sha256": "63a7e11c0aefbe909dcf35b2e876e4d0e53a7af7a82a17c2b06dab1dbe4d2c1b"
+  },
+  "kardinal-und-koenig": {
+    "file": "kardinal-und-koenig.jpg",
+    "sourceFile": "picture_19667a9b-e201-4e8c-ac5a-e76461f12b86.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/kardinal-und-koenig",
+    "bytes": 102017,
+    "sha256": "5299dc5d03e4e14bcc26f9327fab5c0c02600de21e9bc57a15b05e1e7a7ebf89"
+  },
+  "obo-henshucho": {
+    "file": "obo-henshucho.jpg",
+    "sourceFile": "picture_f2e10e26-5a10-4869-9291-9554b3b29b8f.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/obo-henshucho",
+    "bytes": 85997,
+    "sha256": "208033c41e0db0c55b8128ae6c87622c414e3dfa4a8c8e7a21b2c7619554dd5a"
+  },
+  "viticulture": {
+    "file": "viticulture.jpg",
+    "sourceFile": "picture_cf725a25-82dd-4dae-bd2f-68755461b0a5.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/viticulture",
+    "bytes": 111744,
+    "sha256": "0e5014b38780a59487bd2f34034875fbb1175099a553e970e4df8db901c6013a"
+  },
+  "word-basket": {
+    "file": "word-basket.jpg",
+    "sourceFile": "word-basket_thumb_2.bing_en.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/word-basket",
+    "bytes": 109099,
+    "sha256": "ff759f89a1b4e57d03a75e1682bf003cc3ce8dacb83635a62cb1235c4be2eafe"
+  },
+  "lost-cities": {
+    "file": "lost-cities.jpg",
+    "sourceFile": "picture_31e4c0ea-37fe-4cce-95ed-9708ce100ad4.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/lost-cities",
+    "bytes": 126335,
+    "sha256": "46ba50a16174fe189e5185f8fd1e6034ae6f0ecd00b458a72e4aa8d3b1a70d28"
+  },
+  "rosenkoenig": {
+    "file": "rosenkoenig.jpg",
+    "sourceFile": "picture_c991e43a-1c5a-4027-a2c0-89ebc5439ff4.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/rosenkoenig",
+    "bytes": 90225,
+    "sha256": "9ebcca3b53dd82310727a7ab359291b6d8ceb76a0744b14a8e0357a65eae7d3a"
+  },
+  "recipe": {
+    "file": "recipe.jpg",
+    "sourceFile": "picture_d69ab269-d664-417b-9130-25811e84a7a1.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/recipe",
+    "bytes": 52938,
+    "sha256": "74deaab862adf1a7cbf1d5880580e25a339c6d0b0d937c52ce15686ecd508035"
+  },
+  "le-havre-der-binnenhafen": {
+    "file": "le-havre-der-binnenhafen.jpg",
+    "sourceFile": "picture_15c2cd4c-05c1-4c0a-9255-aab742910964.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/le-havre-der-binnenhafen",
+    "bytes": 105303,
+    "sha256": "ceddd553ac64dae62bca6af29d86f1e2e78bf2dca057d146c1b737d271ddf5d0"
+  },
+  "rummikub": {
+    "file": "rummikub.jpg",
+    "sourceFile": "rummikub2.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/rummikub",
+    "bytes": 62457,
+    "sha256": "e7bd2f6a46f076a750cd883652a33907aca1eae436c6cfe3085872f2d46dfcf9"
+  },
+  "love-letter": {
+    "file": "love-letter.jpg",
+    "sourceFile": "picture_c00cee2b-6dee-4e6f-8d30-a70f1871d3ec.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/love-letter",
+    "bytes": 153835,
+    "sha256": "ba36f80be55d4b84439e89de507abcf7b78d218a9ab6799193172fde2e412a47"
+  },
+  "lovecraft-letter": {
+    "file": "lovecraft-letter.jpg",
+    "sourceFile": "picture_5682b285-fc59-4d65-85c6-0ad1f08b72c8.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/lovecraft-letter",
+    "bytes": 77110,
+    "sha256": "678067be125697ed91e1cc148aa5cbc5d680c866adef6043d1b63ee801c15b6a"
+  },
+  "hamsterbacke": {
+    "file": "hamsterbacke.jpg",
+    "sourceFile": "picture_a17f3af1-b38a-4962-afd3-e423e443fe20.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/hamsterbacke",
+    "bytes": 120620,
+    "sha256": "3edfe4b0ea2dae9a0b8def7ca8a2c75478889c6011db021ecb6165a9b7523cfd"
+  },
+  "ziegen-kriegen": {
+    "file": "ziegen-kriegen.jpg",
+    "sourceFile": "picture_5f04a0d1-ad4c-4cf3-bd6b-7b9322f03988.JPG",
+    "sourceUrl": "https://bodoge.hoobby.net/games/ziegen-kriegen",
+    "bytes": 53684,
+    "sha256": "0f3fefea804ed1564d9cf0094e9b2a20ae60b49bd97b7dbb57a3c6adf6e8a8ab"
+  },
+  "modern-art": {
+    "file": "modern-art.jpg",
+    "sourceFile": "picture_ff05186a-0f74-4ae1-ade1-061f84ccedf1.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/modern-art",
+    "bytes": 97337,
+    "sha256": "8be248d51989fdc6a6549b481c31e75723c7199ddbf441cc5f5b0bcb0aebd554"
+  },
+  "mogul-2015": {
+    "file": "mogul-2015.jpg",
+    "sourceFile": "picture_cd15c6e4-f833-40d9-9da0-c27ab460a7ce.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/mogul-2015",
+    "bytes": 83639,
+    "sha256": "59b7943d290c59a4b196bbc9678eb822724726e0b4b38b2ab7b997d07aa981cd"
+  },
+  "misohitosaji-teishok": {
+    "file": "misohitosaji-teishok.png",
+    "sourceFile": "picture_f9959242-f569-43b7-90f1-f0775cd3ed54.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/misohitosaji-teishok",
+    "bytes": 879044,
+    "sha256": "27063587f0577973f2366f836fcd4393503582733c9c52fd0de255cd43723efc"
+  },
+  "the-voyages-of-marco-polo": {
+    "file": "the-voyages-of-marco-polo.jpg",
+    "sourceFile": "picture_2ee318fa-c09d-46e3-9da5-ee346d9c6aa3.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/the-voyages-of-marco-polo",
+    "bytes": 169584,
+    "sha256": "7484654d56969985df0cf09186d39edbe0bfaf5bf7af12b3a0d7132ae10020dc"
+  },
+  "bora-bora": {
+    "file": "bora-bora.jpg",
+    "sourceFile": "picture_715a0bc9-9066-400a-b95c-f65fb5576cdf.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/bora-bora",
+    "bytes": 173113,
+    "sha256": "431dad7dbcce8911b77fad41d32ea294894e5e5e5e2f55fdaf282ff1552bd3d2"
+  },
+  "homero": {
+    "file": "homero.jpg",
+    "sourceFile": "picture_75975ca2-6a77-4d8b-a8a9-9ab371353698.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/homero",
+    "bytes": 42768,
+    "sha256": "302eef487d2d15ead29d160f228a4688876a97d8c54a01f87b0597b38e20500f"
+  },
+  "bohnanza": {
+    "file": "bohnanza.jpg",
+    "sourceFile": "bohnanza_thumb_1.bing_boardgame.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/bohnanza",
+    "bytes": 211360,
+    "sha256": "7aed719add749d4777d21ea28bd843055141e065d6837a6a787412b4f9f8f067"
+  },
+  "potion-explosion": {
+    "file": "potion-explosion.jpg",
+    "sourceFile": "picture_ff39814f-b687-4a5d-b545-42f80816c114.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/potion-explosion",
+    "bytes": 172775,
+    "sha256": "22378bc9f649633459a521e4703d9fbd11c94d4d054bb2188714d5c0863ef0ea"
+  },
+  "pingu-party": {
+    "file": "pingu-party.jpg",
+    "sourceFile": "picture_35a299ab-dab4-4e16-bd66-d447d8393486.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/pingu-party",
+    "bytes": 202174,
+    "sha256": "3326e6560fac2d7f745f60fd4a262b3fd5ab490250b1ee7397df2a337c031c25"
+  },
+  "petomis": {
+    "file": "petomis.jpg",
+    "sourceFile": "picture_0b96a6be-8902-4736-a05b-ddf1871da5cb.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/petomis",
+    "bytes": 75945,
+    "sha256": "bbb6122281d8ced46e99f9a7ff2ed5299d7dfdd55bd5a744f9aa890e7fa81fbb"
+  },
+  "pepper": {
+    "file": "pepper.jpg",
+    "sourceFile": "picture_9db77c84-433d-4104-90c5-89e966075845.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/pepper",
+    "bytes": 69881,
+    "sha256": "f29f47365536fefc83de3ec80e2bc08e4f3f685b9197a728f6598f50edefab44"
+  },
+  "blokus-trigon": {
+    "file": "blokus-trigon.jpg",
+    "sourceFile": "picture_48715800-e51c-475c-8621-8f363f4c4f60.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/blokus-trigon",
+    "bytes": 114919,
+    "sha256": "d079f7c58a4d862f5b340ba607c9ee9c8277f4a023c993a88792f985d0e37bfc"
+  },
+  "blokus": {
+    "file": "blokus.jpg",
+    "sourceFile": "picture_ac71eb20-cd24-4b59-8de7-675256ed15f4.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/blokus",
+    "bytes": 54211,
+    "sha256": "024c169a0c5c87399fded1e1e3b9c38dab9e095f89ce5694dd7ea5e8944e7652"
+  },
+  "bluff": {
+    "file": "bluff.jpg",
+    "sourceFile": "picture_32e8aad4-9c7e-4c5e-8ffc-2655e401e62d.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/bluff",
+    "bytes": 100579,
+    "sha256": "a8280ad8b0ed1046d43fe050f44f9994bd4e513b2a12d5fffbc19f42d8976a11"
+  },
+  "bloody-inn": {
+    "file": "bloody-inn.jpg",
+    "sourceFile": "picture_70ab972e-5dbb-4f8a-be9e-6434433e7314.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/bloody-inn",
+    "bytes": 201887,
+    "sha256": "2a0963636b551ba7ec3580eeee51b79e58d27fe9cb594b07609c86287988119a"
+  },
+  "black-stories": {
+    "file": "black-stories.jpg",
+    "sourceFile": "picture_cdb2b642-afdf-45ab-a141-e73d01a0cd0f.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/black-stories",
+    "bytes": 68732,
+    "sha256": "e82646e421ad616f0bc0a8b09fb605ddf02547fff44304bba02d48a1ad2e2272"
+  },
+  "land-unter": {
+    "file": "land-unter.jpg",
+    "sourceFile": "picture_1d2678a2-e8dd-4957-b339-85c8e44c3cf3.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/land-unter",
+    "bytes": 95212,
+    "sha256": "4d1105f6dfcfe4723aeafa386bb62b285d46e9c0cfddaa551edb5e3eea03a655"
+  },
+  "forum-romanum": {
+    "file": "forum-romanum.jpg",
+    "sourceFile": "picture_800be092-16ef-4988-b887-81596327cd30.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/forum-romanum",
+    "bytes": 101663,
+    "sha256": "4dba56f5ea56502c21288952414fd15c938cc2b0f3ed4b6fc4f77931ae5242fb"
+  },
+  "fab-fib": {
+    "file": "fab-fib.jpg",
+    "sourceFile": "picture_b0314483-549a-4e77-9b2e-75c06e13285d.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/fab-fib",
+    "bytes": 56398,
+    "sha256": "3e0e96210e8ad5c1d0113a5b1f6ec9ce29580d6563a5365099124443318567fb"
+  },
+  "pig-10": {
+    "file": "pig-10.jpg",
+    "sourceFile": "picture_88c83525-7d37-420a-9628-e3e032099f2e.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/pig-10",
+    "bytes": 139461,
+    "sha256": "8c4b1dd7bae818a2311fadc7a6b5f05e8ee20e25e67e666931f3950983c9000b"
+  },
+  "the-big-cheese": {
+    "file": "the-big-cheese.jpg",
+    "sourceFile": "picture_f5099c7f-283a-4291-a1fc-fd206d7d1092.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/the-big-cheese",
+    "bytes": 143318,
+    "sha256": "49fecb3d86ed665026bf2357cfc8264e7792405f82795640551575c80085c7ac"
+  },
+  "pandemic-the-cure": {
+    "file": "pandemic-the-cure.jpg",
+    "sourceFile": "picture_b643bb24-1ef0-4ea5-8c57-74a452935219.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/pandemic-the-cure",
+    "bytes": 171472,
+    "sha256": "da29c3fe3212718aa4e2030025c3a18abcab6391ea5cd516da477fbd3a61bd95"
+  },
+  "hands": {
+    "file": "hands.png",
+    "sourceFile": "picture_a09bfffb-0686-46e1-9c65-72878220183d.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/hands",
+    "bytes": 301211,
+    "sha256": "b04b9901739547e0e859c9b1dce19bec5300f928657325f7da04f6f2fa1dc94e"
+  },
+  "vanuatu": {
+    "file": "vanuatu.jpg",
+    "sourceFile": "picture_da42653f-3296-42ab-af70-d4c933249af2.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/vanuatu",
+    "bytes": 101797,
+    "sha256": "d4ae8a76ba02116a7a8f4e4de8cdd84cee200291bdfedfce2e7150825482131b"
+  },
+  "battle-line": {
+    "file": "battle-line.jpg",
+    "sourceFile": "picture_d2713af1-45bb-4f3f-bfcb-3a40d059c061.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/battle-line",
+    "bytes": 137436,
+    "sha256": "9c93c2d7febebedeccf14af5679ac16b880e44168581dd2d452526f29b3798bc"
+  },
+  "patchwork": {
+    "file": "patchwork.jpg",
+    "sourceFile": "patchwork2.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/patchwork",
+    "bytes": 71750,
+    "sha256": "50663e53a1a92bf6a0283a61f38aa8b536263810a2b567b67cc2408303f032a6"
+  },
+  "basari": {
+    "file": "basari.jpg",
+    "sourceFile": "picture_c357b41f-e00e-44a0-adac-35abf105b508.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/basari",
+    "bytes": 150307,
+    "sha256": "bfd370415045b7fa7ef1b45eecf2fb9aa354f90a0bf10aa83826a7f96231fb78"
+  },
+  "hakoonna": {
+    "file": "hakoonna.png",
+    "sourceFile": "picture_37feb54f-c0d9-4073-bbf4-20084e65b811.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/hakoonna",
+    "bytes": 964157,
+    "sha256": "71e7c2383d5bfcf5a522bc201849dae4bc4673297f4cdaed4e4a1b5b866400e6"
+  },
+  "hols-der-geier": {
+    "file": "hols-der-geier.jpg",
+    "sourceFile": "hols-der-geier_thumb_1.bing_boardgame.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/hols-der-geier",
+    "bytes": 128669,
+    "sha256": "060c67413a0be79f82eead044fd92aeeb3bb79c825a320f707890bebc62b7ec6"
+  },
+  "heart-of-crown": {
+    "file": "heart-of-crown.jpg",
+    "sourceFile": "picture_78b656bc-a6c3-415b-936f-b70268b770b9.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/heart-of-crown",
+    "bytes": 121948,
+    "sha256": "4595aaefdd64c7e18d7c98396e6585540f487fda650f23c7ff75d58603367d02"
+  },
+  "heart-crown-fairy-garden": {
+    "file": "heart-crown-fairy-garden.jpg",
+    "sourceFile": "picture_7f91d6e9-d8ea-4127-93c6-b461535b2bdb.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/heart-crown-fairy-garden",
+    "bytes": 120461,
+    "sha256": "ba57fad984bd9f45a63d7824cfa91124aa6c94e7e2b05514803db0bcfde81665"
+  },
+  "neu": {
+    "file": "neu.jpg",
+    "sourceFile": "picture_fa579e32-3018-432b-b8e7-8df4ad0a06b6.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/neu",
+    "bytes": 48098,
+    "sha256": "466f837f2729a2924e3dc6589f0f1fdf73a029d9b6105ed63fdd6a958c8bb21d"
+  },
+  "6-nimmt": {
+    "file": "6-nimmt.jpg",
+    "sourceFile": "picture_223cfea0-36a5-4041-912f-1bf086330158.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/6-nimmt",
+    "bytes": 114206,
+    "sha256": "a6b605c68d9757b094711c16270a81f86d95655a82d3f9186dffc58173ecce41"
+  },
+  "toddles-bobbles-white": {
+    "file": "toddles-bobbles-white.jpg",
+    "sourceFile": "picture_b4553415-d50a-4bc4-8a56-742238d97907.JPG",
+    "sourceUrl": "https://bodoge.hoobby.net/games/toddles-bobbles-white",
+    "bytes": 84836,
+    "sha256": "5cbd3586995c73dd3424a3b09880c8b3b0a6bbfbb873eb2f19aacc0ec167ad1b"
+  },
+  "7-prediction": {
+    "file": "7-prediction.jpg",
+    "sourceFile": "picture_262e4e5c-d297-4aa3-81a6-35011147c08e.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/7-prediction",
+    "bytes": 225086,
+    "sha256": "d28f504d95e39702806af1c891f9ceafde75f79deea1e1614df6ade75e233389"
+  },
+  "national-economy": {
+    "file": "national-economy.jpg",
+    "sourceFile": "picture_76ac34c6-08d3-426a-825c-cc8938c86e5e.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/national-economy",
+    "bytes": 99491,
+    "sha256": "3a393bc330aab075e928c32d2a3e8d0262734685eabf924e8ef1b98084c91966"
+  },
+  "national-economy-mecenat": {
+    "file": "national-economy-mecenat.jpg",
+    "sourceFile": "picture_b37ef199-07cd-4c02-9e97-45e70e4a5de9.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/national-economy-mecenat",
+    "bytes": 110766,
+    "sha256": "2dad4e9258a72c6276f2787d2258e327786920bf35abf02ea52a2d46fbf3c31b"
+  },
+  "navegador": {
+    "file": "navegador.png",
+    "sourceFile": "picture_71c8d259-68ac-4e5c-a138-88f47f386027.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/navegador",
+    "bytes": 1027174,
+    "sha256": "bf5206b28e15e01788893a5dfb16efa3f1a59fc112af281d2f5268ab6f12e3f3"
+  },
+  "nine-tile": {
+    "file": "nine-tile.jpg",
+    "sourceFile": "picture_c8b3c125-c2fe-456b-8f0d-872469521012.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/nine-tile",
+    "bytes": 76217,
+    "sha256": "fe9e3dc507728f0299a0d96aca5ff831175f5db1aadabc67989e6ff24985411a"
+  },
+  "trajan": {
+    "file": "trajan.jpg",
+    "sourceFile": "picture_da0c4265-2b07-463e-a2ec-7c6d4aa3a56a.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/trajan",
+    "bytes": 84732,
+    "sha256": "5962c11fb4a05a8df0ef2d3307b9c268a6ebc3ed2691b450ff39eed9dcb37685"
+  },
+  "dominion-alchemy": {
+    "file": "dominion-alchemy.jpg",
+    "sourceFile": "picture_56183e5a-b310-454a-829e-22a0fdd15218.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dominion-alchemy",
+    "bytes": 163041,
+    "sha256": "50f2b33c372bead8dc314e8a1f04f99c4af4647554fe096557fa42d788aef472"
+  },
+  "dominion-prosperity": {
+    "file": "dominion-prosperity.jpg",
+    "sourceFile": "picture_060856a0-fc83-4a81-8250-da6cba814b68.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dominion-prosperity",
+    "bytes": 160576,
+    "sha256": "2f522c7971751b15c90689f959c8748d1d3311ca52f10fc6b562830a296fb20b"
+  },
+  "dominion-empires": {
+    "file": "dominion-empires.jpg",
+    "sourceFile": "picture_ee168131-3223-494d-a04c-428facb31f5b.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dominion-empires",
+    "bytes": 125357,
+    "sha256": "b93bcc91a0b52eddff4fbffb0aca88ff9c096f06fb00159a97ea513f046e1c86"
+  },
+  "dominion-cornucopia": {
+    "file": "dominion-cornucopia.jpg",
+    "sourceFile": "picture_f05ddedb-2ac8-4e7a-ac43-363855038787.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dominion-cornucopia",
+    "bytes": 169213,
+    "sha256": "84eb9414127e64460e242091d37aac316f3c8deb5f13f872f8054fc17792f797"
+  },
+  "dominion-seaside": {
+    "file": "dominion-seaside.jpg",
+    "sourceFile": "picture_f8bdcd3f-5f04-4d4c-8e23-f7d1d38f611c.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dominion-seaside",
+    "bytes": 142514,
+    "sha256": "6436fd0ab4098fe5dfd24a4f8180aec9230201c5a4007113ecc5445e43edb84d"
+  },
+  "dominion": {
+    "file": "dominion.jpg",
+    "sourceFile": "dominion_thumb_37.bing_en.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dominion",
+    "bytes": 122904,
+    "sha256": "3a6b07ec3f992ec7b9bdde1fc34e439d6f3f729f8f7126815349cc659359a688"
+  },
+  "dobble": {
+    "file": "dobble.jpg",
+    "sourceFile": "picture_0639af35-df42-476f-a2da-a423945af0c2.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dobble",
+    "bytes": 77759,
+    "sha256": "2fb15edadcd1113c546c1588962885f7a96143e3ff3870ee2e2f2d96e389b5c4"
+  },
+  "top-that": {
+    "file": "top-that.jpg",
+    "sourceFile": "picture_d12edbc2-d3be-4990-ad97-e50aa2da19de.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/top-that",
+    "bytes": 85211,
+    "sha256": "71beeb3ce1c9ef825436ae74ac1ee4340848b32b457bbddeba013cb22049b0b2"
+  },
+  "telestrations": {
+    "file": "telestrations.jpg",
+    "sourceFile": "picture_29893f13-3831-4123-97c8-c3fa576ae09d.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/telestrations",
+    "bytes": 117776,
+    "sha256": "922ae3ac4795a4dec17934b97e45cb51e7b932d99b051f2021135556ff9478d5"
+  },
+  "terra-mystica": {
+    "file": "terra-mystica.jpg",
+    "sourceFile": "picture_829f8d3e-07e9-45b8-860f-e3a6cad4bb61.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/terra-mystica",
+    "bytes": 238840,
+    "sha256": "e0a349bb5c92d09672264785022dcbb18c91ab82e0d6c6580d479067a9df3ad4"
+  },
+  "deca-slayer": {
+    "file": "deca-slayer.jpg",
+    "sourceFile": "picture_e988f7e4-0ba1-4f1e-b479-5b2415b2b7a0.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/deca-slayer",
+    "bytes": 172105,
+    "sha256": "9d29ddc79143e743ff637800010f26dffdb13394f52dba407b2952ea5dcb613a"
+  },
+  "dejavu": {
+    "file": "dejavu.jpg",
+    "sourceFile": "picture_ba96155e-3810-4589-8e69-9d7aac1fdeb6.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dejavu",
+    "bytes": 179958,
+    "sha256": "e55869a62dc5d1c4f76483b8664cc43d59b04c0408bced5c9e8bdd3f3b8332fb"
+  },
+  "ticket-to-ride": {
+    "file": "ticket-to-ride.jpg",
+    "sourceFile": "ticket-to-ride_thumb_9.bing_boardgame.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/ticket-to-ride",
+    "bytes": 74507,
+    "sha256": "261a960d0066dc378f57a24897e4a42b1e925e90410e6df13bf7948b5c1937ec"
+  },
+  "dungeon-of-mandom": {
+    "file": "dungeon-of-mandom.jpg",
+    "sourceFile": "picture_3d0c50ec-9145-43ec-981e-63d8464d052d.jpeg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dungeon-of-mandom",
+    "bytes": 140162,
+    "sha256": "7738c9736fd3105b79644b9b4c245294612e78566e18c61af02f5fd9c4d2bbda"
+  },
+  "dungeon-mandom-viii": {
+    "file": "dungeon-mandom-viii.png",
+    "sourceFile": "picture_1f9776ab-c401-401f-b537-7370af1696b5.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dungeon-mandom-viii",
+    "bytes": 941871,
+    "sha256": "0b57e0e86d8d2c362f961003451382cdba8b2572ef799ee6a9b7d189b0cfd477"
+  },
+  "boiling-logic": {
+    "file": "boiling-logic.png",
+    "sourceFile": "picture_92759963-c0d2-4067-b371-1691b66d67a3.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/boiling-logic",
+    "bytes": 435418,
+    "sha256": "5a16065ac3266dabd9aac5bb13136024d4e634a456dc06ebab03a9d2f5bd8bd8"
+  },
+  "dice-forge": {
+    "file": "dice-forge.jpg",
+    "sourceFile": "picture_277b68bb-21db-410c-ac41-54065d8717c3.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/dice-forge",
+    "bytes": 65780,
+    "sha256": "2788b9b728e57d0c2a6afe91cf7d6b9d6fa268757541e067fd70e064c2f885cb"
+  },
+  "schlafmuetze": {
+    "file": "schlafmuetze.jpg",
+    "sourceFile": "picture_95149654-8982-4420-8af7-f72d2cf68abe.JPG",
+    "sourceUrl": "https://bodoge.hoobby.net/games/schlafmuetze",
+    "bytes": 82102,
+    "sha256": "b5694d7aafc90eb3d09208c45ef507e1dcd83899db58a1b9a4e77005f3b95d4a"
+  },
+  "7-wonders-duel": {
+    "file": "7-wonders-duel.jpg",
+    "sourceFile": "picture_3a9e6543-21a8-4b10-88c5-536a3fb95606.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/7-wonders-duel",
+    "bytes": 72541,
+    "sha256": "c7cb72e1ab2d36eb7ff39d1fe7a85ec94eec226ca4998e1e2c6e18e94a4d9c96"
+  },
+  "7-wonders": {
+    "file": "7-wonders.jpg",
+    "sourceFile": "7-wonders3.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/7-wonders",
+    "bytes": 68566,
+    "sha256": "1535b7a223cccbeafb810cf6737ab821e8a6ffa04307fe70670c498250973c76"
+  },
+  "small-world": {
+    "file": "small-world.jpg",
+    "sourceFile": "picture_afdc80dd-a4a2-4fab-a163-cc2318783f39.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/small-world",
+    "bytes": 117361,
+    "sha256": "1b45668fa602b0fbe8d91b3a59392dd3ec5295c224e2856dc7da93577502b8c6"
+  },
+  "strike": {
+    "file": "strike.jpg",
+    "sourceFile": "picture_4628a4d9-4fea-4ccf-87bd-690dc3fc8a52.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/strike",
+    "bytes": 68121,
+    "sha256": "3037fe722664aecae551ddc5befa629c5c9935b9321fb2dd89da6abecd807566"
+  },
+  "startups": {
+    "file": "startups.png",
+    "sourceFile": "picture_95995ddf-9cf3-4be0-8503-9d1f80c543c7.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/startups",
+    "bytes": 802184,
+    "sha256": "5f0a1c4d6721ff2a7fd6d71fb77bf2093b3cef0aca45815d6c172dded51aee4a"
+  },
+  "sushi-go": {
+    "file": "sushi-go.jpg",
+    "sourceFile": "picture_52cdb855-ac68-4cef-8f25-d65516c820ca.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/sushi-go",
+    "bytes": 73257,
+    "sha256": "f468c3df6f4fe1afa4e574f7f2b4d39b121b74a42ca9e444e31727c598a12abe"
+  },
+  "scotland-yard": {
+    "file": "scotland-yard.jpg",
+    "sourceFile": "scotland-yard2.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/scotland-yard",
+    "bytes": 47743,
+    "sha256": "5a00b3f0a033ddb3a4f840e9e81b87434d5765bbe324091cc80a1e21e0b5685a"
+  },
+  "sukimono": {
+    "file": "sukimono.jpg",
+    "sourceFile": "picture_61904359-0033-400d-b492-7740fe70123d.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/sukimono",
+    "bytes": 91997,
+    "sha256": "322de2270a6a013c78d066263057b5534529e3183325182c6f4b8285d8c22b7f"
+  },
+  "seasons": {
+    "file": "seasons.jpg",
+    "sourceFile": "picture_f4534d95-0a79-49c9-a158-d2dbff6534b4.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/seasons",
+    "bytes": 125864,
+    "sha256": "1a285bffdd3eb0e5d90cd4a98cc00c49081279d38d43bbf472e37a0929375412"
+  },
+  "hai-alarm": {
+    "file": "hai-alarm.jpg",
+    "sourceFile": "picture_ee1fd23c-a89a-4b81-991b-7c19b4887527.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/hai-alarm",
+    "bytes": 105759,
+    "sha256": "0d3ead1f451bc2afde97f016a628804bf40f4f0000a469d17c396effbd55be09"
+  },
+  "the-game": {
+    "file": "the-game.jpg",
+    "sourceFile": "picture_1aecfa1f-c1ea-425b-8da8-aad2fe9e363d.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/the-game",
+    "bytes": 102846,
+    "sha256": "96a88425cbd42f134df2b76a1de594c5349fd3d6a8381bfac74fae2f37182a41"
+  },
+  "coloretto": {
+    "file": "coloretto.jpg",
+    "sourceFile": "picture_585611a3-ca1e-484b-b32e-1d4bb4685a6d.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/coloretto",
+    "bytes": 78005,
+    "sha256": "88b39a3ea109513da910925d279fc28df002997b23c66013e21c964fe2bb45e8"
+  },
+  "quoridor": {
+    "file": "quoridor.jpg",
+    "sourceFile": "Quoridor-2.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/quoridor",
+    "bytes": 41599,
+    "sha256": "83dc326314a2e9f53ed1e2d276123e24d19e0f6b42f89167385c8f53c8765bb3"
+  },
+  "coyote": {
+    "file": "coyote.jpg",
+    "sourceFile": "picture_ec64ddd5-d180-4f16-916b-ef5805dd34b5.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/coyote",
+    "bytes": 122388,
+    "sha256": "86b15124ffc7b2926bfd12cb9f44e540200820ff7ae6c19690fff798bea84f08"
+  },
+  "kakerlaken-duell": {
+    "file": "kakerlaken-duell.jpg",
+    "sourceFile": "picture_6745bdab-b49b-4a07-90a7-8b798b85ce67.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/kakerlaken-duell",
+    "bytes": 122631,
+    "sha256": "5d8e74e4e7056f9a1c28e2407f2c30810aa93e15989a103818e457ac736e8996"
+  },
+  "kakerlakenpoker": {
+    "file": "kakerlakenpoker.jpg",
+    "sourceFile": "picture_6c146d04-8adc-4785-aba1-7e1ced33b22f.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/kakerlakenpoker",
+    "bytes": 108712,
+    "sha256": "d9d9fb8c8b9e15d0a4bf020c6c54cccd7e66321d6741a95dbce45929d704780c"
+  },
+  "codenames-pictures": {
+    "file": "codenames-pictures.jpg",
+    "sourceFile": "picture_b1ccd8fe-7f43-4d09-94b8-b2b9959231ec.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/codenames-pictures",
+    "bytes": 149233,
+    "sha256": "70c4b5ff5027eab81f40521e5b866b6133540246f54213cf9de6648d300f2c3c"
+  },
+  "codenames": {
+    "file": "codenames.jpg",
+    "sourceFile": "picture_f84d8490-eb94-43d1-864a-23beb7197b16.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/codenames",
+    "bytes": 96383,
+    "sha256": "851ca26838b129d51ab528dd546dd336c5fc97b17ae1d1e40d14a86ccd459423"
+  },
+  "goita": {
+    "file": "goita.jpg",
+    "sourceFile": "picture_09ce8e25-9f8f-4424-afca-527ee60c0b38.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/goita",
+    "bytes": 59952,
+    "sha256": "44c3df9aad70c6caba9a175e2de523f7022859bf7e443c7a57681d3fd41852f8"
+  },
+  "keltis": {
+    "file": "keltis.jpg",
+    "sourceFile": "keltis_thumb_22.bing_boardgame.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/keltis",
+    "bytes": 64073,
+    "sha256": "bcc6d06f784af7e86e9900cb1eebc533adbec802b415be84f4d07e779ef9609d"
+  },
+  "geschenkt": {
+    "file": "geschenkt.jpg",
+    "sourceFile": "picture_882be265-fd7b-4a0b-bdd0-82e1fc929941.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/geschenkt",
+    "bytes": 74879,
+    "sha256": "2e57abc010cafc30edad8072d9b6732a3859b83a54045166fe0f47ead8499884"
+  },
+  "cake-viking": {
+    "file": "cake-viking.jpg",
+    "sourceFile": "picture_ad1f2607-0cad-43a8-a0ae-a752b2814b06.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/cake-viking",
+    "bytes": 79773,
+    "sha256": "cdba922576396981b1211efe41cc8e9703126a12dcefb86ca00f46b33bad6457"
+  },
+  "glass-road": {
+    "file": "glass-road.jpg",
+    "sourceFile": "glass-road2.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/glass-road",
+    "bytes": 66906,
+    "sha256": "bdb55a947d06dc526737f649650b83f32ecb34b1674df456ed1aff844577a42f"
+  },
+  "gravity-maze": {
+    "file": "gravity-maze.jpg",
+    "sourceFile": "picture_31d8185d-875a-4713-a925-4e8a676b62f6.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/gravity-maze",
+    "bytes": 76712,
+    "sha256": "157d22de733cb7b37aa556b0e803033e33e871c533d207f910380a51a45f42ec"
+  },
+  "quiz-iisen-ikimashow-rennai-hen": {
+    "file": "quiz-iisen-ikimashow-rennai-hen.jpg",
+    "sourceFile": "picture_dafeacde-0ed2-431f-ba1c-810a7b0b20ad.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/quiz-iisen-ikimashow-rennai-hen",
+    "bytes": 86313,
+    "sha256": "73cedb73bded5b77269b7722d2e9e8a0d8941b5a3d8dfabebcfd780b5c20197d"
+  },
+  "quiz-iisen-ikimashow": {
+    "file": "quiz-iisen-ikimashow.jpg",
+    "sourceFile": "quiz-iisen-ikimashow_thumb_11.bing_jp.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/quiz-iisen-ikimashow",
+    "bytes": 147132,
+    "sha256": "a6ac07ee50f8b303eed0fa1813028291fb6bc526f9525e9309295e11eab596fc"
+  },
+  "quarto": {
+    "file": "quarto.jpg",
+    "sourceFile": "picture_2e625743-b6d5-4b98-bb74-c85d66c69c9c.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/quarto",
+    "bytes": 43242,
+    "sha256": "9c99cd84662218622a73c50a58ccf8f8648ea14f11b76e6d01f347bdfa66c634"
+  },
+  "kingdomino": {
+    "file": "kingdomino.webp",
+    "sourceFile": "picture_af68f90c-ac92-4850-9a0e-6b0f26c44758.webp",
+    "sourceUrl": "https://bodoge.hoobby.net/games/kingdomino",
+    "bytes": 55266,
+    "sha256": "47f422fff65413c505d6247da143ca571fe45de34b0d65f2b7fb96eb3a97ad38"
+  },
+  "king-of-new-york": {
+    "file": "king-of-new-york.jpg",
+    "sourceFile": "picture_d09deca8-5091-4580-b070-c7c15416d989.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/king-of-new-york",
+    "bytes": 124210,
+    "sha256": "17c1d56e0da48e9e99009984a89ea64ef13f70a352fc4aca2ef74b298edf7c78"
+  },
+  "cant-stop": {
+    "file": "cant-stop.jpg",
+    "sourceFile": "picture_0c9630ef-93b0-4710-8ca9-8e391278a53b.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/cant-stop",
+    "bytes": 88795,
+    "sha256": "cc5cb03369599c8c6c4f47a14c3115b9ad8c318a2b46130bb2192f0380a406d8"
+  },
+  "super-rhino": {
+    "file": "super-rhino.jpg",
+    "sourceFile": "super-rhino_thumb_10.bing_en.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/super-rhino",
+    "bytes": 103317,
+    "sha256": "2aed7652743ec468c4afc5ef43d1276f94a4d980f031754e4bb3291eace6bee6"
+  },
+  "carcassonne-j": {
+    "file": "carcassonne-j.jpg",
+    "sourceFile": "picture_b2cb90e7-26db-47fe-b00d-9c91fca2ca76.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/carcassonne-j",
+    "bytes": 62948,
+    "sha256": "e62ad5dbb0cd11d98cc5d3bdbdc02d52dc3487f5df55ed08cdfaa15402d4267a"
+  },
+  "die-siedler-von-catan": {
+    "file": "die-siedler-von-catan.jpg",
+    "sourceFile": "die-siedler-von-catan_thumb_1.bing_en.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/die-siedler-von-catan",
+    "bytes": 61039,
+    "sha256": "bbb52c476ebfda5308387d78e56fb583b6afaf57b3622da44b96713fde5edc2f"
+  },
+  "caverna-die-hoehlenbauern": {
+    "file": "caverna-die-hoehlenbauern.jpg",
+    "sourceFile": "caverna-die-hoehlenbauern2.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/caverna-die-hoehlenbauern",
+    "bytes": 64438,
+    "sha256": "6e5d95e6f400a839954e6af9aa1947f4922d8da18495a696980e0b84cfa90451"
+  },
+  "schloss-schlotterstein-das-kartenspiel": {
+    "file": "schloss-schlotterstein-das-kartenspiel.jpg",
+    "sourceFile": "picture_3ce933a0-dea6-45db-8c98-d51e18821f81.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/schloss-schlotterstein-das-kartenspiel",
+    "bytes": 109521,
+    "sha256": "1a546f40ae4d47abff4ecc6682fc6b46fe65b0876b6bf0ffcca8fc87719bc755"
+  },
+  "elements-saien": {
+    "file": "elements-saien.jpg",
+    "sourceFile": "picture_e1dc16ff-3300-4d7f-ac41-3c0dbff1befc.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/elements-saien",
+    "bytes": 161111,
+    "sha256": "5966ee632363dc3837f697945377d03052d4c29c1e0cff3bbe040f6749b02e2d"
+  },
+  "elfenland": {
+    "file": "elfenland.jpg",
+    "sourceFile": "picture_be2130fb-b736-4ca4-8496-4a902f8e0420.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/elfenland",
+    "bytes": 80800,
+    "sha256": "39ac96aab26c5eb526aef83342d00f81a3642f0c25262f80ae4c95754a1fd38f"
+  },
+  "ubongo-3d": {
+    "file": "ubongo-3d.jpg",
+    "sourceFile": "picture_1d68b9a7-56c9-490e-ba8c-4046c2fa9a53.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/ubongo-3d",
+    "bytes": 112257,
+    "sha256": "cc81a4c46fb321819a8f8297617c566f8788cf8721c5c69a3ba4d6c7fe37de69"
+  },
+  "wizard-extreme-zing": {
+    "file": "wizard-extreme-zing.jpg",
+    "sourceFile": "picture_c73e0d2d-48b3-4244-896d-960abf7e383e.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/wizard-extreme-zing",
+    "bytes": 121849,
+    "sha256": "afa5b063fe9f9ae40c30907069ffd7683f5a6becb4420767969ddf63eb361ae5"
+  },
+  "inferno": {
+    "file": "inferno.jpg",
+    "sourceFile": "picture_a19ed4b9-3d71-4ee7-b962-93e1e0ae88b1.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/inferno",
+    "bytes": 161759,
+    "sha256": "38393cde327a0c19b28ffe410b7a6b0415c1a95d67c690962cd81ece07b3bf2f"
+  },
+  "insider-game": {
+    "file": "insider-game.png",
+    "sourceFile": "picture_5f36f166-2235-4038-ba26-1977019e856f.png",
+    "sourceUrl": "https://bodoge.hoobby.net/games/insider-game",
+    "bytes": 602022,
+    "sha256": "5b77397bd722973f8d80809642c15d8f81327f6ed9e0c40600a33e552dc4d42c"
+  },
+  "incan-gold": {
+    "file": "incan-gold.jpg",
+    "sourceFile": "picture_4630d9fd-b88a-4b7e-97f0-247ccce16c81.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/incan-gold",
+    "bytes": 84747,
+    "sha256": "fe359b383975cfcf83087c523d01f3e1518421efcb04842f53876f3a497d2cbd"
+  },
+  "istanbul": {
+    "file": "istanbul.jpg",
+    "sourceFile": "istanbul2.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/istanbul",
+    "bytes": 84826,
+    "sha256": "9458f515a7c8b0d49d8727443b80235d9079ac04660ae3a9ee757ec4551605ca"
+  },
+  "algo": {
+    "file": "algo.jpg",
+    "sourceFile": "algo2.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/algo",
+    "bytes": 40038,
+    "sha256": "588e3e15017bbb8b19182c109676b0fae9e9f54bf00417368298703e1e99d28a"
+  },
+  "abluxxen": {
+    "file": "abluxxen.jpg",
+    "sourceFile": "picture_60e3d09c-c87d-4573-ab9b-7e8fcd83ca46.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/abluxxen",
+    "bytes": 73047,
+    "sha256": "da9750de7a786f9d7f90977f8eea88b95694935d6d3c34ac6fff6a0a612a1a81"
+  },
+  "survive-escape-from-atlantis": {
+    "file": "survive-escape-from-atlantis.jpg",
+    "sourceFile": "picture_0b664618-c9ba-42e2-a27f-eead41918a7c.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/survive-escape-from-atlantis",
+    "bytes": 71699,
+    "sha256": "2488f8813c474042c744a60ce1e4a72e01db7bbfde0675b8f03fd9dd25dc9f35"
+  },
+  "eat-me-if-you-can": {
+    "file": "eat-me-if-you-can.jpg",
+    "sourceFile": "picture_5ce3b6e8-ba10-470a-99ec-58ecc2b4377c.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/eat-me-if-you-can",
+    "bytes": 144286,
+    "sha256": "cff7292bc7cc1b2547295694dc1deeefcb6b312bc026564f224652d52b97caf7"
+  },
+  "ice-cool": {
+    "file": "ice-cool.jpg",
+    "sourceFile": "picture_2c30bd7e-eea9-430f-b01a-94daa459ac48.jpg",
+    "sourceUrl": "https://bodoge.hoobby.net/games/ice-cool",
+    "bytes": 32469,
+    "sha256": "796d4bbfcd770dda2f42e45672ef94d89f65a46b01442f37fc139927403ff4ad"
+  },
+  "__skipped": {
+    "placeholder": [
+      "mojimoji-afro",
+      "love-phraser",
+      "alice-and-mysterious-puzzle",
+      "panic-tower",
+      "koi-noi-docchina",
+      "weight-sense"
+    ],
+    "noUrl": []
+  }
+}

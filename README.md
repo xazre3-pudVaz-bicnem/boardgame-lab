@@ -117,11 +117,26 @@ npm run check:games              # 件数・重複・数値の矛盾・リンク
 
 ### ゲームの画像について
 
-出版社やボドゲーマのパッケージ画像は利用許諾が取れていないため、**1枚も使っていません。**
-代わりに、ゲーム名とジャンルからその場で組み立てたSVG（`src/components/GameTile.tsx`）を出しています。
-画像リクエストが増えず、どの大きさでも崩れません。
+パッケージ画像はボドゲーマの各ゲームページから取得しています。
 
-店舗で撮影した写真が用意できたら、このコンポーネントを差し替えてください。
+```bash
+node scripts/fetch-game-images.mjs    # 元画像を data/source/game-images/ に取得（再実行で差分だけ）
+node scripts/build-game-images.mjs    # public/games/<slug>-{320,480}.webp と src/data/game-images.json を作る
+node scripts/build-games.mjs          # hasImage フラグを games.json と索引に反映
+```
+
+取り違えが起きない理由は、`games-raw.json` の `sourceImage` が
+**こちらが slug で取得したゲームレコードに紐づくURLそのもの**だからです。
+一覧ページの画像と詳細ページの og:image が608件すべて同一ファイルであることも確認しています。
+`check:games` が、同じ画像が2つ以上のゲームに割り当たっていないかも見ています。
+
+画像が登録されていないタイトルは、ゲーム名とジャンルから組み立てたSVG
+（`src/components/GameTile.tsx`）に自動で落ちます。切り替えは `GameImage` が行います。
+
+**著作権は各出版社にあります。** 詳細ページに出典と帰属を明記していますが、
+権利者から掲載の停止を求められた場合は、`public/games/` を空にして
+`node scripts/build-games.mjs` を実行すれば、全件がSVG表示に戻ります。
+店舗で撮影した写真に差し替える場合も、同じ命名で `public/games/` に置けば入れ替わります。
 
 ---
 
