@@ -21,3 +21,7 @@ data/source/game-images/*.webp
 # リポジトリには入れない（合計34MBあり、clone とデプロイを重くするため）。
 data/lighthouse/
 data/shots/
+
+# 使い捨ての作業スクリプト置き場
+scratch/
+data/audit/

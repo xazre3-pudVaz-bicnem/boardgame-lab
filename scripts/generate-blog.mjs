@@ -48,7 +48,7 @@ const SHOP_FACTS = {
   food: '飲食物の販売はしていない。持ち込みは可能で、蓋付きの飲み物はプレイ中も飲める',
   reservation: '席の予約はご来店予約フォームからのみ。電話・メール・LINEでは受け付けていない',
   titles: 'ボドゲーマの当店ページに登録されているタイトル数は608',
-  rotation: '毎月1000種類以上の中から厳選して入れ替えているため、特定のタイトルが常にあるとは限らない',
+  rotation: '取り扱いタイトルは入れ替わることがあるため、特定のタイトルが常にあるとは限らない',
 };
 
 /** 本文に出てよい数字。これ以外の「◯円」「◯時」は捏造とみなす。 */
@@ -208,6 +208,9 @@ function validate(post) {
     '/scene/solo',
     '/scene/after-work',
     '/scene/first-time',
+    '/scene/indoor',
+    '/scene/group',
+    '/scene/hobby',
   ]);
   let links = 0;
   for (const m of body.matchAll(/\[[^\]]+\]\((\/[^)]*)\)/g)) {

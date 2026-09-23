@@ -119,7 +119,17 @@ export const shop = {
   gameCount: {
     official: v(571, 'faq-image'),
     listed: v(608, 'bodoge'),
-    rotationNote: '毎月1000種類以上の中から厳選して入れ替えを行っています。',
+    /**
+     * 入れ替えがあること自体は、公式Q&A・ボドゲーマの登録数の差から確かなので画面に出す。
+     * 「毎月1000種類以上の中から厳選」という具体的な運用は公式Q&A画像に書かれているが、
+     * 現在もその運用かは確認できていないため、数字は出さない（下の unverified に記録）。
+     */
+    rotationNote: '取り扱いタイトルは入れ替わることがあります。',
+    rotationClaim: unverified(
+      '毎月1000種類以上の中から厳選して入れ替え',
+      'faq-image',
+      '旧公式サイト /system のQ&A画像（A4）に記載。現在の運用かどうか店舗に要確認。確認が取れるまで画面には出さない。',
+    ),
   },
 
   /** 店舗が定期開催しているイベント。開催有無は変わるため、告知は店舗のTwiPlaを見てもらう。 */
@@ -173,8 +183,14 @@ export const shop = {
 } as const;
 
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.boardgame-lab.com';
-/** 本番ドメインが設定されているときだけ canonical / OG / sitemap を出す。 */
-export const SITE_URL_CONFIGURED = Boolean(process.env.NEXT_PUBLIC_SITE_URL) || process.env.NODE_ENV === 'production';
+/**
+ * 本番ドメインが設定されているときだけ canonical / OG / sitemap を出し、robots で index を許可する。
+ *
+ * NODE_ENV での判定はしない。Vercel はプレビューでも NODE_ENV=production でビルドするため、
+ * それを条件にすると *.vercel.app が index, follow で公開されてしまう（実際に起きた）。
+ * 本番に切り替えるときは NEXT_PUBLIC_SITE_URL=https://www.boardgame-lab.com を環境変数に入れる。
+ */
+export const SITE_URL_CONFIGURED = Boolean(process.env.NEXT_PUBLIC_SITE_URL);
 
 export const abs = (path: string) => `${SITE_URL.replace(/\/$/, '')}${path.startsWith('/') ? path : `/${path}`}`;
 

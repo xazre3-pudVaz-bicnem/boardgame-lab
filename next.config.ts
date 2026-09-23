@@ -23,6 +23,17 @@ const nextConfig: NextConfig = {
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
         ],
       },
+      /*
+       * Vercel の *.vercel.app ではページを検索エンジンに載せない。
+       * 本番ドメインと同じ内容が重複して登録されるのを、ホスト名で機械的に防ぐ。
+       * NEXT_PUBLIC_SITE_URL の有無に関係なく効くので、環境変数の設定ミスにも耐える。
+       * 本番ドメイン（www.boardgame-lab.com）にはこのヘッダーは付かない。
+       */
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: '(?<sub>.*)\.vercel\.app' }],
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
     ];
   },
 };
