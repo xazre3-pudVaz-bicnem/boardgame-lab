@@ -1,0 +1,223 @@
+@import 'tailwindcss';
+
+/*
+  BODOlab. デザイントークン
+  色は店舗ロゴ（public/photos/logo-*）と店頭料金ポスターから実測した値を使用。
+    navy  #003870 … ポスター地色
+    cyan  #29a8e0 … ロゴのフラスコ
+    amber #f09800 … ロゴのきらめき
+  本文色にはコントラスト比を確保した派生色（--color-cyan-ink / --color-amber-ink）を使う。
+*/
+@theme {
+  --color-ink: #14161a;
+  --color-ink-soft: #4a4f57;
+  --color-ink-faint: #61666e;
+
+  --color-paper: #f7f5f0;
+  --color-paper-2: #efebe3;
+  --color-surface: #ffffff;
+  --color-line: #e2ddd3;
+
+  --color-navy: #003870;
+  --color-navy-deep: #00284f;
+  --color-navy-soft: #0b4f92;
+
+  --color-cyan: #29a8e0;
+  --color-cyan-ink: #0a6ea8;
+  --color-cyan-wash: #e8f5fc;
+
+  --color-amber: #f09800;
+  --color-amber-ink: #8a5200;
+  --color-amber-wash: #fdf2e0;
+
+  /* 和文はシステムフォント。日本語Webフォントは描画ブロックが大きくLCPを壊すため読み込まない */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic Medium', 'Yu Gothic', Meiryo, sans-serif;
+  /* 欧文見出しのみWebフォント（latinサブセットのみ） */
+  --font-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* 固定ヘッダー分だけアンカー位置を下げる */
+    scroll-padding-top: 5.5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    /* 日本語の可読性 */
+    line-height: 1.85;
+    font-feature-settings: 'palt' 1;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1.4;
+    font-feature-settings: 'palt' 1;
+  }
+
+  /* 日本語の見出しは行内で折り返し位置を選ばせる */
+  h1,
+  h2,
+  h3 {
+    word-break: auto-phrase;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cyan-ink);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--color-amber);
+    color: #fff;
+  }
+}
+
+@layer components {
+  /* 英字の小見出し（EYEBROW）。ブランドの英語表記に使う */
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-cyan-ink);
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+
+  /* 本文リンク */
+  .prose-link {
+    color: var(--color-cyan-ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    transition: color 0.2s var(--ease-out-expo);
+  }
+  .prose-link:hover {
+    color: var(--color-navy);
+  }
+
+  /* 画面外のセクションはレンダリングを後回しにして初期表示を軽くする */
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 720px;
+  }
+
+  /* スクロールで現れる要素。JSなしでも見える（no-js時は .reveal が付かない） */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 0.7s var(--ease-out-expo),
+      transform 0.7s var(--ease-out-expo);
+  }
+  .reveal[data-shown='true'] {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* 罫線つきの定義リスト（料金・店舗情報） */
+  .spec-row {
+    display: grid;
+    grid-template-columns: minmax(6.5rem, 9rem) 1fr;
+    gap: 0.5rem 1rem;
+    padding: 0.875rem 0;
+    border-top: 1px solid var(--color-line);
+    align-items: baseline;
+  }
+  @media (max-width: 26rem) {
+    .spec-row {
+      grid-template-columns: 1fr;
+      gap: 0.125rem;
+    }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  /* 縦方向の余白リズム */
+  .section-y {
+    padding-block: clamp(4rem, 9vw, 7.5rem);
+  }
+  .container-x {
+    padding-inline: clamp(1rem, 5vw, 2.5rem);
+  }
+  .hide-scrollbar {
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer components {
+  /*
+   * 写真の上にヘッダーが重なるページ（トップ・コレクション・シーン・エリア）では、
+   * 最上部にいる間だけ文字を白にする。ページ側が <DarkHeader /> を置いたかどうかで切り替わるので、
+   * JSの判定を挟まずに初回描画から正しい色で出る。
+   */
+  body:has([data-dark-header]) .site-header[data-at-top='true'] .header-ink {
+    color: #ffffff;
+  }
+  body:has([data-dark-header]) .site-header[data-at-top='true'] .header-ink-soft {
+    color: rgb(255 255 255 / 0.72);
+  }
+  body:has([data-dark-header]) .site-header[data-at-top='true'] .header-ink:hover {
+    color: var(--color-cyan);
+  }
+}
+
+@layer utilities {
+  /*
+   * 一覧のカード1枚分。画面外のあいだは描画しない。
+   * 400件を超える一覧でモバイルのTBTが跳ね上がるのを抑えるためのもの。
+   * contain-intrinsic-size は実測に合わせた見込みの高さ（幅はグリッドが決めるので auto）。
+   */
+  .card-cv {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 19rem;
+  }
+}

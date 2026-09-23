@@ -1,0 +1,368 @@
+{
+  "hero-floor": {
+    "alt": "満席のテーブルでボードゲームを遊ぶお客様たち — BODOlab.のプレイスペース",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/hero-floor-1600.webp"
+  },
+  "hero-floor-wide": {
+    "alt": "プロジェクタースクリーンのある明るいプレイスペースでボードゲームを楽しむ様子",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/hero-floor-wide-1600.webp"
+  },
+  "hero-mobile": {
+    "alt": "テーブルを囲んでカードゲームを遊ぶお客様 — 大阪・中津のBODOlab.",
+    "widths": [
+      480,
+      960
+    ],
+    "width": 1477,
+    "height": 1108,
+    "src": "/photos/hero-mobile-960.webp"
+  },
+  "floor-evening": {
+    "alt": "夜のプレイスペースでボードゲームを囲むお客様たち",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/floor-evening-1600.webp"
+  },
+  "floor-daytime": {
+    "alt": "昼間のプレイスペースでボードゲームを遊ぶグループ",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/floor-daytime-1600.webp"
+  },
+  "floor-group": {
+    "alt": "大人数のグループがテーブルを囲んでボードゲームを遊ぶ様子",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/floor-group-1600.webp"
+  },
+  "room-empty": {
+    "alt": "木のテーブルと黒い椅子が並ぶBODOlab.の店内。壁一面のボードゲーム棚",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/room-empty-1600.webp"
+  },
+  "shelf-staff": {
+    "alt": "ボードゲーム棚の前に並ぶBODOlab.のスタッフ",
+    "widths": [
+      480,
+      960
+    ],
+    "width": 1477,
+    "height": 1108,
+    "src": "/photos/shelf-staff-960.webp"
+  },
+  "table-four": {
+    "alt": "4人でテーブルを囲んでボードゲームを遊ぶお客様",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 1536,
+    "height": 2048,
+    "src": "/photos/table-four-1600.webp"
+  },
+  "table-pairs": {
+    "alt": "2人ずつテーブルに分かれてボードゲームを遊ぶ店内の様子",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/table-pairs-1600.webp"
+  },
+  "table-standing": {
+    "alt": "スクリーンの前でボードゲームを準備するお客様とスタッフ",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/table-standing-1600.webp"
+  },
+  "group-photo": {
+    "alt": "イベント参加者の集合写真 — BODOlab.",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/group-photo-1600.webp"
+  },
+  "players-cards": {
+    "alt": "カードゲームを手にテーブルを囲むお客様",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/players-cards-1600.webp"
+  },
+  "players-longtable": {
+    "alt": "長テーブルに広げた大型ボードゲームを遊ぶお客様",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/players-longtable-1600.webp"
+  },
+  "game-catan-top": {
+    "alt": "六角形タイルを並べた定番ボードゲームの盤面",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/game-catan-top-1600.webp"
+  },
+  "game-catan-hand": {
+    "alt": "ボードゲームの盤面にコマを置くプレイヤーの手元",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/game-catan-hand-1600.webp"
+  },
+  "game-catan-close": {
+    "alt": "木製コマが置かれたボードゲームの盤面のクローズアップ",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/game-catan-close-1600.webp"
+  },
+  "game-scenery": {
+    "alt": "立体的な地形とミニチュアが並ぶボードゲームの盤面",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/game-scenery-1600.webp"
+  },
+  "game-strategy": {
+    "alt": "タイルとカードを大きく広げた戦略系ボードゲームの盤面",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/game-strategy-1600.webp"
+  },
+  "game-map": {
+    "alt": "マップ型ボードの上にコマを配置する中量級ボードゲーム",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/game-map-1600.webp"
+  },
+  "game-tokens": {
+    "alt": "コインとトークンが並ぶボードゲームの盤面",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/game-tokens-1600.webp"
+  },
+  "game-grid": {
+    "alt": "格子状のボードとチップを使うボードゲームのプレイ中の様子",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 1536,
+    "height": 2048,
+    "src": "/photos/game-grid-1600.webp"
+  },
+  "game-family": {
+    "alt": "カラフルなすごろく型ボードで遊ぶファミリー向けゲーム",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/game-family-1600.webp"
+  },
+  "game-family-close": {
+    "alt": "キャラクターの立ちコマが並ぶファミリーゲームの盤面",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/game-family-close-1600.webp"
+  },
+  "game-boxes": {
+    "alt": "テーブルに積まれたボードゲームの箱",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/game-boxes-1600.webp"
+  },
+  "game-pawns": {
+    "alt": "カラフルな木製コマが並ぶボードゲームのクローズアップ",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1536,
+    "src": "/photos/game-pawns-1600.webp"
+  },
+  "chalkboard": {
+    "alt": "「友達ができる場所 ボードゲームラボ」と営業時間が書かれた店頭の黒板",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2048,
+    "height": 1318,
+    "src": "/photos/chalkboard-1600.webp"
+  },
+  "entrance-stairs": {
+    "alt": "ビル3階のBODOlab.へ上がる階段と入口",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 1810,
+    "height": 906,
+    "src": "/photos/entrance-stairs-1600.webp"
+  },
+  "pano-a": {
+    "alt": "店内を見渡したパノラマ写真。テーブル席とボードゲーム棚",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 1810,
+    "height": 906,
+    "src": "/photos/pano-a-1600.webp"
+  },
+  "pano-b": {
+    "alt": "窓側から見た店内のパノラマ写真",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 1810,
+    "height": 906,
+    "src": "/photos/pano-b-1600.webp"
+  },
+  "pano-c": {
+    "alt": "ショップ側から見た店内のパノラマ写真",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 1810,
+    "height": 906,
+    "src": "/photos/pano-c-1600.webp"
+  },
+  "price-poster": {
+    "alt": "BODOlab.の営業時間と料金を掲示した店頭ポスター",
+    "widths": [
+      480
+    ],
+    "width": 672,
+    "height": 954,
+    "src": "/photos/price-poster-480.webp"
+  },
+  "logo-lockup": {
+    "alt": "BODOlab.（ボードゲームラボ）ロゴ ― ボードゲームが遊べる場所",
+    "widths": [
+      480
+    ],
+    "width": 537,
+    "height": 452,
+    "src": "/photos/logo-lockup-480.webp"
+  },
+  "logo-horizontal": {
+    "alt": "BODOlab.（ボードゲームラボ）横組みロゴ",
+    "widths": [
+      480
+    ],
+    "width": 912,
+    "height": 500,
+    "src": "/photos/logo-horizontal-480.webp"
+  }
+}

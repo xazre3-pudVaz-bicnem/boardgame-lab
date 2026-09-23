@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # ゲームデータの検証（件数・重複・数値の整合・リンク切れ）
+      - run: npm run check:games
+      - run: node scripts/check-shop-facts.mjs
+      - run: npx tsc --noEmit
+      - run: npm run lint
+      - env:
+          NEXT_PUBLIC_SITE_URL: https://www.boardgame-lab.com
+        run: npm run build

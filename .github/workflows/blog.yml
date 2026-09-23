@@ -1,0 +1,55 @@
+name: 読みものを1本追加する
+
+# 毎日 10:40 JST（UTC 01:40）に1本だけ生成して main に push する。
+# 品質ゲートを1つでも落ちたら何も書き出さず、そのまま失敗して終わる。
+on:
+  schedule:
+    - cron: '40 1 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: blog-generate
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # 記事生成側が持っている店舗情報が shop.ts とずれていたら、ここで止める
+      - name: 店舗情報の整合を確認
+        run: node scripts/check-shop-facts.mjs
+
+      - name: 記事を生成
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-blog.mjs
+
+      # 記事が増えてもビルドが通ることを確認してから push する
+      - name: ビルドを確認
+        env:
+          NEXT_PUBLIC_SITE_URL: https://www.boardgame-lab.com
+        run: npm run build
+
+      - name: コミットして push
+        run: |
+          if [ -z "$(git status --porcelain content/blog)" ]; then
+            echo "追加された記事はありません。"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/blog
+          git commit -m "content: 読みものを1本追加"
+          git push
