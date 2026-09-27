@@ -11,6 +11,7 @@
  *   chalk     : 店舗提供写真の店頭黒板（assets-src ... _41.jpg）
  *   bodoge    : https://bodoge.hoobby.net/spaces/boardgame-lab
  *   reserve   : 予約サイト（下記 reservationUrl）
+ *   line      : 公式LINEのプロフィール https://page.line.me/pmb9803r
  *   news      : 旧公式サイトのお知らせ記事（掲示画像を読み取ったもの。日付を併記する）
  */
 
@@ -73,9 +74,14 @@ export const shop = {
      */
     closedDays: v(['月曜日'], 'official / faq-image / bodoge'),
     closedDaysNote: '祝日の場合は営業します。',
-    /** ノーゲスト時の早仕舞い。Q&A画像と2024年9月のお知らせが21時で一致する。 */
-    earlyClose: v('21:00', 'faq-image / news 2024-09-01'),
-    earlyCloseNote: '21:00の時点でお客様がいらっしゃらない場合は、閉店させていただくことがあります。',
+    /**
+     * ノーゲスト時の早仕舞い。時刻が出典で食い違う（2026-09-27 確認）。
+     *   20時 … 旧公式サイトのトップ・/system の営業時間欄
+     *   21時 … 公式LINEのプロフィール・Q&A画像・2024年9月のお知らせ
+     * 確認が取れるまで時刻は出さない。
+     */
+    earlyClose: unverified('21:00', 'line / faq-image / news 2024-09-01', '旧公式サイトの営業時間欄は20時。店舗確認待ち。'),
+    earlyCloseNote: 'お客様がいらっしゃらない場合は、早めに閉店させていただくことがあります。',
     changeNote: '営業時間・定休日は変更になる場合があります。ご来店前に公式Instagramでご確認ください。',
   },
 
@@ -157,6 +163,12 @@ export const shop = {
     'twipla 2026-09',
   ),
 
+  /** 支払い方法。公式LINEのプロフィールに記載（2026-09-27 確認）。 */
+  payments: v(
+    ['現金', 'クレジットカード（Visa・Mastercard・JCB・Diners・American Express）', 'QRコード決済（PayPay・楽天ペイ・d払い・au PAY）', '電子マネー'],
+    'line',
+  ),
+
   /** ボードゲーム販売について。 */
   shopService: v(
     [
@@ -185,13 +197,20 @@ export const shop = {
 
   links: {
     instagram: 'https://www.instagram.com/bodo_lab_/',
-    x: 'https://x.com/boardgamelabddt',
+    /**
+     * 現在使われているのは @BODOlab_（ボドゲーマの店舗ページ・TwiPla の主催者アカウントが同じ）。
+     * 旧アカウント @BOARDGAMELabDDT は使わない。
+     */
+    x: 'https://x.com/BODOlab_',
     twipla: 'https://twipla.jp/users/BODOlab_',
     bodoge: 'https://bodoge.hoobby.net/spaces/boardgame-lab',
     bodogeGames: 'https://bodoge.hoobby.net/spaces/boardgame-lab/games',
-    /** 公式LINEの友だち追加URLは旧サイトから取得できなかった。店舗確認後に設定する。 */
-    line: null as string | null,
-    /** Googleビジネスプロフィールの共有URL。店舗確認後に設定する。 */
+    /** 公式LINE（ベーシックID @pmb9803r、アカウント名 BODOlab.）。2026-09-27 確認。 */
+    line: 'https://page.line.me/pmb9803r' as string | null,
+    /**
+     * Googleビジネスプロフィールの共有URL。Googleマップの自動取得は規約上行わないため、
+     * オーナー管理画面の「プロフィールを共有」「クチコミを依頼」のURLを店舗からもらって設定する。
+     */
     googleBusiness: null as string | null,
     /** アルバイト応募フォーム（旧サイトは編集用URLを掲載していたため viewform に直した）。 */
     jobForm: 'https://docs.google.com/forms/d/e/1FAIpQLScrPzSO9if3yyyruiCEwsySqR8oaO7e9SS-OXoD8IUa18ixWg/viewform',

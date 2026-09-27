@@ -112,6 +112,12 @@ export default function SystemPage() {
               </span>
               {shop.pricing.privateHire.value}
             </li>
+            <li className="flex gap-2">
+              <span aria-hidden="true" className="text-cyan-ink">
+                ・
+              </span>
+              お支払いは{shop.payments.value.join('、')}に対応しています。
+            </li>
           </ul>
 
           <p className="mt-6 text-[0.78rem] text-ink-faint">

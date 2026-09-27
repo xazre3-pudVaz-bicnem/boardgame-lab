@@ -110,7 +110,8 @@ export function localBusinessSchema() {
     ],
     publicAccess: true,
     isAccessibleForFree: false,
-    sameAs: [shop.links.instagram, shop.links.x, shop.links.bodoge].filter(Boolean),
+    paymentAccepted: shop.payments.value.join(', '),
+    sameAs: [shop.links.instagram, shop.links.x, shop.links.line, shop.links.bodoge].filter(Boolean),
     potentialAction: {
       '@type': 'ReserveAction',
       target: { '@type': 'EntryPoint', urlTemplate: shop.reservationUrl, actionPlatform: 'https://schema.org/DesktopWebPlatform' },
@@ -136,7 +137,7 @@ export function organizationSchema() {
       streetAddress: shop.address.street,
       addressCountry: 'JP',
     },
-    sameAs: [shop.links.instagram, shop.links.x, shop.links.bodoge].filter(Boolean),
+    sameAs: [shop.links.instagram, shop.links.x, shop.links.line, shop.links.bodoge].filter(Boolean),
   };
 }
 

@@ -80,6 +80,16 @@ export default function Footer() {
               >
                 ご来店予約
               </a>
+              {shop.links.line ? (
+                <a
+                  href={shop.links.line}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center rounded-full border border-line px-5 text-[0.82rem] font-medium text-ink-soft transition-colors hover:border-navy/30 hover:text-navy"
+                >
+                  公式LINE
+                </a>
+              ) : null}
               <a
                 href={shop.links.instagram}
                 target="_blank"

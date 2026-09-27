@@ -27,7 +27,9 @@ const grab = (re, label) => {
 
 const weekday = grab(/weekday: v\(\{ open: '([\d:]+)', close: '([\d:]+)' \}/, '平日の営業時間');
 const weekend = grab(/weekend: v\(\{ open: '([\d:]+)', close: '([\d:]+)' \}/, '土日祝の営業時間');
-const early = grab(/earlyClose: v\('([\d:]+)'/, '早仕舞いの時刻');
+/** 早仕舞いの時刻は店舗確認待ち（unverified）のあいだ、記事にも時刻を書かない。 */
+const earlyUnverified = /earlyClose: unverified\(/.test(shopTs);
+const early = earlyUnverified ? null : grab(/earlyClose: v\('([\d:]+)'/, '早仕舞いの時刻');
 const unit = grab(/unit: v\(\{ label: '1時間', normal: (\d+), share: (\d+) \}/, 'プレイ料金');
 const caps = grab(
   /weekday: \{ normal: (\d+), share: (\d+) \},\s*\n\s*weekend: \{ normal: (\d+), share: (\d+) \}/,
@@ -43,6 +45,8 @@ const expectInFacts = (needle, label) => {
 if (weekday) expectInFacts(`平日${weekday[1]}〜${weekday[2]}`, '平日の営業時間');
 if (weekend) expectInFacts(`土日祝${weekend[1]}〜${weekend[2]}`, '土日祝の営業時間');
 if (early) expectInFacts(`${early[1]}の時点`, '早仕舞いの時刻');
+if (earlyUnverified && /\d{2}:\d{2}の時点でお客様/.test(genJs))
+  errors.push('早仕舞いの時刻は店舗確認待ちです。generate-blog.mjs の SHOP_FACTS に時刻を書かないでください');
 if (unit) expectInFacts(`1時間${unit[1]}円（相席可でのご利用は1時間${unit[2]}円）`, 'プレイ料金');
 if (caps)
   expectInFacts(

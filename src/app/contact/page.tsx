@@ -53,12 +53,17 @@ export default function ContactPage() {
                 <div className="space-y-6">
                   <ConfirmNote>
                     お問い合わせフォームは、送信先メールアドレスの設定が完了しだい公開します。
-                    それまでは、お電話または公式Instagramのダイレクトメッセージからご連絡ください。
+                    それまでは、お電話・公式LINE・公式Instagramのダイレクトメッセージからご連絡ください。
                   </ConfirmNote>
                   <div className="flex flex-wrap gap-3">
                     <Button href={`tel:${shop.tel.value.replace(/-/g, '')}`} variant="solid">
                       電話でお問い合わせ（{shop.tel.value}）
                     </Button>
+                    {shop.links.line ? (
+                      <Button href={shop.links.line} variant="outline" external>
+                        公式LINEで問い合わせる
+                      </Button>
+                    ) : null}
                     <Button href={shop.links.instagram} variant="outline" external>
                       InstagramのDMで問い合わせる
                     </Button>
@@ -108,6 +113,16 @@ export default function ContactPage() {
                       </a>
                     </dd>
                   </div>
+                  {shop.links.line ? (
+                    <div className="spec-row">
+                      <dt className="text-ink-soft">公式LINE</dt>
+                      <dd>
+                        <a href={shop.links.line} target="_blank" rel="noopener noreferrer" className="prose-link">
+                          @pmb9803r
+                        </a>
+                      </dd>
+                    </div>
+                  ) : null}
                   <div className="spec-row">
                     <dt className="text-ink-soft">Instagram</dt>
                     <dd>
