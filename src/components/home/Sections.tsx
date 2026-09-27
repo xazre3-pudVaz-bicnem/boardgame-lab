@@ -1,146 +1,95 @@
 import Link from 'next/link';
-import Photo, { type PhotoKey } from '@/components/Photo';
-import GameImage from '@/components/GameImage';
-import { Container, SectionHeading, Button, Chip, Eyebrow } from '@/components/ui';
+import Photo from '@/components/Photo';
+import { GameCard } from '@/components/GameCard';
+import { Container } from '@/components/ui';
 import { shop, hoursLine } from '@/data/shop';
-import type { Game } from '@/lib/games';
+import { SCENES } from '@/data/scenes';
+import { newsByDate } from '@/data/news';
+import { CONDITIONS, GAME_COUNT, gamesWithCondition, staffPicks } from '@/lib/games';
 
 /*
- * トップページの各セクション。
+ * トップページ。
  *
- * 並びは page.tsx。背景と見せ方をセクションごとに変えて、同じ型のカードが続かないようにしている。
- *   HERO（写真・暗）→ ABOUT（明・写真＋問答）→ WHY（白・写真と文の互い違い）→ PHOTO BAND（写真・暗）
- *   → GAME COLLECTION（紺）→ HOW TO（明・4段）→ SCENE（白・写真カード）→ SYSTEM（明2・表）
- *   → NEWS（白）→ ACCESS（明・写真）→ FAQ（白）→ CTA（紺・写真）
+ * SEO用のセクションを並べるのではなく、「どんな場所か → 店内 → スタッフの案内 → ゲーム棚
+ * → 使い方と料金 → イベント → アクセス」の順に、店を紹介する流れにしている。
+ * 見出しに英語の小見出しは付けない。セクションごとに見せ方を変え、同じ型のカードを続けない。
+ * 写真は何が写っているかをキャプションで正直に書く（イベント時の写真はそう書く）。
  */
 
-/* --------------------------------------------------------------- 小さな飾り */
+const H2 = 'text-[clamp(1.35rem,3.4vw,1.9rem)] leading-[1.4] font-bold text-ink';
 
-/** サイコロの目。手順の番号に使う。1〜6 */
-function DieFace({ n, className = '' }: { n: 1 | 2 | 3 | 4 | 5 | 6; className?: string }) {
-  const pips: Record<number, [number, number][]> = {
-    1: [[12, 12]],
-    2: [[7, 7], [17, 17]],
-    3: [[7, 7], [12, 12], [17, 17]],
-    4: [[7, 7], [17, 7], [7, 17], [17, 17]],
-    5: [[7, 7], [17, 7], [12, 12], [7, 17], [17, 17]],
-    6: [[7, 6], [17, 6], [7, 12], [17, 12], [7, 18], [17, 18]],
-  };
+/* --------------------------------------------------------------- どんな場所か */
+
+export function About() {
+  const u = shop.pricing.unit.value;
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={className}>
-      <rect x="1.5" y="1.5" width="21" height="21" rx="5" fill="currentColor" opacity="0.12" />
-      <rect x="1.5" y="1.5" width="21" height="21" rx="5" fill="none" stroke="currentColor" strokeWidth="1.4" />
-      {pips[n].map(([x, y]) => (
-        <circle key={`${x}-${y}`} cx={x} cy={y} r="2" fill="currentColor" />
-      ))}
-    </svg>
-  );
-}
-
-/** ミープル（人型のコマ）。見出しの脇にひとつだけ置く。 */
-function Meeple({ className = '' }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
-      <path d="M12 2.5a3.2 3.2 0 0 1 3.2 3.2c0 1.2-.6 2.2-1.5 2.8l3.9 2.3c1.3.8 2.2 1.7 2.2 3.2v.7c0 .6-.5 1-1 1h-3.4l1 4.6c.1.6-.3 1.2-1 1.2h-2.1l-1.3-4.7L10 21.5H7.9c-.7 0-1.1-.6-1-1.2l1-4.6H4.5c-.6 0-1-.5-1-1v-.7c0-1.5.9-2.4 2.2-3.2l3.9-2.3A3.3 3.3 0 0 1 8.8 5.7 3.2 3.2 0 0 1 12 2.5Z" />
-    </svg>
-  );
-}
-
-/* --------------------------------------------------------------- ABOUT */
-
-/** 来たことがない人が最初に気にすること。短く答えて、詳しくは各ページへ。 */
-const FIRST_QUESTIONS = [
-  {
-    q: 'ボードゲームを知らなくても楽しめる？',
-    a: 'はい。ルールはスタッフが説明します。事前に覚えてくる必要はありません。',
-    href: '/scene/first-time',
-  },
-  {
-    q: '2人で行っても楽しめる？',
-    a: '2人で遊んで面白いゲームを97タイトル選んでいます。2人では成り立ちにくいパーティーゲームは外しています。',
-    href: '/games/for-two',
-  },
-  {
-    q: '1人で行っても遊べる？',
-    a: '受付で「相席可」を選ぶと、他のお客様と同じ卓で遊べます。料金は1時間500円です。',
-    href: '/scene/solo',
-  },
-  {
-    q: '食べ物や飲み物は？',
-    a: '店内での販売はしていません。持ち込みは可能で、蓋付きの飲み物はプレイ中も飲めます。',
-    href: '/system',
-  },
-] as const;
-
-export function About({ gameCount }: { gameCount: number }) {
-  return (
-    <section id="about" className="cv-auto section-y bg-paper">
+    <section className="bg-paper py-16 sm:py-24">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-start lg:gap-20">
-          <div data-reveal>
-            <SectionHeading
-              eyebrow="About"
-              title={
-<>中津駅から徒歩3分の、ボードゲームで遊べるお店です</>
-              }
-              lead={
-                <p>
-                  BODOlab.（ボドラボ）は、大阪市北区豊崎にあるボードゲームのプレイスペース＆ショップです。
-                  料金は時間制で、時間内なら何本でも遊べます。飲食物の販売はしていません。
-                </p>
-              }
-            />
-
-            <dl className="mt-10 divide-y divide-line border-y border-line">
-              {FIRST_QUESTIONS.map((f) => (
-                <div key={f.q} className="py-4">
-                  <dt className="flex items-start gap-2.5 text-[0.95rem] font-semibold text-ink">
-                    <span aria-hidden="true" className="display mt-0.5 text-[0.8rem] text-cyan-ink">
-                      Q
-                    </span>
-                    {f.q}
-                  </dt>
-                  <dd className="text-pretty mt-1.5 pl-6 text-[0.85rem] leading-[1.9] text-ink-soft">
-                    {f.a}{' '}
-                    <Link href={f.href} className="prose-link whitespace-nowrap">
-                      詳しく →
-                    </Link>
-                  </dd>
-                </div>
-              ))}
-            </dl>
-
-            <dl className="mt-10 grid grid-cols-4 gap-x-4 gap-y-6">
-              {[
-                { t: `${gameCount}`, s: '種類', u: '' },
-                { t: '600', s: '円／時間', u: '¥' },
-                { t: '3', s: '分／中津駅', u: '' },
-                { t: '10', s: '分／梅田', u: '' },
-              ].map((d) => (
-                <div key={d.s}>
-                  <dt className="sr-only">{d.s}</dt>
-                  <dd>
-                    <span className="display block text-[clamp(1.5rem,4vw,2rem)] leading-none font-bold text-navy">
-                      <span className="align-top text-[0.6em] text-cyan">{d.u}</span>
-                      {d.t}
-                    </span>
-                    <span className="mt-1.5 block text-[0.72rem] text-ink-faint">{d.s}</span>
-                  </dd>
-                </div>
-              ))}
-            </dl>
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:gap-16">
+          <div>
+            <h2 className={H2}>BODOlab.について</h2>
+            <div className="mt-5 space-y-4 text-[0.98rem] leading-[2] text-ink-soft">
+              <p>
+                BODOlab.（ボードゲームラボ、通称ボドラボ）は、大阪メトロ中津駅の近くにあるボードゲームのプレイスペース兼ショップです。
+                棚にあるボードゲームを選んで、時間制の料金で遊べます。
+              </p>
+              <p>
+                ルールはスタッフが説明します。遊んで気に入ったゲームは、店頭で買うこともできます。
+                飲食物の販売はしていません（持ち込みは可能です）。
+              </p>
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:sticky lg:top-24" data-reveal data-reveal-delay="120">
-            <div className="relative col-span-2 aspect-[16/10] overflow-hidden rounded-2xl">
-              <Photo name="room-daytime-wide" fill sizes="(max-width:1024px) 92vw, 46vw" className="object-cover" />
+          <dl className="self-start rounded-md border border-line bg-surface text-[0.9rem]">
+            {[
+              ['場所', '大阪市北区豊崎5-7-21 おおきに豊崎西公園ビル3F（中津駅1番出口から徒歩3分）'],
+              ['営業', `${hoursLine()}／${shop.hours.closedDays.value.join('・')}定休（祝日は営業）`],
+              ['料金', `1時間${u.normal}円（相席可は${u.share}円）、上限あり`],
+              ['予約', 'ご来店予約フォームから（空席があれば予約なしでも可）'],
+            ].map(([k, v]) => (
+              <div key={k} className="grid grid-cols-[4.5rem_1fr] gap-3 border-b border-line px-5 py-3.5 last:border-0">
+                <dt className="text-ink-faint">{k}</dt>
+                <dd className="leading-relaxed text-ink">{v}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+/* --------------------------------------------------------------- 店内 */
+
+export function Space() {
+  return (
+    <section className="cv-auto bg-surface py-16 sm:py-24">
+      <Container>
+        <h2 className={H2}>店内</h2>
+        <p className="mt-4 max-w-2xl text-[0.95rem] leading-[1.95] text-ink-soft">
+          ビルの3階です。壁沿いの白い棚にボードゲームが並び、テーブル席で遊びます。
+        </p>
+
+        <div className="mt-10 grid gap-4 md:grid-cols-12">
+          <figure className="md:col-span-8">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-md">
+              <Photo name="room-empty" fill sizes="(max-width:768px) 92vw, 62vw" className="object-cover" />
             </div>
-            <div className="relative aspect-square overflow-hidden rounded-2xl">
-              <Photo name="game-tokens" fill sizes="(max-width:1024px) 45vw, 23vw" className="object-cover" />
-            </div>
-            <div className="relative aspect-square overflow-hidden rounded-2xl">
-              <Photo name="game-pawns" fill sizes="(max-width:1024px) 45vw, 23vw" className="object-cover" />
-            </div>
+            <figcaption className="mt-2 text-[0.78rem] text-ink-faint">営業前の店内。棚のゲームから選んで遊びます。</figcaption>
+          </figure>
+          <div className="grid gap-4 md:col-span-4">
+            <figure>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-md">
+                <Photo name="floor-evening-wide" fill sizes="(max-width:768px) 92vw, 30vw" className="object-cover" />
+              </div>
+              <figcaption className="mt-2 text-[0.78rem] text-ink-faint">イベント開催時の夜の店内。</figcaption>
+            </figure>
+            <figure>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-md">
+                <Photo name="game-boxes" fill sizes="(max-width:768px) 92vw, 30vw" className="object-cover" />
+              </div>
+              <figcaption className="mt-2 text-[0.78rem] text-ink-faint">選んだゲームはテーブルで遊びます。</figcaption>
+            </figure>
           </div>
         </div>
       </Container>
@@ -148,443 +97,157 @@ export function About({ gameCount }: { gameCount: number }) {
   );
 }
 
-/* --------------------------------------------------------------- WHY */
+/* --------------------------------------------------------------- スタッフの案内 */
 
-const reasons: { no: string; title: string; body: string; photo: PhotoKey; link: { href: string; label: string } }[] = [
-  {
-    no: '01',
-    title: 'ルールはスタッフが説明します',
-    body: '遊びたいゲームを選んだら、スタッフがルールを説明します。説明書を読んだり、誰かが事前に覚えてきたりする必要はありません。',
-    photo: 'game-catan-hand',
-    link: { href: '/scene/first-time', label: 'はじめての方へ' },
-  },
-  {
-    no: '02',
-    title: '時間内なら何本でも遊べます',
-    body: '料金は時間制で、遊ぶ本数に制限はありません。1時間600円、上限は平日2,500円・土日祝3,000円です。',
-    photo: 'room-empty',
-    link: { href: '/games', label: `${shop.gameCount.listed.value}タイトルを見る` },
-  },
-  {
-    no: '03',
-    title: '1人なら相席で遊べます',
-    body: '受付で「相席可」を選ぶと、その場にいる他のお客様と同じ卓で遊べます。料金は1時間500円です。相席は選択制です。',
-    photo: 'floor-evening',
-    link: { href: '/scene/solo', label: '1人で来るときのこと' },
-  },
-  {
-    no: '04',
-    title: 'ボードゲームの販売もしています',
-    body: '店頭または公式LINEから購入できます。取り置き（最大1週間）やお取り寄せも可能です。3点で10%、4点以上で15%引きです。',
-    photo: 'game-boxes',
-    link: { href: '/system', label: '販売について' },
-  },
-];
-
-export function Why() {
+export function StaffGuide() {
   return (
-    <section id="why" className="cv-auto section-y bg-surface">
-      <Container>
-        <div className="flex items-start gap-3">
-          <Meeple className="mt-1 h-6 w-6 shrink-0 text-cyan" />
-          <SectionHeading
-            eyebrow="Features"
-            title="BODOlab.の特徴"
-          />
-        </div>
-
-        {/* 写真と文章を左右交互に。カードの繰り返しにしない */}
-        <div className="mt-12 space-y-12 sm:mt-20 sm:space-y-20">
-          {reasons.map((r, i) => (
-            <article
-              key={r.no}
-              data-reveal
-              className={`grid items-center gap-6 sm:gap-10 lg:grid-cols-12 lg:gap-14 ${
-                i % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''
-              }`}
-            >
-              <div className="group relative aspect-[16/10] overflow-hidden rounded-2xl sm:aspect-[4/3] lg:col-span-7">
-                <Photo
-                  name={r.photo}
-                  fill
-                  sizes="(max-width:1024px) 92vw, 54vw"
-                  className="object-cover transition-transform duration-[1200ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.03]"
-                />
-              </div>
-              <div className="lg:col-span-5">
-                <span className="display text-[0.72rem] font-semibold tracking-[0.22em] text-cyan-ink">{r.no}</span>
-                <h3 className="display text-balance mt-3 text-[clamp(1.25rem,2.6vw,1.6rem)] leading-[1.4] font-semibold text-ink">
-                  {r.title}
-                </h3>
-                <p className="text-pretty mt-4 text-[0.9rem] leading-[2] text-ink-soft">{r.body}</p>
-                <Link
-                  href={r.link.href}
-                  className="group/link mt-5 inline-flex items-center gap-1.5 text-[0.85rem] font-medium text-navy transition-colors hover:text-cyan-ink"
-                >
-                  {r.link.label}
-                  <span aria-hidden="true" className="transition-transform duration-300 group-hover/link:translate-x-1">
-                    →
-                  </span>
-                </Link>
-              </div>
-            </article>
-          ))}
-        </div>
+    <section className="cv-auto bg-navy-deep py-16 text-white sm:py-24">
+      <Container size="narrow">
+        <h2 className="text-[clamp(1.35rem,3.4vw,1.9rem)] leading-[1.4] font-bold">ルールはスタッフが説明します</h2>
+        <p className="mt-5 text-[0.98rem] leading-[2] text-white/80">
+          ボードゲームを遊んだことがなくても、事前にルールを覚えてくる必要はありません。
+          遊ぶゲームが決まったら、スタッフがルールを説明します。
+        </p>
+        <p className="mt-4 text-[0.98rem] leading-[2] text-white/80">受付で次のことを伝えていただくと、ゲームを選ぶときの参考になります。</p>
+        <ul className="mt-4 space-y-2 border-l-2 border-cyan/60 pl-5 text-[0.95rem] leading-[1.9] text-white/90">
+          <li>何人で遊ぶか（2人で来た、など）</li>
+          <li>ボードゲームが初めてかどうか</li>
+          <li>どれくらいの時間いる予定か</li>
+          <li>1人の場合、相席を希望するかどうか</li>
+        </ul>
       </Container>
     </section>
   );
 }
 
-/* --------------------------------------------------------------- PHOTO BAND */
+/* --------------------------------------------------------------- ゲーム棚 */
 
-/** 文字を減らして写真だけで見せる帯。セクションの単調さを断ち切る役目。 */
-export function PhotoBand() {
+export function Games() {
+  const picks = staffPicks().slice(0, 6);
   return (
-    <section className="cv-auto relative isolate overflow-hidden bg-navy-deep">
-      <div className="absolute inset-0 -z-10">
-        <Photo name="pano-a" fill sizes="100vw" quality={70} className="object-cover object-[center_60%]" />
-      </div>
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-deep/80 via-navy-deep/35 to-navy-deep/20" />
-      <Container className="flex min-h-[38svh] items-end py-12 sm:min-h-[54svh] sm:py-20">
-        <div data-reveal className="max-w-xl">
-
-          <p className="display text-balance mt-3 text-[clamp(1.5rem,3.8vw,2.4rem)] leading-[1.35] font-semibold text-white">
-店内の様子
-          </p>
-          <p className="mt-4 text-[0.88rem] leading-[1.9] text-white/75">
-            テーブル席と、壁沿いのボードゲームの棚。遊ぶゲームは棚の前で選べます。
-          </p>
-        </div>
-      </Container>
-    </section>
-  );
-}
-
-/* --------------------------------------------------------------- GAME COLLECTION */
-
-export type MoodTile = { key: string; label: string; en: string; href: string; photo: PhotoKey };
-
-export function GameCollection({
-  moods,
-  groups,
-  total,
-}: {
-  moods: MoodTile[];
-  groups: { key: string; label: string; href: string; caption: string; games: Game[] }[];
-  total: number;
-}) {
-  return (
-    <section id="games" className="cv-auto section-y bg-navy-deep text-white">
+    <section className="cv-auto bg-paper py-16 sm:py-24">
       <Container>
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div className="max-w-2xl" data-reveal>
-            <p className="eyebrow text-cyan">Game Collection</p>
-            <h2 className="display text-balance mt-4 text-[clamp(1.6rem,4.2vw,2.6rem)] leading-[1.35] text-white">
-              遊べるボードゲーム
-            </h2>
-            <p className="text-pretty mt-5 text-[0.95rem] leading-[1.95] text-white/72">
-              ボドゲーマの当店ページに登録されている{total}タイトルを、人数・時間・ジャンルで探せます。取り扱いは入れ替わることがあります。
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+          <div>
+            <h2 className={H2}>ボードゲーム</h2>
+            <p className="mt-4 text-[0.95rem] leading-[1.95] text-ink-soft">
+              ボドゲーマの当店ページには{GAME_COUNT}
+              タイトルが登録されています。取り扱いは入れ替わることがあるので、遊びたいゲームが決まっている場合は事前にお問い合わせください。
+            </p>
+            <p className="mt-6">
+              <Link
+                href="/games"
+                className="inline-flex min-h-11 items-center rounded-full bg-navy px-6 text-[0.9rem] font-semibold text-white hover:bg-navy-deep"
+              >
+                ゲームを探す（人数・時間・ジャンル）
+              </Link>
             </p>
           </div>
-          <Button href="/games" variant="amber" className="shrink-0">
-            {total}種類をすべて見る
-          </Button>
-        </div>
-
-        {/* 目的から選ぶ。ゲーム名を知らない人の入口 */}
-        {/* スマホは横に流す（2列3段だと画面1つぶん使ってしまう）。PCは6列 */}
-        <ul
-          className="hide-scrollbar mt-10 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 sm:mt-12 sm:grid sm:grid-cols-3 sm:gap-4 sm:overflow-visible lg:grid-cols-6"
-          data-reveal
-        >
-          {moods.map((m) => (
-            <li key={m.key} className="w-[38vw] shrink-0 snap-start sm:w-auto">
-              <Link
-                href={m.href}
-                className="group relative block aspect-[4/5] overflow-hidden rounded-xl sm:aspect-[3/4]"
-              >
-                <Photo
-                  name={m.photo}
-                  fill
-                  sizes="(max-width:640px) 46vw, (max-width:1024px) 30vw, 15vw"
-                  className="object-cover opacity-70 transition-all duration-700 ease-[var(--ease-out-expo)] group-hover:scale-105 group-hover:opacity-85"
-                />
-                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/40 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-3.5 sm:p-4">
-                  <span className="display block text-[0.55rem] tracking-[0.22em] text-cyan uppercase">{m.en}</span>
-                  <span className="display mt-1 block text-[0.95rem] leading-snug font-semibold">{m.label}</span>
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-16 space-y-14">
-          {groups.map((g, gi) => (
-            <div key={g.key} data-reveal data-reveal-delay={gi * 70}>
-              <div className="flex flex-wrap items-baseline justify-between gap-3">
-                <h3 className="display text-[1.05rem] font-semibold text-white">{g.label}</h3>
-                <Link
-                  href={g.href}
-                  className="group/more text-[0.78rem] text-cyan transition-colors hover:text-white"
-                  aria-label={`${g.label}のゲームをすべて見る`}
-                >
-                  すべて見る{' '}
-                  <span aria-hidden="true" className="inline-block transition-transform duration-300 group-hover/more:translate-x-1">
-                    →
-                  </span>
-                </Link>
-              </div>
-              <p className="mt-1.5 text-[0.8rem] text-white/55">{g.caption}</p>
-
-              {/* スマホは横スクロール、PCはグリッド */}
-              <ul className="hide-scrollbar mt-5 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:overflow-visible lg:grid-cols-6">
-                {g.games.map((game) => (
-                  <li key={game.slug} className="w-[38vw] shrink-0 snap-start sm:w-auto">
-                    <Link href={`/games/${game.slug}`} className="group block">
-                      <div className="overflow-hidden rounded-xl">
-                        <GameImage
-                          slug={game.slug}
-                          name={game.nameJa}
-                          nameEn={game.nameEn}
-                          genre={game.genre}
-                          className="transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.05]"
-                        />
-                      </div>
-                      <p className="mt-2.5 line-clamp-2 text-[0.78rem] leading-snug text-white/85 transition-colors group-hover:text-cyan">
-                        {game.nameJa}
-                      </p>
-                      <p className="mt-1 text-[0.68rem] text-white/45">
-                        {game.playersLabel ?? '人数未確認'}
-                        {game.timeLabel ? ` ・ ${game.timeLabel}` : ''}
-                      </p>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </Container>
-    </section>
-  );
-}
-
-/* --------------------------------------------------------------- HOW TO ENJOY */
-
-const enjoySteps: { n: 1 | 2 | 3 | 4; t: string; d: string }[] = [
-  { n: 1, t: '予約（任意）', d: 'ご来店予約フォームから日時と人数を送ります。空席があれば予約なしでも入れます。' },
-  { n: 2, t: '受付', d: '人数と、相席を希望するかどうかを伝えます。初めての場合はそれも伝えてください。' },
-  { n: 3, t: 'ルール説明を聞いて遊ぶ', d: 'ゲームを選んだら、スタッフがルールを説明します。時間内なら何本遊んでも料金は同じです。' },
-  { n: 4, t: 'お会計', d: '帰るときに、利用時間ぶんをお支払いいただきます。' },
-];
-
-export function HowToEnjoy() {
-  return (
-    <section id="how" className="cv-auto section-y bg-paper">
-      <Container>
-        <div className="flex flex-wrap items-end justify-between gap-6" data-reveal>
-          <SectionHeading eyebrow="How to enjoy" title="ご利用の流れ" />
-          <div className="flex flex-wrap gap-3">
-            <Button href={shop.reservationUrl} variant="solid" external>
-              ご来店予約フォームへ
-            </Button>
-            <Button href="/system" variant="outline">
-              料金・利用案内
-            </Button>
-          </div>
-        </div>
-
-        <ol className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-4 lg:grid-cols-4" data-reveal data-reveal-delay="100">
-          {enjoySteps.map((s, i) => (
-            <li key={s.n} className="relative rounded-2xl border border-line bg-surface p-4 sm:p-6">
-              <DieFace n={s.n} className="h-8 w-8 text-navy sm:h-9 sm:w-9" />
-              <h3 className="mt-3 text-[0.92rem] font-semibold text-ink sm:mt-4 sm:text-[1rem]">{s.t}</h3>
-              <p className="text-pretty mt-2 text-[0.8rem] leading-[1.85] text-ink-soft sm:text-[0.84rem] sm:leading-[1.9]">{s.d}</p>
-              {i < enjoySteps.length - 1 ? (
-                <span
-                  aria-hidden="true"
-                  className="absolute top-1/2 -right-3 hidden h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-paper text-[0.7rem] text-ink-faint lg:flex"
-                >
-                  →
-                </span>
-              ) : null}
-            </li>
-          ))}
-        </ol>
-      </Container>
-    </section>
-  );
-}
-
-/* --------------------------------------------------------------- SCENE */
-
-export type SceneCard = { href: string; label: string; en: string; body: string; photo: PhotoKey };
-
-/** 先頭1枚を大きく、残りをグリッドに。9ページのうち6つを見せ、残りは /scene へ。 */
-export function SceneGrid({ scenes, more }: { scenes: SceneCard[]; more: { href: string; label: string }[] }) {
-  const [featured, ...rest] = scenes;
-  return (
-    <section id="scene" className="cv-auto section-y bg-surface">
-      <Container>
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading
-            eyebrow="Scene"
-            title="目的別のご案内"
-          />
-          <Link href="/scene" className="prose-link shrink-0 text-[0.85rem]">
-            すべての目的を見る →
-          </Link>
-        </div>
-
-        <div className="mt-12 grid gap-4 sm:gap-5 lg:grid-cols-3">
-          {featured ? (
-            <Link
-              href={featured.href}
-              data-reveal
-              className="group relative block overflow-hidden rounded-2xl bg-navy-deep text-white lg:col-span-2 lg:row-span-2"
-            >
-              <div className="absolute inset-0">
-                <Photo
-                  name={featured.photo}
-                  fill
-                  sizes="(max-width:1024px) 92vw, 62vw"
-                  className="object-cover opacity-60 transition-all duration-[900ms] ease-[var(--ease-out-expo)] group-hover:scale-105 group-hover:opacity-50"
-                />
-              </div>
-              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/55 to-transparent" />
-              <div className="relative flex min-h-[18rem] flex-col justify-end p-6 sm:min-h-[22rem] sm:p-8 lg:min-h-full">
-                <span className="display text-[0.6rem] tracking-[0.24em] text-cyan uppercase">{featured.en}</span>
-                <h3 className="display text-balance mt-2 text-[clamp(1.25rem,2.6vw,1.7rem)] leading-snug font-semibold">
-                  {featured.label}
-                </h3>
-                <p className="text-pretty mt-2 max-w-md text-[0.85rem] leading-[1.85] text-white/75">{featured.body}</p>
-              </div>
-            </Link>
-          ) : null}
-
-          {rest.map((s, i) => (
-            <Link
-              key={s.href}
-              href={s.href}
-              data-reveal
-              data-reveal-delay={(i + 1) * 60}
-              className="group relative block overflow-hidden rounded-2xl bg-navy-deep text-white"
-            >
-              <div className="absolute inset-0">
-                <Photo
-                  name={s.photo}
-                  fill
-                  sizes="(max-width:640px) 92vw, (max-width:1024px) 46vw, 31vw"
-                  className="object-cover opacity-55 transition-all duration-[900ms] ease-[var(--ease-out-expo)] group-hover:scale-105 group-hover:opacity-45"
-                />
-              </div>
-              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/55 to-transparent" />
-              <div className="relative flex min-h-[9.5rem] flex-col justify-end p-5 sm:min-h-[13rem]">
-                <span className="display text-[0.55rem] tracking-[0.24em] text-cyan uppercase">{s.en}</span>
-                <h3 className="display mt-1.5 text-[1rem] leading-snug font-semibold">{s.label}</h3>
-                <p className="text-pretty mt-1.5 line-clamp-2 text-[0.78rem] leading-[1.8] text-white/70 sm:line-clamp-none">
-                  {s.body}
-                </p>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {more.length ? (
-          <ul className="mt-6 flex flex-wrap gap-2.5" data-reveal>
-            {more.map((m) => (
-              <li key={m.href}>
-                <Link
-                  href={m.href}
-                  className="inline-flex min-h-10 items-center rounded-full border border-line bg-paper px-4 py-2 text-[0.82rem] text-ink-soft transition-colors hover:border-navy/40 hover:text-ink"
-                >
-                  {m.label}
+          <ul className="self-end divide-y divide-line border-y border-line text-[0.93rem]">
+            {CONDITIONS.map((c) => (
+              <li key={c.key}>
+                <Link href={`/games/${c.slug}`} className="flex items-baseline justify-between gap-4 py-3.5 hover:text-cyan-ink">
+                  <span>{c.heading}</span>
+                  <span className="text-[0.8rem] text-ink-faint">{gamesWithCondition(c.key).length}件</span>
                 </Link>
               </li>
             ))}
           </ul>
+        </div>
+
+        {picks.length ? (
+          <div className="mt-14">
+            <h3 className="text-[1.1rem] font-bold text-ink">スタッフのおすすめ</h3>
+            <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+              {picks.map((g) => (
+                <li key={g.slug}>
+                  <GameCard game={g} />
+                </li>
+              ))}
+            </ul>
+          </div>
         ) : null}
       </Container>
     </section>
   );
 }
 
-/* --------------------------------------------------------------- SYSTEM */
+/* --------------------------------------------------------------- 使い方と料金 */
 
-export function SystemSummary() {
+export function HowAndPrice() {
   const u = shop.pricing.unit.value;
   const c = shop.pricing.caps.value;
   return (
-    <section id="system" className="cv-auto section-y bg-paper-2">
+    <section className="cv-auto bg-surface py-16 sm:py-24">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-16">
-          <div data-reveal>
-            <SectionHeading
-              eyebrow="System"
-              title="料金"
-              lead="料金は時間制です。ゲームごとの追加料金はありません。"
-            />
-            <p className="mt-6 text-[0.82rem] leading-[1.9] text-ink-faint">{shop.pricing.guaranteedHoursNote}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="/system" variant="solid">
-                料金・利用案内の詳細
-              </Button>
-              <Button href="/faq" variant="outline">
-                よくあるご質問
-              </Button>
-            </div>
+        <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
+          <div>
+            <h2 className={H2}>利用の流れ</h2>
+            <ol className="mt-6 space-y-5 text-[0.95rem] leading-[1.9] text-ink-soft">
+              <li>
+                <strong className="text-ink">予約（任意）</strong>
+                ：ご来店予約フォームから日時と人数を送ります。空席があれば予約なしでも入れます。
+              </li>
+              <li>
+                <strong className="text-ink">受付</strong>：人数と、相席を希望するかどうかを伝えます。
+              </li>
+              <li>
+                <strong className="text-ink">遊ぶ</strong>：ゲームを選ぶと、スタッフがルールを説明します。時間内なら何本遊んでも料金は同じです。
+              </li>
+              <li>
+                <strong className="text-ink">お会計</strong>：帰るときに、利用時間ぶんをお支払いいただきます。
+              </li>
+            </ol>
           </div>
 
-          <div className="rounded-2xl border border-line bg-surface p-6 sm:p-9" data-reveal data-reveal-delay="120">
-            <table className="w-full text-left">
+          <div>
+            <h2 className={H2}>料金</h2>
+            <table className="mt-6 w-full text-left text-[0.92rem]">
               <caption className="sr-only">プレイスペース料金</caption>
-              <thead>
-                <tr className="text-[0.72rem] text-ink-faint">
-                  <th scope="col" className="pb-3 font-medium">
+              <thead className="text-[0.75rem] text-ink-faint">
+                <tr className="border-b border-line">
+                  <th scope="col" className="py-2 font-medium">
                     区分
                   </th>
-                  <th scope="col" className="pb-3 text-right font-medium">
+                  <th scope="col" className="py-2 text-right font-medium">
                     1時間
                   </th>
-                  <th scope="col" className="pb-3 text-right font-medium">
+                  <th scope="col" className="py-2 text-right font-medium">
                     平日上限
                   </th>
-                  <th scope="col" className="pb-3 text-right font-medium">
+                  <th scope="col" className="py-2 text-right font-medium">
                     土日祝上限
                   </th>
                 </tr>
               </thead>
-              <tbody className="text-[0.92rem]">
-                <tr className="border-t border-line">
-                  <th scope="row" className="py-4 font-semibold text-ink">
+              <tbody>
+                <tr className="border-b border-line">
+                  <th scope="row" className="py-3 font-semibold">
                     通常
                   </th>
-                  <td className="py-4 text-right tabular-nums">
-                    <span className="display text-[1.35rem] font-bold text-navy">{u.normal}</span>円
-                  </td>
-                  <td className="py-4 text-right tabular-nums text-ink-soft">{c.weekday.normal.toLocaleString()}円</td>
-                  <td className="py-4 text-right tabular-nums text-ink-soft">{c.weekend.normal.toLocaleString()}円</td>
+                  <td className="py-3 text-right tabular-nums">{u.normal}円</td>
+                  <td className="py-3 text-right tabular-nums">{c.weekday.normal.toLocaleString()}円</td>
+                  <td className="py-3 text-right tabular-nums">{c.weekend.normal.toLocaleString()}円</td>
                 </tr>
-                <tr className="border-t border-line">
-                  <th scope="row" className="py-4 font-semibold text-ink">
-                    相席あり
+                <tr className="border-b border-line">
+                  <th scope="row" className="py-3 font-semibold">
+                    相席可
                   </th>
-                  <td className="py-4 text-right tabular-nums">
-                    <span className="display text-[1.35rem] font-bold text-cyan-ink">{u.share}</span>円
-                  </td>
-                  <td className="py-4 text-right tabular-nums text-ink-soft">{c.weekday.share.toLocaleString()}円</td>
-                  <td className="py-4 text-right tabular-nums text-ink-soft">{c.weekend.share.toLocaleString()}円</td>
+                  <td className="py-3 text-right tabular-nums">{u.share}円</td>
+                  <td className="py-3 text-right tabular-nums">{c.weekday.share.toLocaleString()}円</td>
+                  <td className="py-3 text-right tabular-nums">{c.weekend.share.toLocaleString()}円</td>
                 </tr>
               </tbody>
             </table>
-
-            <ul className="mt-7 space-y-2 border-t border-line pt-6 text-[0.82rem] leading-relaxed text-ink-soft">
-              <li>・小学生は半額、未就学児は無料です。</li>
-              <li>・学生証のご提示で学生割が適用されます（割引率は店頭でご確認ください）。</li>
-              <li>・中学生以下のご利用は、成人の保護者の方の同伴が必要です。</li>
-              <li>・飲食物の販売はしていません。お持ち込みは可能です。</li>
-            </ul>
+            <p className="mt-4 text-[0.85rem] leading-[1.9] text-ink-soft">
+              小学生は半額、未就学児は無料（中学生以下は保護者の方の同伴が必要）。学生証の提示で学生割引があります（割引率は店頭でご確認ください）。
+              お席の利用時間の保証は5時間までです。
+            </p>
+            <p className="mt-3 text-[0.9rem]">
+              <Link href="/system" className="prose-link">
+                料金・ご利用案内の詳細
+              </Link>
+            </p>
           </div>
         </div>
       </Container>
@@ -592,56 +255,121 @@ export function SystemSummary() {
   );
 }
 
-/* --------------------------------------------------------------- ACCESS */
+/* --------------------------------------------------------------- イベント */
 
-export function AccessSummary() {
+export function Events() {
+  const ev = shop.testPlayEvent.value;
+  const news = newsByDate().slice(0, 3);
   return (
-    <section id="access" className="cv-auto section-y bg-paper">
+    <section className="cv-auto bg-paper-2 py-16 sm:py-24">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          <div data-reveal>
-            <SectionHeading eyebrow="Access" title="アクセス" />
-            <dl className="mt-8">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
+          <figure className="order-last lg:order-first">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-md">
+              <Photo name="group-photo" fill sizes="(max-width:1024px) 92vw, 46vw" className="object-cover" />
+            </div>
+            <figcaption className="mt-2 text-[0.78rem] text-ink-faint">店内で開いたイベントの参加者。</figcaption>
+          </figure>
+          <div>
+            <h2 className={H2}>{ev.name}</h2>
+            <p className="mt-4 text-[0.95rem] leading-[1.95] text-ink-soft">{ev.notes[0]}</p>
+            <dl className="mt-5 text-[0.9rem]">
               {[
-                { k: '住所', v: shop.address.full },
-                { k: 'アクセス', v: '大阪メトロ御堂筋線 中津駅 1番出口から徒歩3分／阪急 大阪梅田駅 茶屋町口から徒歩10分' },
-                { k: '営業時間', v: hoursLine() },
-                { k: '定休日', v: `${shop.hours.closedDays.value.join('・')}（${shop.hours.closedDaysNote.replace('。', '')}）` },
-                { k: 'TEL ＆ FAX', v: shop.tel.value },
-              ].map((r) => (
-                <div key={r.k} className="spec-row">
-                  <dt className="text-[0.78rem] font-medium text-ink-faint">{r.k}</dt>
-                  <dd className="text-[0.9rem] leading-relaxed text-ink">{r.v}</dd>
+                ['開催', `${ev.schedule} ${ev.hours}`],
+                ['参加費', `${ev.fee}円（${ev.feeNote}）`],
+                ['申し込み', ev.entry],
+              ].map(([k, v]) => (
+                <div key={k} className="grid grid-cols-[5rem_1fr] gap-3 border-b border-line/80 py-2.5">
+                  <dt className="text-ink-faint">{k}</dt>
+                  <dd className="text-ink">{v}</dd>
                 </div>
               ))}
             </dl>
-            <p className="mt-6 text-[0.84rem] leading-[1.95] text-ink-soft">{shop.accessDirections}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="/access" variant="solid">
-                アクセスの詳細・地図
-              </Button>
-              <Button href={shop.reservationUrl} variant="outline" external>
-                ご来店予約
-              </Button>
-            </div>
+            <p className="mt-3 text-[0.8rem] leading-relaxed text-ink-faint">
+              {ev.scheduleNote}。開催日は変わることがあるので、最新の告知をご確認ください。
+            </p>
+            <p className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[0.9rem]">
+              <a href={shop.links.twipla} target="_blank" rel="noopener noreferrer" className="prose-link">
+                TwiPlaで開催予定を見る
+              </a>
+              <Link href="/schedule" className="prose-link">
+                イベント情報
+              </Link>
+            </p>
           </div>
+        </div>
 
-          <div data-reveal data-reveal-delay="120">
-            {/* 入口の写真を大きく。はじめて来る人が迷わないための一枚 */}
-            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl">
-              <Photo name="entrance-stairs" fill sizes="(max-width:1024px) 92vw, 46vw" className="object-cover" />
-              <span className="absolute bottom-3 left-3 rounded-full bg-navy-deep/80 px-3 py-1 text-[0.7rem] text-white backdrop-blur">
-                ビル3階への入口
-              </span>
-            </div>
-            <div className="mt-4 grid grid-cols-2 gap-4">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-                <Photo name="chalkboard" fill sizes="(max-width:1024px) 45vw, 23vw" className="object-cover" />
+        <div className="mt-14 border-t border-line pt-6">
+          <h3 className="text-[0.95rem] font-bold text-ink">お知らせ</h3>
+          <ul className="mt-3 space-y-2 text-[0.88rem]">
+            {news.map((n) => (
+              <li key={n.slug} className="flex gap-4">
+                <time dateTime={n.date} className="shrink-0 text-ink-faint tabular-nums">
+                  {n.date.replace(/-/g, '.')}
+                </time>
+                <Link href={`/news/${encodeURIComponent(n.slug)}`} className="text-ink hover:text-cyan-ink">
+                  {n.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 text-[0.85rem]">
+            <Link href="/news" className="prose-link">
+              お知らせ一覧
+            </Link>
+          </p>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+/* --------------------------------------------------------------- アクセス */
+
+export function Access() {
+  return (
+    <section className="cv-auto bg-surface py-16 sm:py-24">
+      <Container>
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <h2 className={H2}>アクセス</h2>
+            <p className="mt-4 text-[0.95rem] leading-[1.95] text-ink-soft">
+              {shop.address.full}
+              <br />
+              大阪メトロ御堂筋線 中津駅1番出口から徒歩3分、阪急大阪梅田駅 茶屋町口から徒歩10分。
+            </p>
+            <p className="mt-4 text-[0.9rem] leading-[1.9] text-ink-soft">{shop.accessDirections}</p>
+            <p className="mt-4 text-[0.9rem] text-ink-soft">TEL {shop.tel.value}（席のご予約は電話では承っていません）</p>
+            <p className="mt-6 flex flex-wrap gap-3">
+              <Link
+                href="/access"
+                className="inline-flex min-h-11 items-center rounded-full bg-navy px-6 text-[0.9rem] font-semibold text-white hover:bg-navy-deep"
+              >
+                地図と道順
+              </Link>
+              <a
+                href={shop.reservationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center rounded-full border border-navy/30 px-6 text-[0.9rem] font-semibold text-navy hover:border-navy"
+              >
+                ご来店予約フォーム
+              </a>
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <figure className="col-span-2">
+              <div className="relative aspect-[2/1] overflow-hidden rounded-md">
+                <Photo name="entrance-stairs" fill sizes="(max-width:1024px) 92vw, 46vw" className="object-cover" />
               </div>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-                <Photo name="pano-c" fill sizes="(max-width:1024px) 45vw, 23vw" className="object-cover" />
+              <figcaption className="mt-2 text-[0.78rem] text-ink-faint">ビル入口。階段で3階へ上がります（360度カメラの写真）。</figcaption>
+            </figure>
+            <figure className="col-span-2 sm:col-span-1">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-md">
+                <Photo name="chalkboard" fill sizes="(max-width:640px) 92vw, 23vw" className="object-cover" />
               </div>
-            </div>
+              <figcaption className="mt-2 text-[0.78rem] text-ink-faint">店頭の黒板。</figcaption>
+            </figure>
           </div>
         </div>
       </Container>
@@ -649,36 +377,27 @@ export function AccessSummary() {
   );
 }
 
-/* --------------------------------------------------------------- CTA */
+/* --------------------------------------------------------------- 目的別 */
 
-export function CtaBand() {
+export function SceneLinks() {
   return (
-    <section className="cv-auto relative isolate overflow-hidden bg-navy">
-      <div aria-hidden="true" className="absolute inset-0 -z-10 opacity-20">
-        <Photo name="floor-group" fill sizes="100vw" className="object-cover" />
-      </div>
-      <Container className="py-20 text-center sm:py-24">
-        <Eyebrow className="text-cyan">Reservation</Eyebrow>
-        <h2 className="display text-balance mx-auto mt-4 max-w-2xl text-[clamp(1.5rem,4.4vw,2.4rem)] leading-[1.4] font-semibold text-white">
-ご予約について
-        </h2>
-        <p className="mx-auto mt-5 max-w-xl text-[0.9rem] leading-[1.95] text-white/72">
-          ご予約はフォームからお願いします。お問い合わせフォーム・メール・お電話では席のご予約を承っていません。
-          空席があれば、ご予約なしでもご利用いただけます。
-        </p>
-        <div className="mt-9 flex flex-wrap justify-center gap-3">
-          <Button href={shop.reservationUrl} variant="amber" external>
-            ご来店予約フォーム
-          </Button>
-          <Button href="/system" variant="outline" className="border-white/30 text-white hover:border-white hover:bg-white/10">
-            料金・利用案内を見る
-          </Button>
-        </div>
-        <p className="mt-6 text-[0.75rem] text-white/50">
-          <Chip tone="navy" className="bg-white/12 text-white/80">
-            {hoursLine()}
-          </Chip>
-        </p>
+    <section className="cv-auto border-t border-line bg-paper py-12">
+      <Container>
+        <h2 className="text-[1rem] font-bold text-ink">目的別のご案内</h2>
+        <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-[0.92rem]">
+          {SCENES.map((s) => (
+            <li key={s.slug}>
+              <Link href={`/scene/${s.slug}`} className="prose-link">
+                {s.label}
+              </Link>
+            </li>
+          ))}
+          <li>
+            <Link href="/faq" className="prose-link">
+              よくあるご質問
+            </Link>
+          </li>
+        </ul>
       </Container>
     </section>
   );

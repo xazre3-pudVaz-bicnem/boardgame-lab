@@ -4,7 +4,7 @@ import { NEWS } from '@/data/news';
 import { SCENES } from '@/data/scenes';
 import { abs, SITE_URL_CONFIGURED } from '@/data/shop';
 import { getAllPosts } from '@/lib/blog';
-import { COLLECTION_KEYS, GAMES, genreList } from '@/lib/games';
+import { CONDITION_SLUGS, GAMES, genreList } from '@/lib/games';
 
 /**
  * サイトマップ。
@@ -39,7 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency,
       priority,
     })),
-    ...COLLECTION_KEYS.map((key) => ({
+    ...CONDITION_SLUGS.map((key) => ({
       url: abs(`/games/${key}`),
       lastModified: now,
       changeFrequency: 'monthly' as const,
@@ -75,7 +75,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.5,
     })),
-    ...GAMES.map((g) => ({
+    ...GAMES.filter((g) => g.indexable).map((g) => ({
       url: abs(`/games/${g.slug}`),
       lastModified: now,
       changeFrequency: 'monthly' as const,

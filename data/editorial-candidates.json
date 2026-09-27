@@ -1,0 +1,611 @@
+{
+  "_readme": [
+    "公開しない編集候補。スタッフがおすすめを決めるときの下書きとして使う。サイトには一切表示しない。",
+    "ここに入っていても、data/staff-picks.json に登録されない限り『おすすめ』とは表示されない。",
+    "作成: 2026-09 当サイト制作時（AIによる判断を含む）。スタッフ未確認。",
+    "twoPlayerFitCandidates の区分",
+    "  best-at-two          … 2人が特におすすめ（候補）",
+    "  good-at-two          … 2人でも十分楽しめる（候補）",
+    "  more-is-better       … 2人プレイ可能だが、より多人数向き（候補）",
+    "  2人専用（対応人数がちょうど2人）は客観データから two-only として自動で分かるので、ここには書かない。",
+    "BoardGameGeek の推奨人数は、2026-09時点でAPIが認証必須（401）になっており未取得。取得できたら bggPlayerCount に入れる。"
+  ],
+  "twoPlayerFitCandidates": {
+    "good-at-two": [
+      "splendor",
+      "azul",
+      "dominion",
+      "dominion-second-edition",
+      "dominion-seaside",
+      "dominion-intrigue",
+      "dominion-prosperity",
+      "hanabi",
+      "mind",
+      "the-game",
+      "kingdomino",
+      "stone-garden",
+      "terraforming-mars",
+      "wingspan",
+      "scythe",
+      "agricola",
+      "everdell",
+      "its-a-wonderful-world",
+      "ubongo",
+      "ubongo-3d",
+      "national-economy",
+      "national-economy-mecenat",
+      "die-quacksalber-quedlinburg",
+      "project-l",
+      "sagrada",
+      "lost-ruins-arnak",
+      "century-spice-road",
+      "cascadia",
+      "carcassonne-j",
+      "ticket-to-ride",
+      "ticket-to-ride-europe",
+      "race-for-the-galaxy",
+      "tzolkin-the-mayan-calendar",
+      "concordia",
+      "brass-birmingham",
+      "brass-lancashire",
+      "seasons",
+      "great-western-trail",
+      "spirit-island",
+      "castles-burgundy-2019",
+      "nmbr-9",
+      "lucky-numbers",
+      "quoridor",
+      "marrakech-suleika",
+      "algo",
+      "keltis",
+      "heart-of-crown",
+      "potion-explosion",
+      "tagiron",
+      "miniville",
+      "rummikub",
+      "caverna-die-hoehlenbauern",
+      "canvas",
+      "terra-mystica",
+      "barrage",
+      "dice-forge",
+      "clank",
+      "istanbul"
+    ],
+    "more-is-better": [
+      "6-nimmt",
+      "coyote",
+      "hols-der-geier",
+      "codenames",
+      "codenames-pictures",
+      "deep-sea-adventure",
+      "pingu-party",
+      "word-basket",
+      "ito",
+      "dobble",
+      "time-bomb-new-edition",
+      "7-wonders",
+      "bluff",
+      "super-rhino",
+      "domemo",
+      "lama",
+      "wie-ich-die-welt-sehe",
+      "scout",
+      "scout-oink",
+      "coloretto",
+      "ra",
+      "love-letter",
+      "lovecraft-letter",
+      "kakerlakenpoker",
+      "citadels",
+      "guess-club",
+      "neu",
+      "we-didnt-playtest-this-at-all",
+      "we-didnt-playtest-this-either",
+      "nana-card-game",
+      "las-vegas",
+      "mysterium",
+      "fuenf-gurken",
+      "ciao-ciao",
+      "heckmeck-am-bratwurmeck",
+      "toddles-bobbles-white",
+      "halli-galli",
+      "blokus",
+      "blokus-trigon",
+      "strike",
+      "aber-bitte-mit-sahne",
+      "die-crew-reist-gemeinsam-zum-9-planeten",
+      "xing",
+      "black-stories",
+      "dejavu",
+      "decrocher-la-lune",
+      "um-krone-und-kragen",
+      "mahe",
+      "elfenland",
+      "celestia",
+      "word-sniper",
+      "onsoku-hanten",
+      "caru-uta",
+      "atekko",
+      "pig-10",
+      "king-of-toky-renewal",
+      "hugo",
+      "abluxxen",
+      "sokuratesura",
+      "tiger-dragon",
+      "voodoo-prince",
+      "cat-th-box-hobby-japan",
+      "nana-toridori",
+      "monster-maker-new-edition",
+      "illusion",
+      "dungeon-mandom-viii",
+      "dungeon-of-mandom",
+      "whirling-witchcraft",
+      "dorasure"
+    ]
+  },
+  "couplesCandidates": [
+    {
+      "slug": "patchwork",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "lost-cities",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "hanamikoji",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "codenames-duet",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "sky-team",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "splendor-duel",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "7-wonders-duel",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "jekyll-vs-hyde",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "fox-forest-duet",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "blokus-duo",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "gobblet-gobblers",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "quarto",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "geister",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "battle-line",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "rosenkoenig",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "face-face",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "kakerlaken-duell",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "agricola-all-creatures-big-and-small",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "tokyo-highway",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "klask",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "azul",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "splendor",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "kingdomino",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "hanabi",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "mind",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "cascadia",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "lucky-numbers",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "carcassonne-j",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "project-l",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "sagrada",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "ubongo",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "quoridor",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    },
+    {
+      "slug": "stone-garden",
+      "criteria": {
+        "teachMinutes": null,
+        "conversation": null,
+        "visualAppeal": null,
+        "sharedBoard": null,
+        "mode": null,
+        "harshConflict": null,
+        "skillGap": null,
+        "firstPlayFun": null
+      },
+      "staffChecked": false
+    }
+  ],
+  "bggPlayerCount": {}
+}

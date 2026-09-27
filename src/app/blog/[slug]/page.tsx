@@ -75,6 +75,10 @@ export default async function BlogPostPage({ params }: Params) {
           <Container size="narrow">
             <Markdown source={post.body} />
 
+            <p className="mt-10 text-[0.78rem] leading-relaxed text-ink-faint">
+              この記事は当サイトが作成したもので、店舗スタッフの確認前です。ゲームの人数・時間はボドゲーマの登録情報によります。
+            </p>
+
             {post.tags.length ? (
               <ul className="mt-12 flex flex-wrap gap-2">
                 {post.tags.map((t) => (

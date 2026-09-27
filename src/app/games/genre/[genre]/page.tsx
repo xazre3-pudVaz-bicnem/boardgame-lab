@@ -130,7 +130,7 @@ export default async function GenrePage({ params }: Params) {
           <h2 className="display mb-8 text-[clamp(1.3rem,3.4vw,1.9rem)] text-ink">
             {g.label}のタイトル一覧
           </h2>
-          <GameGrid games={games} priorityCount={5} />
+          <GameGrid games={games} />
 
           <div className="mt-14 flex flex-wrap gap-3">
             <Button href="/games" variant="solid">

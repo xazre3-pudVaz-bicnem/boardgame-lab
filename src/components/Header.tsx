@@ -9,7 +9,7 @@ import { shop } from '@/data/shop';
 const nav = [
   { href: '/games', label: 'ゲーム', en: 'Games' },
   { href: '/system', label: '料金・利用案内', en: 'System' },
-  { href: '/scene', label: '遊び方', en: 'Scene' },
+  { href: '/scene', label: '目的別', en: 'Scene' },
   { href: '/schedule', label: 'イベント', en: 'Event' },
   { href: '/news', label: 'お知らせ', en: 'News' },
   { href: '/access', label: 'アクセス', en: 'Access' },
@@ -70,9 +70,6 @@ export default function Header() {
                       active ? 'text-cyan-ink' : 'header-ink text-ink hover:text-cyan-ink'
                     }`}
                   >
-                    <span className="header-ink-soft display text-[0.58rem] tracking-[0.18em] text-ink-faint uppercase">
-                      {n.en}
-                    </span>
                     {n.label}
                   </Link>
                 </li>
@@ -124,26 +121,17 @@ export default function Header() {
             {nav.map((n) => (
               <li key={n.href}>
                 <Link href={n.href} className="flex items-baseline gap-3 py-4 text-[1rem] font-medium text-ink">
-                  <span className="display w-16 shrink-0 text-[0.6rem] tracking-[0.18em] text-cyan-ink uppercase">
-                    {n.en}
-                  </span>
                   {n.label}
                 </Link>
               </li>
             ))}
             <li>
-              <Link href="/games/for-beginners" className="flex items-baseline gap-3 py-4 text-[1rem] text-ink">
-                <span className="display w-16 shrink-0 text-[0.6rem] tracking-[0.18em] text-cyan-ink uppercase">
-                  Start
-                </span>
+              <Link href="/scene/first-time" className="flex items-baseline gap-3 py-4 text-[1rem] text-ink">
                 はじめての方へ
               </Link>
             </li>
             <li>
               <Link href="/blog" className="flex items-baseline gap-3 py-4 text-[1rem] text-ink">
-                <span className="display w-16 shrink-0 text-[0.6rem] tracking-[0.18em] text-cyan-ink uppercase">
-                  Blog
-                </span>
                 コラム
               </Link>
             </li>

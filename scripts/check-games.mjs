@@ -40,8 +40,9 @@ for (const g of games) {
 
 /* ---------------------------------------------------- 本文の充足 */
 
-const FIELDS = ['catch', 'overview', 'howToPlay', 'appeal', 'recommended'];
-const MIN = { catch: 10, overview: 70, howToPlay: 70, appeal: 60, recommended: 34 };
+// 画面に出す説明文は overview と howToPlay だけ（キャッチ・魅力・おすすめ文は表示しない）
+const FIELDS = ['overview', 'howToPlay'];
+const MIN = { overview: 40, howToPlay: 40 };
 const PLACEHOLDER = /(準備中|coming soon|TBD|ダミーテキスト|ダミー文|lorem ipsum|未定です|テキストを入力|ここに説明)/i;
 
 for (const g of games) {
@@ -80,7 +81,7 @@ const jaccard = (a, b) => {
   return inter / (a.size + b.size - inter || 1);
 };
 
-for (const f of ['overview', 'howToPlay', 'appeal']) {
+for (const f of ['overview', 'howToPlay']) {
   const vecs = games.map((g) => ({ slug: g.slug, s: grams(g[f]) }));
   for (let i = 0; i < vecs.length; i++) {
     for (let j = i + 1; j < vecs.length; j++) {
@@ -103,7 +104,7 @@ for (const f of ['overview', 'howToPlay', 'appeal']) {
 const outside = (lo, hi, d) => lo < d.min || hi > d.max;
 
 for (const g of games) {
-  const text = `${g.overview} ${g.howToPlay} ${g.appeal} ${g.recommended}`;
+  const text = `${g.overview} ${g.howToPlay}`;
 
   for (const m of text.matchAll(/(d+)〜(d+)人/g)) {
     const [lo, hi] = [+m[1], +m[2]];
@@ -131,52 +132,48 @@ for (const g of games) {
   }
 }
 
-/* ---------------------------------------------------- 内部リンク */
+/* ---------------------------------------------------- 関連ゲーム */
 
 for (const g of games) {
-  if (g.related.length === 0) warn(`${g.slug}: 関連ゲームが0件`);
-  for (const r of g.related) {
-    if (!slugs.has(r)) fail(`${g.slug}: 関連ゲーム "${r}" が存在しない`);
-    if (r === g.slug) fail(`${g.slug}: 自分自身を関連ゲームに含んでいる`);
+  for (const grp of g.relatedGroups) {
+    for (const r of grp.slugs) {
+      if (!slugs.has(r)) fail(`${g.slug}: 関連ゲーム "${r}" が存在しない`);
+      if (r === g.slug) fail(`${g.slug}: 自分自身を関連ゲームに含んでいる`);
+    }
   }
 }
 
-// 誰からも関連として参照されないゲーム（行き止まり）を把握する
-const referenced = new Set();
-for (const g of games) for (const r of g.related) referenced.add(r);
-const orphans = games.filter((g) => !referenced.has(g.slug));
-if (orphans.length) warn(`どこからも関連リンクされていないゲーム: ${orphans.length}件`);
+/* ---------------------------------------------------- 種類・推薦 */
 
-/* ---------------------------------------------------- 一覧ページの中身 */
-
-const COLLECTION_KEYS = [
-  'for-beginners',
-  'for-two',
-  'party',
-  'short-play',
-  'for-couples',
-  'for-groups',
-  'heavy',
-  'cooperative',
-  'solo',
-];
-for (const key of COLLECTION_KEYS) {
-  const n = games.filter((g) => g.collections.includes(key)).length;
-  if (n === 0) fail(`コレクション "${key}" に該当するゲームが0件`);
-  else if (n < 8) warn(`コレクション "${key}" が ${n}件しかない`);
-}
-// /games/<slug> はゲーム詳細とコレクションで共有している。衝突すると片方が消える。
-for (const key of COLLECTION_KEYS) {
-  if (slugs.has(key)) fail(`コレクション "${key}" と同じslugのゲームがある（URLが衝突する）`);
-}
-for (const reserved of ['list', 'genre', 'search']) {
-  if (slugs.has(reserved)) fail(`予約語 "${reserved}" と同じslugのゲームがある（URLが衝突する）`);
+for (const g of games) {
+  // 単体で遊べない拡張は、条件の一覧にも推薦にも単独で出さない
+  if (g.requiresBaseGame) {
+    if (g.conditions.length) fail(`${g.slug}: 単体で遊べない拡張が条件の一覧に入っている`);
+    if (g.staff.pick || g.staff.forTwo || g.staff.forCouples || g.staff.forBeginners || g.staff.forGroups)
+      fail(`${g.slug}: 単体で遊べない拡張が推薦されている`);
+    if (g.indexable) fail(`${g.slug}: 単体で遊べない拡張が検索対象になっている`);
+  }
+  if (g.baseGameSlug && !slugs.has(g.baseGameSlug)) fail(`${g.slug}: baseGameSlug "${g.baseGameSlug}" が存在しない`);
+  // 「おすすめ」は staff-picks.json 由来だけ。説明文に評価表現が残っていないか
+  if (/(名作|傑作|完成度|鉄板(?!焼)|屈指|定番)/.test(g.overview + g.howToPlay)) fail(`${g.slug}: 説明文に根拠のない評価表現が残っている`);
 }
 
-const genreCount = {};
-for (const g of games) genreCount[g.genre] = (genreCount[g.genre] ?? 0) + 1;
-for (const [k, n] of Object.entries(genreCount)) {
-  if (n < 5) warn(`ジャンル "${k}" が ${n}件しかない`);
+// 条件ページとゲームのslugが衝突していないか（/games/<slug> を共有しているため）
+for (const key of ['for-two', 'for-groups', 'short-play', 'cooperative', 'list', 'genre']) {
+  if (slugs.has(key)) fail(`"${key}" と同じslugのゲームがある（URLが衝突する）`);
+}
+
+/* ---------------------------------------------------- シーンページの写真 */
+
+// 同じ写真を複数のシーンページのヒーローに使わない
+{
+  const src = fs.readFileSync(path.join(ROOT, 'src/data/scenes.ts'), 'utf8');
+  const photos = [...src.matchAll(/^s{4}photo: '([a-z0-9-]+)'/gm)].map((m) => m[1]);
+  const seen = new Set();
+  for (const p of photos) {
+    if (seen.has(p)) fail(`シーンページで写真 "${p}" が複数のヒーローに使われている`);
+    seen.add(p);
+  }
 }
 
 /* ---------------------------------------------------- 画像 */

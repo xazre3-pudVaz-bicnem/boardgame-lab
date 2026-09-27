@@ -119,28 +119,43 @@ npm run check:games              # 件数・重複・数値の矛盾・リンク
 
 ### ゲームの画像について
 
-パッケージ画像はボドゲーマの各ゲームページから取得しています。
-
-```bash
-node scripts/fetch-game-images.mjs    # 元画像を data/source/game-images/ に取得（再実行で差分だけ）
-node scripts/build-game-images.mjs    # public/games/<slug>-{320,480}.webp と src/data/game-images.json を作る
-node scripts/build-games.mjs          # hasImage フラグを games.json と索引に反映
-```
-
-取り違えが起きない理由は、`games-raw.json` の `sourceImage` が
-**こちらが slug で取得したゲームレコードに紐づくURLそのもの**だからです。
-一覧ページの画像と詳細ページの og:image が608件すべて同一ファイルであることも確認しています。
-`check:games` が、同じ画像が2つ以上のゲームに割り当たっていないかも見ています。
-
-画像が登録されていないタイトルは、ゲーム名とジャンルから組み立てたSVG
-（`src/components/GameTile.tsx`）に自動で落ちます。切り替えは `GameImage` が行います。
-
-**著作権は各出版社にあります。** 詳細ページに出典と帰属を明記していますが、
-権利者から掲載の停止を求められた場合は、`public/games/` を空にして
-`node scripts/build-games.mjs` を実行すれば、全件がSVG表示に戻ります。
-店舗で撮影した写真に差し替える場合も、同じ命名で `public/games/` に置けば入れ替わります。
+ボドゲーマのパッケージ画像は、同サイトの利用規約（第5条）で運営の事前同意なく転載できないため、**公開を停止しています**。
+今はすべてゲーム名から作った表示（`GameTile`）です。店舗で撮影した写真や、権利者から許諾を得た画像ができたら
+`public/games/<slug>-{320,480}.webp` に置いて `src/data/game-images.json` に登録してください。写真の監査表は [docs/images.md](docs/images.md)。
 
 ---
+
+## おすすめを登録する（スタッフ用）
+
+このサイトは、人数や時間のデータから自動で「おすすめ」を付けません。
+「2人におすすめ」「デートにおすすめ」「初めての方におすすめ」「スタッフのおすすめ」は、
+**`data/staff-picks.json` に書いたゲームだけ**が表示されます。今は1件も登録されていません。
+
+```json
+"games": {
+  "splendor": {
+    "staffReviewed": true,
+    "staffPick": true,
+    "forTwo": "best",
+    "forCouples": true,
+    "forBeginners": true,
+    "forGroups": false,
+    "comments": { "two": "2人でも駆け引きがしっかり残ります", "general": "..." }
+  }
+}
+```
+
+- `forTwo`: `"best"`（2人が特におすすめ）／`"good"`（2人でも十分楽しめる）／`"more"`（2人でも遊べるが多人数向き。一覧には出ない）
+- `staffReviewed: true` にすると、そのゲームの説明文に「BODOlab.スタッフ監修」と表示されます（説明文を確認したものだけにしてください）
+- 単体で遊べない拡張は推薦できません（ビルドが止まります）
+- 下書きとして、制作時に作った候補リストが `data/editorial-candidates.json` にあります（サイトには出ません。AIの判断を含むので、そのまま移さず確認してから使ってください）
+
+書き換えたら `node scripts/build-games.mjs` → `npm run check:games`。
+
+## ゲームの種類（拡張）
+
+`data/content-types.json` に、拡張・独立拡張・別版を登録しています。ここに無いものは単体で遊べる基本ゲームとして扱います。
+単体で遊べない拡張は、カードに「拡張」と表示し、条件の一覧に入れず、詳細ページは検索に載せません（noindex）。
 
 ## 在庫の状況を記録する
 

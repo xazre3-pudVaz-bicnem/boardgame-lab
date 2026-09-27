@@ -65,15 +65,10 @@ function inline(text: string, keyBase: string) {
 
 /** /games/<key> のうちゲームではないもの（コレクション）。リンク切れ判定から除く。 */
 const COLLECTIONISH = new Set([
-  'for-beginners',
   'for-two',
-  'party',
   'short-play',
-  'for-couples',
   'for-groups',
-  'heavy',
   'cooperative',
-  'solo',
   'list',
 ]);
 

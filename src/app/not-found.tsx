@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { Button, Container } from '@/components/ui';
-import { popularGames } from '@/lib/games';
 
 export const metadata = {
   title: 'ページが見つかりません｜BODOlab.（ボードゲームラボ）',
@@ -15,7 +14,6 @@ const LINKS = [
 ];
 
 export default function NotFound() {
-  const games = popularGames(5);
 
   return (
     <section className="section-y bg-paper pt-36">
@@ -37,21 +35,6 @@ export default function NotFound() {
                   {l.label}
                 </span>
                 <span className="text-[0.82rem] text-ink-soft">{l.note}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <h2 className="display mt-14 text-[1.05rem] text-ink">よく見られているゲーム</h2>
-        <ul className="mt-4 divide-y divide-line border-y border-line">
-          {games.map((g) => (
-            <li key={g.slug}>
-              <Link
-                href={`/games/${g.slug}`}
-                className="flex items-baseline justify-between gap-4 py-3 transition-colors hover:text-cyan-ink"
-              >
-                <span className="text-[0.9rem]">{g.nameJa}</span>
-                <span className="shrink-0 text-[0.75rem] text-ink-faint">{g.playersLabel ?? ''}</span>
               </Link>
             </li>
           ))}

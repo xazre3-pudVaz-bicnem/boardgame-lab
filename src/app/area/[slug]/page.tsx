@@ -3,12 +3,10 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import DarkHeader from '@/components/DarkHeader';
 import Photo from '@/components/Photo';
-import { GameGrid } from '@/components/GameCard';
 import { FaqList } from '@/components/home/HomeFaq';
 import { Breadcrumbs, Button, Container, ConfirmNote, Eyebrow } from '@/components/ui';
 import { AREAS, getArea } from '@/data/areas';
 import { shop } from '@/data/shop';
-import { popularGames } from '@/lib/games';
 import { breadcrumbSchema, buildMetadata, faqSchema, JsonLd, localBusinessSchema } from '@/lib/seo';
 
 type Params = { params: Promise<{ slug: string }> };
@@ -156,25 +154,6 @@ export default async function AreaPage({ params }: Params) {
                 </Button>
               </div>
             </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* ------------------------------------------------ 人気タイトル */}
-      <section className="cv-auto section-y bg-surface">
-        <Container>
-          <Eyebrow>Games</Eyebrow>
-          <h2 className="display mt-3 text-[clamp(1.4rem,3.6vw,2.1rem)] text-ink">よく遊ばれているタイトル</h2>
-          <p className="mt-3 max-w-2xl text-[0.85rem] leading-[1.9] text-ink-soft">
-            全{shop.gameCount.listed.value}タイトルのうち、ボドゲーマで「遊んだことがある」と登録している人が多い順に10件です。
-          </p>
-          <div className="mt-9">
-            <GameGrid games={popularGames(10)} />
-          </div>
-          <div className="mt-10">
-            <Button href="/games" variant="outline">
-              全タイトルから探す
-            </Button>
           </div>
         </Container>
       </section>

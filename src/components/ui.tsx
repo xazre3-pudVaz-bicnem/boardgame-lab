@@ -14,17 +14,22 @@ export function Container({
   return <div className={`${max} container-x mx-auto w-full ${className}`}>{children}</div>;
 }
 
-export function Eyebrow({ children, className = '' }: { children: ReactNode; className?: string }) {
-  return <p className={`eyebrow ${className}`}>{children}</p>;
+/**
+ * 英語の小見出し。2026-09 の見直しで表示をやめた（全セクションに「英語小見出し＋日本語見出し」を
+ * 付ける型がテンプレートらしさの原因だったため）。呼び出し側を一斉に消さずに済むよう、何も描かない。
+ */
+export function Eyebrow(_props: { children: ReactNode; className?: string }) {
+  void _props;
+  return null;
 }
 
 export function SectionHeading({
-  eyebrow,
   title,
   lead,
   align = 'left',
   as: Tag = 'h2',
 }: {
+  /** 以前の英語小見出し。表示はしない（呼び出し側の互換のため受け取るだけ） */
   eyebrow?: string;
   title: ReactNode;
   lead?: ReactNode;
@@ -33,7 +38,6 @@ export function SectionHeading({
 }) {
   return (
     <div className={`max-w-3xl ${align === 'center' ? 'mx-auto text-center' : ''}`}>
-      {eyebrow ? <Eyebrow className="mb-4">{eyebrow}</Eyebrow> : null}
       <Tag className="display text-balance text-[clamp(1.6rem,4.2vw,2.6rem)] leading-[1.35] text-ink">{title}</Tag>
       {lead ? <div className="text-pretty mt-5 text-[0.975rem] leading-[1.95] text-ink-soft">{lead}</div> : null}
     </div>
@@ -144,12 +148,12 @@ export function Breadcrumbs({
 
 /** ページ上部の見出しブロック（下層ページ共通） */
 export function PageHeader({
-  eyebrow,
   title,
   lead,
   breadcrumbs,
 }: {
-  eyebrow: string;
+  /** 以前の英語小見出し。表示はしない */
+  eyebrow?: string;
   title: string;
   lead?: ReactNode;
   breadcrumbs: { name: string; href?: string }[];
@@ -159,8 +163,7 @@ export function PageHeader({
       <Container>
         <Breadcrumbs items={breadcrumbs} />
         <div className="mt-6">
-          <Eyebrow>{eyebrow}</Eyebrow>
-          <h1 className="display text-balance mt-3 text-[clamp(1.75rem,5vw,3rem)] leading-[1.3] text-ink">{title}</h1>
+          <h1 className="display text-balance text-[clamp(1.75rem,5vw,3rem)] leading-[1.3] text-ink">{title}</h1>
           {lead ? (
             <div className="text-pretty mt-5 max-w-2xl text-[0.975rem] leading-[1.95] text-ink-soft">{lead}</div>
           ) : null}

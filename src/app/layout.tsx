@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: '%s',
   },
   description:
-    '大阪市北区豊崎、中津駅から徒歩3分のボードゲームプレイスペース＆ショップ。608種類のボードゲームを1時間600円から。スタッフがルールを説明するので初心者も1人でも安心です。',
+    '大阪市北区豊崎、中津駅から徒歩3分のボードゲームプレイスペース＆ショップ。1時間600円、ルールはスタッフが説明します。飲食物の販売はありません。',
   applicationName: SITE_NAME,
   authors: [{ name: SITE_NAME, url: SITE_URL }],
   creator: SITE_NAME,

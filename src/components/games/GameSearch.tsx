@@ -24,13 +24,14 @@ type Row = {
   e: string | null;
   p: [number, number] | null;
   t: [number, number] | null;
-  a: number | null;
   g: string;
-  w: 'light' | 'middle' | 'heavy';
-  b: 0 | 1;
+  /** 1 なら単体で遊べない拡張 */
+  x: 0 | 1;
+  /** 1 なら同じシリーズの独立拡張・別版 */
+  v: 0 | 1;
+  /** 1 ならスタッフおすすめ */
+  k: 0 | 1;
   c: string[];
-  /** 1 ならパッケージ画像がある。0 ならSVGを描く。 */
-  i: 0 | 1;
 };
 
 type Props = {
@@ -70,11 +71,11 @@ type State = {
   players: number | null;
   time: TimeKey;
   genre: string | null;
-  beginner: boolean;
+  expansions: boolean;
   sort: 'popular' | 'name';
 };
 
-const EMPTY: State = { q: '', players: null, time: 'any', genre: null, beginner: false, sort: 'popular' };
+const EMPTY: State = { q: '', players: null, time: 'any', genre: null, expansions: false, sort: 'popular' };
 
 /** URLの検索文字列から状態を復元する。不正な値は無視する。 */
 function fromSearch(search: string, genreKeys: Set<string>): State {
@@ -87,7 +88,7 @@ function fromSearch(search: string, genreKeys: Set<string>): State {
     players: PLAYERS.includes(players as (typeof PLAYERS)[number]) ? players : null,
     time: time && TIME_FILTERS.some((t) => t.key === time) ? time : 'any',
     genre: genre && genreKeys.has(genre) ? genre : null,
-    beginner: sp.get('beginner') === '1',
+    expansions: sp.get('exp') === '1',
     sort: sp.get('sort') === 'name' ? 'name' : 'popular',
   };
 }
@@ -98,7 +99,7 @@ function toSearch(st: State) {
   if (st.players) sp.set('players', String(st.players));
   if (st.time !== 'any') sp.set('time', st.time);
   if (st.genre) sp.set('genre', st.genre);
-  if (st.beginner) sp.set('beginner', '1');
+  if (st.expansions) sp.set('exp', '1');
   if (st.sort !== 'popular') sp.set('sort', st.sort);
   const s = sp.toString();
   return s ? `?${s}` : '';
@@ -153,7 +154,7 @@ export default function GameSearch({ genres, total }: Props) {
     setShown(PAGE);
   };
 
-  const active = Boolean(st.q || st.players || st.time !== 'any' || st.genre || st.beginner || st.sort !== 'popular');
+  const active = Boolean(st.q || st.players || st.time !== 'any' || st.genre || st.expansions || st.sort !== 'popular');
 
   const results = useMemo(() => {
     if (!rows) return null;
@@ -165,7 +166,7 @@ export default function GameSearch({ genres, total }: Props) {
       if (st.players && !(r.p && r.p[0] <= st.players && st.players <= r.p[1])) return false;
       if (!timeTest(r)) return false;
       if (st.genre && r.g !== st.genre) return false;
-      if (st.beginner && !r.b) return false;
+      if (!st.expansions && r.x) return false;
       return true;
     });
     if (st.sort === 'name') out = [...out].sort((a, b) => a.n.localeCompare(b.n, 'ja'));
@@ -178,7 +179,7 @@ export default function GameSearch({ genres, total }: Props) {
     if (st.players) parts.push(`${st.players}人`);
     if (st.time !== 'any') parts.push(TIME_FILTERS.find((t) => t.key === st.time)!.label);
     if (st.genre) parts.push(genres.find((g) => g.key === st.genre)?.label ?? '');
-    if (st.beginner) parts.push('初心者向け');
+    if (st.expansions) parts.push('拡張を含む');
     if (st.q.trim()) parts.push(`「${st.q.trim()}」`);
     return parts.filter(Boolean).join(' × ');
   }, [st, genres]);
@@ -287,11 +288,11 @@ export default function GameSearch({ genres, total }: Props) {
           <div className="flex flex-wrap items-center gap-3 border-t border-line pt-5">
             <button
               type="button"
-              aria-pressed={st.beginner}
-              onClick={() => update({ beginner: !st.beginner })}
-              className={`${chipBase} ${st.beginner ? 'border-amber bg-amber text-ink shadow-[0_2px_10px_rgba(240,152,0,0.25)]' : chipOff}`}
+              aria-pressed={st.expansions}
+              onClick={() => update({ expansions: !st.expansions })}
+              className={`${chipBase} ${st.expansions ? chipOn : chipOff}`}
             >
-              初心者向けだけ
+              単体で遊べない拡張も表示
             </button>
 
             <label htmlFor="game-sort" className="ml-auto text-[0.78rem] text-ink-soft">
@@ -370,23 +371,14 @@ export default function GameSearch({ genres, total }: Props) {
                         className="group block overflow-hidden rounded-xl border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:border-navy/25 hover:shadow-[0_10px_30px_rgba(0,40,79,0.09)]"
                       >
                         <div className="overflow-hidden">
-                          {r.i ? (
-                            // 実寸ちょうどのwebpを事前生成しているので変換は挟まない（GameImage と同じ理由）
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img
-                              src={`/games/${r.s}-320.webp`}
-                              width={320}
-                              height={320}
-                              alt={`${r.n}のゲーム画像`}
-                              loading="lazy"
-                              decoding="async"
-                              className="aspect-square w-full bg-paper-2 object-contain transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.04]"
-                            />
-                          ) : (
-                            <GameTile slug={r.s} name={r.n} nameEn={r.e} genre={r.g} className="aspect-square w-full" />
-                          )}
+                          <GameTile slug={r.s} name={r.n} nameEn={r.e ? r.e.split(' / ')[0] : null} genre={r.g} className="aspect-square w-full" />
                         </div>
                         <div className="p-3.5">
+                          {r.x ? (
+                            <span className="mb-1 inline-block rounded bg-amber-wash px-1.5 py-0.5 text-[0.68rem] font-semibold text-amber-ink">拡張</span>
+                          ) : r.v ? (
+                            <span className="mb-1 inline-block rounded bg-paper-2 px-1.5 py-0.5 text-[0.68rem] font-semibold text-ink-soft">シリーズ作品</span>
+                          ) : null}
                           <h3 className="line-clamp-2 text-[0.85rem] leading-snug font-semibold text-ink transition-colors group-hover:text-cyan-ink">
                             {r.n}
                           </h3>

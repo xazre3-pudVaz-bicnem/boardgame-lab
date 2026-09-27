@@ -41,7 +41,7 @@ export function buildMetadata({
     ...(keywords?.length ? { keywords } : {}),
     ...(SITE_URL_CONFIGURED ? { alternates: { canonical: url } } : {}),
     robots: blocked
-      ? { index: false, follow: !noindex }
+      ? { index: false, follow: true }
       : { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large' } },
     openGraph: {
       title: fullTitle,
@@ -74,7 +74,7 @@ export function localBusinessSchema() {
     name: `${shop.name}（${shop.nameJa}）`,
     alternateName: [shop.nameJa, shop.nickname, 'ボードゲームラボ'],
     description:
-      '大阪市北区豊崎、大阪メトロ中津駅から徒歩3分のボードゲームプレイスペース＆ショップ。608種類のボードゲームをスタッフのルール説明つきで遊べます。',
+      '大阪市北区豊崎、大阪メトロ中津駅から徒歩3分のボードゲームプレイスペース＆ショップ。ボードゲームをスタッフのルール説明つきで遊べます。飲食物の販売はしていません。',
     url: SITE_URL,
     telephone: shop.tel.value,
     image: [abs('/og-image.jpg')],

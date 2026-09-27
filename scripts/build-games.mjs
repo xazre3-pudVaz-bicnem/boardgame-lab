@@ -1,38 +1,32 @@
 /**
  * ゲームデータのビルド。
  *
- *   data/source/games-raw.json      … ボドゲーマの所蔵リストから取得した一覧（608件）
- *   data/source/games-detail.json   … 各ゲームのメカニクス・テーマ・人気度など
- *   content/games/*.json            … 当サイトで書き下ろした紹介文（自社コンテンツ）
- *        ↓ merge + derive
+ *   data/source/games-raw.json      … ボドゲーマの所蔵リストから取得した一覧（608件）【事実データ】
+ *   data/source/games-detail.json   … 各ゲームのメカニクス・デザイナー等            【事実データ】
+ *   content/games/*.json            … 当サイトが作成した説明文（スタッフ監修前）     【AIを含む下書き】
+ *   data/content-types.json         … 基本ゲーム／拡張の区別
+ *   data/staff-picks.json           … スタッフが確認・推薦したもの                  【スタッフ監修】
+ *        ↓
  *   src/data/games.json             … サイトが読むデータ（サーバー側のみ）
- *   public/games-index.json         … 絞り込み用の軽量インデックス（クライアントが遅延取得）
+ *   public/games-index.json         … 絞り込み用の軽量インデックス
  *
- * 紹介文が未執筆のゲームは status を 'draft' として書き出し、
- * ページは生成するが本文の代わりに「準備中」を出す……のではなく、
- * check-games.mjs で落として公開させない（空ページを作らないため）。
+ * 大事な決まり
+ *   - 「おすすめ」は data/staff-picks.json に書かれたものだけ。人数・時間・年齢などから自動で付けない。
+ *   - 人数・時間などから作るのは「2人専用」「6人以上対応」「30分以内」のような検索条件だけ。
+ *   - 単体で遊べない拡張は、条件の一覧にも推薦にも単独で出さない。
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import {
-  parsePlayers,
-  parseTime,
-  parseAge,
-  deriveGenre,
-  deriveWeight,
-  deriveBeginner,
-  deriveCollections,
-  genreLabel,
-  ALL_GENRES,
-} from './lib/derive.mjs';
+import { parsePlayers, parseTime, parseAge, deriveGenre, deriveWeight, genreLabel, ALL_GENRES } from './lib/derive.mjs';
 
 const ROOT = process.cwd();
-const RAW = path.join(ROOT, 'data/source/games-raw.json');
-const DETAIL = path.join(ROOT, 'data/source/games-detail.json');
-const CONTENT_DIR = path.join(ROOT, 'content/games');
+const readJson = (p, fallback) => (fs.existsSync(path.join(ROOT, p)) ? JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8')) : fallback);
 
-const raw = JSON.parse(fs.readFileSync(RAW, 'utf8'));
-const detail = JSON.parse(fs.readFileSync(DETAIL, 'utf8'));
+const raw = readJson('data/source/games-raw.json');
+const detail = readJson('data/source/games-detail.json');
+const contentTypes = readJson('data/content-types.json', { games: {} }).games;
+const staffFile = readJson('data/staff-picks.json', { games: {}, updatedAt: '' });
+const stockFile = readJson('data/stock.json', { updatedAt: '', games: {} });
 
 /* ------------------------------------------------------- 検索用の正規化 */
 
@@ -45,293 +39,211 @@ const normalize = (s) =>
       .replace(/[\s　・:：!！?？'"'".,()（）\-–—_]/g, ''),
   );
 
-/* ------------------------------------------------------- 人気度 */
-
-// ボドゲーマの会員登録数。並べ替えの内部指標にのみ使い、画面には出さない。
+/** ボドゲーマの会員登録数。並べ替えの内部指標にのみ使い、画面には出さない（おすすめ度ではない）。 */
 const popularityOf = (d) => {
   const c = d?.counts ?? {};
   return (c['経験あり'] ?? 0) * 2 + (c['持ってる'] ?? 0) + (c['お気に入り'] ?? 0) * 3 + (c['興味あり'] ?? 0);
 };
 
-/* ------------------------------------------------------- 本文の読み込み */
+/* ------------------------------------------------------- 説明文 */
 
 /**
- * content/games/*.json は「slug をキーにした紹介文のかたまり」。
- * 1ゲーム1ファイルにすると608ファイルになって扱いづらいので、20件ずつのまとまりで置いている。
- * 同じ slug が2つのファイルにあった場合はビルドを失敗させる（どちらが正か決められないため）。
+ * 根拠のない評価表現を含む文は、表示用の説明文から外す（下書きの元データは残す）。
+ * 受賞歴のような事実は残す。「名作」「完成度が高い」のような評価は、スタッフ監修が付くまで出さない。
  */
-const CONTENT = new Map();
-const CONTENT_FILE_OF = new Map();
+const EVALUATIVE = /(名作|傑作|完成度|鉄板(?!焼)|屈指|定番|人気の|人気が高|評価が高|高く評価|代表作|まず候補|間違いな|最高傑作|最高に)/;
+let removedSentences = 0;
+function sanitize(text) {
+  const sentences = text.split(/(?<=。)/).filter(Boolean);
+  const kept = sentences.filter((s) => !EVALUATIVE.test(s));
+  removedSentences += sentences.length - kept.length;
+  return kept.join('').trim();
+}
 
-if (fs.existsSync(CONTENT_DIR)) {
-  for (const file of fs.readdirSync(CONTENT_DIR).filter((f) => f.endsWith('.json')).sort()) {
-    const parsed = JSON.parse(fs.readFileSync(path.join(CONTENT_DIR, file), 'utf8'));
-    for (const [slug, c] of Object.entries(parsed)) {
-      if (CONTENT.has(slug)) {
-        throw new Error(`content/games: slug "${slug}" が ${CONTENT_FILE_OF.get(slug)} と ${file} に重複しています`);
-      }
-      CONTENT.set(slug, c);
-      CONTENT_FILE_OF.set(slug, file);
-    }
+const CONTENT = new Map();
+for (const file of fs.readdirSync(path.join(ROOT, 'content/games')).filter((f) => f.endsWith('.json')).sort()) {
+  const parsed = JSON.parse(fs.readFileSync(path.join(ROOT, 'content/games', file), 'utf8'));
+  for (const [slug, c] of Object.entries(parsed)) {
+    if (CONTENT.has(slug)) throw new Error(`content/games: slug "${slug}" が重複しています（${file}）`);
+    CONTENT.set(slug, c);
   }
 }
 
-function loadContent(slug) {
-  const c = CONTENT.get(slug);
-  if (!c) return null;
-  const need = ['catch', 'overview', 'howToPlay', 'appeal', 'recommended'];
-  for (const k of need) if (typeof c[k] !== 'string' || c[k].trim().length < 10) return null;
-  return {
-    catch: c.catch.trim(),
-    overview: c.overview.trim(),
-    howToPlay: c.howToPlay.trim(),
-    appeal: c.appeal.trim(),
-    recommended: c.recommended.trim(),
-    // メカニクスが未登録でジャンルを機械判定できないゲームは、
-    // 執筆時に確認した内容にもとづいて genre を上書きできるようにしている。
-    genreOverride: typeof c.genre === 'string' ? c.genre : null,
-    // 一覧・詳細の項目が「未登録」でも、出典ページの解説文に対象年齢が書かれている
-    // ことがある。その場合だけ、執筆時に読み取った値をここで補う。
-    minAgeOverride: Number.isInteger(c.minAge) ? c.minAge : null,
-    // 通称・略称・別表記。「ito」「6ニムト」のように、正式名と違う呼び方で探されるものを書く。
-    aliases: Array.isArray(c.aliases) ? c.aliases.map(String) : [],
-  };
-}
+/* ------------------------------------------------------- スタッフの推薦 */
 
-/**
- * パッケージ画像があるかどうか。build-game-images.mjs が作るファイルを読む。
- * まだ画像を取得していない段階でもビルドが通るよう、無ければ空として扱う。
- */
-const imagesPath = path.join(ROOT, 'src/data/game-images.json');
-const gameImages = fs.existsSync(imagesPath) ? JSON.parse(fs.readFileSync(imagesPath, 'utf8')).images : {};
-
-/**
- * 店舗で確認した在庫の記録（data/stock.json）。スタッフが手で書き換える。
- * 載っていないタイトルは 'unknown'。ボドゲーマの登録数と店内の実態は一致しないので、
- * 「ある」と書けるのは店舗が確認したものだけにする。
- */
-const stockPath = path.join(ROOT, 'data/stock.json');
-const stockFile = fs.existsSync(stockPath)
-  ? JSON.parse(fs.readFileSync(stockPath, 'utf8'))
-  : { updatedAt: '', games: {} };
-const STOCK_VALUES = new Set(['available', 'unavailable']);
-for (const [slug, v] of Object.entries(stockFile.games ?? {})) {
-  if (!STOCK_VALUES.has(v)) console.warn('stock.json: ' + slug + ' の値 "' + v + '" は available / unavailable のどちらかにしてください');
-}
-
-/**
- * 「2人で楽しい」「カップル・デート向け」は数値では決めない（data/curation.json）。
- * 対応人数に2人を含むだけのゲームには、2人だと成立しにくいものが多いため。
- */
-const curation = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/curation.json'), 'utf8'));
-const GOOD_AT_TWO = new Set(curation.goodAtTwo);
-const FOR_COUPLES = new Set(curation.forCouples);
-const NOT_TWO = new Set(curation.notTwo);
-for (const s of [...GOOD_AT_TWO, ...FOR_COUPLES]) {
-  if (NOT_TWO.has(s)) throw new Error('curation.json: ' + s + ' が notTwo と両方に入っています');
-}
-function applyCuration(slug, players, cols) {
-  const out = cols.filter((c) => c !== 'for-two' && c !== 'for-couples');
-  if (NOT_TWO.has(slug)) return out;
-  const twoOnly = players && players.min === 2 && players.max === 2;
-  if (twoOnly || GOOD_AT_TWO.has(slug) || FOR_COUPLES.has(slug)) out.push('for-two');
-  if (FOR_COUPLES.has(slug)) out.push('for-couples');
-  return out;
-}
+const STAFF = staffFile.games ?? {};
+const FOR_TWO = new Set(['best', 'good', 'more']);
 
 /* ------------------------------------------------------- 組み立て */
 
 const games = [];
 const missingContent = [];
+const known = new Set(raw.games.map((r) => r.slug));
+
+for (const [slug] of Object.entries(contentTypes)) if (!known.has(slug)) console.warn(`content-types.json: "${slug}" というゲームはありません`);
+for (const [slug] of Object.entries(STAFF)) if (!known.has(slug)) throw new Error(`staff-picks.json: "${slug}" というゲームはありません`);
+for (const slug of Object.keys(stockFile.games ?? {})) if (!known.has(slug)) console.warn(`stock.json: "${slug}" というゲームはありません`);
 
 for (const r of raw.games) {
   const d = detail[r.slug] ?? {};
+  const c = CONTENT.get(r.slug);
+  if (!c) missingContent.push(r.slug);
 
-  // 数値は一覧ページと詳細ページの両方から取り、食い違ったら一覧側（新しい方）を採る
   const players = parsePlayers(r.playersRaw ?? d.players);
   const time = parseTime(r.timeRaw ?? d.time);
-
+  const minAge = parseAge(r.ageRaw ?? d.age) ?? (Number.isInteger(c?.minAge) ? c.minAge : null);
   const mechanics = Array.isArray(d.mechanics) ? d.mechanics : [];
-  const themes = Array.isArray(d.themes) ? d.themes : [];
   const designers = Array.isArray(d.designers) ? d.designers : [];
-
-  const content = loadContent(r.slug);
-  if (!content) missingContent.push(r.slug);
-
-  const minAge = parseAge(r.ageRaw ?? d.age) ?? content?.minAgeOverride ?? null;
-
-  const genre =
-    content?.genreOverride && ALL_GENRES.some((g) => g.key === content.genreOverride)
-      ? content.genreOverride
-      : deriveGenre(mechanics);
+  const genre = c?.genre && ALL_GENRES.some((g) => g.key === c.genre) ? c.genre : deriveGenre(mechanics);
   const weight = deriveWeight(time, minAge);
-  const popularity = popularityOf(d);
-  const beginner = deriveBeginner({ time, minAge, weight, popularity });
-  const collections = applyCuration(r.slug, players, deriveCollections({ players, time, minAge, weight, genre, beginner, mechanics }));
+
+  // 種類
+  const ct = contentTypes[r.slug] ?? { contentType: 'base', baseGameSlug: null, evidence: null };
+  const requiresBaseGame = ct.contentType === 'expansion';
+  const baseGameSlug = ct.baseGameSlug && known.has(ct.baseGameSlug) ? ct.baseGameSlug : null;
+
+  // スタッフの推薦（無ければすべて未設定）
+  const s = STAFF[r.slug] ?? {};
+  if (requiresBaseGame && (s.staffPick || s.forTwo || s.forCouples || s.forBeginners || s.forGroups)) {
+    throw new Error(`staff-picks.json: "${r.slug}" は単体で遊べない拡張なので、単独のおすすめにできません`);
+  }
+  if (s.forTwo && !FOR_TWO.has(s.forTwo)) throw new Error(`staff-picks.json: "${r.slug}" の forTwo は best / good / more のどれかにしてください`);
+  const staff = {
+    reviewed: s.staffReviewed === true,
+    pick: s.staffPick === true,
+    forTwo: FOR_TWO.has(s.forTwo) ? s.forTwo : null,
+    forCouples: s.forCouples === true,
+    forBeginners: s.forBeginners === true,
+    forGroups: s.forGroups === true,
+    comments: typeof s.comments === 'object' && s.comments ? s.comments : {},
+  };
+
+  // 検索条件（客観データだけで決まるもの）。単体で遊べない拡張は入れない。
+  const conditions = [];
+  if (!requiresBaseGame) {
+    if (players && players.min === 2 && players.max === 2) conditions.push('two-only');
+    if (players && players.max >= 6) conditions.push('six-plus');
+    if (time && time.max <= 30) conditions.push('within-30');
+    if (mechanics.includes('協力プレイ')) conditions.push('cooperative');
+  }
+
+  const overview = c ? sanitize(c.overview.trim()) : '';
+  const howToPlay = c ? sanitize(c.howToPlay.trim()) : '';
+  const rulesUnknown = /詳しいルールは店頭でご説明します/.test(c?.howToPlay ?? '');
 
   const nameJa = (d.titleJa || r.nameJa || '').trim();
   const nameEn = (d.titleEn || r.nameEn || '').trim() || null;
+  const aliases = Array.isArray(c?.aliases) ? c.aliases.map(String) : [];
 
   games.push({
     slug: r.slug,
     nameJa,
     nameEn,
-    search: [normalize(nameJa), normalize(nameEn)].filter(Boolean).join(' '),
+    search: [normalize(nameJa), normalize(nameEn), ...aliases.map(normalize)].filter(Boolean).join(' '),
+    aliases,
+    // 事実データ（出典: ボドゲーマ）
     players,
     playersLabel: players ? (players.min === players.max ? `${players.min}人` : `${players.min}〜${players.max}人`) : null,
     time,
     timeLabel: time ? (time.min === time.max ? `${time.min}分` : `${time.min}〜${time.max}分`) : null,
     minAge,
     year: r.year ?? null,
+    mechanics,
+    designers,
+    sourceUrl: r.sourceUrl,
+    dataStatus: players && time ? 'complete' : 'partial',
+    // 当サイトの分類
     genre,
     genreLabel: genreLabel(genre),
     weight,
-    beginner,
-    collections,
-    themes,
-    mechanics,
-    designers,
-    dataStatus: players && time ? 'complete' : 'partial',
-    sourceUrl: r.sourceUrl,
-    popularity,
-    hasImage: Object.hasOwn(gameImages, r.slug),
-    stock: STOCK_VALUES.has(stockFile.games?.[r.slug]) ? stockFile.games[r.slug] : 'unknown',
-    stockCheckedAt: STOCK_VALUES.has(stockFile.games?.[r.slug]) ? stockFile.updatedAt || null : null,
-    aliases: content?.aliases ?? [],
-    related: [],
-    catch: content?.catch ?? '',
-    overview: content?.overview ?? '',
-    howToPlay: content?.howToPlay ?? '',
-    appeal: content?.appeal ?? '',
-    recommended: content?.recommended ?? '',
+    conditions,
+    contentType: ct.contentType,
+    isExpansion: ct.contentType === 'expansion' || ct.contentType === 'standalone-expansion',
+    standalone: !requiresBaseGame,
+    requiresBaseGame,
+    baseGameSlug,
+    // スタッフ監修
+    staff,
+    // 説明文（スタッフ監修前は当サイト作成の下書き）
+    overview,
+    howToPlay,
+    rulesUnknown,
+    // 公開ページとして検索に載せてよいか
+    indexable: !requiresBaseGame && Boolean(players && time) && !rulesUnknown && overview.length >= 60,
+    popularity: popularityOf(d),
+    stock: ['available', 'unavailable'].includes(stockFile.games?.[r.slug]) ? stockFile.games[r.slug] : 'unknown',
+    stockCheckedAt: ['available', 'unavailable'].includes(stockFile.games?.[r.slug]) ? stockFile.updatedAt || null : null,
+    relatedGroups: [],
   });
-}
-
-// curation.json に、存在しない slug が書かれていないか
-{
-  const known = new Set(games.map((g) => g.slug));
-  for (const slug of [...GOOD_AT_TWO, ...FOR_COUPLES, ...NOT_TWO]) {
-    if (!known.has(slug)) console.warn('curation.json: "' + slug + '" というゲームはありません');
-  }
-}
-
-// stock.json に、存在しない slug が書かれていないか
-{
-  const known = new Set(games.map((g) => g.slug));
-  for (const slug of Object.keys(stockFile.games ?? {})) {
-    if (!known.has(slug)) console.warn('stock.json: "' + slug + '" というゲームはありません（slugの綴りを確認してください）');
-  }
 }
 
 /* ------------------------------------------------------- 関連ゲーム */
 
 /**
- * 同ジャンル → 人数帯が近い → プレイ時間が近い、の順でスコアをつけて上位6件。
- * 一方向だけのリンクにならないよう、相手からも辿れるかは check-games.mjs で確認する。
- */
-const overlap = (a, b) => a.filter((x) => b.includes(x)).length;
-
-for (const g of games) {
-  const scored = games
-    .filter((o) => o.slug !== g.slug)
-    .map((o) => {
-      let s = 0;
-      if (o.genre === g.genre) s += 6;
-      s += overlap(g.mechanics, o.mechanics) * 2;
-      s += overlap(g.collections, o.collections);
-      if (g.players && o.players) {
-        const d = Math.abs(g.players.min - o.players.min) + Math.abs(g.players.max - o.players.max);
-        s += Math.max(0, 4 - d);
-      }
-      if (g.time && o.time) {
-        const d = Math.abs((g.time.max ?? 0) - (o.time.max ?? 0));
-        s += d <= 15 ? 3 : d <= 40 ? 1 : 0;
-      }
-      if (g.designers.length && overlap(g.designers, o.designers)) s += 5;
-      // 同じ作品の別版・拡張は名前が似るので拾いやすくする
-      if (o.nameJa.startsWith(g.nameJa.slice(0, 4)) && g.nameJa.length >= 4) s += 4;
-      return { slug: o.slug, s, pop: o.popularity };
-    })
-    .filter((x) => x.s > 0)
-    .sort((a, b) => b.s - a.s || b.pop - a.pop);
-
-  g.related = scored.slice(0, 6).map((x) => x.slug);
-}
-
-/**
- * どこからも関連リンクされないゲーム（行き止まり）をなくす。
- * 自分が関連として挙げた相手の枠を1つ借りて、相互に行き来できるようにする。
- * 枠を空けたことで新たな行き止まりが生まれないよう、被リンクが2件以上ある相手だけ外す。
+ * 類似度で6件埋めるのではなく、関係の意味ごとに分けて出す。該当が無い区分は出さない。
+ *   series   … 同じシリーズ（基本ゲーム・拡張・別版）
+ *   designer … 同じデザイナー
+ *   shorter  … 同じジャンルで、プレイ時間が短いもの
+ *   longer   … 同じジャンルで、プレイ時間が長いもの
  */
 const bySlug = new Map(games.map((g) => [g.slug, g]));
-const inbound = new Map(games.map((g) => [g.slug, 0]));
-for (const g of games) for (const r of g.related) inbound.set(r, inbound.get(r) + 1);
+const familyOf = (g) => g.baseGameSlug ?? g.slug;
+const standaloneBase = (o) => !o.requiresBaseGame;
 
 for (const g of games) {
-  if (inbound.get(g.slug) > 0) continue;
-  for (const cand of g.related) {
-    const n = bySlug.get(cand);
-    if (n.related.includes(g.slug)) break;
-    const last = n.related[n.related.length - 1];
-    if (!last || inbound.get(last) <= 1) continue;
-    n.related[n.related.length - 1] = g.slug;
-    inbound.set(last, inbound.get(last) - 1);
-    inbound.set(g.slug, 1);
-    break;
+  const others = games.filter((o) => o.slug !== g.slug);
+  const groups = [];
+
+  const series = others.filter((o) => familyOf(o) === familyOf(g));
+  if (series.length) groups.push({ type: 'series', slugs: series.sort((a, b) => b.popularity - a.popularity).slice(0, 8).map((o) => o.slug) });
+
+  const designer = g.designers.length
+    ? others.filter((o) => familyOf(o) !== familyOf(g) && standaloneBase(o) && o.designers.some((x) => g.designers.includes(x)))
+    : [];
+  if (designer.length) groups.push({ type: 'designer', slugs: designer.sort((a, b) => b.popularity - a.popularity).slice(0, 4).map((o) => o.slug) });
+
+  if (g.time) {
+    const pool = others.filter((o) => standaloneBase(o) && familyOf(o) !== familyOf(g) && o.genre === g.genre && o.time);
+    const shorter = pool.filter((o) => o.time.max < g.time.min).sort((a, b) => b.popularity - a.popularity).slice(0, 4);
+    const longer = pool.filter((o) => o.time.min > g.time.max).sort((a, b) => b.popularity - a.popularity).slice(0, 4);
+    if (shorter.length) groups.push({ type: 'shorter', slugs: shorter.map((o) => o.slug) });
+    if (longer.length) groups.push({ type: 'longer', slugs: longer.map((o) => o.slug) });
   }
+  g.relatedGroups = groups;
 }
 
 /* ------------------------------------------------------- 書き出し */
 
-fs.mkdirSync(path.join(ROOT, 'src/data'), { recursive: true });
 fs.writeFileSync(
   path.join(ROOT, 'src/data/games.json'),
-  JSON.stringify(
-    {
-      generatedAt: new Date().toISOString(),
-      source: raw.games[0]?.sourceUrl ? 'https://bodoge.hoobby.net/spaces/boardgame-lab/games' : '',
-      count: games.length,
-      games,
-    },
-    null,
-    0,
-  ),
+  JSON.stringify({ generatedAt: new Date().toISOString(), source: 'https://bodoge.hoobby.net/spaces/boardgame-lab/games', count: games.length, games }),
 );
 
-// クライアントの絞り込み用。本文と、クライアント側で再計算できる項目は入れない。
-// 人気順であらかじめ並べておくので、並べ替え用のスコアも持たせない。
+// クライアントの絞り込み用。本文は入れない。人気順で並べておく。
 const index = [...games]
   .sort((a, b) => b.popularity - a.popularity)
   .map((g) => ({
     s: g.slug,
     n: g.nameJa,
-    // 英名と別名をまとめて検索対象にする（表示には使わない）
-    e: [g.nameEn ?? '', ...(g.aliases ?? [])].filter(Boolean).join(' / '),
+    e: [g.nameEn ?? '', ...g.aliases].filter(Boolean).join(' / '),
     p: g.players ? [g.players.min, g.players.max] : null,
     t: g.time ? [g.time.min, g.time.max] : null,
-    a: g.minAge,
     g: g.genre,
-    w: g.weight,
-    b: g.beginner ? 1 : 0,
-    c: g.collections,
-    // 1 ならパッケージ画像あり。0 の場合クライアントはSVGを描く。
-    i: Object.hasOwn(gameImages, g.slug) ? 1 : 0,
+    // 1 なら単体で遊べない拡張
+    x: g.requiresBaseGame ? 1 : 0,
+    // 1 なら同じシリーズの独立拡張・別版（単体で遊べる）
+    v: g.isExpansion && !g.requiresBaseGame ? 1 : 0,
+    // 1 ならスタッフおすすめ
+    k: g.staff.pick ? 1 : 0,
+    c: g.conditions,
   }));
-fs.mkdirSync(path.join(ROOT, 'public'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'public/games-index.json'), JSON.stringify(index));
 
-const stats = {};
-for (const g of games) stats[g.genre] = (stats[g.genre] ?? 0) + 1;
-const colStats = {};
-for (const g of games) for (const c of g.collections) colStats[c] = (colStats[c] ?? 0) + 1;
-
+const count = (f) => games.filter(f).length;
 console.log(`games: ${games.length}`);
-console.log(`genres:`, stats);
-console.log(`collections:`, colStats);
-console.log(`dataStatus partial: ${games.filter((g) => g.dataStatus === 'partial').length}`);
+console.log(`種類: 基本 ${count((g) => g.contentType === 'base')} / 拡張(単体不可) ${count((g) => g.requiresBaseGame)} / 独立拡張 ${count((g) => g.contentType === 'standalone-expansion')} / 別版 ${count((g) => g.contentType === 'edition')}`);
+console.log(`条件: 2人専用 ${count((g) => g.conditions.includes('two-only'))} / 6人以上 ${count((g) => g.conditions.includes('six-plus'))} / 30分以内 ${count((g) => g.conditions.includes('within-30'))} / 協力 ${count((g) => g.conditions.includes('cooperative'))}`);
+console.log(`スタッフ: 監修済み ${count((g) => g.staff.reviewed)} / おすすめ ${count((g) => g.staff.pick)} / 2人 ${count((g) => g.staff.forTwo === 'best' || g.staff.forTwo === 'good')} / デート ${count((g) => g.staff.forCouples)} / 初心者 ${count((g) => g.staff.forBeginners)} / 大人数 ${count((g) => g.staff.forGroups)}`);
+console.log(`検索に載せるページ: ${count((g) => g.indexable)} / noindex: ${count((g) => !g.indexable)}`);
+console.log(`評価表現として外した文: ${removedSentences}`);
 console.log(`本文未執筆: ${missingContent.length}`);
-if (missingContent.length) {
-  fs.writeFileSync(path.join(ROOT, 'data/source/missing-content.json'), JSON.stringify(missingContent, null, 2));
-  console.log(`  -> data/source/missing-content.json に書き出しました`);
-}
-console.log(`index: ${(fs.statSync(path.join(ROOT, 'public/games-index.json')).size / 1024).toFixed(1)} KB`);

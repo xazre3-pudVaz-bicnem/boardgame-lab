@@ -1,20 +1,19 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Photo from '@/components/Photo';
-import { Breadcrumbs, Button, Container, ConfirmNote, Eyebrow, PageHeader } from '@/components/ui';
+import { Breadcrumbs, Button, Container } from '@/components/ui';
 import { newsByDate } from '@/data/news';
 import { shop } from '@/data/shop';
 import { breadcrumbSchema, buildMetadata, JsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = buildMetadata({
-  title: 'イベント情報｜テストプレイ会は毎月最終火曜｜大阪・梅田中津 BODOlab.',
+  title: 'イベント｜ボドラボテスプ塾（テストプレイ会）・貸切｜大阪・中津 BODOlab.',
   description:
-    'BODOlab.のイベント情報です。ボードゲーム製作者を応援するテストプレイ会を毎月最終火曜日に開催しています（参加費500円・TwiPlaで受付）。貸切でのご利用もご相談いただけます。',
+    'BODOlab.のイベント情報。自作ボードゲームのテストプレイ会兼交流会「ボドラボテスプ塾」を毎月開いています（参加費500円・TwiPlaで申し込み）。貸切のご相談も承ります。',
   path: '/schedule',
-  keywords: ['大阪 ボードゲーム イベント', 'テストプレイ会 大阪', '大阪 ボードゲーム会', '梅田 ボードゲーム イベント'],
 });
 
-const crumbs = [{ name: 'ホーム', href: '/' }, { name: 'イベント情報' }];
+const crumbs = [{ name: 'ホーム', href: '/' }, { name: 'イベント' }];
 const ev = shop.testPlayEvent.value;
 
 export default function SchedulePage() {
@@ -24,127 +23,99 @@ export default function SchedulePage() {
     <>
       <JsonLd data={breadcrumbSchema(crumbs)} />
 
-      <PageHeader
-        eyebrow="Event"
-        title="イベント情報"
-        breadcrumbs={crumbs}
-        lead="定期開催しているイベントと、貸切でのご利用についてのご案内です。開催予定は変わることがあるため、直近の告知はTwiPlaと公式Instagramでご確認ください。"
-      />
-
-      {/* ------------------------------------------------ 定期イベント */}
-      <section className="section-y bg-paper">
+      <div className="bg-paper-2 pt-24 pb-16 sm:pt-28 sm:pb-24">
         <Container>
-          <Eyebrow>Monthly</Eyebrow>
-          <h2 className="display mt-3 text-[clamp(1.4rem,3.6vw,2.1rem)] text-ink">毎月のイベント</h2>
+          <Breadcrumbs items={crumbs} />
+          <h1 className="mt-6 text-[clamp(1.5rem,4.4vw,2.2rem)] font-bold text-ink">イベント</h1>
 
-          <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] lg:gap-16">
-            <div className="rounded-2xl border border-line bg-white p-7 sm:p-9">
-              <p className="eyebrow text-cyan-ink">{ev.schedule}</p>
-              <h3 className="display mt-3 text-[1.5rem] text-ink">{ev.name}</h3>
-              <p className="text-pretty mt-5 text-[0.9rem] leading-[1.95] text-ink-soft">
-                ボードゲーム製作者の方を応援する、テストプレイ会兼交流会です。
-                お互いの作品をブラッシュアップしましょう。
+          <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-14">
+            <section>
+              <h2 className="text-[1.35rem] font-bold text-ink">{ev.name}</h2>
+              <p className="mt-4 text-[0.98rem] leading-[2] text-ink-soft">
+                ボードゲーム製作者を応援する、テストプレイ会兼交流会です。自作のゲームを持ち込む人、これから作りたい人、
+                まだ世に出ていないゲームを遊んでみたい人など、経験を問わず参加できます。
               </p>
-              <p className="text-pretty mt-3 text-[0.9rem] leading-[1.95] text-ink-soft">
-                いまオリジナルのボードゲームを作っている方、他の方が作ったゲームを遊んでみたい方、どちらの参加も歓迎です。
-              </p>
-              <dl className="mt-7">
-                <div className="spec-row">
-                  <dt className="text-ink-soft">開催日</dt>
-                  <dd className="font-semibold text-ink">{ev.schedule}</dd>
-                </div>
-                <div className="spec-row">
-                  <dt className="text-ink-soft">参加費</dt>
-                  <dd className="font-semibold text-ink">{ev.fee}円</dd>
-                </div>
-                <div className="spec-row">
-                  <dt className="text-ink-soft">お申し込み</dt>
-                  <dd className="font-semibold text-ink">{ev.entry}</dd>
-                </div>
+
+              <dl className="mt-6 rounded-md border border-line bg-surface text-[0.92rem]">
+                {[
+                  ['開催', ev.schedule],
+                  ['時間', ev.hours],
+                  ['参加費', `${ev.fee}円（${ev.feeNote}）`],
+                  ['申し込み', `${ev.entry}（各回の告知ページから）`],
+                ].map(([k, v]) => (
+                  <div key={k} className="grid grid-cols-[5.5rem_1fr] gap-3 border-b border-line px-5 py-3 last:border-0">
+                    <dt className="text-ink-faint">{k}</dt>
+                    <dd className="text-ink">{v}</dd>
+                  </div>
+                ))}
               </dl>
-              <div className="mt-7">
+
+              <h3 className="mt-8 text-[1rem] font-bold text-ink">参加する前に</h3>
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-[0.92rem] leading-[1.9] text-ink-soft">
+                {ev.notes.slice(1).map((n) => (
+                  <li key={n}>{n}</li>
+                ))}
+                <li>自作ゲームを持ち込む場合は、どんなゲームか（必要人数・プレイ時間）を告知ページのコメントで知らせてください。</li>
+              </ul>
+              <p className="mt-5 text-[0.82rem] leading-relaxed text-ink-faint">
+                {ev.scheduleNote}。開催日は変わることがあるので、必ずTwiPlaの告知をご確認ください。
+              </p>
+              <div className="mt-6">
                 <Button href={shop.links.twipla} variant="solid" external>
-                  TwiPlaで参加を申し込む
+                  TwiPlaで開催予定を見る
                 </Button>
               </div>
-            </div>
+            </section>
 
-            <div className="space-y-6">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-                <Photo name="group-photo" fill sizes="(max-width:1024px) 92vw, 42vw" className="object-cover" />
+            <figure>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-md">
+                <Photo name="group-photo" fill sizes="(max-width:1024px) 92vw, 44vw" className="object-cover" />
               </div>
-              <ConfirmNote>
-                開催日・参加費は変更になる場合があります。最新の開催予定はTwiPlaまたは
-                <a href={shop.links.instagram} target="_blank" rel="noopener noreferrer" className="underline">
-                  公式Instagram
-                </a>
-                をご確認ください。当サイトには、確認が取れた予定のみを掲載しています。
-              </ConfirmNote>
-            </div>
+              <figcaption className="mt-2 text-[0.78rem] text-ink-faint">店内で開いたイベントの参加者。</figcaption>
+            </figure>
           </div>
         </Container>
-      </section>
+      </div>
 
-      {/* ------------------------------------------------ 貸切 */}
-      <section className="cv-auto section-y bg-surface">
+      <div className="bg-surface py-14 sm:py-20">
         <Container>
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            <div>
-              <Eyebrow>Private</Eyebrow>
-              <h2 className="display mt-3 text-[clamp(1.4rem,3.6vw,2.1rem)] text-ink">貸切でのご利用</h2>
-              <p className="text-pretty mt-6 text-[0.92rem] leading-[1.95] text-ink-soft">
-                {shop.pricing.privateHire.value}
-              </p>
-              <p className="text-pretty mt-4 text-[0.92rem] leading-[1.95] text-ink-soft">
-                歓迎会や部活動の集まり、誕生日会など、団体でのご利用にも対応しています。
-                ご希望の日時・人数を添えて、お問い合わせフォームからご相談ください。
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button href="/contact" variant="solid">
+            <section>
+              <h2 className="text-[1.15rem] font-bold text-ink">貸切</h2>
+              <p className="mt-3 text-[0.95rem] leading-[1.95] text-ink-soft">{shop.pricing.privateHire.value}</p>
+              <p className="mt-2 text-[0.95rem] leading-[1.95] text-ink-soft">ご希望の日時と人数を添えて、お問い合わせフォームからご相談ください。</p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <Button href="/contact" variant="outline">
                   貸切について相談する
                 </Button>
-                <Button href="/scene/with-friends" variant="outline">
-                  大人数で遊ぶときのガイド
+                <Button href="/scene/group" variant="ghost">
+                  友達・グループで来る場合
                 </Button>
               </div>
-            </div>
+            </section>
 
-            <div>
-              <Eyebrow>Past</Eyebrow>
-              <h2 className="display mt-3 text-[clamp(1.4rem,3.6vw,2.1rem)] text-ink">過去に開催したイベント</h2>
-              <p className="mt-4 text-[0.82rem] leading-relaxed text-ink-faint">
-                以下は過去に実施した内容です。現在ご利用いただけるかは店舗へお問い合わせください。
-              </p>
-              <ul className="mt-6 divide-y divide-line border-y border-line">
+            <section>
+              <h2 className="text-[1.15rem] font-bold text-ink">過去のイベント告知</h2>
+              <p className="mt-2 text-[0.82rem] text-ink-faint">過去に実施したものです。現在も行っているかは店舗へお問い合わせください。</p>
+              <ul className="mt-4 divide-y divide-line border-y border-line">
                 {pastEvents.map((n) => (
                   <li key={n.slug}>
-                    <Link
-                      href={`/news/${encodeURIComponent(n.slug)}`}
-                      className="group flex flex-col gap-1 py-4 sm:flex-row sm:items-baseline sm:gap-5"
-                    >
-                      <time dateTime={n.date} className="display shrink-0 text-[0.75rem] text-ink-faint">
+                    <Link href={`/news/${encodeURIComponent(n.slug)}`} className="flex gap-4 py-3 text-[0.9rem] hover:text-cyan-ink">
+                      <time dateTime={n.date} className="shrink-0 text-ink-faint tabular-nums">
                         {n.date.replace(/-/g, '.')}
                       </time>
-                      <span className="text-[0.88rem] leading-snug text-ink transition-colors group-hover:text-cyan-ink">
-                        {n.title}
-                      </span>
+                      {n.title}
                     </Link>
                   </li>
                 ))}
               </ul>
-              <p className="mt-5 text-[0.82rem]">
-                <Link href="/news" className="prose-link">
-                  お知らせ一覧を見る
-                </Link>
-              </p>
-            </div>
+            </section>
           </div>
-
-          <div className="mt-16">
+          <div className="mt-14">
             <Breadcrumbs items={crumbs} />
           </div>
         </Container>
-      </section>
+      </div>
     </>
   );
 }

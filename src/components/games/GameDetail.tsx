@@ -2,68 +2,38 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import GameImage from '@/components/GameImage';
 import { GameGrid } from '@/components/GameCard';
-import { Breadcrumbs, Button, Chip, Container, ConfirmNote, Eyebrow } from '@/components/ui';
+import { Breadcrumbs, Button, Container } from '@/components/ui';
 import { abs, shop, SITE_URL } from '@/data/shop';
-import {
-  ageText,
-  COLLECTIONS,
-  type Game,
-  playersText,
-  relatedGames,
-  timeText,
-  WEIGHT_LABEL,
-} from '@/lib/games';
+import { ageText, CONTENT_TYPE_LABEL, type Game, getGame, RELATED_LABEL, relatedGroups } from '@/lib/games';
 import { breadcrumbSchema, buildMetadata, JsonLd } from '@/lib/seo';
 
 /* ----------------------------------------------------------------- metadata */
 
 export function gameMetadata(game: Game): Metadata {
-  const meta = [playersText(game), timeText(game)].filter(Boolean).join('・');
-  const head = meta ? `${meta}の${game.genreLabel}` : game.genreLabel;
-
-  // 説明文は本文から作らず、確認できた数値と自分で書いたキャッチだけで組む。
-  // 英題は長いものがあるので、120字の枠を超えそうなときは入れない。
-  const en = game.nameEn && game.nameEn !== game.nameJa && game.nameEn.length <= 24 ? `（${game.nameEn}）` : '';
-  const description = `${game.nameJa}${en}は${meta ? `${meta}の` : ''}${game.genreLabel}です。${game.catch}遊び方・面白さ・どんな方に向くかを紹介します。大阪・中津のBODOlab.で遊べます。`;
-
+  const facts = [game.playersLabel, game.timeLabel].filter(Boolean).join('・');
+  const kind = CONTENT_TYPE_LABEL[game.contentType];
   return buildMetadata({
-    title: `${game.nameJa}の遊び方とルール｜${head}｜大阪・梅田中津で遊べる BODOlab.`,
-    description,
+    title: `${game.nameJa}${kind ? `（${kind}）` : ''}｜${facts ? `${facts}｜` : ''}ボードゲーム｜大阪・中津 BODOlab.`,
+    description: `${game.nameJa}の人数・プレイ時間・遊び方の概要。${game.overview.slice(0, 70)}${game.overview.length > 70 ? '…' : ''}`,
     path: `/games/${game.slug}`,
-    keywords: [
-      `${game.nameJa} ルール`,
-      `${game.nameJa} 遊び方`,
-      `${game.nameJa} ボードゲーム`,
-      '大阪 ボードゲーム',
-    ],
+    // 単体で遊べない拡張、ルールや人数が確認できていないページは、品質確認まで検索に載せない
+    noindex: !game.indexable,
   });
 }
 
 /* ----------------------------------------------------------------- schema */
 
-/**
- * Game 構造化データ。
- * 在庫や貸出状況は保証できないので Offer / availability は出さない。
- * 評価もこちらで集計していないため aggregateRating は出さない。
- */
+/** 在庫・価格・評価は出さない（店舗が保証・集計しているものではないため）。 */
 function gameSchema(game: Game) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Game',
     name: game.nameJa,
     ...(game.nameEn ? { alternateName: game.nameEn } : {}),
-    description: game.overview,
     url: abs(`/games/${game.slug}`),
     inLanguage: 'ja',
-    genre: game.genreLabel,
     ...(game.players
-      ? {
-          numberOfPlayers: {
-            '@type': 'QuantitativeValue',
-            minValue: game.players.min,
-            maxValue: game.players.max,
-          },
-        }
+      ? { numberOfPlayers: { '@type': 'QuantitativeValue', minValue: game.players.min, maxValue: game.players.max } }
       : {}),
     ...(game.minAge != null ? { typicalAgeRange: `${game.minAge}-` } : {}),
     ...(game.designers.length ? { author: game.designers.map((d) => ({ '@type': 'Person', name: d })) } : {}),
@@ -78,227 +48,167 @@ export default function GameDetail({ game }: { game: Game }) {
   const crumbs = [
     { name: 'ホーム', href: '/' },
     { name: 'ボードゲーム一覧', href: '/games' },
-    { name: game.genreLabel, href: `/games/genre/${game.genre}` },
     { name: game.nameJa },
   ];
-  const related = relatedGames(game);
-  const collections = COLLECTIONS.filter((c) => game.collections.includes(c.key));
-  const players = playersText(game);
-  const time = timeText(game);
-  const age = ageText(game);
+  const base = game.baseGameSlug ? getGame(game.baseGameSlug) : null;
+  const kind = CONTENT_TYPE_LABEL[game.contentType];
+  const groups = relatedGroups(game);
+  const staffNotes = Object.entries(game.staff.comments).filter(([, v]) => v);
+
+  const facts: [string, string | null][] = [
+    ['人数', game.playersLabel],
+    ['プレイ時間', game.timeLabel],
+    ['対象年齢', ageText(game)],
+    ['発売年', game.year ? `${game.year}年` : null],
+    ['デザイナー', game.designers.length ? game.designers.join('／') : null],
+    ['ジャンル', game.genreLabel],
+  ];
 
   return (
     <>
       <JsonLd data={breadcrumbSchema(crumbs)} />
       <JsonLd data={gameSchema(game)} />
 
-      {/* ------------------------------------------------ ヘッダー */}
-      <header className="border-b border-line bg-surface pt-28 pb-12 sm:pt-32 sm:pb-16">
-        <Container>
+      <article className="bg-paper pt-24 pb-16 sm:pt-28 sm:pb-24">
+        <Container size="narrow">
           <Breadcrumbs items={crumbs} />
 
-          <div className="mt-8 grid gap-8 sm:grid-cols-[minmax(0,14rem)_minmax(0,1fr)] sm:items-start sm:gap-12">
-            <div className="max-w-[14rem] overflow-hidden rounded-2xl shadow-[0_10px_30px_rgba(0,40,79,0.12)]">
-              <GameImage
-                slug={game.slug}
-                name={game.nameJa}
-                nameEn={game.nameEn}
-                genre={game.genre}
-                large
-                priority
-              />
+          <header className="mt-6 flex items-start gap-5">
+            <div className="w-24 shrink-0 overflow-hidden rounded-md sm:w-32">
+              <GameImage slug={game.slug} name={game.nameJa} nameEn={game.nameEn} genre={game.genre} large priority />
             </div>
-
-            <div>
-              <Eyebrow>{game.genreLabel}</Eyebrow>
-              <h1 className="display text-balance mt-3 text-[clamp(1.6rem,4.6vw,2.6rem)] leading-[1.32] text-ink">
-                {game.nameJa}
-              </h1>
+            <div className="min-w-0">
+              {kind ? (
+                <span
+                  className={`inline-block rounded px-2 py-0.5 text-[0.72rem] font-semibold ${
+                    game.requiresBaseGame ? 'bg-amber-wash text-amber-ink' : 'bg-paper-2 text-ink-soft'
+                  }`}
+                >
+                  {kind}
+                </span>
+              ) : null}
+              <h1 className="mt-1.5 text-[clamp(1.4rem,4.2vw,2rem)] leading-[1.35] font-bold text-ink">{game.nameJa}</h1>
               {game.nameEn && game.nameEn !== game.nameJa ? (
-                <p className="display mt-2 text-[0.85rem] tracking-wide text-ink-faint">{game.nameEn}</p>
+                <p className="mt-1 text-[0.82rem] text-ink-faint">{game.nameEn}</p>
               ) : null}
-              <p className="text-pretty mt-5 text-[1rem] leading-[1.9] text-ink-soft">{game.catch}</p>
-
-              <div className="mt-6 flex flex-wrap gap-2">
-                {players ? <Chip tone="navy">{players}</Chip> : null}
-                {time ? <Chip tone="navy">{time}</Chip> : null}
-                {age ? <Chip>{age}</Chip> : null}
-                <Chip>{WEIGHT_LABEL[game.weight]}</Chip>
-                {game.beginner ? <Chip tone="amber">初心者向け</Chip> : null}
-                {game.year ? <Chip>{game.year}年</Chip> : null}
-              </div>
-
-              {game.dataStatus === 'partial' ? (
-                <p className="mt-5 text-[0.78rem] text-ink-faint">
-                  人数・プレイ時間の一部が確認できていないため、確認できた項目のみ表示しています。
+              {game.staff.reviewed ? (
+                <p className="mt-2 inline-block rounded bg-navy px-2 py-0.5 text-[0.72rem] font-semibold text-white">
+                  BODOlab.スタッフ監修
                 </p>
               ) : null}
             </div>
-          </div>
-        </Container>
-      </header>
+          </header>
 
-      {/* ------------------------------------------------ 本文 */}
-      <section className="section-y bg-paper">
-        <Container>
-          <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] lg:gap-16">
-            <article>
-              <h2 className="display text-[clamp(1.2rem,3.2vw,1.6rem)] text-ink">どんなゲーム？</h2>
-              <p className="text-pretty mt-4 text-[0.95rem] leading-[2.05] text-ink-soft">{game.overview}</p>
-
-              <h2 className="display mt-12 text-[clamp(1.2rem,3.2vw,1.6rem)] text-ink">遊び方</h2>
-              <p className="text-pretty mt-4 text-[0.95rem] leading-[2.05] text-ink-soft">{game.howToPlay}</p>
-
-              <h2 className="display mt-12 text-[clamp(1.2rem,3.2vw,1.6rem)] text-ink">ここが面白い</h2>
-              <p className="text-pretty mt-4 text-[0.95rem] leading-[2.05] text-ink-soft">{game.appeal}</p>
-
-              <h2 className="display mt-12 text-[clamp(1.2rem,3.2vw,1.6rem)] text-ink">こんな方におすすめ</h2>
-              <p className="text-pretty mt-4 text-[0.95rem] leading-[2.05] text-ink-soft">{game.recommended}</p>
-
-              {/* BODOlab.で遊ぶ */}
-              <div className="mt-14 rounded-2xl border border-navy/15 bg-surface p-7 sm:p-9">
-                <Eyebrow>Play at BODOlab.</Eyebrow>
-                <h2 className="display mt-2 text-[1.2rem] text-ink">BODOlab.で遊ぶ</h2>
-                <p className="text-pretty mt-4 text-[0.9rem] leading-[1.95] text-ink-soft">
-                  ルールの説明はスタッフが行いますので、はじめての方でもそのまま遊んでいただけます。
-                  プレイ料金は1時間{shop.pricing.unit.value.normal}円（相席{shop.pricing.unit.value.share}円）。
-                  時間内であれば、何本遊んでも料金は変わりません。
-                </p>
-                <div className="mt-5">
-                  {game.stock === 'available' ? (
-                    <p className="rounded-lg border border-cyan/35 bg-cyan-wash px-4 py-3 text-[0.8rem] leading-relaxed text-cyan-ink">
-                      店舗で確認済み：このタイトルは店内にあります
-                      {game.stockCheckedAt ? `（${game.stockCheckedAt.replace(/-/g, '/')}時点）` : ''}。
-                      その後入れ替わっている場合がありますので、確実にしたい場合は事前にお問い合わせください。
-                    </p>
-                  ) : game.stock === 'unavailable' ? (
-                    <ConfirmNote>
-                      現在このタイトルは店内にありません
-                      {game.stockCheckedAt ? `（${game.stockCheckedAt.replace(/-/g, '/')}時点）` : ''}。
-                      入荷のご希望はお問い合わせフォームからお知らせください。
-                    </ConfirmNote>
-                  ) : (
-                    <ConfirmNote>
-                      {shop.gameCount.rotationNote}
-                      そのため、ご来店時にこのタイトルが店内にあるとは限りません。
-                      遊びたいゲームが決まっている場合は、事前にお問い合わせいただけると確実です。
-                    </ConfirmNote>
-                  )}
-                </div>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <Button href={shop.reservationUrl} variant="solid" external>
-                    ご来店予約
-                  </Button>
-                  <Button href="/contact" variant="outline">
-                    在庫を問い合わせる
-                  </Button>
-                </div>
-              </div>
-            </article>
-
-            {/* ------------------------------------------------ サイドバー */}
-            <aside className="lg:sticky lg:top-24 lg:self-start">
-              <div className="rounded-2xl border border-line bg-white p-6">
-                <h2 className="display text-[1rem] text-ink">基本データ</h2>
-                <dl className="mt-4">
-                  <div className="spec-row">
-                    <dt className="text-ink-soft">人数</dt>
-                    <dd className="font-medium text-ink">{players ?? '未確認'}</dd>
-                  </div>
-                  <div className="spec-row">
-                    <dt className="text-ink-soft">プレイ時間</dt>
-                    <dd className="font-medium text-ink">{time ?? '未確認'}</dd>
-                  </div>
-                  <div className="spec-row">
-                    <dt className="text-ink-soft">対象年齢</dt>
-                    <dd className="font-medium text-ink">{age ?? '未確認'}</dd>
-                  </div>
-                  <div className="spec-row">
-                    <dt className="text-ink-soft">ジャンル</dt>
-                    <dd className="font-medium text-ink">{game.genreLabel}</dd>
-                  </div>
-                  <div className="spec-row">
-                    <dt className="text-ink-soft">重さ</dt>
-                    <dd className="font-medium text-ink">{WEIGHT_LABEL[game.weight]}</dd>
-                  </div>
-                  {game.designers.length ? (
-                    <div className="spec-row">
-                      <dt className="shrink-0 text-ink-soft">デザイナー</dt>
-                      <dd className="text-right text-[0.85rem] font-medium text-ink">{game.designers.join('／')}</dd>
-                    </div>
-                  ) : null}
-                  {game.year ? (
-                    <div className="spec-row">
-                      <dt className="text-ink-soft">発売年</dt>
-                      <dd className="font-medium text-ink">{game.year}年</dd>
-                    </div>
-                  ) : null}
-                </dl>
-
-                {game.mechanics.length ? (
-                  <>
-                    <h3 className="mt-6 text-[0.8rem] font-medium text-ink">メカニクス</h3>
-                    <div className="mt-2.5 flex flex-wrap gap-1.5">
-                      {game.mechanics.map((m) => (
-                        <Chip key={m}>{m}</Chip>
-                      ))}
-                    </div>
-                  </>
-                ) : null}
-
-                <p className="mt-6 text-[0.72rem] leading-relaxed text-ink-faint">
-                  人数・時間・対象年齢・メカニクスと、ゲーム画像は
-                  <a href={game.sourceUrl} target="_blank" rel="noopener noreferrer nofollow" className="prose-link">
-                    ボドゲーマの該当ページ
-                  </a>
-                  によります。画像の著作権は各出版社に帰属します。紹介文は当店が書き下ろしています。
-                </p>
-              </div>
-
-              {collections.length ? (
-                <div className="mt-6 rounded-2xl border border-line bg-white p-6">
-                  <h2 className="display text-[1rem] text-ink">このゲームが入っている棚</h2>
-                  <ul className="mt-3 space-y-1.5">
-                    {collections.map((c) => (
-                      <li key={c.key}>
-                        <Link href={`/games/${c.key}`} className="prose-link text-[0.85rem]">
-                          {c.heading}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-            </aside>
-          </div>
-        </Container>
-      </section>
-
-      {/* ------------------------------------------------ 関連 */}
-      {related.length ? (
-        <section className="cv-auto section-y bg-surface">
-          <Container>
-            <Eyebrow>Related</Eyebrow>
-            <h2 className="display mt-3 text-[clamp(1.3rem,3.4vw,1.9rem)] text-ink">このゲームが好きなら</h2>
-            <p className="mt-3 max-w-2xl text-[0.85rem] leading-[1.9] text-ink-soft">
-              ジャンル・メカニクス・対応人数・プレイ時間の近さから選んでいます。
+          {game.requiresBaseGame ? (
+            <p className="mt-6 rounded-md border border-amber/50 bg-amber-wash px-4 py-3 text-[0.88rem] leading-relaxed text-amber-ink">
+              これは拡張セットです。この箱だけでは遊べません。
+              {base ? (
+                <>
+                  基本セット
+                  <Link href={`/games/${base.slug}`} className="mx-1 underline">
+                    {base.nameJa}
+                  </Link>
+                  と組み合わせて遊びます。
+                </>
+              ) : (
+                '基本セットと組み合わせて遊びます。'
+              )}
             </p>
-            <div className="mt-10">
-              <GameGrid games={related} />
-            </div>
+          ) : game.contentType === 'standalone-expansion' && base ? (
+            <p className="mt-6 text-[0.85rem] leading-relaxed text-ink-soft">
+              <Link href={`/games/${base.slug}`} className="prose-link">
+                {base.nameJa}
+              </Link>
+              と同じシリーズですが、この箱だけで遊べます。
+            </p>
+          ) : null}
 
-            <div className="mt-14 flex flex-wrap gap-3">
-              <Button href="/games" variant="outline">
-                ほかのゲームを探す
-              </Button>
-              <Button href={`/games/genre/${game.genre}`} variant="ghost">
-                {game.genreLabel}の一覧を見る
-              </Button>
-            </div>
+          {/* 事実データ */}
+          <dl className="mt-8 grid grid-cols-2 gap-x-6 border-y border-line sm:grid-cols-3">
+            {facts
+              .filter(([, v]) => v)
+              .map(([k, v]) => (
+                <div key={k} className="border-b border-line py-3 last:border-0 sm:[&:nth-last-child(-n+3)]:border-0">
+                  <dt className="text-[0.72rem] text-ink-faint">{k}</dt>
+                  <dd className="mt-0.5 text-[0.9rem] text-ink">{v}</dd>
+                </div>
+              ))}
+          </dl>
 
-            <div className="mt-12">
-              <Breadcrumbs items={crumbs} />
+          {staffNotes.length ? (
+            <section className="mt-10 rounded-md bg-navy-deep p-5 text-white">
+              <h2 className="text-[0.95rem] font-semibold">BODOlab.スタッフより</h2>
+              {staffNotes.map(([k, v]) => (
+                <p key={k} className="mt-2 text-[0.88rem] leading-[1.9] text-white/85">
+                  {v}
+                </p>
+              ))}
+            </section>
+          ) : null}
+
+          <section className="mt-10">
+            <h2 className="text-[1.1rem] font-bold text-ink">どんなゲームか</h2>
+            <p className="mt-3 text-[0.95rem] leading-[2] text-ink-soft">{game.overview}</p>
+          </section>
+
+          {game.howToPlay && !game.rulesUnknown ? (
+            <section className="mt-8">
+              <h2 className="text-[1.1rem] font-bold text-ink">遊び方の概要</h2>
+              <p className="mt-3 text-[0.95rem] leading-[2] text-ink-soft">{game.howToPlay}</p>
+            </section>
+          ) : (
+            <p className="mt-8 text-[0.9rem] leading-[1.9] text-ink-soft">ルールの詳細は、店頭でスタッフにお尋ねください。</p>
+          )}
+
+          <p className="mt-8 text-[0.75rem] leading-relaxed text-ink-faint">
+            人数・時間・対象年齢・デザイナーは
+            <a href={game.sourceUrl} target="_blank" rel="noopener noreferrer nofollow" className="underline">
+              ボドゲーマの登録情報
+            </a>
+            によります。
+            {game.staff.reviewed
+              ? '説明文はBODOlab.スタッフが確認しています。'
+              : '説明文は公開されている情報をもとに当サイトが作成したもので、スタッフの確認前です。誤りがあればお知らせください。'}
+          </p>
+
+          {/* 店舗で遊ぶ */}
+          <section className="mt-10 border-t border-line pt-6 text-[0.88rem] leading-[1.9] text-ink-soft">
+            {game.stock === 'available' ? (
+              <p>
+                店内にあることを確認済みです
+                {game.stockCheckedAt ? `（${game.stockCheckedAt.replace(/-/g, '/')}時点）` : ''}。
+              </p>
+            ) : game.stock === 'unavailable' ? (
+              <p>現在このタイトルは店内にありません{game.stockCheckedAt ? `（${game.stockCheckedAt.replace(/-/g, '/')}時点）` : ''}。</p>
+            ) : (
+              <p>
+                ボドゲーマの当店ページに登録されているタイトルです。取り扱いは入れ替わることがあるので、遊びたい場合は事前にお問い合わせください。
+              </p>
+            )}
+            <p className="mt-1">
+              プレイ料金は1時間{shop.pricing.unit.value.normal}円（相席可は{shop.pricing.unit.value.share}円）、ルールはスタッフが説明します。
+            </p>
+            <div className="mt-4 flex flex-wrap gap-3">
+              <Button href={shop.reservationUrl} variant="solid" external>
+                ご来店予約
+              </Button>
+              <Button href="/contact" variant="outline">
+                このゲームがあるか問い合わせる
+              </Button>
             </div>
+          </section>
+        </Container>
+      </article>
+
+      {groups.length ? (
+        <section className="cv-auto border-t border-line bg-surface py-14 sm:py-20">
+          <Container>
+            {groups.map((g) => (
+              <div key={g.type} className="mb-12 last:mb-0">
+                <h2 className="mb-4 text-[1rem] font-bold text-ink">{RELATED_LABEL[g.type]}</h2>
+                <GameGrid games={g.games} />
+              </div>
+            ))}
           </Container>
         </section>
       ) : null}

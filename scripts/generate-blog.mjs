@@ -129,6 +129,8 @@ const NG_PATTERNS = [
   { re: /(検索|SEO)(で|に)(上位|強く|有利)/, why: '検索順位についての言及' },
   { re: /口コミ|レビュー評価|★|評価\d/, why: '実在しない評価に触れている' },
   { re: /(https?:\/\/)(?!www\.boardgame-lab\.com)/, why: '外部URLを本文に書いている' },
+  // 特定のゲームを「おすすめ」と断定できるのはスタッフだけ（data/staff-picks.json）。記事では書かせない
+  { re: /(おすすめ|オススメ)(です|します|の(一本|ゲーム|タイトル))|一押し|イチオシ/, why: 'スタッフが確認していないゲームのおすすめ' },
 ];
 
 function validate(post) {
@@ -176,41 +178,12 @@ function validate(post) {
   }
 
   // 内部リンクの行き先が存在するか
-  const COLLECTIONS = new Set([
-    'for-beginners',
-    'for-two',
-    'party',
-    'short-play',
-    'for-couples',
-    'for-groups',
-    'heavy',
-    'cooperative',
-    'solo',
-    'list',
-  ]);
+  // 2026-09 のページ整理後の構成。条件の一覧は客観データだけで作ったもの（おすすめではない）
+  const COLLECTIONS = new Set(['for-two', 'for-groups', 'short-play', 'cooperative', 'list']);
   const PAGES = new Set([
-    '/',
-    '/games',
-    '/games/list',
-    '/system',
-    '/access',
-    '/faq',
-    '/news',
-    '/schedule',
-    '/contact',
-    '/blog',
-    '/part-timejob',
-    '/area/umeda',
-    '/area/nakatsu',
-    '/scene/rainy-day',
-    '/scene/indoor-date',
-    '/scene/with-friends',
-    '/scene/solo',
-    '/scene/after-work',
-    '/scene/first-time',
-    '/scene/indoor',
-    '/scene/group',
-    '/scene/hobby',
+    '/', '/games', '/games/list', '/system', '/access', '/faq', '/news', '/schedule', '/contact', '/blog',
+    '/part-timejob', '/scene', '/area/umeda',
+    '/scene/rainy-day', '/scene/indoor-date', '/scene/group', '/scene/solo', '/scene/after-work', '/scene/first-time',
   ]);
   let links = 0;
   for (const m of body.matchAll(/\[[^\]]+\]\((\/[^)]*)\)/g)) {
@@ -266,7 +239,8 @@ ${pool}
 - 検索順位やSEO効果に触れない。
 - 外部サイトのURLは書かない。内部リンクだけを使う。
 - 一文は60文字以内を目安に。誇張や感嘆符の多用は避け、落ち着いた文体で。
-- 内部リンクを2〜5本入れる。使えるパスは /games, /games/<slug>, /games/<コレクション>, /system, /access, /faq, /scene/<slug>, /area/umeda, /area/nakatsu です。
+- 内部リンクを2〜5本入れる。使えるパスは /games, /games/<slug>, /games/for-two, /games/for-groups, /games/short-play, /games/cooperative, /system, /access, /faq, /scene/<slug>, /area/umeda です。
+- 特定のゲームを「おすすめ」と書かない。ゲームを紹介するときは、人数・時間・仕組みなど事実だけを書く。
 
 # 書式
 Markdownの見出し(## / ###)、段落、箇条書き(-)、番号つき(1.)、強調(**)、内部リンク([文字](/path))だけを使う。

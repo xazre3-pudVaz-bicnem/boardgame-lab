@@ -19,4 +19,19 @@ export const redirects: Redirect[] = [
   { source: '/parttimejob', destination: '/part-timejob', permanent: true },
   // 旧サイトの検索結果ページ（Wix）から。
   { source: '/blog-1', destination: '/news', permanent: true },
+
+  /*
+   * 2026-09 のページ整理。検索意図が重なるページを統合し、自動抽出の「おすすめ」ページを廃止した。
+   *   おすすめ系（初心者・カップル・パーティー・重量級・1人用）は、スタッフの確認なしに
+   *   数値条件で「おすすめ」を名乗っていたため廃止し、内容が近いページへ移す。
+   */
+  { source: '/games/for-couples', destination: '/scene/indoor-date', permanent: true },
+  { source: '/games/for-beginners', destination: '/scene/first-time', permanent: true },
+  { source: '/games/party', destination: '/games/for-groups', permanent: true },
+  { source: '/games/heavy', destination: '/games', permanent: true },
+  { source: '/games/solo', destination: '/games', permanent: true },
+  { source: '/scene/indoor', destination: '/scene/rainy-day', permanent: true },
+  { source: '/scene/with-friends', destination: '/scene/group', permanent: true },
+  { source: '/scene/hobby', destination: '/scene/solo', permanent: true },
+  { source: '/area/nakatsu', destination: '/access', permanent: true },
 ];
