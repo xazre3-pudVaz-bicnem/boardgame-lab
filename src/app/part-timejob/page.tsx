@@ -132,7 +132,7 @@ export default function PartTimeJobPage() {
 
             <aside className="space-y-8">
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
-                <Photo name="shelf-staff" fill sizes="(max-width:1024px) 92vw, 38vw" className="object-cover" />
+                <Photo name="room-empty" fill sizes="(max-width:1024px) 92vw, 38vw" className="object-cover" />
               </div>
 
               <div className="rounded-2xl border border-line bg-white p-7">

@@ -71,7 +71,7 @@ export default function SchedulePage() {
 
             <div className="space-y-6">
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-                <Photo name="players-longtable" fill sizes="(max-width:1024px) 92vw, 42vw" className="object-cover" />
+                <Photo name="group-photo" fill sizes="(max-width:1024px) 92vw, 42vw" className="object-cover" />
               </div>
               <ConfirmNote>
                 開催日・参加費は変更になる場合があります。最新の開催予定はTwiPlaまたは

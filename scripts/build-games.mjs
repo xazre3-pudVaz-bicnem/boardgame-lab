@@ -119,6 +119,26 @@ for (const [slug, v] of Object.entries(stockFile.games ?? {})) {
   if (!STOCK_VALUES.has(v)) console.warn('stock.json: ' + slug + ' の値 "' + v + '" は available / unavailable のどちらかにしてください');
 }
 
+/**
+ * 「2人で楽しい」「カップル・デート向け」は数値では決めない（data/curation.json）。
+ * 対応人数に2人を含むだけのゲームには、2人だと成立しにくいものが多いため。
+ */
+const curation = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/curation.json'), 'utf8'));
+const GOOD_AT_TWO = new Set(curation.goodAtTwo);
+const FOR_COUPLES = new Set(curation.forCouples);
+const NOT_TWO = new Set(curation.notTwo);
+for (const s of [...GOOD_AT_TWO, ...FOR_COUPLES]) {
+  if (NOT_TWO.has(s)) throw new Error('curation.json: ' + s + ' が notTwo と両方に入っています');
+}
+function applyCuration(slug, players, cols) {
+  const out = cols.filter((c) => c !== 'for-two' && c !== 'for-couples');
+  if (NOT_TWO.has(slug)) return out;
+  const twoOnly = players && players.min === 2 && players.max === 2;
+  if (twoOnly || GOOD_AT_TWO.has(slug) || FOR_COUPLES.has(slug)) out.push('for-two');
+  if (FOR_COUPLES.has(slug)) out.push('for-couples');
+  return out;
+}
+
 /* ------------------------------------------------------- 組み立て */
 
 const games = [];
@@ -147,7 +167,7 @@ for (const r of raw.games) {
   const weight = deriveWeight(time, minAge);
   const popularity = popularityOf(d);
   const beginner = deriveBeginner({ time, minAge, weight, popularity });
-  const collections = deriveCollections({ players, time, minAge, weight, genre, beginner, mechanics });
+  const collections = applyCuration(r.slug, players, deriveCollections({ players, time, minAge, weight, genre, beginner, mechanics }));
 
   const nameJa = (d.titleJa || r.nameJa || '').trim();
   const nameEn = (d.titleEn || r.nameEn || '').trim() || null;
@@ -185,6 +205,14 @@ for (const r of raw.games) {
     appeal: content?.appeal ?? '',
     recommended: content?.recommended ?? '',
   });
+}
+
+// curation.json に、存在しない slug が書かれていないか
+{
+  const known = new Set(games.map((g) => g.slug));
+  for (const slug of [...GOOD_AT_TWO, ...FOR_COUPLES, ...NOT_TWO]) {
+    if (!known.has(slug)) console.warn('curation.json: "' + slug + '" というゲームはありません');
+  }
 }
 
 // stock.json に、存在しない slug が書かれていないか

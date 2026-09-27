@@ -52,23 +52,23 @@ function Meeple({ className = '' }: { className?: string }) {
 const FIRST_QUESTIONS = [
   {
     q: 'ボードゲームを知らなくても楽しめる？',
-    a: 'はい。ルールはその場でスタッフが説明します。人生ゲームしか知らなくても大丈夫です。',
+    a: 'はい。ルールはスタッフが説明します。事前に覚えてくる必要はありません。',
     href: '/scene/first-time',
   },
   {
     q: '2人で行っても楽しめる？',
-    a: '2人から成立するゲームが439タイトル。読み合いが濃くなる2人用の定番も揃っています。',
+    a: '2人で遊んで面白いゲームを97タイトル選んでいます。2人では成り立ちにくいパーティーゲームは外しています。',
     href: '/games/for-two',
   },
   {
     q: '1人で行っても遊べる？',
-    a: 'おひとりのご来店は珍しくありません。相席可を選べば、その日いらした方と同じ卓で遊べます。',
+    a: '受付で「相席可」を選ぶと、他のお客様と同じ卓で遊べます。料金は1時間500円です。',
     href: '/scene/solo',
   },
   {
-    q: 'どんな雰囲気？',
-    a: '木のテーブルと壁一面の棚。夜は仕事帰りの2〜3人、休日は昼からグループで賑わいます。',
-    href: '/access',
+    q: '食べ物や飲み物は？',
+    a: '店内での販売はしていません。持ち込みは可能で、蓋付きの飲み物はプレイ中も飲めます。',
+    href: '/system',
   },
 ] as const;
 
@@ -81,16 +81,12 @@ export function About({ gameCount }: { gameCount: number }) {
             <SectionHeading
               eyebrow="About"
               title={
-                <>
-                  「何して遊ぶ？」に、
-                  <br />
-                  {gameCount}通りの答えがある場所。
-                </>
+<>中津駅から徒歩3分の、ボードゲームで遊べるお店です</>
               }
               lead={
                 <p>
                   BODOlab.（ボドラボ）は、大阪市北区豊崎にあるボードゲームのプレイスペース＆ショップです。
-                  棚から好きなゲームを取り出して、時間いっぱい遊べます。飲食物の販売はしていない、遊ぶための場所です。
+                  料金は時間制で、時間内なら何本でも遊べます。飲食物の販売はしていません。
                 </p>
               }
             />
@@ -140,7 +136,7 @@ export function About({ gameCount }: { gameCount: number }) {
               <Photo name="room-daytime-wide" fill sizes="(max-width:1024px) 92vw, 46vw" className="object-cover" />
             </div>
             <div className="relative aspect-square overflow-hidden rounded-2xl">
-              <Photo name="shelf-staff" fill sizes="(max-width:1024px) 45vw, 23vw" className="object-cover" />
+              <Photo name="game-tokens" fill sizes="(max-width:1024px) 45vw, 23vw" className="object-cover" />
             </div>
             <div className="relative aspect-square overflow-hidden rounded-2xl">
               <Photo name="game-pawns" fill sizes="(max-width:1024px) 45vw, 23vw" className="object-cover" />
@@ -157,29 +153,29 @@ export function About({ gameCount }: { gameCount: number }) {
 const reasons: { no: string; title: string; body: string; photo: PhotoKey; link: { href: string; label: string } }[] = [
   {
     no: '01',
-    title: 'ルールは、スタッフが説明します',
-    body: '遊びたいゲームを選んだら、スタッフがその場でルールを説明します。説明書を読む時間も、誰かが先に覚えてくる必要もありません。全員が初めてのテーブルでも、そのまま始められます。',
-    photo: 'table-standing',
+    title: 'ルールはスタッフが説明します',
+    body: '遊びたいゲームを選んだら、スタッフがルールを説明します。説明書を読んだり、誰かが事前に覚えてきたりする必要はありません。',
+    photo: 'game-catan-hand',
     link: { href: '/scene/first-time', label: 'はじめての方へ' },
   },
   {
     no: '02',
-    title: '棚から自由に、何本でも',
-    body: '料金は時間制なので、遊ぶ本数に制限はありません。短いゲームを何本も試すのも、重量級を1本じっくり遊ぶのも自由です。合わなければ、途中で別の棚に戻ってきてください。',
+    title: '時間内なら何本でも遊べます',
+    body: '料金は時間制で、遊ぶ本数に制限はありません。1時間600円、上限は平日2,500円・土日祝3,000円です。',
     photo: 'room-empty',
     link: { href: '/games', label: `${shop.gameCount.listed.value}タイトルを見る` },
   },
   {
     no: '03',
-    title: '1人でも、相席で輪に入れる',
-    body: '相席ありを選ぶと、その日いらっしゃった他のお客様と一緒に遊べます。料金も1時間500円になります。ボードゲームは初対面でも会話が生まれる遊びなので、1人でのご来店も珍しくありません。',
+    title: '1人なら相席で遊べます',
+    body: '受付で「相席可」を選ぶと、その場にいる他のお客様と同じ卓で遊べます。料金は1時間500円です。相席は選択制です。',
     photo: 'floor-evening',
     link: { href: '/scene/solo', label: '1人で来るときのこと' },
   },
   {
     no: '04',
-    title: '気に入ったら、そのまま買って帰れる',
-    body: '当店はショップも兼ねています。遊んで気に入ったゲームは店頭でご購入いただけます。取り置き（最大1週間）やお取り寄せにも対応。3点で10%、4点以上で15%引きです。',
+    title: 'ボードゲームの販売もしています',
+    body: '店頭または公式LINEから購入できます。取り置き（最大1週間）やお取り寄せも可能です。3点で10%、4点以上で15%引きです。',
     photo: 'game-boxes',
     link: { href: '/system', label: '販売について' },
   },
@@ -192,9 +188,8 @@ export function Why() {
         <div className="flex items-start gap-3">
           <Meeple className="mt-1 h-6 w-6 shrink-0 text-cyan" />
           <SectionHeading
-            eyebrow="Why BODOlab."
-            title="はじめてでも、ひとりでも、手ぶらで来てください。"
-            lead="608種類が並んでいても、選び方がわからなければ意味がありません。BODOlab.がやっているのは、遊ぶまでのハードルをできるだけ低くすることです。"
+            eyebrow="Features"
+            title="BODOlab.の特徴"
           />
         </div>
 
@@ -252,14 +247,12 @@ export function PhotoBand() {
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-deep/80 via-navy-deep/35 to-navy-deep/20" />
       <Container className="flex min-h-[38svh] items-end py-12 sm:min-h-[54svh] sm:py-20">
         <div data-reveal className="max-w-xl">
-          <p className="eyebrow text-cyan">The Space</p>
+
           <p className="display text-balance mt-3 text-[clamp(1.5rem,3.8vw,2.4rem)] leading-[1.35] font-semibold text-white">
-            壁一面の棚から、
-            <br />
-            今日の一本を。
+店内の様子
           </p>
           <p className="mt-4 text-[0.88rem] leading-[1.9] text-white/75">
-            木のテーブルと、手の届く高さに並んだ{shop.gameCount.listed.value}タイトル。棚の前で決めても、決めてから来ても。
+            テーブル席と、壁沿いのボードゲームの棚。遊ぶゲームは棚の前で選べます。
           </p>
         </div>
       </Container>
@@ -287,10 +280,10 @@ export function GameCollection({
           <div className="max-w-2xl" data-reveal>
             <p className="eyebrow text-cyan">Game Collection</p>
             <h2 className="display text-balance mt-4 text-[clamp(1.6rem,4.2vw,2.6rem)] leading-[1.35] text-white">
-              棚にある{total}種類を、ぜんぶ載せました。
+              遊べるボードゲーム
             </h2>
             <p className="text-pretty mt-5 text-[0.95rem] leading-[1.95] text-white/72">
-              人数・時間・ジャンルで絞り込めます。遊びたいゲームを決めてから来ても、棚の前で決めても構いません。
+              ボドゲーマの当店ページに登録されている{total}タイトルを、人数・時間・ジャンルで探せます。取り扱いは入れ替わることがあります。
             </p>
           </div>
           <Button href="/games" variant="amber" className="shrink-0">
@@ -380,10 +373,10 @@ export function GameCollection({
 /* --------------------------------------------------------------- HOW TO ENJOY */
 
 const enjoySteps: { n: 1 | 2 | 3 | 4; t: string; d: string }[] = [
-  { n: 1, t: '予約して来店', d: 'ご来店予約フォームから日時と人数を送信。当日空いていれば、そのままのご来店も歓迎です。' },
-  { n: 2, t: 'やりたいことを伝える', d: '「2人でじっくり」「初めて」「大人数で盛り上がりたい」。それに合うゲームをスタッフが出します。' },
-  { n: 3, t: 'ルール説明を聞いて遊ぶ', d: '説明は5〜15分ほど。終わったら別のゲームへ。時間内なら何本遊んでも料金は変わりません。' },
-  { n: 4, t: '会計は帰るときに', d: '1時間600円、上限は平日2,500円・土日祝3,000円。気に入ったゲームは購入もできます。' },
+  { n: 1, t: '予約（任意）', d: 'ご来店予約フォームから日時と人数を送ります。空席があれば予約なしでも入れます。' },
+  { n: 2, t: '受付', d: '人数と、相席を希望するかどうかを伝えます。初めての場合はそれも伝えてください。' },
+  { n: 3, t: 'ルール説明を聞いて遊ぶ', d: 'ゲームを選んだら、スタッフがルールを説明します。時間内なら何本遊んでも料金は同じです。' },
+  { n: 4, t: 'お会計', d: '帰るときに、利用時間ぶんをお支払いいただきます。' },
 ];
 
 export function HowToEnjoy() {
@@ -391,7 +384,7 @@ export function HowToEnjoy() {
     <section id="how" className="cv-auto section-y bg-paper">
       <Container>
         <div className="flex flex-wrap items-end justify-between gap-6" data-reveal>
-          <SectionHeading eyebrow="How to enjoy" title="来てから帰るまで、4ステップ。" lead="予約から会計までの流れです。むずかしい準備はひとつもありません。" />
+          <SectionHeading eyebrow="How to enjoy" title="ご利用の流れ" />
           <div className="flex flex-wrap gap-3">
             <Button href={shop.reservationUrl} variant="solid" external>
               ご来店予約フォームへ
@@ -437,8 +430,7 @@ export function SceneGrid({ scenes, more }: { scenes: SceneCard[]; more: { href:
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
             eyebrow="Scene"
-            title="雨の日も、デートも、仕事帰りも。"
-            lead="「ボードゲームがしたい」以外の理由で来ていただいて大丈夫です。目的から探せるガイドを用意しました。"
+            title="目的別のご案内"
           />
           <Link href="/scene" className="prose-link shrink-0 text-[0.85rem]">
             すべての目的を見る →
@@ -530,8 +522,8 @@ export function SystemSummary() {
           <div data-reveal>
             <SectionHeading
               eyebrow="System"
-              title="料金は時間制。あとは何本遊んでも同じです。"
-              lead="ご利用時間ぶんのプレイスペース料金だけをいただきます。ゲームごとの追加料金はありません。"
+              title="料金"
+              lead="料金は時間制です。ゲームごとの追加料金はありません。"
             />
             <p className="mt-6 text-[0.82rem] leading-[1.9] text-ink-faint">{shop.pricing.guaranteedHoursNote}</p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -608,7 +600,7 @@ export function AccessSummary() {
       <Container>
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div data-reveal>
-            <SectionHeading eyebrow="Access" title="大阪メトロ中津駅から、徒歩3分。" />
+            <SectionHeading eyebrow="Access" title="アクセス" />
             <dl className="mt-8">
               {[
                 { k: '住所', v: shop.address.full },
@@ -647,7 +639,7 @@ export function AccessSummary() {
                 <Photo name="chalkboard" fill sizes="(max-width:1024px) 45vw, 23vw" className="object-cover" />
               </div>
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-                <Photo name="table-pairs" fill sizes="(max-width:1024px) 45vw, 23vw" className="object-cover" />
+                <Photo name="pano-c" fill sizes="(max-width:1024px) 45vw, 23vw" className="object-cover" />
               </div>
             </div>
           </div>
@@ -668,9 +660,7 @@ export function CtaBand() {
       <Container className="py-20 text-center sm:py-24">
         <Eyebrow className="text-cyan">Reservation</Eyebrow>
         <h2 className="display text-balance mx-auto mt-4 max-w-2xl text-[clamp(1.5rem,4.4vw,2.4rem)] leading-[1.4] font-semibold text-white">
-          今日の予定が決まっていないなら、
-          <br />
-          ボードゲームはどうですか。
+ご予約について
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-[0.9rem] leading-[1.95] text-white/72">
           ご予約はフォームからお願いします。お問い合わせフォーム・メール・お電話では席のご予約を承っていません。

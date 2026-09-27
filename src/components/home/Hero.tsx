@@ -55,7 +55,7 @@ export default function Hero() {
         </h1>
 
         <p className="mt-7 max-w-lg text-[0.92rem] leading-[2] text-white/82 sm:text-[1rem]">
-          608種類のボードゲームと、ルールを説明してくれるスタッフがいる場所。
+          ボードゲームのプレイスペース＆ショップ。ルールはスタッフが説明します。
           <br className="hidden sm:block" />
           大阪・中津駅から徒歩3分、梅田から歩いて10分。
         </p>

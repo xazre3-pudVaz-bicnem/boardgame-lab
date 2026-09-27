@@ -40,14 +40,17 @@ export const metadata: Metadata = buildMetadata({
   ],
 });
 
-/** 「目的から選ぶ」タイル。ゲーム名を知らない人の入口 */
+/**
+ * 「目的から選ぶ」タイル。ゲーム名を知らない人の入口。
+ * 2人・デート向けには大人数の写真を使わず、盤面のアップを使う（店内に2人組の写真が無いため）。
+ */
 const MOODS: MoodTile[] = [
-  { key: 'for-beginners', label: '初めての方に', en: 'First time', href: '/games/for-beginners', photo: 'table-standing' },
-  { key: 'for-two', label: '2人で', en: 'For two', href: '/games/for-two', photo: 'table-pairs' },
-  { key: 'for-couples', label: 'カップルで', en: 'Date', href: '/games/for-couples', photo: 'players-cards' },
-  { key: 'party', label: 'みんなで盛り上がる', en: 'Party', href: '/games/party', photo: 'floor-group' },
-  { key: 'short-play', label: '30分以内で', en: 'Short play', href: '/games/short-play', photo: 'game-boxes' },
-  { key: 'heavy', label: 'じっくり戦略', en: 'Heavy', href: '/games/heavy', photo: 'players-longtable' },
+  { key: 'for-beginners', label: '初めての方に', en: 'Beginners', href: '/games/for-beginners', photo: 'game-catan-hand' },
+  { key: 'for-two', label: '2人で', en: 'For two', href: '/games/for-two', photo: 'game-catan-close' },
+  { key: 'for-couples', label: 'デート・カップルで', en: 'Date', href: '/games/for-couples', photo: 'game-family-close' },
+  { key: 'party', label: '大人数で', en: 'Party', href: '/games/party', photo: 'players-cards' },
+  { key: 'short-play', label: '30分以内で', en: 'Short', href: '/games/short-play', photo: 'game-boxes' },
+  { key: 'heavy', label: 'じっくり戦略', en: 'Heavy', href: '/games/heavy', photo: 'game-strategy' },
 ];
 
 /** トップの棚に出す4つのコレクション */
