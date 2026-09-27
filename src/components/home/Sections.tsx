@@ -80,9 +80,9 @@ export function Space() {
           <div className="grid gap-4 md:col-span-4">
             <figure>
               <div className="relative aspect-[4/3] overflow-hidden rounded-md">
-                <Photo name="floor-evening-wide" fill sizes="(max-width:768px) 92vw, 30vw" className="object-cover" />
+                <Photo name="game-pawns" fill sizes="(max-width:768px) 92vw, 30vw" className="object-cover" />
               </div>
-              <figcaption className="mt-2 text-[0.78rem] text-ink-faint">イベント開催時の夜の店内。</figcaption>
+              <figcaption className="mt-2 text-[0.78rem] text-ink-faint">店内のテーブルで遊んでいるゲーム。</figcaption>
             </figure>
             <figure>
               <div className="relative aspect-[4/3] overflow-hidden rounded-md">
@@ -266,9 +266,9 @@ export function Events() {
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
           <figure className="order-last lg:order-first">
             <div className="relative aspect-[4/3] overflow-hidden rounded-md">
-              <Photo name="group-photo" fill sizes="(max-width:1024px) 92vw, 46vw" className="object-cover" />
+              <Photo name="game-tokens" fill sizes="(max-width:1024px) 92vw, 46vw" className="object-cover" />
             </div>
-            <figcaption className="mt-2 text-[0.78rem] text-ink-faint">店内で開いたイベントの参加者。</figcaption>
+            <figcaption className="mt-2 text-[0.78rem] text-ink-faint">店内のテーブルで遊んでいる様子。</figcaption>
           </figure>
           <div>
             <h2 className={H2}>{ev.name}</h2>

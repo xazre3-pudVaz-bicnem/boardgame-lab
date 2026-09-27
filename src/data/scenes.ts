@@ -43,8 +43,8 @@ export const SCENES: SceneDef[] = [
     slug: 'rainy-day',
     label: '雨の日・室内で遊ぶ',
     card: '中津駅から徒歩3分の室内。料金に上限があるので、長くいても金額が決まっています。',
-    photo: 'room-daytime-wide',
-    photoCaption: '昼間の店内。窓側にテーブル席が並んでいます。',
+    photo: 'game-catan-top',
+    photoCaption: '店内のテーブルで遊んでいるボードゲーム。',
     title: '大阪・梅田で雨の日に室内で遊べる場所｜ボードゲームのプレイスペース｜中津駅徒歩3分',
     description:
       '大阪・梅田周辺で雨の日や休日に室内で遊べる場所を探している方へ。中津駅1番出口から徒歩3分、ビル3階のボードゲームプレイスペースです。1時間600円、上限は平日2,500円・土日祝3,000円。',
@@ -112,8 +112,8 @@ export const SCENES: SceneDef[] = [
     slug: 'group',
     label: '友達・グループで',
     card: '6人以上で遊べるゲームの一覧と、予約・貸切の相談について。',
-    photo: 'floor-group',
-    photoCaption: '大人数でテーブルを囲んでいる様子（イベント開催時）。',
+    photo: 'game-family',
+    photoCaption: 'みんなで1つの盤面を囲んで遊んでいるところ（手元）。',
     title: '大阪で友達・グループで遊べる場所｜大人数向けボードゲーム・貸切のご相談｜梅田・中津 BODOlab.',
     description:
       '大阪で友達やグループで遊べる場所を探している方へ。6人以上で遊べるボードゲームの一覧と、予約・貸切の相談方法をまとめました。梅田から徒歩10分、中津駅から徒歩3分。',
@@ -174,8 +174,7 @@ export const SCENES: SceneDef[] = [
     slug: 'after-work',
     label: '仕事帰りに',
     card: '平日は18:30から23:30まで。1時間単位で使えます。',
-    photo: 'floor-evening',
-    photoCaption: '夜の店内（イベント開催時）。',
+    photo: null,
     title: '梅田・中津で仕事帰りに寄れる場所｜平日18:30〜23:30｜ボードゲーム BODOlab.',
     description:
       '梅田・中津で仕事帰りに寄れる場所を探している方へ。平日は18:30から23:30まで営業。料金は1時間600円、上限2,500円。中津駅から徒歩3分です。',

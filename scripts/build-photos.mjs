@@ -9,27 +9,18 @@ const OUT = 'public/photos';
 const P = (n) => path.join(SRC, `LINE_ALBUM_店舗内写真_260920_${n}.jpg`);
 
 // n -> { name, alt, crop? }  — every entry checked against the actual photo.
+//
+// 人の顔が写っている写真は使わない（店舗の指示、2026-09-27）。
+// 集合写真・イベント時の店内・自撮りなどは、小さく写っているだけでもここに入れない。
+// 使ってよいのは、無人の店内・盤面や手元のアップ・看板・入口のように、顔が写っていないものだけ。
+// 除外した写真: 2,4,5,15,16,17,18,21,29,30,31,32,33,34,35,37,38（人物）、12（背景に人物）
 const MAP = [
-  { n: 30, name: 'hero-floor', alt: '満席のテーブルでボードゲームを遊ぶお客様たち — BODOlab.のプレイスペース' },
-  { n: 34, name: 'hero-floor-wide', alt: 'プロジェクタースクリーンのある明るいプレイスペースでボードゲームを楽しむ様子' },
-  { n: 35, name: 'hero-mobile', alt: 'テーブルを囲んでカードゲームを遊ぶお客様 — 大阪・中津のBODOlab.' },
-  { n: 32, name: 'floor-evening', alt: '夜のプレイスペースでボードゲームを囲むお客様たち' },
-  { n: 33, name: 'floor-daytime', alt: '昼間のプレイスペースでボードゲームを遊ぶグループ' },
-  { n: 38, name: 'floor-group', alt: '大人数のグループがテーブルを囲んでボードゲームを遊ぶ様子' },
   { n: 39, name: 'room-empty', alt: '木のテーブルと黒い椅子が並ぶBODOlab.の店内。壁一面のボードゲーム棚' },
-  { n: 37, name: 'shelf-staff', alt: 'ボードゲームの棚の前で記念撮影をするお客様たち' },
-  { n: 29, name: 'table-four', alt: '4人でテーブルを囲んでボードゲームを遊ぶお客様' },
-  { n: 17, name: 'table-pairs', alt: 'テーブルごとに分かれてボードゲームを遊ぶ昼の店内' },
-  { n: 21, name: 'table-standing', alt: 'スクリーン前のテーブルでボードゲームを遊ぶお客様' },
-  { n: 15, name: 'group-photo', alt: 'イベント参加者の集合写真 — BODOlab.' },
-  { n: 4, name: 'players-cards', alt: 'カードを手にポーズをとるお客様たち' },
-  { n: 5, name: 'players-longtable', alt: '長テーブルに大型のボードゲームを広げたお客様の記念写真' },
   { n: 36, name: 'game-catan-top', alt: '六角形タイルを並べた定番ボードゲームの盤面' },
   { n: 23, name: 'game-catan-hand', alt: 'ボードゲームの盤面にコマを置くプレイヤーの手元' },
   { n: 22, name: 'game-catan-close', alt: '木製コマが置かれたボードゲームの盤面のクローズアップ' },
   { n: 14, name: 'game-scenery', alt: '立体的な地形とミニチュアが並ぶボードゲームの盤面' },
   { n: 11, name: 'game-strategy', alt: 'タイルとカードを大きく広げた戦略系ボードゲームの盤面' },
-  { n: 12, name: 'game-map', alt: 'マップ型ボードの上にコマを配置する中量級ボードゲーム' },
   { n: 13, name: 'game-tokens', alt: 'コインとトークンが並ぶボードゲームの盤面' },
   { n: 19, name: 'game-grid', alt: '格子状のボードとチップを使うボードゲームのプレイ中の様子' },
   { n: 1, name: 'game-family', alt: 'カラフルなすごろく型ボードで遊ぶファミリー向けゲーム' },
@@ -38,9 +29,6 @@ const MAP = [
   { n: 40, name: 'game-pawns', alt: 'カラフルな木製コマが並ぶボードゲームのクローズアップ' },
   { n: 41, name: 'chalkboard', alt: '「友達ができる場所 ボードゲームラボ」と営業時間が書かれた店頭の黒板' },
   { n: 9, name: 'entrance-stairs', alt: 'ビル3階のBODOlab.へ上がる階段と入口' },
-  { n: 16, name: 'group-peace', alt: 'ボードゲーム棚の前でポーズをとる参加者たちの記念写真' },
-  { n: 18, name: 'room-daytime-wide', alt: '昼間の明るい店内。プロジェクターの前でボードゲームを遊ぶ人たち' },
-  { n: 31, name: 'floor-evening-wide', alt: '夜の店内。いくつものテーブルでボードゲームが同時に進む様子' },
   { n: 6, name: 'pano-a', alt: '店内を見渡したパノラマ写真。テーブル席とボードゲーム棚' },
   { n: 8, name: 'pano-b', alt: '窓側から見た店内のパノラマ写真' },
   { n: 10, name: 'pano-c', alt: 'ショップ側から見た店内のパノラマ写真' },
@@ -116,8 +104,8 @@ await sharp(rgba, { raw: { width: info.width, height: info.height, channels: 4 }
 await sharp(P(26)).extract(markCrop).resize(180, 180, { fit: 'contain', background: '#ffffff' }).png().toFile('public/apple-touch-icon.png');
 await sharp(P(26)).extract(markCrop).resize(32, 32, { fit: 'contain', background: '#ffffff' }).png().toFile('public/icon.png');
 
-// Open Graph image: the busy floor shot at 1200x630.
-await sharp(P(30)).rotate().resize(1200, 630, { fit: 'cover', position: 'centre' }).jpeg({ quality: 82 }).toFile('public/og-image.jpg');
+// Open Graph image: 無人の店内（room-empty）を 1200x630 で。
+await sharp(P(39)).rotate().resize(1200, 630, { fit: 'cover', position: 'centre' }).jpeg({ quality: 82 }).toFile('public/og-image.jpg');
 
 fs.writeFileSync('src/data/photos.json', JSON.stringify(manifest, null, 2));
 console.log(`\nWROTE src/data/photos.json (${Object.keys(manifest).length} photos)`);

@@ -1,69 +1,4 @@
 {
-  "hero-floor": {
-    "alt": "満席のテーブルでボードゲームを遊ぶお客様たち — BODOlab.のプレイスペース",
-    "widths": [
-      480,
-      960,
-      1600
-    ],
-    "width": 2048,
-    "height": 1536,
-    "src": "/photos/hero-floor-1600.webp"
-  },
-  "hero-floor-wide": {
-    "alt": "プロジェクタースクリーンのある明るいプレイスペースでボードゲームを楽しむ様子",
-    "widths": [
-      480,
-      960,
-      1600
-    ],
-    "width": 2048,
-    "height": 1536,
-    "src": "/photos/hero-floor-wide-1600.webp"
-  },
-  "hero-mobile": {
-    "alt": "テーブルを囲んでカードゲームを遊ぶお客様 — 大阪・中津のBODOlab.",
-    "widths": [
-      480,
-      960
-    ],
-    "width": 1477,
-    "height": 1108,
-    "src": "/photos/hero-mobile-960.webp"
-  },
-  "floor-evening": {
-    "alt": "夜のプレイスペースでボードゲームを囲むお客様たち",
-    "widths": [
-      480,
-      960,
-      1600
-    ],
-    "width": 2048,
-    "height": 1536,
-    "src": "/photos/floor-evening-1600.webp"
-  },
-  "floor-daytime": {
-    "alt": "昼間のプレイスペースでボードゲームを遊ぶグループ",
-    "widths": [
-      480,
-      960,
-      1600
-    ],
-    "width": 2048,
-    "height": 1536,
-    "src": "/photos/floor-daytime-1600.webp"
-  },
-  "floor-group": {
-    "alt": "大人数のグループがテーブルを囲んでボードゲームを遊ぶ様子",
-    "widths": [
-      480,
-      960,
-      1600
-    ],
-    "width": 2048,
-    "height": 1536,
-    "src": "/photos/floor-group-1600.webp"
-  },
   "room-empty": {
     "alt": "木のテーブルと黒い椅子が並ぶBODOlab.の店内。壁一面のボードゲーム棚",
     "widths": [
@@ -74,82 +9,6 @@
     "width": 2048,
     "height": 1536,
     "src": "/photos/room-empty-1600.webp"
-  },
-  "shelf-staff": {
-    "alt": "ボードゲームの棚の前で記念撮影をするお客様たち",
-    "widths": [
-      480,
-      960
-    ],
-    "width": 1477,
-    "height": 1108,
-    "src": "/photos/shelf-staff-960.webp"
-  },
-  "table-four": {
-    "alt": "4人でテーブルを囲んでボードゲームを遊ぶお客様",
-    "widths": [
-      480,
-      960,
-      1600
-    ],
-    "width": 1536,
-    "height": 2048,
-    "src": "/photos/table-four-1600.webp"
-  },
-  "table-pairs": {
-    "alt": "テーブルごとに分かれてボードゲームを遊ぶ昼の店内",
-    "widths": [
-      480,
-      960,
-      1600
-    ],
-    "width": 2048,
-    "height": 1536,
-    "src": "/photos/table-pairs-1600.webp"
-  },
-  "table-standing": {
-    "alt": "スクリーン前のテーブルでボードゲームを遊ぶお客様",
-    "widths": [
-      480,
-      960,
-      1600
-    ],
-    "width": 2048,
-    "height": 1536,
-    "src": "/photos/table-standing-1600.webp"
-  },
-  "group-photo": {
-    "alt": "イベント参加者の集合写真 — BODOlab.",
-    "widths": [
-      480,
-      960,
-      1600
-    ],
-    "width": 2048,
-    "height": 1536,
-    "src": "/photos/group-photo-1600.webp"
-  },
-  "players-cards": {
-    "alt": "カードを手にポーズをとるお客様たち",
-    "widths": [
-      480,
-      960,
-      1600
-    ],
-    "width": 2048,
-    "height": 1536,
-    "src": "/photos/players-cards-1600.webp"
-  },
-  "players-longtable": {
-    "alt": "長テーブルに大型のボードゲームを広げたお客様の記念写真",
-    "widths": [
-      480,
-      960,
-      1600
-    ],
-    "width": 2048,
-    "height": 1536,
-    "src": "/photos/players-longtable-1600.webp"
   },
   "game-catan-top": {
     "alt": "六角形タイルを並べた定番ボードゲームの盤面",
@@ -205,17 +64,6 @@
     "width": 2048,
     "height": 1536,
     "src": "/photos/game-strategy-1600.webp"
-  },
-  "game-map": {
-    "alt": "マップ型ボードの上にコマを配置する中量級ボードゲーム",
-    "widths": [
-      480,
-      960,
-      1600
-    ],
-    "width": 2048,
-    "height": 1536,
-    "src": "/photos/game-map-1600.webp"
   },
   "game-tokens": {
     "alt": "コインとトークンが並ぶボードゲームの盤面",
@@ -304,39 +152,6 @@
     "width": 1810,
     "height": 906,
     "src": "/photos/entrance-stairs-1600.webp"
-  },
-  "group-peace": {
-    "alt": "ボードゲーム棚の前でポーズをとる参加者たちの記念写真",
-    "widths": [
-      480,
-      960,
-      1600
-    ],
-    "width": 2048,
-    "height": 1536,
-    "src": "/photos/group-peace-1600.webp"
-  },
-  "room-daytime-wide": {
-    "alt": "昼間の明るい店内。プロジェクターの前でボードゲームを遊ぶ人たち",
-    "widths": [
-      480,
-      960,
-      1600
-    ],
-    "width": 2048,
-    "height": 1536,
-    "src": "/photos/room-daytime-wide-1600.webp"
-  },
-  "floor-evening-wide": {
-    "alt": "夜の店内。いくつものテーブルでボードゲームが同時に進む様子",
-    "widths": [
-      480,
-      960,
-      1600
-    ],
-    "width": 2048,
-    "height": 1536,
-    "src": "/photos/floor-evening-wide-1600.webp"
   },
   "pano-a": {
     "alt": "店内を見渡したパノラマ写真。テーブル席とボードゲーム棚",

@@ -25,3 +25,8 @@ data/shots/
 # 使い捨ての作業スクリプト置き場
 scratch/
 data/audit/
+
+# 店舗から預かった元写真（LINEアルバム）。お客様の顔が写っているものを含むため、
+# 公開リポジトリには入れない（店舗の指示、2026-09-27）。
+# サイトで使う分は scripts/build-photos.mjs が public/photos/ に書き出す（顔が写っていないものだけ）。
+assets-src/

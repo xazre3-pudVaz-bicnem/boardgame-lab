@@ -69,9 +69,9 @@ export default function SchedulePage() {
 
             <figure>
               <div className="relative aspect-[4/3] overflow-hidden rounded-md">
-                <Photo name="group-photo" fill sizes="(max-width:1024px) 92vw, 44vw" className="object-cover" />
+                <Photo name="game-strategy" fill sizes="(max-width:1024px) 92vw, 44vw" className="object-cover" />
               </div>
-              <figcaption className="mt-2 text-[0.78rem] text-ink-faint">店内で開いたイベントの参加者。</figcaption>
+              <figcaption className="mt-2 text-[0.78rem] text-ink-faint">店内のテーブルで遊んでいる様子。</figcaption>
             </figure>
           </div>
         </Container>

@@ -11,8 +11,9 @@ import photos from '@/data/photos.json';
  * getImageProps で srcset だけ受け取り、<picture> の media で1枚だけ取りに行かせる。
  */
 
-const SP = photos['hero-mobile'];
-const PC = photos['hero-floor'];
+/* 顔が写っている写真は使わない（店舗の指示）。スマホもPCも無人の店内写真を使う。 */
+const SP = photos['room-empty'];
+const PC = photos['room-empty'];
 
 export default function Hero() {
   const common = { fill: true, sizes: '100vw', priority: true, alt: '' } as const;
@@ -24,7 +25,7 @@ export default function Hero() {
       <picture className="absolute inset-0 -z-10">
         <source media="(min-width: 640px)" srcSet={pc.srcSet} sizes="100vw" />
         {/*
-          スマホは縦位置で切り抜くので、天井ばかりにならないよう焦点を下げる（人物とテーブルが残る）。
+          スマホは縦位置で切り抜くので、天井ばかりにならないよう焦点を下げる（棚とテーブルが残る）。
           src は付けない。付けるとPCで <source> が採用されたあとに src の取得が始まって中断される。
         */}
         <img
@@ -33,18 +34,18 @@ export default function Hero() {
           alt={SP.alt}
           fetchPriority="high"
           decoding="async"
-          className="h-full w-full object-cover object-[58%_68%] sm:object-[center_55%]"
+          className="h-full w-full object-cover object-[62%_60%] sm:object-[center_55%]"
         />
       </picture>
 
       {/* 文字の可読性を保つグラデーション。写真の表情は上半分に残す */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-deep/92 via-navy-deep/45 to-navy-deep/25"
+        className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-deep/92 via-navy-deep/60 to-navy-deep/40"
       />
 
       <div className="relative mx-auto w-full max-w-[92rem] px-5 pt-32 pb-20 sm:px-8 sm:pb-24 lg:px-12 lg:pb-28">
-        <p className="display text-[0.62rem] font-semibold tracking-[0.34em] text-cyan uppercase sm:text-[0.7rem]">
+        <p className="display text-[0.62rem] font-semibold tracking-[0.34em] text-white/80 uppercase sm:text-[0.7rem]">
           Board Game Play Space — Osaka Nakatsu
         </p>
 
