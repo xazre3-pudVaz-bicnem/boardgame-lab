@@ -57,10 +57,10 @@ export function Button({ href, children, variant = 'solid', className = '', exte
   const base =
     'inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[0.9rem] font-semibold tracking-wide transition-all duration-300 ease-[var(--ease-out-expo)] min-h-11';
   const styles = {
-    solid: 'bg-navy text-white hover:bg-navy-deep hover:-translate-y-0.5 shadow-[0_2px_14px_rgba(0,56,112,0.22)]',
+    solid: 'bg-cocoa text-white hover:bg-cocoa-deep hover:-translate-y-0.5 shadow-[0_2px_14px_rgba(75,56,45,0.22)]',
     amber: 'bg-amber text-ink hover:brightness-95 hover:-translate-y-0.5 shadow-[0_2px_14px_rgba(240,152,0,0.3)]',
-    outline: 'border border-navy/25 text-navy hover:border-navy hover:bg-navy/5',
-    ghost: 'text-navy hover:text-cyan-ink underline underline-offset-4 px-0 py-1',
+    outline: 'border border-cocoa/25 text-cocoa hover:border-cocoa hover:bg-cocoa/5',
+    ghost: 'text-cocoa hover:text-caramel-ink underline underline-offset-4 px-0 py-1',
   }[variant];
   const cls = `${base} ${styles} ${className}`;
 
@@ -90,14 +90,14 @@ export function Chip({
   className = '',
 }: {
   children: ReactNode;
-  tone?: 'plain' | 'cyan' | 'amber' | 'navy';
+  tone?: 'plain' | 'caramel' | 'amber' | 'cocoa';
   className?: string;
 }) {
   const tones = {
     plain: 'bg-paper-2 text-ink-soft',
-    cyan: 'bg-cyan-wash text-cyan-ink',
+    caramel: 'bg-caramel-wash text-caramel-ink',
     amber: 'bg-amber-wash text-amber-ink',
-    navy: 'bg-navy text-white',
+    cocoa: 'bg-cocoa text-white',
   }[tone];
   return (
     <span
@@ -130,7 +130,7 @@ export function Breadcrumbs({
             {it.href ? (
               <Link
                 href={it.href}
-                className={`inline-block py-1.5 transition-colors ${light ? 'hover:text-white' : 'hover:text-cyan-ink'}`}
+                className={`inline-block py-1.5 transition-colors ${light ? 'hover:text-white' : 'hover:text-caramel-ink'}`}
               >
                 {it.name}
               </Link>
@@ -176,7 +176,7 @@ export function PageHeader({
 /** 未確認情報であることを明示する注記 */
 export function ConfirmNote({ children }: { children: ReactNode }) {
   return (
-    <p className="rounded-lg border border-amber/40 bg-amber-wash px-4 py-3 text-[0.8rem] leading-relaxed text-amber-ink">
+    <p className="rounded-2xl border border-amber/40 bg-amber-wash px-4 py-3 text-[0.8rem] leading-relaxed text-amber-ink">
       {children}
     </p>
   );

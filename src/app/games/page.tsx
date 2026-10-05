@@ -3,12 +3,12 @@ import Link from 'next/link';
 import GameSearch from '@/components/games/GameSearch';
 import { GameCard } from '@/components/GameCard';
 import { Breadcrumbs, Container } from '@/components/ui';
-import { CONDITIONS, GAME_COUNT, gamesWithCondition, genreList, staffPicks } from '@/lib/games';
+import { CONDITIONS, gamesWithCondition, genreList, staffPicks } from '@/lib/games';
 import { breadcrumbSchema, buildMetadata, JsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = buildMetadata({
   title: `ボードゲーム一覧｜人数・時間・ジャンルで探す｜大阪・中津 BODOlab.`,
-  description: `BODOlab.（大阪・中津）がボドゲーマに登録している${GAME_COUNT}タイトルを、人数・プレイ時間・ジャンルで探せます。拡張セットは区別して表示しています。`,
+  description: 'BODOlab.（大阪・中津）で遊べるボードゲームを、人数・プレイ時間・ジャンルで探せます。拡張セットは区別して表示しています。',
   path: '/games',
 });
 
@@ -27,13 +27,13 @@ export default function GamesHubPage() {
           <Breadcrumbs items={crumbs} />
           <h1 className="mt-6 text-[clamp(1.5rem,4.4vw,2.2rem)] font-bold text-ink">ボードゲーム一覧</h1>
           <p className="mt-4 max-w-2xl text-[0.9rem] leading-[1.9] text-ink-soft">
-            ボドゲーマの当店ページに登録されている{GAME_COUNT}
-            タイトルです。これは店内に常にある数ではありません。取り扱いは入れ替わることがあるので、遊びたいゲームが決まっている場合は事前にお問い合わせください。
+            ボドゲーマの当店ページに登録しているボードゲームの一覧です。タイトルは日々増えていて、入れ替わることもあります。
+            遊びたいゲームが決まっている場合は、事前にお問い合わせください。
           </p>
 
           {/* スタッフおすすめ：登録されたものがあるときだけ出す */}
           {picks.length ? (
-            <section className="mt-10 rounded-lg bg-navy-deep p-5 text-white sm:p-7">
+            <section className="mt-10 rounded-2xl bg-cocoa-deep p-5 text-white sm:p-7">
               <h2 className="text-[1.15rem] font-bold">BODOlab.スタッフのおすすめ</h2>
               <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 {picks.map((g) => (
@@ -47,7 +47,7 @@ export default function GamesHubPage() {
 
           <section id="search" className="mt-10">
             <h2 className="sr-only">条件で探す</h2>
-            <GameSearch genres={genres} total={GAME_COUNT} />
+            <GameSearch genres={genres} />
           </section>
 
           <section className="mt-14 grid gap-10 border-t border-line pt-10 md:grid-cols-2">

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import GameTile from '@/components/GameTile';
 
 /**
- * 608タイトルの絞り込み。
+ * ボードゲーム一覧の絞り込み。
  *
  * 全件の本文をクライアントへ送ると重いので、
  * public/games-index.json（名前・人数・時間・ジャンルだけの軽い配列、人気順）を
@@ -36,7 +36,6 @@ type Row = {
 
 type Props = {
   genres: { key: string; label: string; count: number }[];
-  total: number;
 };
 
 const PAGE = 60;
@@ -63,8 +62,8 @@ function normalize(s: string) {
 
 const chipBase =
   'ease-out-expo min-h-10 rounded-full px-3.5 py-2 text-[0.8rem] font-medium transition-all duration-200 border select-none';
-const chipOn = 'border-navy bg-navy text-white shadow-[0_2px_10px_rgba(0,56,112,0.2)]';
-const chipOff = 'border-line bg-white text-ink-soft hover:border-navy/40 hover:text-ink';
+const chipOn = 'border-cocoa bg-cocoa text-white shadow-[0_2px_10px_rgba(75,56,45,0.2)]';
+const chipOff = 'border-line bg-white text-ink-soft hover:border-cocoa/40 hover:text-ink';
 
 type State = {
   q: string;
@@ -105,7 +104,7 @@ function toSearch(st: State) {
   return s ? `?${s}` : '';
 }
 
-export default function GameSearch({ genres, total }: Props) {
+export default function GameSearch({ genres }: Props) {
   const genreKeys = useMemo(() => new Set(genres.map((g) => g.key)), [genres]);
   const [rows, setRows] = useState<Row[] | null>(null);
   const [loading, setLoading] = useState(false);
@@ -201,7 +200,7 @@ export default function GameSearch({ genres, total }: Props) {
             onChange={(e) => update({ q: e.target.value })}
             onFocus={ensureLoaded}
             enterKeyHint="search"
-            className="w-full rounded-xl border border-line bg-paper py-3.5 pr-4 pl-11 text-[1rem] text-ink transition-colors placeholder:text-ink-faint focus:border-cyan focus:bg-white focus:ring-2 focus:ring-cyan/25 focus:outline-none"
+            className="w-full rounded-xl border border-line bg-paper py-3.5 pr-4 pl-11 text-[1rem] text-ink transition-colors placeholder:text-ink-faint focus:border-caramel focus:bg-white focus:ring-2 focus:ring-caramel/25 focus:outline-none"
           />
           <svg
             aria-hidden="true"
@@ -302,7 +301,7 @@ export default function GameSearch({ genres, total }: Props) {
               id="game-sort"
               value={st.sort}
               onChange={(e) => update({ sort: e.target.value as State['sort'] })}
-              className="min-h-10 rounded-full border border-line bg-white px-3.5 py-1.5 text-[0.8rem] text-ink focus:border-cyan focus:outline-none"
+              className="min-h-10 rounded-full border border-line bg-white px-3.5 py-1.5 text-[0.8rem] text-ink focus:border-caramel focus:outline-none"
             >
               <option value="popular">人気順</option>
               <option value="name">名前順</option>
@@ -312,7 +311,7 @@ export default function GameSearch({ genres, total }: Props) {
               <button
                 type="button"
                 onClick={reset}
-                className="min-h-10 text-[0.8rem] text-navy underline underline-offset-4 hover:text-cyan-ink"
+                className="min-h-10 text-[0.8rem] text-cocoa underline underline-offset-4 hover:text-caramel-ink"
               >
                 条件をリセット
               </button>
@@ -325,7 +324,7 @@ export default function GameSearch({ genres, total }: Props) {
       <div aria-live="polite" className="mt-8 scroll-mt-24">
         {!rows && !loading ? (
           <p className="text-[0.85rem] text-ink-faint">
-            条件を選ぶと、{total}タイトルの中から絞り込みます。下には人気順の一覧を表示しています。
+            条件を選ぶと、その場で絞り込みます。下には人気順の一覧を表示しています。
           </p>
         ) : null}
 
@@ -334,11 +333,13 @@ export default function GameSearch({ genres, total }: Props) {
         {results ? (
           <>
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <p className="text-[0.85rem] text-ink-soft">
-                <strong className="display text-[1.2rem] text-ink">{results.length}</strong> 件
-                {active ? <span className="ml-2 text-ink-faint">／ 全{total}タイトル中</span> : null}
-              </p>
-              {summary ? <p className="text-[0.8rem] text-navy">{summary}</p> : null}
+              {/* 件数は絞り込んだときだけ出す。全体の数は日々増えるので表示しない（店舗の指示）。 */}
+              {active ? (
+                <p className="text-[0.85rem] text-ink-soft">
+                  <strong className="display text-[1.2rem] text-ink">{results.length}</strong> 件
+                </p>
+              ) : null}
+              {summary ? <p className="text-[0.8rem] text-cocoa">{summary}</p> : null}
             </div>
 
             {results.length === 0 ? (
@@ -356,7 +357,7 @@ export default function GameSearch({ genres, total }: Props) {
                 <button
                   type="button"
                   onClick={reset}
-                  className="ease-out-expo mt-5 min-h-11 rounded-full border border-navy/25 px-7 py-3 text-[0.85rem] font-semibold text-navy transition-all duration-300 hover:border-navy hover:bg-navy/5"
+                  className="ease-out-expo mt-5 min-h-11 rounded-full border border-cocoa/25 px-7 py-3 text-[0.85rem] font-semibold text-cocoa transition-all duration-300 hover:border-cocoa hover:bg-cocoa/5"
                 >
                   条件をリセット
                 </button>
@@ -368,7 +369,7 @@ export default function GameSearch({ genres, total }: Props) {
                     <li key={r.s}>
                       <Link
                         href={`/games/${r.s}`}
-                        className="group block overflow-hidden rounded-xl border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:border-navy/25 hover:shadow-[0_10px_30px_rgba(0,40,79,0.09)]"
+                        className="group block overflow-hidden rounded-xl border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:border-cocoa/25 hover:shadow-[0_10px_30px_rgba(0,40,79,0.09)]"
                       >
                         <div className="overflow-hidden">
                           <GameTile slug={r.s} name={r.n} nameEn={r.e ? r.e.split(' / ')[0] : null} genre={r.g} className="aspect-square w-full" />
@@ -379,7 +380,7 @@ export default function GameSearch({ genres, total }: Props) {
                           ) : r.v ? (
                             <span className="mb-1 inline-block rounded bg-paper-2 px-1.5 py-0.5 text-[0.68rem] font-semibold text-ink-soft">シリーズ作品</span>
                           ) : null}
-                          <h3 className="line-clamp-2 text-[0.85rem] leading-snug font-semibold text-ink transition-colors group-hover:text-cyan-ink">
+                          <h3 className="line-clamp-2 text-[0.85rem] leading-snug font-semibold text-ink transition-colors group-hover:text-caramel-ink">
                             {r.n}
                           </h3>
                           <p className="mt-1.5 text-[0.72rem] text-ink-faint">
@@ -397,7 +398,7 @@ export default function GameSearch({ genres, total }: Props) {
                     <button
                       type="button"
                       onClick={() => setShown(shown + PAGE)}
-                      className="ease-out-expo min-h-11 rounded-full border border-navy/25 px-8 py-3.5 text-[0.88rem] font-semibold text-navy transition-all duration-300 hover:border-navy hover:bg-navy/5"
+                      className="ease-out-expo min-h-11 rounded-full border border-cocoa/25 px-8 py-3.5 text-[0.88rem] font-semibold text-cocoa transition-all duration-300 hover:border-cocoa hover:bg-cocoa/5"
                     >
                       さらに{Math.min(PAGE, results.length - shown)}件を表示
                       <span className="ml-2 text-[0.75rem] font-normal text-ink-faint">

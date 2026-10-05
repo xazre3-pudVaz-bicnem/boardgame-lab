@@ -7,7 +7,7 @@ export const metadata = {
 };
 
 const LINKS = [
-  { href: '/games', label: 'ボードゲーム一覧', note: '608タイトルを人数・時間・ジャンルで探せます' },
+  { href: '/games', label: 'ボードゲーム一覧', note: '人数・時間・ジャンルで探せます' },
   { href: '/system', label: '料金・ご利用案内', note: '1時間600円、上限あり。ご予約方法もこちら' },
   { href: '/access', label: 'アクセス', note: '中津駅から徒歩3分、梅田から徒歩10分' },
   { href: '/news', label: 'お知らせ', note: '営業に関する過去の告知' },
@@ -18,7 +18,7 @@ export default function NotFound() {
   return (
     <section className="section-y bg-paper pt-36">
       <Container size="narrow">
-        <p className="display text-[0.7rem] tracking-[0.28em] text-cyan-ink uppercase">404 Not Found</p>
+        <p className="display text-[0.7rem] tracking-[0.28em] text-caramel-ink uppercase">404 Not Found</p>
         <h1 className="display text-balance mt-4 text-[clamp(1.6rem,4.6vw,2.4rem)] leading-[1.35] text-ink">
           お探しのページが見つかりませんでした
         </h1>
@@ -31,7 +31,7 @@ export default function NotFound() {
           {LINKS.map((l) => (
             <li key={l.href}>
               <Link href={l.href} className="group flex flex-col gap-1 py-4">
-                <span className="text-[0.95rem] font-semibold text-ink transition-colors group-hover:text-cyan-ink">
+                <span className="text-[0.95rem] font-semibold text-ink transition-colors group-hover:text-caramel-ink">
                   {l.label}
                 </span>
                 <span className="text-[0.82rem] text-ink-soft">{l.note}</span>

@@ -62,7 +62,7 @@ export default async function BlogPostPage({ params }: Params) {
               <time dateTime={post.date} className="display text-[0.78rem] text-ink-faint">
                 {post.date.replace(/-/g, '.')}
               </time>
-              <Chip tone="cyan">{post.category}</Chip>
+              <Chip tone="caramel">{post.category}</Chip>
             </div>
             <h1 className="display text-balance mt-4 text-[clamp(1.5rem,4.4vw,2.4rem)] leading-[1.4] text-ink">
               {post.title}
@@ -89,7 +89,7 @@ export default async function BlogPostPage({ params }: Params) {
               </ul>
             ) : null}
 
-            <div className="mt-14 rounded-2xl border border-navy/15 bg-surface p-7 sm:p-9">
+            <div className="mt-14 rounded-2xl border border-cocoa/15 bg-surface p-7 sm:p-9">
               <Eyebrow>BODOlab.</Eyebrow>
               <h2 className="display mt-2 text-[1.15rem] text-ink">大阪・中津のボードゲームスペース</h2>
               <p className="text-pretty mt-4 text-[0.9rem] leading-[1.95] text-ink-soft">
@@ -137,7 +137,7 @@ export default async function BlogPostPage({ params }: Params) {
                       <time dateTime={p.date} className="display shrink-0 text-[0.75rem] text-ink-faint">
                         {p.date.replace(/-/g, '.')}
                       </time>
-                      <span className="text-[0.88rem] leading-snug text-ink transition-colors group-hover:text-cyan-ink">
+                      <span className="text-[0.88rem] leading-snug text-ink transition-colors group-hover:text-caramel-ink">
                         {p.title}
                       </span>
                     </Link>

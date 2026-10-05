@@ -74,7 +74,7 @@ export default function GameDetail({ game }: { game: Game }) {
           <Breadcrumbs items={crumbs} />
 
           <header className="mt-6 flex items-start gap-5">
-            <div className="w-24 shrink-0 overflow-hidden rounded-md sm:w-32">
+            <div className="w-24 shrink-0 overflow-hidden rounded-2xl sm:w-32">
               <GameImage slug={game.slug} name={game.nameJa} nameEn={game.nameEn} genre={game.genre} large priority />
             </div>
             <div className="min-w-0">
@@ -92,7 +92,7 @@ export default function GameDetail({ game }: { game: Game }) {
                 <p className="mt-1 text-[0.82rem] text-ink-faint">{game.nameEn}</p>
               ) : null}
               {game.staff.reviewed ? (
-                <p className="mt-2 inline-block rounded bg-navy px-2 py-0.5 text-[0.72rem] font-semibold text-white">
+                <p className="mt-2 inline-block rounded bg-cocoa px-2 py-0.5 text-[0.72rem] font-semibold text-white">
                   BODOlab.スタッフ監修
                 </p>
               ) : null}
@@ -100,7 +100,7 @@ export default function GameDetail({ game }: { game: Game }) {
           </header>
 
           {game.requiresBaseGame ? (
-            <p className="mt-6 rounded-md border border-amber/50 bg-amber-wash px-4 py-3 text-[0.88rem] leading-relaxed text-amber-ink">
+            <p className="mt-6 rounded-2xl border border-amber/50 bg-amber-wash px-4 py-3 text-[0.88rem] leading-relaxed text-amber-ink">
               これは拡張セットです。この箱だけでは遊べません。
               {base ? (
                 <>
@@ -136,7 +136,7 @@ export default function GameDetail({ game }: { game: Game }) {
           </dl>
 
           {staffNotes.length ? (
-            <section className="mt-10 rounded-md bg-navy-deep p-5 text-white">
+            <section className="mt-10 rounded-2xl bg-cocoa-deep p-5 text-white">
               <h2 className="text-[0.95rem] font-semibold">BODOlab.スタッフより</h2>
               {staffNotes.map(([k, v]) => (
                 <p key={k} className="mt-2 text-[0.88rem] leading-[1.9] text-white/85">

@@ -25,7 +25,7 @@ export default function SceneIndexPage() {
             {SCENES.map((s) => (
               <li key={s.slug}>
                 <Link href={`/scene/${s.slug}`} className="group block py-5">
-                  <span className="text-[1.05rem] font-semibold text-ink group-hover:text-cyan-ink">{s.label}</span>
+                  <span className="text-[1.05rem] font-semibold text-ink group-hover:text-caramel-ink">{s.label}</span>
                   <span className="mt-1 block text-[0.88rem] leading-relaxed text-ink-soft">{s.card}</span>
                 </Link>
               </li>

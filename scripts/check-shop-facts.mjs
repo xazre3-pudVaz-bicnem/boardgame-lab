@@ -35,7 +35,6 @@ const caps = grab(
   /weekday: \{ normal: (\d+), share: (\d+) \},\s*\n\s*weekend: \{ normal: (\d+), share: (\d+) \}/,
   '上限料金',
 );
-const listed = grab(/listed: v\((\d+),/, '登録タイトル数');
 
 /** 記事生成側にその文字列が入っているか */
 const expectInFacts = (needle, label) => {
@@ -48,12 +47,20 @@ if (early) expectInFacts(`${early[1]}の時点`, '早仕舞いの時刻');
 if (earlyUnverified && /\d{2}:\d{2}の時点でお客様/.test(genJs))
   errors.push('早仕舞いの時刻は店舗確認待ちです。generate-blog.mjs の SHOP_FACTS に時刻を書かないでください');
 if (unit) expectInFacts(`1時間${unit[1]}円（相席可でのご利用は1時間${unit[2]}円）`, 'プレイ料金');
+/* 学生割引。FAQ は文章に数字を直接書いているので、そちらも合わせて確かめる。 */
+const student = grab(/studentDiscount: v\((\d+),/, '学生割引');
+if (student) {
+  expectInFacts(`${student[1]}%引き`, '学生割引');
+  const faqTs = fs.readFileSync(path.join(ROOT, 'src/data/faq.ts'), 'utf8');
+  if (!faqTs.includes(`${student[1]}%引き`)) errors.push(`src/data/faq.ts の学生割引が ${student[1]}% になっていません`);
+}
 if (caps)
   expectInFacts(
     `上限は平日${Number(caps[1]).toLocaleString()}円（相席${Number(caps[2]).toLocaleString()}円）、土日祝${Number(caps[3]).toLocaleString()}円（相席${Number(caps[4]).toLocaleString()}円）`,
     '上限料金',
   );
-if (listed) expectInFacts(`タイトル数は${listed[1]}`, '登録タイトル数');
+/* タイトル数は日々増えるのでサイトにも記事にも書かない（店舗の指示）。数字が紛れ込んでいたら止める。 */
+if (/titles: '[^']*\d{3}/.test(genJs)) errors.push('generate-blog.mjs の SHOP_FACTS.titles にタイトル数の数字を書かないでください');
 
 /** 本文に許可している数値が、shop.ts の値と一致しているか */
 const allowedPrices = genJs.match(/const ALLOWED_PRICES = \[([^\]]*)\]/)?.[1];

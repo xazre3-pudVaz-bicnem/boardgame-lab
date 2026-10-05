@@ -118,9 +118,6 @@ export default async function GenrePage({ params }: Params) {
         lead={
           <>
             {copy?.lead}
-            <span className="mt-3 block text-[0.85rem] text-ink-faint">
-              {g.count}タイトル / 全{shop.gameCount.listed.value}タイトル中
-            </span>
           </>
         }
       />
@@ -154,7 +151,7 @@ export default async function GenrePage({ params }: Params) {
                 <li key={x.key}>
                   <Link
                     href={`/games/genre/${x.key}`}
-                    className="inline-flex min-h-10 items-center gap-1.5 rounded-full border border-line bg-white px-4 py-2 text-[0.82rem] text-ink-soft transition-all duration-200 hover:border-navy/40 hover:text-ink"
+                    className="inline-flex min-h-10 items-center gap-1.5 rounded-full border border-line bg-white px-4 py-2 text-[0.82rem] text-ink-soft transition-all duration-200 hover:border-cocoa/40 hover:text-ink"
                   >
                     {x.label}
                     <span className="text-[0.7rem] text-ink-faint">{x.count}</span>

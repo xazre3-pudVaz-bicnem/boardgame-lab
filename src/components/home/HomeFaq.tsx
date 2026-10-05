@@ -16,7 +16,7 @@ export function HomeFaq({ items }: { items: Faq[] }) {
             />
             <Link
               href="/faq"
-              className="mt-6 inline-block text-[0.82rem] text-navy underline underline-offset-4 transition-colors hover:text-cyan-ink"
+              className="mt-6 inline-block text-[0.82rem] text-cocoa underline underline-offset-4 transition-colors hover:text-caramel-ink"
             >
               すべての質問を見る →
             </Link>
@@ -26,8 +26,8 @@ export function HomeFaq({ items }: { items: Faq[] }) {
             {items.map((f) => (
               <li key={f.q}>
                 <details className="group">
-                  <summary className="flex cursor-pointer list-none items-start gap-4 py-5 text-[0.92rem] leading-relaxed font-medium text-ink transition-colors hover:text-cyan-ink">
-                    <span aria-hidden="true" className="display mt-0.5 shrink-0 text-[0.8rem] text-cyan-ink">
+                  <summary className="flex cursor-pointer list-none items-start gap-4 py-5 text-[0.92rem] leading-relaxed font-medium text-ink transition-colors hover:text-caramel-ink">
+                    <span aria-hidden="true" className="display mt-0.5 shrink-0 text-[0.8rem] text-caramel-ink">
                       Q
                     </span>
                     <span className="flex-1">{f.q}</span>
@@ -56,8 +56,8 @@ export function FaqList({ items, className = '' }: { items: Faq[]; className?: s
       {items.map((f) => (
         <li key={f.q}>
           <details className="group">
-            <summary className="flex cursor-pointer list-none items-start gap-4 py-5 text-[0.92rem] leading-relaxed font-medium text-ink transition-colors hover:text-cyan-ink">
-              <span aria-hidden="true" className="display mt-0.5 shrink-0 text-[0.8rem] text-cyan-ink">
+            <summary className="flex cursor-pointer list-none items-start gap-4 py-5 text-[0.92rem] leading-relaxed font-medium text-ink transition-colors hover:text-caramel-ink">
+              <span aria-hidden="true" className="display mt-0.5 shrink-0 text-[0.8rem] text-caramel-ink">
                 Q
               </span>
               <span className="flex-1">{f.q}</span>

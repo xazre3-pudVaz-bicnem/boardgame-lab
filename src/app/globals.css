@@ -2,38 +2,49 @@
 
 /*
   BODOlab. デザイントークン
-  色は店舗ロゴ（public/photos/logo-*）と店頭料金ポスターから実測した値を使用。
-    navy  #003870 … ポスター地色
-    cyan  #29a8e0 … ロゴのフラスコ
-    amber #f09800 … ロゴのきらめき
-  本文色にはコントラスト比を確保した派生色（--color-cyan-ink / --color-amber-ink）を使う。
+
+  2026-10 に「のんびりできるカフェのような雰囲気に」という店舗の要望で、紺と水色の配色から
+  生成りの地にココア色・キャラメル色を合わせた配色へ切り替えた。
+  店内の白い棚・明るい木のテーブル・黒い椅子の写真になじむ色を選んでいる。
+
+    cocoa   … ボタン・濃い面（以前の紺の役割）
+    caramel … リンク・選択中の印（以前の水色の役割）
+    amber   … ロゴのきらめきのオレンジ（#f09800、ロゴから実測）
+    sky     … ロゴのフラスコの水色（#29a8e0、ロゴから実測）。差し色としてだけ使う
+
+  本文に使う色は、生成りの地の上でコントラスト比 4.5:1 以上になる派生色（*-ink）を使う。
 */
 @theme {
-  --color-ink: #14161a;
-  --color-ink-soft: #4a4f57;
-  --color-ink-faint: #61666e;
+  --color-ink: #2e2622;
+  --color-ink-soft: #5d5148;
+  --color-ink-faint: #6f6257;
 
-  --color-paper: #f7f5f0;
-  --color-paper-2: #efebe3;
-  --color-surface: #ffffff;
-  --color-line: #e2ddd3;
+  --color-paper: #faf5ec;
+  --color-paper-2: #f2e9db;
+  --color-surface: #fffdf8;
+  --color-line: #e8ddcb;
 
-  --color-navy: #003870;
-  --color-navy-deep: #00284f;
-  --color-navy-soft: #0b4f92;
+  --color-cocoa: #4b382d;
+  --color-cocoa-deep: #34261e;
+  --color-cocoa-soft: #6a5244;
 
-  --color-cyan: #29a8e0;
-  --color-cyan-ink: #0a6ea8;
-  --color-cyan-wash: #e8f5fc;
+  --color-caramel: #c8894e;
+  --color-caramel-ink: #9a5325;
+  --color-caramel-wash: #f8ecdc;
 
   --color-amber: #f09800;
   --color-amber-ink: #8a5200;
   --color-amber-wash: #fdf2e0;
 
-  /* 和文はシステムフォント。日本語Webフォントは描画ブロックが大きくLCPを壊すため読み込まない */
+  --color-sky: #29a8e0;
+
+  /* 本文はシステムフォント（読み込みゼロ）。 */
   --font-sans: ui-sans-serif, system-ui, -apple-system, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic Medium', 'Yu Gothic', Meiryo, sans-serif;
-  /* 欧文見出しのみWebフォント（latinサブセットのみ） */
-  --font-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  /*
+    見出しは丸ゴシック（Zen Maru Gothic）。ロゴの丸い文字に合わせ、やわらかい印象にする。
+    定義は layout.tsx が後から読み込む（表示を止めないため）。届くまでは後ろのシステムフォントで出る。
+  */
+  --font-display: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', 'Hiragino Sans', 'Yu Gothic Medium', 'Yu Gothic', Meiryo, ui-sans-serif, system-ui, sans-serif;
 
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -77,7 +88,9 @@
   h2,
   h3,
   h4 {
-    line-height: 1.4;
+    font-family: var(--font-display);
+    line-height: 1.5;
+    letter-spacing: 0.02em;
     font-feature-settings: 'palt' 1;
   }
 
@@ -89,7 +102,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-cyan-ink);
+    outline: 2px solid var(--color-caramel-ink);
     outline-offset: 3px;
     border-radius: 2px;
   }
@@ -108,25 +121,25 @@
     font-weight: 600;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--color-cyan-ink);
+    color: var(--color-caramel-ink);
   }
 
   .display {
     font-family: var(--font-display);
-    font-weight: 600;
-    letter-spacing: -0.015em;
+    font-weight: 700;
+    letter-spacing: 0.01em;
   }
 
   /* 本文リンク */
   .prose-link {
-    color: var(--color-cyan-ink);
+    color: var(--color-caramel-ink);
     text-decoration: underline;
     text-underline-offset: 3px;
     text-decoration-thickness: 1px;
     transition: color 0.2s var(--ease-out-expo);
   }
   .prose-link:hover {
-    color: var(--color-navy);
+    color: var(--color-cocoa);
   }
 
   /* 画面外のセクションはレンダリングを後回しにして初期表示を軽くする */
@@ -194,19 +207,22 @@
 }
 
 @layer components {
-  /*
-   * 写真の上にヘッダーが重なるページ（トップ・コレクション・シーン・エリア）では、
-   * 最上部にいる間だけ文字を白にする。ページ側が <DarkHeader /> を置いたかどうかで切り替わるので、
-   * JSの判定を挟まずに初回描画から正しい色で出る。
-   */
-  body:has([data-dark-header]) .site-header[data-at-top='true'] .header-ink {
-    color: #ffffff;
+  /* 料金表など、品名と値段のあいだを点線でつなぐ（メニュー表の書き方） */
+  .menu-row,
+  .menu-row > dt {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
   }
-  body:has([data-dark-header]) .site-header[data-at-top='true'] .header-ink-soft {
-    color: rgb(255 255 255 / 0.72);
+  .menu-row > dt {
+    flex: 1;
   }
-  body:has([data-dark-header]) .site-header[data-at-top='true'] .header-ink:hover {
-    color: var(--color-cyan);
+  .menu-row > dt::after {
+    content: '';
+    flex: 1;
+    min-width: 1.5rem;
+    border-bottom: 2px dotted color-mix(in srgb, var(--color-caramel) 45%, transparent);
+    transform: translateY(-0.3em);
   }
 }
 

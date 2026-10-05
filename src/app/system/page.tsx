@@ -10,7 +10,7 @@ import { breadcrumbSchema, buildMetadata, faqSchema, JsonLd } from '@/lib/seo';
 export const metadata: Metadata = buildMetadata({
   title: '料金・ご利用案内｜1時間600円・上限あり｜大阪 梅田中津のボードゲーム BODOlab.',
   description:
-    'BODOlab.の料金とご利用方法です。プレイ料金は1時間600円（相席500円）、上限は平日2,500円・土日祝3,000円。小学生半額・未就学児無料。ご予約方法、飲食のルール、営業時間もこちらで確認いただけます。',
+    'BODOlab.の料金とご利用方法です。プレイ料金は1時間600円（相席500円）、上限は平日2,500円・土日祝3,000円。学生20%引き、小学生半額、未就学児無料。ご予約方法、飲食のルール、営業時間もこちらで確認いただけます。',
   path: '/system',
   keywords: ['大阪 ボードゲーム 料金', 'ボードゲームカフェ 料金 大阪', '梅田 ボードゲーム 値段', 'BODOlab 料金'],
 });
@@ -45,7 +45,7 @@ export default function SystemPage() {
             {/* 通常 */}
             <div className="rounded-2xl border border-line bg-white p-7 sm:p-9">
               <p className="text-[0.78rem] font-semibold tracking-wide text-ink-faint">通常のご利用</p>
-              <p className="display mt-3 text-[2.6rem] leading-none text-navy">
+              <p className="display mt-3 text-[2.6rem] leading-none text-cocoa">
                 {u.normal}
                 <span className="ml-1 text-[1rem] font-medium">円 / {u.label}</span>
               </p>
@@ -62,18 +62,18 @@ export default function SystemPage() {
             </div>
 
             {/* 相席 */}
-            <div className="rounded-2xl border border-cyan/30 bg-cyan-wash p-7 sm:p-9">
-              <p className="text-[0.78rem] font-semibold tracking-wide text-cyan-ink">相席可でのご利用</p>
-              <p className="display mt-3 text-[2.6rem] leading-none text-navy">
+            <div className="rounded-2xl border border-caramel/30 bg-caramel-wash p-7 sm:p-9">
+              <p className="text-[0.78rem] font-semibold tracking-wide text-caramel-ink">相席可でのご利用</p>
+              <p className="display mt-3 text-[2.6rem] leading-none text-cocoa">
                 {u.share}
                 <span className="ml-1 text-[1rem] font-medium">円 / {u.label}</span>
               </p>
               <dl className="mt-7 space-y-0">
-                <div className="spec-row border-cyan/25">
+                <div className="spec-row border-caramel/25">
                   <dt className="text-ink-soft">平日の上限</dt>
                   <dd className="font-semibold text-ink">{c.weekday.share.toLocaleString()}円</dd>
                 </div>
-                <div className="spec-row border-cyan/25">
+                <div className="spec-row border-caramel/25">
                   <dt className="text-ink-soft">土日祝の上限</dt>
                   <dd className="font-semibold text-ink">{c.weekend.share.toLocaleString()}円</dd>
                 </div>
@@ -88,32 +88,32 @@ export default function SystemPage() {
           <ul className="mt-8 space-y-2.5 text-[0.85rem] leading-relaxed text-ink-soft">
             {shop.pricing.kids.value.map((k) => (
               <li key={k.label} className="flex gap-2">
-                <span aria-hidden="true" className="text-cyan-ink">
+                <span aria-hidden="true" className="text-caramel-ink">
                   ・
                 </span>
                 {k.label}のお客様は{k.rule}でご利用いただけます。
               </li>
             ))}
             <li className="flex gap-2">
-              <span aria-hidden="true" className="text-cyan-ink">
+              <span aria-hidden="true" className="text-caramel-ink">
                 ・
               </span>
-              お会計時に学生証をご提示いただくと割引が適用されます。割引率は店頭でご確認ください。
+              お会計時に学生証をご提示いただくと、{shop.pricing.studentDiscount.value}%引きの料金でご利用いただけます。
             </li>
             <li className="flex gap-2">
-              <span aria-hidden="true" className="text-cyan-ink">
+              <span aria-hidden="true" className="text-caramel-ink">
                 ・
               </span>
               {shop.pricing.guaranteedHoursNote}
             </li>
             <li className="flex gap-2">
-              <span aria-hidden="true" className="text-cyan-ink">
+              <span aria-hidden="true" className="text-caramel-ink">
                 ・
               </span>
               {shop.pricing.privateHire.value}
             </li>
             <li className="flex gap-2">
-              <span aria-hidden="true" className="text-cyan-ink">
+              <span aria-hidden="true" className="text-caramel-ink">
                 ・
               </span>
               お支払いは{shop.payments.value.join('、')}に対応しています。
@@ -156,7 +156,7 @@ export default function SystemPage() {
               },
             ].map((s) => (
               <li key={s.n} className="rounded-xl border border-line bg-white p-6">
-                <span className="display text-[0.85rem] tracking-widest text-cyan-ink">{s.n}</span>
+                <span className="display text-[0.85rem] tracking-widest text-caramel-ink">{s.n}</span>
                 <h3 className="mt-3 text-[0.95rem] font-semibold text-ink">{s.t}</h3>
                 <p className="text-pretty mt-2.5 text-[0.83rem] leading-[1.9] text-ink-soft">{s.d}</p>
               </li>
@@ -245,12 +245,12 @@ export default function SystemPage() {
               <ul className="mt-8 space-y-3 text-[0.88rem] leading-[1.9] text-ink-soft">
                 {shop.rules.food.map((r) => (
                   <li key={r} className="flex gap-2.5">
-                    <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-cyan" />
+                    <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-caramel" />
                     {r}
                   </li>
                 ))}
                 <li className="flex gap-2.5">
-                  <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-cyan" />
+                  <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-caramel" />
                   {shop.rules.minors}
                 </li>
               </ul>

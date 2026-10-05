@@ -65,7 +65,7 @@ export default function AccessPage() {
                 <div className="spec-row">
                   <dt className="shrink-0 text-ink-soft">電話</dt>
                   <dd className="text-right">
-                    <a href={`tel:${shop.tel.value.replace(/-/g, '')}`} className="inline-block py-1 font-semibold text-navy">
+                    <a href={`tel:${shop.tel.value.replace(/-/g, '')}`} className="inline-block py-1 font-semibold text-cocoa">
                       {shop.tel.value}
                     </a>
                   </dd>
@@ -146,7 +146,7 @@ export default function AccessPage() {
           <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {STEPS.map((s) => (
               <li key={s.n} className="rounded-xl border border-line bg-white p-6">
-                <span className="display text-[0.85rem] tracking-widest text-cyan-ink">STEP {s.n}</span>
+                <span className="display text-[0.85rem] tracking-widest text-caramel-ink">STEP {s.n}</span>
                 <h3 className="mt-2.5 text-[0.95rem] font-semibold text-ink">{s.t}</h3>
                 <p className="text-pretty mt-2 text-[0.83rem] leading-[1.9] text-ink-soft">{s.d}</p>
               </li>
@@ -158,10 +158,10 @@ export default function AccessPage() {
               <Link
                 key={a.slug}
                 href={`/area/${a.slug}`}
-                className="group rounded-xl border border-line bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-navy/25"
+                className="group rounded-xl border border-line bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-cocoa/25"
               >
-                <span className="display text-[0.6rem] tracking-[0.22em] text-cyan-ink uppercase">{a.en}</span>
-                <h3 className="display mt-2 text-[1.05rem] text-ink transition-colors group-hover:text-cyan-ink">
+                <span className="display text-[0.6rem] tracking-[0.22em] text-caramel-ink uppercase">{a.en}</span>
+                <h3 className="display mt-2 text-[1.05rem] text-ink transition-colors group-hover:text-caramel-ink">
                   {a.h1}
                 </h3>
                 <p className="text-pretty mt-2 line-clamp-2 text-[0.83rem] leading-[1.9] text-ink-soft">{a.lead}</p>

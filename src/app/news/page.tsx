@@ -43,7 +43,7 @@ export default function NewsIndexPage() {
               <li key={n.slug}>
                 <Link
                   href={`/news/${encodeURIComponent(n.slug)}`}
-                  className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:border-navy/25 hover:shadow-[0_10px_30px_rgba(0,40,79,0.09)]"
+                  className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:border-cocoa/25 hover:shadow-[0_10px_30px_rgba(0,40,79,0.09)]"
                 >
                   <div className="overflow-hidden bg-paper-2">
                     <NewsImage
@@ -60,7 +60,7 @@ export default function NewsIndexPage() {
                       </time>
                       <Chip>{n.category}</Chip>
                     </div>
-                    <h2 className="mt-2.5 line-clamp-2 text-[0.95rem] leading-snug font-semibold text-ink transition-colors group-hover:text-cyan-ink">
+                    <h2 className="mt-2.5 line-clamp-2 text-[0.95rem] leading-snug font-semibold text-ink transition-colors group-hover:text-caramel-ink">
                       {n.title}
                     </h2>
                     <p className="text-pretty mt-2.5 line-clamp-3 flex-1 text-[0.8rem] leading-[1.85] text-ink-soft">

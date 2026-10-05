@@ -7,7 +7,7 @@ import { emptyContactState, sendContact } from './actions';
 const CATEGORIES = ['在庫確認・お取り置き', '貸切・団体利用のご相談', 'メディア関連', 'その他のご質問'] as const;
 
 const field =
-  'w-full rounded-lg border border-line bg-white px-4 py-3 text-[0.9rem] text-ink transition-colors placeholder:text-ink-faint focus:border-cyan focus:outline-none focus:ring-2 focus:ring-cyan/25';
+  'w-full rounded-2xl border border-line bg-white px-4 py-3 text-[0.9rem] text-ink transition-colors placeholder:text-ink-faint focus:border-caramel focus:outline-none focus:ring-2 focus:ring-caramel/25';
 
 function Submit() {
   const { pending } = useFormStatus();
@@ -15,7 +15,7 @@ function Submit() {
     <button
       type="submit"
       disabled={pending}
-      className="ease-out-expo min-h-11 rounded-full bg-navy px-8 py-3.5 text-[0.9rem] font-semibold text-white shadow-[0_2px_14px_rgba(0,56,112,0.22)] transition-all duration-300 hover:bg-navy-deep disabled:cursor-not-allowed disabled:opacity-60"
+      className="ease-out-expo min-h-11 rounded-full bg-cocoa px-8 py-3.5 text-[0.9rem] font-semibold text-white shadow-[0_2px_14px_rgba(75,56,45,0.22)] transition-all duration-300 hover:bg-cocoa-deep disabled:cursor-not-allowed disabled:opacity-60"
     >
       {pending ? '送信中…' : '送信する'}
     </button>
@@ -37,8 +37,8 @@ export default function ContactForm() {
 
   if (state.ok) {
     return (
-      <div className="rounded-2xl border border-cyan/35 bg-cyan-wash p-8 text-center">
-        <p className="display text-[1.1rem] text-navy">送信が完了しました</p>
+      <div className="rounded-2xl border border-caramel/35 bg-caramel-wash p-8 text-center">
+        <p className="display text-[1.1rem] text-cocoa">送信が完了しました</p>
         <p className="mt-3 text-[0.88rem] leading-[1.9] text-ink-soft">{state.message}</p>
       </div>
     );
@@ -48,7 +48,7 @@ export default function ContactForm() {
     // key に attempt を入れて、送信のたびに defaultValue を入れ直す
     <form key={state.attempt} action={action} className="space-y-6" noValidate>
       {state.message ? (
-        <p role="alert" className="rounded-lg border border-amber/40 bg-amber-wash px-4 py-3 text-[0.82rem] text-amber-ink">
+        <p role="alert" className="rounded-2xl border border-amber/40 bg-amber-wash px-4 py-3 text-[0.82rem] text-amber-ink">
           {state.message}
         </p>
       ) : null}

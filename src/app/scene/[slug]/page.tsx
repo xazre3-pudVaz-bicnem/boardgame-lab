@@ -56,7 +56,7 @@ export default async function ScenePage({ params }: Params) {
 
           {s.photo ? (
             <figure className="mt-8">
-              <div className="relative aspect-[3/2] overflow-hidden rounded-md">
+              <div className="relative aspect-[3/2] overflow-hidden rounded-2xl">
                 <Photo name={s.photo} fill priority sizes="(max-width:768px) 92vw, 46rem" className="object-cover" />
               </div>
               {s.photoCaption ? <figcaption className="mt-2 text-[0.78rem] text-ink-faint">{s.photoCaption}</figcaption> : null}

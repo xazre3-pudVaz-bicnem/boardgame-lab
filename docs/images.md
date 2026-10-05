@@ -20,14 +20,14 @@
 | --- | --- | --- |
 | room-empty | 無人の店内、白い棚とカラフルなゲーム | トップ ヒーロー（PC・スマホ）、OG画像、トップ「店内」、/scene/indoor-date、/system、/part-timejob |
 | game-boxes | テーブルに積まれたゲームの箱（奥に人の胴体のみ） | トップ「店内」 |
-| game-pawns | 木製コマのアップ | トップ「店内」 |
-| game-tokens | コインとトークンが並ぶ盤面 | トップ「イベント」 |
+| game-pawns | 木製コマのアップ | トップ ヒーロー（小さい写真）、トップ「店内」 |
+| game-catan-hand | 盤面にコマを置く手元 | トップ「イベント」 |
 | game-strategy | 大きく広げた盤面と手元 | /schedule |
 | game-catan-top | 六角形タイルの盤面 | /scene/rainy-day |
 | game-family | すごろく型ボードと数人の手元 | /scene/group |
 | entrance-stairs | 1階入口と階段（360度カメラで歪みあり） | トップ「アクセス」、/access |
 | chalkboard | 店頭の黒板「友達ができる場所」 | トップ「アクセス」 |
-| game-catan-hand / game-catan-close / game-family-close / game-grid / game-scenery | 盤面・手元のアップ | 予備 |
+| game-tokens / game-catan-close / game-family-close / game-grid / game-scenery | 盤面・手元のアップ | 予備 |
 | pano-a / pano-b / pano-c | 無人の店内の360度パノラマ（歪みが大きい） | 予備 |
 | price-poster | 料金・営業時間のポスター | 予備 |
 

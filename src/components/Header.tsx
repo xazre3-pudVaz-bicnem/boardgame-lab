@@ -44,18 +44,26 @@ export default function Header() {
         backdrop-filter を持つ要素の中では position:fixed が効かなくなるため、
         ドロワーはこのヘッダーの外（下の <div>）に absolute で出す。
       */
-      /* 写真の上に重なるページでは globals.css 側で文字色を白に切り替える（data-at-top を見ている） */
-      data-at-top={scrolled || open ? undefined : 'true'}
-      className={`site-header fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-[var(--ease-out-expo)] ${
-        scrolled || open ? 'bg-paper/92 shadow-[0_1px_0_rgba(0,0,0,0.06)] backdrop-blur-lg' : 'bg-transparent'
+      /*
+        ロゴは黒い文字なので、ヘッダーの背景は常に明るい色にする（写真の上で透明にしない）。
+        スクロールしたら下に細い影を足すだけ。
+      */
+      className={`site-header fixed inset-x-0 top-0 z-50 bg-paper/92 backdrop-blur-lg transition-shadow duration-500 ease-[var(--ease-out-expo)] ${
+        scrolled || open ? 'shadow-[0_1px_0_rgba(75,56,45,0.1)]' : ''
       }`}
     >
       <div className="relative mx-auto flex h-16 w-full max-w-[92rem] items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-10">
         <Link href="/" className="flex shrink-0 items-center gap-2.5" aria-label="BODOlab. ホームへ">
-          <Image src="/logo-mark.png" alt="" width={36} height={36} className="h-8 w-8 sm:h-9 sm:w-9" priority />
-          <span className="header-ink display text-[1.05rem] leading-none font-bold tracking-tight text-ink sm:text-[1.2rem]">
-            BODOlab<span className="text-cyan">.</span>
-          </span>
+          <Image src="/logo-mark.png" alt="" width={40} height={40} className="h-9 w-9 sm:h-10 sm:w-10" priority />
+          {/* 文字は組まずに、店舗のロゴ図版（黒文字・水色の差し色）をそのまま使う */}
+          <Image
+            src="/logo-wordmark.png"
+            alt="BODOlab."
+            width={143}
+            height={26}
+            className="h-[22px] w-auto sm:h-[26px]"
+            priority
+          />
         </Link>
 
         <nav aria-label="メインナビゲーション" className="hidden lg:block">
@@ -67,7 +75,7 @@ export default function Header() {
                   <Link
                     href={n.href}
                     className={`group flex flex-col items-center gap-0.5 text-[0.82rem] font-medium transition-colors ${
-                      active ? 'text-cyan-ink' : 'header-ink text-ink hover:text-cyan-ink'
+                      active ? 'text-caramel-ink' : 'text-ink hover:text-caramel-ink'
                     }`}
                   >
                     {n.label}
@@ -83,7 +91,7 @@ export default function Header() {
             href={shop.reservationUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden min-h-10 items-center rounded-full bg-navy px-5 py-2.5 text-[0.82rem] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-navy-deep sm:inline-flex"
+            className="hidden min-h-10 items-center rounded-full bg-cocoa px-5 py-2.5 text-[0.82rem] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-cocoa-deep sm:inline-flex"
           >
             ご来店予約
           </a>
@@ -93,7 +101,7 @@ export default function Header() {
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? 'メニューを閉じる' : 'メニューを開く'}
-            className="header-ink flex h-11 w-11 items-center justify-center rounded-full text-ink transition-colors hover:bg-ink/5 lg:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-full text-ink transition-colors hover:bg-ink/5 lg:hidden"
           >
             <span className="relative block h-3.5 w-5" aria-hidden="true">
               <span
@@ -141,13 +149,13 @@ export default function Header() {
               href={shop.reservationUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex min-h-12 items-center justify-center rounded-full bg-navy px-6 text-[0.9rem] font-semibold text-white"
+              className="flex min-h-12 items-center justify-center rounded-full bg-cocoa px-6 text-[0.9rem] font-semibold text-white"
             >
               ご来店予約フォーム
             </a>
             <a
               href={`tel:${shop.tel.value.replace(/-/g, '')}`}
-              className="flex min-h-12 items-center justify-center rounded-full border border-navy/25 px-6 text-[0.9rem] font-semibold text-navy"
+              className="flex min-h-12 items-center justify-center rounded-full border border-cocoa/25 px-6 text-[0.9rem] font-semibold text-cocoa"
             >
               電話で問い合わせる（{shop.tel.value}）
             </a>

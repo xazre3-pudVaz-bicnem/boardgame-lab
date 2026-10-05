@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import DarkHeader from '@/components/DarkHeader';
 import Photo from '@/components/Photo';
 import { FaqList } from '@/components/home/HomeFaq';
 import { Breadcrumbs, Button, Container, ConfirmNote, Eyebrow } from '@/components/ui';
@@ -41,24 +40,23 @@ export default async function AreaPage({ params }: Params) {
 
   return (
     <>
-      <DarkHeader />
       <JsonLd data={breadcrumbSchema(crumbs)} />
       <JsonLd data={faqSchema(area.faq)} />
       <JsonLd data={localBusinessSchema()} />
 
       {/* ------------------------------------------------ ヘッダー */}
-      <header className="relative border-b border-line bg-navy-deep pt-28 pb-14 text-white sm:pt-32 sm:pb-20">
+      <header className="relative border-b border-line bg-cocoa-deep pt-28 pb-14 text-white sm:pt-32 sm:pb-20">
         <div className="absolute inset-0">
           <Photo name={area.photo} fill sizes="100vw" priority className="object-cover opacity-30" />
         </div>
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/78 to-navy-deep/55"
+          className="absolute inset-0 bg-gradient-to-t from-cocoa-deep via-cocoa-deep/78 to-cocoa-deep/55"
         />
         <Container className="relative">
           <Breadcrumbs items={crumbs} tone="light-text" />
           <div className="mt-7 max-w-3xl">
-            <p className="eyebrow text-cyan">{area.en}</p>
+            <p className="eyebrow text-caramel">{area.en}</p>
             <h1 className="display text-balance mt-3 text-[clamp(1.75rem,5vw,3rem)] leading-[1.3] text-white">
               {area.h1}
             </h1>
@@ -85,7 +83,7 @@ export default async function AreaPage({ params }: Params) {
             {area.routes.map((r) => (
               <li key={r.from} className="rounded-xl border border-line bg-white p-6">
                 <p className="text-[0.88rem] font-semibold text-ink">{r.from}</p>
-                <p className="display mt-2 text-[1.05rem] text-cyan-ink">{r.minutes}</p>
+                <p className="display mt-2 text-[1.05rem] text-caramel-ink">{r.minutes}</p>
                 <p className="text-pretty mt-3 text-[0.83rem] leading-[1.9] text-ink-soft">{r.how}</p>
               </li>
             ))}
@@ -125,7 +123,7 @@ export default async function AreaPage({ params }: Params) {
                 <div className="spec-row">
                   <dt className="shrink-0 text-ink-soft">電話</dt>
                   <dd className="text-right">
-                    <a href={`tel:${shop.tel.value.replace(/-/g, '')}`} className="inline-block py-1 font-semibold text-navy">
+                    <a href={`tel:${shop.tel.value.replace(/-/g, '')}`} className="inline-block py-1 font-semibold text-cocoa">
                       {shop.tel.value}
                     </a>
                   </dd>
@@ -171,7 +169,7 @@ export default async function AreaPage({ params }: Params) {
                 <li key={a.slug}>
                   <Link
                     href={`/area/${a.slug}`}
-                    className="block rounded-lg border border-line bg-white px-4 py-3 text-[0.85rem] text-ink-soft transition-colors hover:border-navy/30 hover:text-ink"
+                    className="block rounded-2xl border border-line bg-white px-4 py-3 text-[0.85rem] text-ink-soft transition-colors hover:border-cocoa/30 hover:text-ink"
                   >
                     {a.h1}
                   </Link>

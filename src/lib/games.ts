@@ -63,7 +63,6 @@ export type Game = {
 const data = raw as unknown as { generatedAt: string; source: string; count: number; games: Game[] };
 
 export const GAMES: Game[] = data.games;
-export const GAME_COUNT = GAMES.length;
 
 const bySlug = new Map(GAMES.map((g) => [g.slug, g]));
 export const getGame = (slug: string) => bySlug.get(slug) ?? null;

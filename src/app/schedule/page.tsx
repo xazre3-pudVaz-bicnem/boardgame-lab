@@ -36,7 +36,7 @@ export default function SchedulePage() {
                 まだ世に出ていないゲームを遊んでみたい人など、経験を問わず参加できます。
               </p>
 
-              <dl className="mt-6 rounded-md border border-line bg-surface text-[0.92rem]">
+              <dl className="mt-6 rounded-2xl border border-line bg-surface text-[0.92rem]">
                 {[
                   ['開催', ev.schedule],
                   ['時間', ev.hours],
@@ -68,7 +68,7 @@ export default function SchedulePage() {
             </section>
 
             <figure>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-md">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
                 <Photo name="game-strategy" fill sizes="(max-width:1024px) 92vw, 44vw" className="object-cover" />
               </div>
               <figcaption className="mt-2 text-[0.78rem] text-ink-faint">店内のテーブルで遊んでいる様子。</figcaption>
@@ -100,7 +100,7 @@ export default function SchedulePage() {
               <ul className="mt-4 divide-y divide-line border-y border-line">
                 {pastEvents.map((n) => (
                   <li key={n.slug}>
-                    <Link href={`/news/${encodeURIComponent(n.slug)}`} className="flex gap-4 py-3 text-[0.9rem] hover:text-cyan-ink">
+                    <Link href={`/news/${encodeURIComponent(n.slug)}`} className="flex gap-4 py-3 text-[0.9rem] hover:text-caramel-ink">
                       <time dateTime={n.date} className="shrink-0 text-ink-faint tabular-nums">
                         {n.date.replace(/-/g, '.')}
                       </time>

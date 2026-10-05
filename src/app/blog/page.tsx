@@ -62,7 +62,7 @@ export default function BlogIndexPage() {
                 <ul className="mb-10 flex flex-wrap gap-2">
                   {categories.map((c) => (
                     <li key={c.name}>
-                      <Chip tone="cyan">
+                      <Chip tone="caramel">
                         {c.name} {c.count}
                       </Chip>
                     </li>
@@ -75,7 +75,7 @@ export default function BlogIndexPage() {
                   <li key={p.slug}>
                     <Link
                       href={`/blog/${p.slug}`}
-                      className="group flex h-full flex-col rounded-xl border border-line bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-navy/25 hover:shadow-[0_10px_30px_rgba(0,40,79,0.09)]"
+                      className="group flex h-full flex-col rounded-xl border border-line bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-cocoa/25 hover:shadow-[0_10px_30px_rgba(0,40,79,0.09)]"
                     >
                       <div className="flex items-center gap-3">
                         <time dateTime={p.date} className="display text-[0.72rem] text-ink-faint">
@@ -83,7 +83,7 @@ export default function BlogIndexPage() {
                         </time>
                         <Chip>{p.category}</Chip>
                       </div>
-                      <h2 className="mt-3 line-clamp-3 text-[0.98rem] leading-snug font-semibold text-ink transition-colors group-hover:text-cyan-ink">
+                      <h2 className="mt-3 line-clamp-3 text-[0.98rem] leading-snug font-semibold text-ink transition-colors group-hover:text-caramel-ink">
                         {p.title}
                       </h2>
                       <p className="text-pretty mt-3 line-clamp-3 flex-1 text-[0.82rem] leading-[1.85] text-ink-soft">

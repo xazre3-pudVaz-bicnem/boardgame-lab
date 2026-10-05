@@ -135,7 +135,7 @@ export default async function NewsArticlePage({ params }: Params) {
                       <time dateTime={n.date} className="display shrink-0 text-[0.75rem] text-ink-faint">
                         {n.date.replace(/-/g, '.')}
                       </time>
-                      <span className="text-[0.88rem] leading-snug text-ink transition-colors group-hover:text-cyan-ink">
+                      <span className="text-[0.88rem] leading-snug text-ink transition-colors group-hover:text-caramel-ink">
                         {n.title}
                       </span>
                     </Link>

@@ -100,6 +100,30 @@ await sharp(rgba, { raw: { width: info.width, height: info.height, channels: 4 }
   .png()
   .toFile('public/logo-mark.png');
 
+/*
+ * ロゴの文字部分（横1行の「BODOlab.」）。料金ポスターの上部から切り出す。
+ * 文字は黒、「O」「D」の中に水色が入るのが正しい配色。ヘッダーで文字を組んで色を付けると
+ * 正式なロゴと違って見えるため、店舗の図版をそのまま使う（店舗の指摘、2026-10-02）。
+ * 白地は透明に抜く。黒い文字なので、明るい背景の上でだけ使うこと。
+ */
+{
+  const crop = { left: 180, top: 84, width: 440, height: 88 };
+  const { data: wd, info: wi } = await sharp(P(24)).extract(crop).raw().toBuffer({ resolveWithObject: true });
+  const out = Buffer.alloc(wi.width * wi.height * 4);
+  for (let i = 0, j = 0; i < wd.length; i += wi.channels, j += 4) {
+    const [r, g, b] = [wd[i], wd[i + 1], wd[i + 2]];
+    out[j] = r;
+    out[j + 1] = g;
+    out[j + 2] = b;
+    const min = Math.min(r, g, b);
+    out[j + 3] = min > 244 ? 0 : min > 222 ? Math.round(((244 - min) / 22) * 255) : 255;
+  }
+  await sharp(out, { raw: { width: wi.width, height: wi.height, channels: 4 } })
+    .trim()
+    .png()
+    .toFile('public/logo-wordmark.png');
+}
+
 // アイコン類は背景が透明だと環境によって見えづらいので、白地のまま残す。
 await sharp(P(26)).extract(markCrop).resize(180, 180, { fit: 'contain', background: '#ffffff' }).png().toFile('public/apple-touch-icon.png');
 await sharp(P(26)).extract(markCrop).resize(32, 32, { fit: 'contain', background: '#ffffff' }).png().toFile('public/icon.png');

@@ -83,14 +83,14 @@ export default function ContactPage() {
                 <ul className="mt-4 space-y-2.5 text-[0.86rem] leading-[1.9] text-ink-soft">
                   {TOPICS.map((t) => (
                     <li key={t} className="flex gap-2.5">
-                      <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-cyan" />
+                      <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-caramel" />
                       {t}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="rounded-2xl border border-navy/15 bg-surface p-6">
+              <div className="rounded-2xl border border-cocoa/15 bg-surface p-6">
                 <h2 className="display text-[1.05rem] text-ink">お席のご予約について</h2>
                 <p className="text-pretty mt-3 text-[0.85rem] leading-[1.9] text-ink-soft">
                   {shop.reservationNote}
@@ -108,7 +108,7 @@ export default function ContactPage() {
                   <div className="spec-row">
                     <dt className="text-ink-soft">電話</dt>
                     <dd>
-                      <a href={`tel:${shop.tel.value.replace(/-/g, '')}`} className="inline-block py-1 font-semibold text-navy">
+                      <a href={`tel:${shop.tel.value.replace(/-/g, '')}`} className="inline-block py-1 font-semibold text-cocoa">
                         {shop.tel.value}
                       </a>
                     </dd>

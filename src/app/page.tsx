@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import DarkHeader from '@/components/DarkHeader';
 import Hero from '@/components/home/Hero';
 import { About, Access, Events, Games, HowAndPrice, SceneLinks, Space, StaffGuide } from '@/components/home/Sections';
 import { buildMetadata } from '@/lib/seo';
@@ -18,7 +17,6 @@ export const metadata: Metadata = buildMetadata({
 export default function HomePage() {
   return (
     <>
-      <DarkHeader />
       <Hero />
       <About />
       <Space />

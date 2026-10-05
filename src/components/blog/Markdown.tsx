@@ -87,11 +87,11 @@ export default function Markdown({ source }: { source: string }) {
     ));
     blocks.push(
       listType === 'ul' ? (
-        <ul key={key} className="my-6 list-disc space-y-2 pl-6 text-[0.95rem] marker:text-cyan">
+        <ul key={key} className="my-6 list-disc space-y-2 pl-6 text-[0.95rem] marker:text-caramel">
           {items}
         </ul>
       ) : (
-        <ol key={key} className="my-6 list-decimal space-y-2 pl-6 text-[0.95rem] marker:text-cyan-ink">
+        <ol key={key} className="my-6 list-decimal space-y-2 pl-6 text-[0.95rem] marker:text-caramel-ink">
           {items}
         </ol>
       ),

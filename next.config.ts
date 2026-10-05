@@ -23,6 +23,11 @@ const nextConfig: NextConfig = {
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
         ],
       },
+      /* 見出し用フォント。パスにバージョンが入っているので、長期キャッシュにしてよい。 */
+      {
+        source: '/fonts/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
       /*
        * Vercel の *.vercel.app ではページを検索エンジンに載せない。
        * 本番ドメインと同じ内容が重複して登録されるのを、ホスト名で機械的に防ぐ。

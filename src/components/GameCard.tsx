@@ -13,7 +13,7 @@ export function GameCard({ game, comment }: { game: Game; comment?: string }) {
   return (
     <Link
       href={`/games/${game.slug}`}
-      className="group block overflow-hidden rounded-lg border border-line bg-white transition-colors duration-200 hover:border-navy/40 focus-visible:ring-2 focus-visible:ring-cyan focus-visible:outline-none"
+      className="group block overflow-hidden rounded-2xl border border-line bg-white transition-colors duration-200 hover:border-cocoa/40 focus-visible:ring-2 focus-visible:ring-caramel focus-visible:outline-none"
     >
       <GameImage slug={game.slug} name={game.nameJa} nameEn={game.nameEn} genre={game.genre} />
       <div className="p-3.5">
@@ -26,7 +26,7 @@ export function GameCard({ game, comment }: { game: Game; comment?: string }) {
             {kind}
           </span>
         ) : null}
-        <h3 className="line-clamp-2 text-[0.9rem] leading-snug font-semibold text-ink group-hover:text-cyan-ink">
+        <h3 className="line-clamp-2 text-[0.9rem] leading-snug font-semibold text-ink group-hover:text-caramel-ink">
           {game.nameJa}
         </h3>
         <p className="mt-1 text-[0.75rem] text-ink-faint">
@@ -58,7 +58,7 @@ export function GameGrid({ games }: { games: Game[] }) {
 /** 表組みの一覧。条件で抽出したリストはカードより行のほうが読みやすい。 */
 export function GameTable({ games }: { games: Game[] }) {
   return (
-    <div className="overflow-x-auto rounded-lg border border-line bg-white">
+    <div className="overflow-x-auto rounded-2xl border border-line bg-white">
       <table className="w-full min-w-[34rem] text-left text-[0.86rem]">
         <thead className="border-b border-line bg-paper-2 text-[0.75rem] text-ink-soft">
           <tr>
@@ -80,7 +80,7 @@ export function GameTable({ games }: { games: Game[] }) {
           {games.map((g) => (
             <tr key={g.slug} className="border-b border-line last:border-0">
               <td className="px-4 py-2.5">
-                <Link href={`/games/${g.slug}`} className="font-medium text-ink hover:text-cyan-ink">
+                <Link href={`/games/${g.slug}`} className="font-medium text-ink hover:text-caramel-ink">
                   {g.nameJa}
                 </Link>
                 {CONTENT_TYPE_LABEL[g.contentType] ? (

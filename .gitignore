@@ -22,6 +22,9 @@ data/source/game-images/*.webp
 data/lighthouse/
 data/shots/
 
+# 見出し用フォント。scripts/build-fonts.mjs がビルドの前に node_modules から書き出す。
+public/fonts/
+
 # 使い捨ての作業スクリプト置き場
 scratch/
 data/audit/

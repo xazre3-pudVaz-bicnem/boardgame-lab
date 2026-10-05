@@ -26,16 +26,19 @@ function hash01(s: string, salt = 0) {
   return ((h >>> 0) % 10000) / 10000;
 }
 
-/* ブランドの3色を軸にした配色。どれも白文字が十分読める暗さに収めている。 */
+/*
+ * 焙煎した豆・キャラメル・ハーブ・陶器のような、落ち着いた色でそろえた配色。
+ * どれも白文字が十分読める暗さに収めている。
+ */
 const PALETTES = [
-  { from: '#003870', to: '#0b4f92', ink: '#ffffff', accent: '#29a8e0' },
-  { from: '#00284f', to: '#0a6ea8', ink: '#ffffff', accent: '#7fd0f2' },
-  { from: '#0a6ea8', to: '#29a8e0', ink: '#ffffff', accent: '#fdf2e0' },
-  { from: '#13233a', to: '#2f4f74', ink: '#ffffff', accent: '#f09800' },
-  { from: '#8a5200', to: '#c07a10', ink: '#ffffff', accent: '#ffe0a8' },
-  { from: '#1d3b30', to: '#2f6b55', ink: '#ffffff', accent: '#8fd8bc' },
-  { from: '#3a1f3f', to: '#6b3f72', ink: '#ffffff', accent: '#e0b4ea' },
-  { from: '#5c1f26', to: '#9c3a44', ink: '#ffffff', accent: '#f5b8bd' },
+  { from: '#4b382d', to: '#6a5244', ink: '#ffffff', accent: '#e9c9a0' },
+  { from: '#34261e', to: '#5a4234', ink: '#ffffff', accent: '#f0b15a' },
+  { from: '#7d4f24', to: '#a87238', ink: '#ffffff', accent: '#ffe6c2' },
+  { from: '#3f5241', to: '#5f7a5a', ink: '#ffffff', accent: '#d6e6c8' },
+  { from: '#2f4a5c', to: '#4f7690', ink: '#ffffff', accent: '#cfe6f2' },
+  { from: '#7a3b2a', to: '#a3563d', ink: '#ffffff', accent: '#f6cdbd' },
+  { from: '#4a2f3f', to: '#775068', ink: '#ffffff', accent: '#ecc9dc' },
+  { from: '#5e4a14', to: '#8a6f20', ink: '#ffffff', accent: '#fbe9a8' },
 ];
 
 /** ジャンルごとのモチーフ。すべて 0 0 120 120 のビューボックス内に描く。 */

@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Breadcrumbs, Container, PageHeader } from '@/components/ui';
-import { GAME_COUNT, GAMES, playersText, timeText } from '@/lib/games';
+import { GAMES, playersText, timeText } from '@/lib/games';
 import { breadcrumbSchema, buildMetadata, JsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = buildMetadata({
-  title: `全${GAME_COUNT}タイトルの索引｜ボードゲーム一覧｜大阪・梅田中津 BODOlab.`,
-  description: `BODOlab.に置いているボードゲーム${GAME_COUNT}タイトルを五十音順に並べた索引です。タイトル名が分かっている場合はこちらから探せます。`,
+  title: 'ボードゲームの五十音索引｜ボードゲーム一覧｜大阪・梅田中津 BODOlab.',
+  description: 'BODOlab.のボードゲームを五十音順に並べた索引です。タイトル名が分かっている場合はこちらから探せます。',
   path: '/games/list',
   keywords: ['ボードゲーム 一覧', 'ボードゲーム 索引', '大阪 ボードゲーム 種類'],
 });
@@ -50,7 +50,7 @@ export default function GameListPage() {
 
       <PageHeader
         eyebrow="Index"
-        title={`全${GAME_COUNT}タイトルの索引`}
+        title="ボードゲームの五十音索引"
         breadcrumbs={crumbs}
         lead="タイトル名の五十音順に並べた索引です。条件で絞り込みたい場合は、ボードゲーム一覧の検索をお使いください。"
       />
@@ -62,7 +62,7 @@ export default function GameListPage() {
               <a
                 key={g.label}
                 href={`#row-${encodeURIComponent(g.label)}`}
-                className="inline-flex min-h-10 items-center rounded-full border border-line bg-white px-4 py-2 text-[0.82rem] text-ink-soft transition-colors hover:border-navy/40 hover:text-ink"
+                className="inline-flex min-h-10 items-center rounded-full border border-line bg-white px-4 py-2 text-[0.82rem] text-ink-soft transition-colors hover:border-cocoa/40 hover:text-ink"
               >
                 {g.label}
                 <span className="ml-1.5 text-[0.78rem] text-ink-faint">{g.games.length}</span>
@@ -84,7 +84,7 @@ export default function GameListPage() {
                       <li key={g.slug}>
                         <Link
                           href={`/games/${g.slug}`}
-                          className="flex items-baseline justify-between gap-4 border-b border-line py-2.5 transition-colors hover:text-cyan-ink"
+                          className="flex items-baseline justify-between gap-4 border-b border-line py-2.5 transition-colors hover:text-caramel-ink"
                         >
                           <span className="text-[0.86rem] leading-snug">{g.nameJa}</span>
                           {meta ? <span className="shrink-0 text-[0.78rem] text-ink-faint">{meta}</span> : null}

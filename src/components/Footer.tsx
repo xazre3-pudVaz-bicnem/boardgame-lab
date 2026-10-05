@@ -49,10 +49,8 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,2fr)]">
           <div>
             <Link href="/" className="inline-flex items-center gap-3" aria-label="BODOlab. ホームへ">
-              <Image src="/logo-mark.png" alt="" width={44} height={44} className="h-10 w-10" />
-              <span className="display text-[1.35rem] font-bold tracking-tight text-ink">
-                BODOlab<span className="text-cyan">.</span>
-              </span>
+              <Image src="/logo-mark.png" alt="" width={44} height={44} className="h-11 w-11" />
+              <Image src="/logo-wordmark.png" alt="BODOlab." width={154} height={28} className="h-[28px] w-auto" />
             </Link>
             <p className="mt-4 text-[0.85rem] leading-[1.9] text-ink-soft">
               大阪市北区豊崎、中津駅から徒歩3分。
@@ -76,7 +74,7 @@ export default function Footer() {
                 href={shop.reservationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center rounded-full bg-navy px-6 text-[0.82rem] font-semibold text-white transition-colors hover:bg-navy-deep"
+                className="inline-flex min-h-11 items-center rounded-full bg-cocoa px-6 text-[0.82rem] font-semibold text-white transition-colors hover:bg-cocoa-deep"
               >
                 ご来店予約
               </a>
@@ -85,7 +83,7 @@ export default function Footer() {
                   href={shop.links.line}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center rounded-full border border-line px-5 text-[0.82rem] font-medium text-ink-soft transition-colors hover:border-navy/30 hover:text-navy"
+                  className="inline-flex min-h-11 items-center rounded-full border border-line px-5 text-[0.82rem] font-medium text-ink-soft transition-colors hover:border-cocoa/30 hover:text-cocoa"
                 >
                   公式LINE
                 </a>
@@ -94,7 +92,7 @@ export default function Footer() {
                 href={shop.links.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center rounded-full border border-line px-5 text-[0.82rem] font-medium text-ink-soft transition-colors hover:border-navy/30 hover:text-navy"
+                className="inline-flex min-h-11 items-center rounded-full border border-line px-5 text-[0.82rem] font-medium text-ink-soft transition-colors hover:border-cocoa/30 hover:text-cocoa"
               >
                 Instagram
               </a>
@@ -102,7 +100,7 @@ export default function Footer() {
                 href={shop.links.bodogeGames}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center rounded-full border border-line px-5 text-[0.82rem] font-medium text-ink-soft transition-colors hover:border-navy/30 hover:text-navy"
+                className="inline-flex min-h-11 items-center rounded-full border border-line px-5 text-[0.82rem] font-medium text-ink-soft transition-colors hover:border-cocoa/30 hover:text-cocoa"
               >
                 ボドゲーマの所蔵リスト
               </a>
@@ -118,7 +116,7 @@ export default function Footer() {
                 <ul className="mt-4 space-y-2.5">
                   {col.links.map((l) => (
                     <li key={l.href}>
-                      <Link href={l.href} className="text-[0.84rem] text-ink-soft transition-colors hover:text-cyan-ink">
+                      <Link href={l.href} className="text-[0.84rem] text-ink-soft transition-colors hover:text-caramel-ink">
                         {l.label}
                       </Link>
                     </li>
