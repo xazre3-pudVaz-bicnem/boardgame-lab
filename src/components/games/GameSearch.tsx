@@ -186,7 +186,7 @@ export default function GameSearch({ genres }: Props) {
   return (
     <div>
       {/* ------------------------------------------------ 入力 */}
-      <div className="rounded-2xl border border-line bg-white p-5 shadow-[0_2px_20px_rgba(0,40,79,0.04)] sm:p-7">
+      <div className="rounded-lg border border-line bg-white p-5 shadow-[0_2px_20px_rgba(0,40,79,0.04)] sm:p-7">
         <label htmlFor="game-q" className="mb-2 block text-[0.8rem] font-medium text-ink">
           ゲーム名で探す
           <span className="ml-2 text-[0.7rem] font-normal text-ink-faint">ひらがな・カタカナ・英語名・通称でも</span>
@@ -200,7 +200,7 @@ export default function GameSearch({ genres }: Props) {
             onChange={(e) => update({ q: e.target.value })}
             onFocus={ensureLoaded}
             enterKeyHint="search"
-            className="w-full rounded-xl border border-line bg-paper py-3.5 pr-4 pl-11 text-[1rem] text-ink transition-colors placeholder:text-ink-faint focus:border-caramel focus:bg-white focus:ring-2 focus:ring-caramel/25 focus:outline-none"
+            className="w-full rounded-xl border border-line bg-paper py-3.5 pr-4 pl-11 text-[1rem] text-ink transition-colors placeholder:text-ink-faint focus:border-accent focus:bg-white focus:ring-2 focus:ring-accent/25 focus:outline-none"
           />
           <svg
             aria-hidden="true"
@@ -301,7 +301,7 @@ export default function GameSearch({ genres }: Props) {
               id="game-sort"
               value={st.sort}
               onChange={(e) => update({ sort: e.target.value as State['sort'] })}
-              className="min-h-10 rounded-full border border-line bg-white px-3.5 py-1.5 text-[0.8rem] text-ink focus:border-caramel focus:outline-none"
+              className="min-h-10 rounded-full border border-line bg-white px-3.5 py-1.5 text-[0.8rem] text-ink focus:border-accent focus:outline-none"
             >
               <option value="popular">人気順</option>
               <option value="name">名前順</option>
@@ -311,7 +311,7 @@ export default function GameSearch({ genres }: Props) {
               <button
                 type="button"
                 onClick={reset}
-                className="min-h-10 text-[0.8rem] text-cocoa underline underline-offset-4 hover:text-caramel-ink"
+                className="min-h-10 text-[0.8rem] text-cocoa underline underline-offset-4 hover:text-accent-ink"
               >
                 条件をリセット
               </button>
@@ -380,7 +380,7 @@ export default function GameSearch({ genres }: Props) {
                           ) : r.v ? (
                             <span className="mb-1 inline-block rounded bg-paper-2 px-1.5 py-0.5 text-[0.68rem] font-semibold text-ink-soft">シリーズ作品</span>
                           ) : null}
-                          <h3 className="line-clamp-2 text-[0.85rem] leading-snug font-semibold text-ink transition-colors group-hover:text-caramel-ink">
+                          <h3 className="line-clamp-2 text-[0.85rem] leading-snug font-semibold text-ink transition-colors group-hover:text-accent-ink">
                             {r.n}
                           </h3>
                           <p className="mt-1.5 text-[0.72rem] text-ink-faint">

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Photo from '@/components/Photo';
 import { Breadcrumbs, Button, Container } from '@/components/ui';
 import { newsByDate } from '@/data/news';
 import { shop } from '@/data/shop';
@@ -28,7 +27,11 @@ export default function SchedulePage() {
           <Breadcrumbs items={crumbs} />
           <h1 className="mt-6 text-[clamp(1.5rem,4.4vw,2.2rem)] font-bold text-ink">イベント</h1>
 
-          <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-14">
+          {/*
+            テスプ塾の開催風景の写真はまだ無いので、写真は置かない（通常のプレイ写真で埋めると開催風景と誤解されるため）。
+            開催時の写真（顔が写らないもの）が届いたら、ここに足す。
+          */}
+          <div className="mt-10 max-w-3xl">
             <section>
               <h2 className="text-[1.35rem] font-bold text-ink">{ev.name}</h2>
               <p className="mt-4 text-[0.98rem] leading-[2] text-ink-soft">
@@ -36,14 +39,14 @@ export default function SchedulePage() {
                 まだ世に出ていないゲームを遊んでみたい人など、経験を問わず参加できます。
               </p>
 
-              <dl className="mt-6 rounded-2xl border border-line bg-surface text-[0.92rem]">
+              <dl className="mt-6 border-t border-line text-[0.95rem]">
                 {[
                   ['開催', ev.schedule],
                   ['時間', ev.hours],
                   ['参加費', `${ev.fee}円（${ev.feeNote}）`],
                   ['申し込み', `${ev.entry}（各回の告知ページから）`],
                 ].map(([k, v]) => (
-                  <div key={k} className="grid grid-cols-[5.5rem_1fr] gap-3 border-b border-line px-5 py-3 last:border-0">
+                  <div key={k} className="grid grid-cols-[5.5rem_1fr] gap-3 border-b border-line py-3.5">
                     <dt className="text-ink-faint">{k}</dt>
                     <dd className="text-ink">{v}</dd>
                   </div>
@@ -66,13 +69,6 @@ export default function SchedulePage() {
                 </Button>
               </div>
             </section>
-
-            <figure>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-                <Photo name="game-strategy" fill sizes="(max-width:1024px) 92vw, 44vw" className="object-cover" />
-              </div>
-              <figcaption className="mt-2 text-[0.78rem] text-ink-faint">店内のテーブルで遊んでいる様子。</figcaption>
-            </figure>
           </div>
         </Container>
       </div>
@@ -100,7 +96,7 @@ export default function SchedulePage() {
               <ul className="mt-4 divide-y divide-line border-y border-line">
                 {pastEvents.map((n) => (
                   <li key={n.slug}>
-                    <Link href={`/news/${encodeURIComponent(n.slug)}`} className="flex gap-4 py-3 text-[0.9rem] hover:text-caramel-ink">
+                    <Link href={`/news/${encodeURIComponent(n.slug)}`} className="flex gap-4 py-3 text-[0.9rem] hover:text-accent-ink">
                       <time dateTime={n.date} className="shrink-0 text-ink-faint tabular-nums">
                         {n.date.replace(/-/g, '.')}
                       </time>

@@ -47,6 +47,8 @@ export type Game = {
     forCouples: boolean;
     forBeginners: boolean;
     forGroups: boolean;
+    /** お店から届いた並び順（その場面のおすすめに入っているときだけ） */
+    order: Partial<Record<StaffKind, number>>;
     comments: Partial<Record<'two' | 'couples' | 'beginners' | 'groups' | 'general', string>>;
   };
   /* 説明文（staff.reviewed が false のあいだは当サイト作成の下書き） */
@@ -60,7 +62,18 @@ export type Game = {
   relatedGroups: RelatedGroup[];
 };
 
-const data = raw as unknown as { generatedAt: string; source: string; count: number; games: Game[] };
+/** スタッフのおすすめの場面 */
+export type StaffKind = 'two' | 'couples' | 'beginners' | 'groups';
+/** おすすめ1件。このサイトにページが無いゲームは name だけ */
+type StaffListEntry = { slug: string } | { name: string };
+
+const data = raw as unknown as {
+  generatedAt: string;
+  source: string;
+  count: number;
+  staff: { updatedAt: string | null; reviewedBy: string | null; lists: Record<StaffKind, StaffListEntry[]> };
+  games: Game[];
+};
 
 export const GAMES: Game[] = data.games;
 
@@ -137,14 +150,57 @@ export function gamesWithCondition(key: ConditionKey): Game[] {
 
 /* -------------------------------------------------------------- スタッフ推薦 */
 
-export const staffPicks = () => GAMES.filter((g) => g.staff.pick).sort(byPopularity);
-export const staffForTwo = () =>
-  GAMES.filter((g) => g.staff.forTwo === 'best' || g.staff.forTwo === 'good').sort(
-    (a, b) => (a.staff.forTwo === 'best' ? 0 : 1) - (b.staff.forTwo === 'best' ? 0 : 1) || byPopularity(a, b),
-  );
-export const staffForCouples = () => GAMES.filter((g) => g.staff.forCouples).sort(byPopularity);
-export const staffForBeginners = () => GAMES.filter((g) => g.staff.forBeginners).sort(byPopularity);
-export const staffForGroups = () => GAMES.filter((g) => g.staff.forGroups).sort(byPopularity);
+/*
+ * data/staff-picks.json の lists（場面ごと・お店から届いた順）をそのまま使う。
+ * 並べ替えはしない。人数や時間から自動でおすすめを足すこともしない。
+ */
+export const STAFF_META = { updatedAt: data.staff?.updatedAt ?? null, reviewedBy: data.staff?.reviewedBy ?? null };
+
+/** 場面の名前。お店から届いた言い方のまま */
+export const STAFF_KIND_LABEL: Record<StaffKind, string> = {
+  two: '2人向け',
+  couples: 'デート向け',
+  beginners: '初めての人向け',
+  groups: '大人数向け',
+};
+
+/** おすすめ1件。このサイトにページが無いゲームは game が null で、name だけ */
+export type StaffItem = { game: Game; name: string } | { game: null; name: string };
+
+/**
+ * 場面ごとのおすすめ。
+ * items … お店から届いた順のまま（ページの無いゲームも同じ並びに入る）
+ * games … そのうちページのあるゲームだけ（順は同じ）
+ */
+export function staffList(kind: StaffKind): { items: StaffItem[]; games: Game[] } {
+  const entries = data.staff?.lists?.[kind] ?? [];
+  const items: StaffItem[] = [];
+  for (const e of entries) {
+    if ('slug' in e) {
+      const g = bySlug.get(e.slug);
+      if (g) items.push({ game: g, name: g.nameJa });
+    } else items.push({ game: null, name: e.name });
+  }
+  return { items, games: items.flatMap((i) => (i.game ? [i.game] : [])) };
+}
+
+/** いずれかの場面でおすすめに入っているゲーム（重複なし・2人→デート→はじめて→大人数の順） */
+export const staffPicks = () => {
+  const seen = new Set<string>();
+  const out: Game[] = [];
+  for (const kind of ['two', 'couples', 'beginners', 'groups'] as StaffKind[]) {
+    for (const g of staffList(kind).games) if (!seen.has(g.slug)) (seen.add(g.slug), out.push(g));
+  }
+  return out;
+};
+export const staffForTwo = () => staffList('two').games;
+export const staffForCouples = () => staffList('couples').games;
+export const staffForBeginners = () => staffList('beginners').games;
+export const staffForGroups = () => staffList('groups').games;
+
+/** このゲームがおすすめに入っている場面（詳細ページに出す） */
+export const staffKindsOf = (g: Game): StaffKind[] =>
+  (['two', 'couples', 'beginners', 'groups'] as StaffKind[]).filter((k) => g.staff.order?.[k] !== undefined);
 
 /* -------------------------------------------------------------- ジャンル */
 

@@ -66,6 +66,40 @@ async function emit(file, name, widths = WIDTHS, fit = 'inside') {
 fs.mkdirSync(OUT, { recursive: true });
 const manifest = {};
 
+/*
+ * 2026-10-29 に店舗から届いた写真（LINE、assets-src/S__*.jpg）。
+ * 9枚のうち、大勢が写った2枚（S__90062872・S__90062880）は使わない。
+ * お店がぼかしを入れているが、横顔などぼかしが十分でない人がいるため。
+ * S__90062868（ホワイトボードのゲームを囲む後ろ姿）も、左の人の頬と顎が写っているので使わない（Codex のレビューで指摘）。
+ * 花火の写真は上端に口元がかかるので、上を切り落とす（crop.top は元画像の高さに対する割合）。
+ */
+const STORE_2610 = [
+  { file: 'S__90062865_0.jpg', name: 'room-wide', alt: '営業前の店内。手前にテーブル席、奥の白い棚にボードゲームの箱が並ぶ' },
+  { file: 'S__90062867_0.jpg', name: 'play-coffee', alt: 'コーヒー豆が描かれたボードゲームで、コマを動かす手元' },
+  { file: 'S__90062879_0.jpg', name: 'play-hitster', alt: '年代の書かれたカードを並べる音楽ゲーム「HITSTER」の卓' },
+  { file: 'S__90062881_0.jpg', name: 'play-hanabi', alt: 'ゲーム棚の前のテーブルで、花火の絵のカードを並べて遊ぶ協力ゲーム', crop: { top: 0.16 } },
+  { file: 'S__90062882_0.jpg', name: 'play-cards-group', alt: 'カードを伏せて並べ、数人で囲んで遊ぶカードゲームの手元' },
+  { file: 'S__90062883_0.jpg', name: 'play-halligalli', alt: 'ベルとフルーツのカードを使うゲームの手元' },
+];
+
+/** 上を切り落とした一時ファイルを作って返す（元ファイルは変えない） */
+async function cropped(file, crop) {
+  if (!crop) return file;
+  const meta = await sharp(file).rotate().metadata();
+  const top = Math.round(meta.height * crop.top);
+  const out = path.join('scratch', `crop-${path.basename(file)}`);
+  fs.mkdirSync('scratch', { recursive: true });
+  await sharp(file).rotate().extract({ left: 0, top, width: meta.width, height: meta.height - top }).toFile(out);
+  return out;
+}
+
+for (const item of STORE_2610) {
+  const src = await cropped(path.join(SRC, item.file), item.crop);
+  const r = await emit(src, item.name);
+  manifest[item.name] = { alt: item.alt, ...r, src: `/photos/${item.name}-${r.widths.at(-1)}.webp` };
+  console.log(`${item.name}: ${r.width}x${r.height} -> ${r.widths.join(',')}`);
+}
+
 for (const item of [...MAP, ...POSTERS]) {
   const r = await emit(P(item.n), item.name);
   manifest[item.name] = { alt: item.alt, ...r, src: `/photos/${item.name}-${r.widths.at(-1)}.webp` };

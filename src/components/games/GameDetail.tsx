@@ -4,7 +4,8 @@ import GameImage from '@/components/GameImage';
 import { GameGrid } from '@/components/GameCard';
 import { Breadcrumbs, Button, Container } from '@/components/ui';
 import { abs, shop, SITE_URL } from '@/data/shop';
-import { ageText, CONTENT_TYPE_LABEL, type Game, getGame, RELATED_LABEL, relatedGroups } from '@/lib/games';
+import { ageText, CONTENT_TYPE_LABEL, type Game, getGame, RELATED_LABEL, relatedGroups, STAFF_KIND_LABEL, staffKindsOf } from '@/lib/games';
+import { STAFF_KIND_HREF } from '@/components/games/StaffPicks';
 import { breadcrumbSchema, buildMetadata, JsonLd } from '@/lib/seo';
 
 /* ----------------------------------------------------------------- metadata */
@@ -54,6 +55,7 @@ export default function GameDetail({ game }: { game: Game }) {
   const kind = CONTENT_TYPE_LABEL[game.contentType];
   const groups = relatedGroups(game);
   const staffNotes = Object.entries(game.staff.comments).filter(([, v]) => v);
+  const staffKinds = staffKindsOf(game);
 
   const facts: [string, string | null][] = [
     ['人数', game.playersLabel],
@@ -74,7 +76,7 @@ export default function GameDetail({ game }: { game: Game }) {
           <Breadcrumbs items={crumbs} />
 
           <header className="mt-6 flex items-start gap-5">
-            <div className="w-24 shrink-0 overflow-hidden rounded-2xl sm:w-32">
+            <div className="w-24 shrink-0 overflow-hidden rounded-lg sm:w-32">
               <GameImage slug={game.slug} name={game.nameJa} nameEn={game.nameEn} genre={game.genre} large priority />
             </div>
             <div className="min-w-0">
@@ -96,11 +98,25 @@ export default function GameDetail({ game }: { game: Game }) {
                   BODOlab.スタッフ監修
                 </p>
               ) : null}
+              {/* スタッフが選んだ場面（data/staff-picks.json の lists）。説明文の監修とは別 */}
+              {staffKinds.length ? (
+                <p className="mt-3 text-[0.88rem] leading-relaxed text-ink-soft">
+                  BODOlab.スタッフのおすすめ：
+                  {staffKinds.map((k, i) => (
+                    <span key={k}>
+                      {i > 0 ? '・' : ''}
+                      <Link href={STAFF_KIND_HREF[k]} className="prose-link">
+                        {STAFF_KIND_LABEL[k]}
+                      </Link>
+                    </span>
+                  ))}
+                </p>
+              ) : null}
             </div>
           </header>
 
           {game.requiresBaseGame ? (
-            <p className="mt-6 rounded-2xl border border-amber/50 bg-amber-wash px-4 py-3 text-[0.88rem] leading-relaxed text-amber-ink">
+            <p className="mt-6 rounded-lg border border-amber/50 bg-amber-wash px-4 py-3 text-[0.88rem] leading-relaxed text-amber-ink">
               これは拡張セットです。この箱だけでは遊べません。
               {base ? (
                 <>
@@ -136,7 +152,7 @@ export default function GameDetail({ game }: { game: Game }) {
           </dl>
 
           {staffNotes.length ? (
-            <section className="mt-10 rounded-2xl bg-cocoa-deep p-5 text-white">
+            <section className="mt-10 rounded-lg bg-cocoa-deep p-5 text-white">
               <h2 className="text-[0.95rem] font-semibold">BODOlab.スタッフより</h2>
               {staffNotes.map(([k, v]) => (
                 <p key={k} className="mt-2 text-[0.88rem] leading-[1.9] text-white/85">

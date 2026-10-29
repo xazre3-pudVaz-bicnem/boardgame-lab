@@ -41,7 +41,7 @@ export default function BlogIndexPage() {
       <section className="section-y bg-paper">
         <Container>
           {posts.length === 0 ? (
-            <div className="rounded-2xl border border-line bg-white p-10 text-center">
+            <div className="rounded-lg border border-line bg-white p-10 text-center">
               <p className="display text-[1.1rem] text-ink">記事はこれから公開します</p>
               <p className="mt-3 text-[0.88rem] leading-[1.95] text-ink-soft">
                 いまのところ公開している記事はありません。
@@ -62,7 +62,7 @@ export default function BlogIndexPage() {
                 <ul className="mb-10 flex flex-wrap gap-2">
                   {categories.map((c) => (
                     <li key={c.name}>
-                      <Chip tone="caramel">
+                      <Chip tone="accent">
                         {c.name} {c.count}
                       </Chip>
                     </li>
@@ -83,7 +83,7 @@ export default function BlogIndexPage() {
                         </time>
                         <Chip>{p.category}</Chip>
                       </div>
-                      <h2 className="mt-3 line-clamp-3 text-[0.98rem] leading-snug font-semibold text-ink transition-colors group-hover:text-caramel-ink">
+                      <h2 className="mt-3 line-clamp-3 text-[0.98rem] leading-snug font-semibold text-ink transition-colors group-hover:text-accent-ink">
                         {p.title}
                       </h2>
                       <p className="text-pretty mt-3 line-clamp-3 flex-1 text-[0.82rem] leading-[1.85] text-ink-soft">
@@ -96,7 +96,7 @@ export default function BlogIndexPage() {
             </>
           )}
 
-          <div className="mt-14 rounded-2xl border border-line bg-white p-7">
+          <div className="mt-14 rounded-lg border border-line bg-white p-7">
             <h2 className="display text-[1.05rem] text-ink">店舗からのお知らせをお探しですか？</h2>
             <p className="text-pretty mt-3 text-[0.88rem] leading-[1.95] text-ink-soft">
               営業時間・定休日・料金の変更、臨時休業などのお知らせは、お知らせのページにまとめています。

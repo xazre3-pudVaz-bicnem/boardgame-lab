@@ -1,67 +1,178 @@
 import Link from 'next/link';
-import type { ReactNode } from 'react';
 import Photo from '@/components/Photo';
-import { GameCard } from '@/components/GameCard';
 import { Container } from '@/components/ui';
+import { StaffPickNote, StaffPicksOverview } from '@/components/games/StaffPicks';
 import { shop } from '@/data/shop';
 import { SCENES } from '@/data/scenes';
 import { newsByDate } from '@/data/news';
-import { CONDITIONS, staffPicks } from '@/lib/games';
+import { CONDITIONS } from '@/lib/games';
 
 /*
  * トップページ。
  *
- * 「どんな場所か → 店内 → はじめての方へ → ゲーム → 使い方と料金 → イベント → アクセス」の順に、
- * 店を紹介する流れにしている。
+ * 「どんな場所か → スタッフが選んだゲーム → 料金と使い方 → イベント・お知らせ → 行き方」の順。
  *
- * 2026-10 に店舗から「会社のホームページのように見える。のんびりできるカフェのような雰囲気に」
- * という要望があり、見せ方を変えた。
- *   - 罫線で区切った表をやめ、角丸のカードとメニュー表の書き方（品名 …… 値段）にした
- *   - 余白を広く取り、文章を説明口調からやわらかい口調にした
- *   - 見出しの下にゆるい波線を入れた
+ * 店舗の要望（2026-10）：「のんびりできる、おしゃれなカフェのような雰囲気に。今はビジネスのホームページに見える」。
+ * Codex と検討して、次のことをやめた。
+ *   - アイコン付きの情報カード、①②③の番号カード、ピル型のタグを並べること
+ *   - 見出しの下の波線、背景の円、傾けた写真、影のような飾り
+ *   - すべてのセクションを同じ余白・同じ形で区切ること
+ * 代わりに、写真の大きさの差と、罫線で区切った文章で見せる。
+ *
  * 飲食の販売はないので「カフェ」とは書かない。タイトル数も書かない（日々増えるため）。
- * 写真は顔が写っていないものだけを使い、何が写っているかをキャプションに正直に書く。
+ * 写真は顔が写っていないものだけ。イベントの開催風景の写真は無いので、イベント欄には写真を置かない。
  */
 
-const SECTION = 'py-20 sm:py-28';
-const H2 = 'text-[clamp(1.45rem,3.8vw,2.05rem)] font-bold text-ink';
-/* 本文は文節の切れ目で折り返す（「ショッ／プです」のような泣き別れを防ぐ） */
-const BODY = 'text-[0.98rem] leading-[2.1] text-ink-soft [word-break:auto-phrase]';
-const CARD = 'rounded-3xl border border-line bg-surface';
-const CAPTION = 'mt-2.5 text-[0.78rem] text-ink-faint';
+const H2 = 'text-[clamp(1.55rem,3.4vw,1.9rem)] leading-[1.45] font-bold text-ink';
+const BODY = 'text-[1rem] leading-[2] text-ink-soft [word-break:auto-phrase]';
+const CAPTION = 'mt-2 text-[0.78rem] text-ink-faint';
 const BTN_SOLID =
   'inline-flex min-h-12 items-center rounded-full bg-cocoa px-7 text-[0.9rem] font-semibold text-white transition-colors hover:bg-cocoa-deep';
 const BTN_OUTLINE =
-  'inline-flex min-h-12 items-center rounded-full border border-cocoa/30 bg-surface px-7 text-[0.9rem] font-semibold text-cocoa transition-colors hover:border-cocoa';
-const PILL =
-  'inline-flex min-h-11 items-center rounded-full border border-line bg-surface px-4 text-[0.88rem] text-ink transition-colors hover:border-caramel hover:text-caramel-ink';
+  'inline-flex min-h-12 items-center rounded-full border border-cocoa/30 px-7 text-[0.9rem] font-semibold text-cocoa transition-colors hover:border-cocoa';
 
-/** 見出しと、その下のゆるい波線 */
-function Heading({ children, center = false }: { children: ReactNode; center?: boolean }) {
+/* --------------------------------------------------------------- どんな場所か */
+
+export function About() {
+  const u = shop.pricing.unit.value;
+  const c = shop.pricing.caps.value;
+  const wd = shop.hours.weekday.value;
+  const we = shop.hours.weekend.value;
+
+  const info: [string, React.ReactNode][] = [
+    [
+      '営業時間',
+      <>
+        平日 {wd.open}〜{wd.close}／土日祝 {we.open}〜{we.close}
+        <span className="block text-[0.82rem] text-ink-faint">
+          {shop.hours.closedDays.value.join('・')}定休（祝日は営業）
+        </span>
+      </>,
+    ],
+    [
+      '料金',
+      <>
+        1時間{u.normal}円（相席可は{u.share}円）
+        <span className="block text-[0.82rem] text-ink-faint">
+          1日の上限 平日{c.weekday.normal.toLocaleString()}円・土日祝{c.weekend.normal.toLocaleString()}円
+        </span>
+      </>,
+    ],
+    [
+      '場所',
+      <>
+        中津駅1番出口から徒歩3分
+        <span className="block text-[0.82rem] text-ink-faint">ビルの3階です</span>
+      </>,
+    ],
+    [
+      'ご予約',
+      <>
+        空席があれば予約なしでも入れます
+        <span className="block text-[0.82rem]">
+          <a href={shop.reservationUrl} target="_blank" rel="noopener noreferrer" className="prose-link">
+            ご来店予約フォーム
+          </a>
+        </span>
+      </>,
+    ],
+  ];
+
   return (
-    <div className={center ? 'text-center' : ''}>
-      <h2 className={H2}>{children}</h2>
-      <svg
-        viewBox="0 0 66 8"
-        className={`mt-3 h-2 w-16 text-amber ${center ? 'mx-auto' : ''}`}
-        aria-hidden="true"
-      >
-        <path
-          d="M2 5c5-5 10 5 15.5 0s10 5 15.5 0 10 5 15.5 0 10 5 15.5 0"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-        />
-      </svg>
-    </div>
+    <section className="bg-paper pt-10 pb-20 sm:pt-16 sm:pb-28">
+      <Container size="wide">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-x-12">
+          <div className="lg:col-span-5 lg:pt-6">
+            <h2 className={H2}>ボドラボで過ごす時間</h2>
+            <div className={`mt-6 space-y-5 ${BODY}`}>
+              <p>
+                BODOlab.（ボードゲームラボ、通称ボドラボ）は、中津駅のすぐ近くにあるボードゲームのプレイスペース＆ショップです。
+                棚に並んだボードゲームから好きなものを選んで、テーブルで遊べます。
+              </p>
+              <p>ルールはスタッフが説明するので、はじめてでも大丈夫です。料金は時間制で、遊ぶゲームの数では変わりません。</p>
+              <p>
+                飲食物の販売はありませんが、持ち込みはできます。ふた付きの飲み物なら、遊びながらでも大丈夫です。
+                気に入ったゲームは、店頭で買うこともできます。
+              </p>
+            </div>
+          </div>
+          <figure className="lg:col-span-7">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
+              <Photo name="play-halligalli" fill sizes="(max-width:1024px) 92vw, 55vw" className="object-cover" />
+            </div>
+            <figcaption className={CAPTION}>テーブルで遊んでいるところ。</figcaption>
+          </figure>
+        </div>
+
+        <div className="mt-14 grid gap-10 lg:mt-20 lg:grid-cols-12 lg:gap-x-12">
+          <figure className="lg:col-span-6 lg:col-start-2">
+            <div className="relative aspect-[5/4] overflow-hidden rounded-lg">
+              <Photo name="room-wide" fill sizes="(max-width:1024px) 92vw, 45vw" className="object-cover" />
+            </div>
+            <figcaption className={CAPTION}>営業前の店内。テーブル席の奥に、ゲームの棚があります。</figcaption>
+          </figure>
+          <dl className="self-end border-t border-line lg:col-span-4 lg:col-start-9">
+            {info.map(([k, v]) => (
+              <div key={k} className="grid grid-cols-[5rem_1fr] gap-3 border-b border-line py-4 text-[0.95rem]">
+                <dt className="text-ink-faint">{k}</dt>
+                <dd className="leading-[1.8] text-ink">{v}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </Container>
+    </section>
   );
 }
 
-/** 品名 …… 値段 の1行（メニュー表の書き方） */
+/* --------------------------------------------------------------- スタッフが選んだゲーム */
+
+export function Games() {
+  return (
+    <section className="cv-auto bg-surface py-16 sm:py-24">
+      <Container size="wide">
+        <div className="max-w-2xl">
+          <h2 className={H2}>スタッフが選んだ、こんな日に遊ぶゲーム</h2>
+          <StaffPickNote className="mt-3" />
+        </div>
+
+        <div className="mt-10">
+          <StaffPicksOverview withPhoto />
+        </div>
+
+        <div className="mt-12 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-[0.92rem] leading-[2] text-ink-soft">
+            人数や時間から探す：
+            {CONDITIONS.map((c, i) => (
+              <span key={c.key}>
+                {i > 0 ? '／' : ''}
+                <Link href={`/games/${c.slug}`} className="prose-link">
+                  {c.label}
+                </Link>
+              </span>
+            ))}
+            ／
+            <Link href="/games/list" className="prose-link">
+              五十音
+            </Link>
+          </p>
+          <p className="shrink-0">
+            <Link href="/games" className={BTN_OUTLINE}>
+              ボードゲーム一覧へ
+            </Link>
+          </p>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+/* --------------------------------------------------------------- 料金とご利用 */
+
+/** 品名 …… 値段 の1行（メニュー表の書き方。枠では囲まない） */
 function MenuRow({ name, price, note }: { name: string; price: string; note?: string }) {
   return (
-    <div className="menu-row py-2">
+    <div className="menu-row py-2.5">
       <dt className="text-ink">
         {name}
         {note ? <span className="ml-1.5 text-[0.78rem] text-ink-faint">{note}</span> : null}
@@ -71,320 +182,47 @@ function MenuRow({ name, price, note }: { name: string; price: string; note?: st
   );
 }
 
-/* --------------------------------------------------------------- どんな場所か */
-
-const ICON = 'h-6 w-6 text-caramel';
-
-function IconClock() {
-  return (
-    <svg viewBox="0 0 24 24" className={ICON} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
-      <circle cx="12" cy="12" r="8.5" />
-      <path d="M12 7.5V12l3 2" />
-    </svg>
-  );
-}
-function IconYen() {
-  return (
-    <svg viewBox="0 0 24 24" className={ICON} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="12" cy="12" r="8.5" />
-      <path d="M9 7.5l3 4.5 3-4.5M12 12v5M9.5 12.5h5M9.5 15h5" />
-    </svg>
-  );
-}
-function IconPin() {
-  return (
-    <svg viewBox="0 0 24 24" className={ICON} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M12 21s6.5-5.6 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15.4 12 21 12 21Z" />
-      <circle cx="12" cy="10.5" r="2.2" />
-    </svg>
-  );
-}
-function IconNote() {
-  return (
-    <svg viewBox="0 0 24 24" className={ICON} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="4.5" y="5.5" width="15" height="14" rx="3" />
-      <path d="M8.5 3.5v4M15.5 3.5v4M4.5 10.5h15" />
-    </svg>
-  );
-}
-
-export function About() {
-  const u = shop.pricing.unit.value;
-  const c = shop.pricing.caps.value;
-  const wd = shop.hours.weekday.value;
-  const we = shop.hours.weekend.value;
-
-  const cards: { icon: ReactNode; label: string; lines: string[] }[] = [
-    {
-      icon: <IconClock />,
-      label: '営業時間',
-      lines: [
-        `平日 ${wd.open}〜${wd.close}`,
-        `土日祝 ${we.open}〜${we.close}`,
-        `${shop.hours.closedDays.value.join('・')}定休（祝日は営業）`,
-      ],
-    },
-    {
-      icon: <IconYen />,
-      label: '料金',
-      lines: [
-        `1時間 ${u.normal}円`,
-        `相席可なら ${u.share}円`,
-        `上限 平日${c.weekday.normal.toLocaleString()}円・土日祝${c.weekend.normal.toLocaleString()}円`,
-      ],
-    },
-    {
-      icon: <IconPin />,
-      label: '場所',
-      lines: ['中津駅1番出口から歩いて3分', '梅田（茶屋町口）から10分', 'ビルの3階です'],
-    },
-    {
-      icon: <IconNote />,
-      label: 'ご予約',
-      lines: ['ご来店予約フォームから', '空席があれば予約なしでも'],
-    },
-  ];
-
-  return (
-    <section className={`bg-surface ${SECTION}`}>
-      <Container>
-        <div className="mx-auto max-w-2xl">
-          <Heading center>ボドラボは、こんな場所です</Heading>
-          <div className={`mt-8 space-y-5 ${BODY}`}>
-            <p>
-              BODOlab.（ボードゲームラボ、通称ボドラボ）は、中津駅のすぐ近くにあるボードゲームのプレイスペース＆ショップです。
-            </p>
-            <p>
-              壁いっぱいの棚から気になる箱を選んで、テーブルで好きなだけ。
-              時間制なので、1本だけでも、じっくり何本でも大丈夫です。
-            </p>
-            <p>
-              飲食の販売はありませんが、持ち込みはできます。ふた付きの飲みものなら、遊びながらでもどうぞ。
-              気に入ったゲームは、そのまま店頭で買えます。
-            </p>
-          </div>
-        </div>
-
-        <ul className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {cards.map((card) => (
-            <li key={card.label} className={`${CARD} bg-paper p-6`}>
-              {card.icon}
-              <h3 className="mt-3 text-[1rem] font-bold text-ink">{card.label}</h3>
-              <ul className="mt-2 space-y-1 text-[0.88rem] leading-[1.8] text-ink-soft">
-                {card.lines.map((l) => (
-                  <li key={l}>{l}</li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
-      </Container>
-    </section>
-  );
-}
-
-/* --------------------------------------------------------------- 店内 */
-
-export function Space() {
-  return (
-    <section className={`cv-auto bg-paper ${SECTION}`}>
-      <Container>
-        <Heading>店内のようす</Heading>
-        <p className={`mt-6 max-w-2xl ${BODY}`}>
-          白い棚と木のテーブルの、明るい部屋です。棚にはボードゲームの箱が並んでいます。
-        </p>
-
-        <div className="mt-10 grid gap-5 md:grid-cols-12">
-          <figure className="md:col-span-8">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
-              <Photo name="room-empty" fill sizes="(max-width:768px) 92vw, 62vw" className="object-cover" />
-            </div>
-            <figcaption className={CAPTION}>営業前の店内。棚のゲームから選んで遊びます。</figcaption>
-          </figure>
-          <div className="grid grid-cols-2 gap-5 md:col-span-4 md:grid-cols-1">
-            <figure>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
-                <Photo name="game-pawns" fill sizes="(max-width:768px) 45vw, 30vw" className="object-cover" />
-              </div>
-              <figcaption className={CAPTION}>店内のテーブルで遊んでいるゲーム。</figcaption>
-            </figure>
-            <figure>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
-                <Photo name="game-boxes" fill sizes="(max-width:768px) 45vw, 30vw" className="object-cover" />
-              </div>
-              <figcaption className={CAPTION}>選んだゲームはテーブルで遊びます。</figcaption>
-            </figure>
-          </div>
-        </div>
-      </Container>
-    </section>
-  );
-}
-
-/* --------------------------------------------------------------- はじめての方へ */
-
-export function StaffGuide() {
-  const asks = [
-    '何人で遊ぶか（2人で来た、など）',
-    'ボードゲームが初めてかどうか',
-    'どれくらいの時間いる予定か',
-    '1人の場合、相席を希望するかどうか',
-  ];
-  return (
-    <section className={`cv-auto bg-paper-2 ${SECTION}`}>
-      <Container>
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-center lg:gap-16">
-          <div>
-            <Heading>はじめてでも、だいじょうぶ</Heading>
-            <div className={`mt-6 space-y-4 ${BODY}`}>
-              <p>ルールを覚えてくる必要はありません。遊ぶゲームが決まったら、スタッフがその場で説明します。</p>
-              <p>受付で次の4つを教えてもらえると、ゲームを選ぶときの参考になります。</p>
-            </div>
-            <p className="mt-7">
-              <Link href="/scene/first-time" className={BTN_OUTLINE}>
-                はじめての方へ
-              </Link>
-            </p>
-          </div>
-
-          <ol className="grid gap-3 sm:grid-cols-2">
-            {asks.map((a, i) => (
-              <li key={a} className={`${CARD} flex items-start gap-3.5 p-5`}>
-                <span
-                  aria-hidden="true"
-                  className="display flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-wash text-[0.9rem] text-amber-ink"
-                >
-                  {i + 1}
-                </span>
-                <span className="text-[0.92rem] leading-[1.8] text-ink">{a}</span>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </Container>
-    </section>
-  );
-}
-
-/* --------------------------------------------------------------- ゲーム */
-
-export function Games() {
-  const picks = staffPicks().slice(0, 6);
-  return (
-    <section className={`cv-auto bg-surface ${SECTION}`}>
-      <Container>
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
-          <div>
-            <Heading>遊べるボードゲーム</Heading>
-            <div className={`mt-6 space-y-4 ${BODY}`}>
-              <p>さっと終わるカードゲームから、じっくり考えるゲームまで。タイトルは少しずつ増えています。</p>
-              <p>入れ替わることもあるので、遊びたいゲームが決まっているときは、事前にお問い合わせください。</p>
-            </div>
-            <p className="mt-7">
-              <Link href="/games" className={BTN_SOLID}>
-                ゲームを探す
-              </Link>
-            </p>
-          </div>
-
-          <div className="self-center">
-            <h3 className="text-[0.95rem] font-bold text-ink">人数や時間から探す</h3>
-            <ul className="mt-4 flex flex-wrap gap-2.5">
-              {CONDITIONS.map((c) => (
-                <li key={c.key}>
-                  <Link href={`/games/${c.slug}`} className={PILL}>
-                    {c.heading}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link href="/games/list" className={PILL}>
-                  五十音で探す
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {picks.length ? (
-          <div className="mt-16">
-            <h3 className="text-[1.1rem] font-bold text-ink">スタッフのおすすめ</h3>
-            <ul className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-              {picks.map((g) => (
-                <li key={g.slug}>
-                  <GameCard game={g} />
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
-      </Container>
-    </section>
-  );
-}
-
-/* --------------------------------------------------------------- 使い方と料金 */
-
 export function HowAndPrice() {
   const u = shop.pricing.unit.value;
   const c = shop.pricing.caps.value;
-  const steps: { title: string; body: string }[] = [
-    { title: '予約する（しなくてもOK）', body: 'ご来店予約フォームから日時と人数を送ります。空席があれば、予約なしでも入れます。' },
-    { title: '受付', body: '人数と、相席を希望するかどうかを伝えます。' },
-    { title: '遊ぶ', body: 'ゲームを選ぶと、スタッフがルールを説明します。時間内なら何本遊んでも料金は同じです。' },
-    { title: 'お会計', body: '帰るときに、利用した時間のぶんをお支払いいただきます。' },
-  ];
-
   return (
-    <section className={`cv-auto bg-paper ${SECTION}`}>
+    <section className="cv-auto bg-paper py-20 sm:py-28">
       <Container>
-        <div className="grid gap-16 lg:grid-cols-2 lg:gap-20">
+        <h2 className={H2}>料金とご利用について</h2>
+        <div className="mt-10 grid gap-14 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-20">
           <div>
-            <Heading>来てから帰るまで</Heading>
-            <ol className="mt-8 space-y-6">
-              {steps.map((s, i) => (
-                <li key={s.title} className="flex gap-4">
-                  <span
-                    aria-hidden="true"
-                    className="display flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-cocoa text-[0.9rem] text-white"
-                  >
-                    {i + 1}
-                  </span>
-                  <div>
-                    <h3 className="text-[1rem] font-bold text-ink">{s.title}</h3>
-                    <p className="mt-1 text-[0.92rem] leading-[1.9] text-ink-soft">{s.body}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
+            <h3 className="text-[0.85rem] font-bold tracking-[0.06em] text-ink-soft">1時間あたり</h3>
+            <dl className="mt-1 text-[1rem]">
+              <MenuRow name="通常" price={`${u.normal}円`} />
+              <MenuRow name="相席可" price={`${u.share}円`} />
+            </dl>
+            <h3 className="mt-8 text-[0.85rem] font-bold tracking-[0.06em] text-ink-soft">1日の上限（これ以上はかかりません）</h3>
+            <dl className="mt-1 text-[1rem]">
+              <MenuRow name="平日" price={`${c.weekday.normal.toLocaleString()}円`} />
+              <MenuRow name="平日" note="相席可" price={`${c.weekday.share.toLocaleString()}円`} />
+              <MenuRow name="土日祝" price={`${c.weekend.normal.toLocaleString()}円`} />
+              <MenuRow name="土日祝" note="相席可" price={`${c.weekend.share.toLocaleString()}円`} />
+            </dl>
+            <p className="mt-6 text-[0.88rem] leading-[1.9] text-ink-soft">
+              学生の方は、学生証の提示で{shop.pricing.studentDiscount.value}%引き。小学生は半額、未就学児は無料です（中学生以下は保護者の方とご一緒に）。
+            </p>
           </div>
 
-          <div>
-            <Heading>料金</Heading>
-            <div className={`${CARD} mt-8 p-6 shadow-[0_14px_40px_-22px_rgba(75,56,45,0.35)] sm:p-8`}>
-              <h3 className="text-[0.82rem] font-bold tracking-[0.08em] text-caramel-ink">1時間あたり</h3>
-              <dl className="mt-2 text-[0.98rem]">
-                <MenuRow name="通常" price={`${u.normal}円`} />
-                <MenuRow name="相席可" price={`${u.share}円`} />
-              </dl>
-
-              <h3 className="mt-6 text-[0.82rem] font-bold tracking-[0.08em] text-caramel-ink">
-                1日の上限（これ以上はかかりません）
-              </h3>
-              <dl className="mt-2 text-[0.98rem]">
-                <MenuRow name="平日" price={`${c.weekday.normal.toLocaleString()}円`} />
-                <MenuRow name="平日" note="相席可" price={`${c.weekday.share.toLocaleString()}円`} />
-                <MenuRow name="土日祝" price={`${c.weekend.normal.toLocaleString()}円`} />
-                <MenuRow name="土日祝" note="相席可" price={`${c.weekend.share.toLocaleString()}円`} />
-              </dl>
-            </div>
-            <p className="mt-5 text-[0.85rem] leading-[1.9] text-ink-soft">
-              小学生は半額、未就学児は無料です（中学生以下は保護者の方とご一緒に）。
-              学生の方は、学生証の提示で{shop.pricing.studentDiscount.value}%引きになります。お席の利用時間の保証は5時間までです。
+          <div className={`space-y-5 ${BODY}`}>
+            <p>
+              空席があれば、予約なしで入れます。確実に席を取りたいときや人数が多いときは、ご来店予約フォームからどうぞ。
             </p>
-            <p className="mt-3 text-[0.9rem]">
-              <Link href="/system" className="prose-link">
-                料金・ご利用案内をくわしく見る
+            <p>
+              受付では、何人で遊ぶか、ボードゲームが初めてかどうか、どれくらいいる予定か、1人の場合は相席を希望するかを伝えてください。
+              遊ぶゲームが決まったら、スタッフがルールを説明します。
+            </p>
+            <p>お会計は帰るときに、利用した時間のぶんだけです。お席の利用時間の保証は5時間までです。</p>
+            <p className="flex flex-wrap gap-3 pt-3">
+              <a href={shop.reservationUrl} target="_blank" rel="noopener noreferrer" className={BTN_SOLID}>
+                ご来店予約フォーム
+              </a>
+              <Link href="/system" className={BTN_OUTLINE}>
+                料金・ご利用案内
               </Link>
             </p>
           </div>
@@ -394,43 +232,37 @@ export function HowAndPrice() {
   );
 }
 
-/* --------------------------------------------------------------- イベント */
+/* --------------------------------------------------------------- イベント・お知らせ */
 
 export function Events() {
   const ev = shop.testPlayEvent.value;
   const news = newsByDate().slice(0, 3);
   return (
-    <section className={`cv-auto bg-paper-2 ${SECTION}`}>
+    <section className="cv-auto bg-paper-2 py-16 sm:py-24">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
-          <figure className="order-last lg:order-first">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
-              <Photo name="game-catan-hand" fill sizes="(max-width:1024px) 92vw, 46vw" className="object-cover" />
-            </div>
-            <figcaption className={CAPTION}>店内のテーブルで遊んでいる様子。</figcaption>
-          </figure>
+        <div className="grid gap-14 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-20">
           <div>
-            <p className="text-[0.82rem] font-bold tracking-[0.08em] text-caramel-ink">毎月のイベント</p>
-            <div className="mt-2">
-              <Heading>{ev.name}</Heading>
-            </div>
-            <p className={`mt-6 ${BODY}`}>{ev.notes[0]}</p>
-            <dl className={`${CARD} mt-6 px-5 py-2 text-[0.92rem]`}>
+            <p className="text-[0.85rem] font-bold tracking-[0.06em] text-ink-soft">毎月のイベント</p>
+            <h2 className={`mt-2 ${H2}`}>{ev.name}</h2>
+            <p className={`mt-5 ${BODY}`}>
+              自作のボードゲームを持ち寄って、テストプレイをする会です。作っている人も、遊んでみたい人も参加できます。
+            </p>
+            <dl className="mt-6 border-t border-ink/15 text-[0.95rem]">
               {[
                 ['開催', `${ev.schedule} ${ev.hours}`],
                 ['参加費', `${ev.fee}円（${ev.feeNote}）`],
-                ['申し込み', ev.entry],
+                ['申し込み', `${ev.entry}の告知ページから`],
               ].map(([k, v]) => (
-                <div key={k} className="grid grid-cols-[5rem_1fr] gap-3 border-b border-line py-3 last:border-0">
+                <div key={k} className="grid grid-cols-[5.5rem_1fr] gap-3 border-b border-ink/15 py-3.5">
                   <dt className="text-ink-faint">{k}</dt>
                   <dd className="text-ink">{v}</dd>
                 </div>
               ))}
             </dl>
-            <p className="mt-3 text-[0.8rem] leading-relaxed text-ink-faint">
+            <p className="mt-3 text-[0.82rem] leading-relaxed text-ink-faint">
               {ev.scheduleNote}。開催日は変わることがあるので、最新の告知をご確認ください。
             </p>
-            <p className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[0.9rem]">
+            <p className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-[0.92rem]">
               <a href={shop.links.twipla} target="_blank" rel="noopener noreferrer" className="prose-link">
                 TwiPlaで開催予定を見る
               </a>
@@ -439,70 +271,76 @@ export function Events() {
               </Link>
             </p>
           </div>
-        </div>
 
-        <div className={`${CARD} mt-14 p-6 sm:p-8`}>
-          <h3 className="text-[1rem] font-bold text-ink">お知らせ</h3>
-          <ul className="mt-3 space-y-2.5 text-[0.9rem]">
-            {news.map((n) => (
-              <li key={n.slug} className="flex flex-col gap-0.5 sm:flex-row sm:gap-4">
-                <time dateTime={n.date} className="shrink-0 text-ink-faint tabular-nums">
-                  {n.date.replace(/-/g, '.')}
-                </time>
-                <Link href={`/news/${encodeURIComponent(n.slug)}`} className="text-ink hover:text-caramel-ink">
-                  {n.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-4 text-[0.85rem]">
-            <Link href="/news" className="prose-link">
-              お知らせをもっと見る
-            </Link>
-          </p>
+          <div>
+            <h2 className="text-[1.2rem] font-bold text-ink">お知らせ</h2>
+            <ul className="mt-4 border-t border-ink/15">
+              {news.map((n) => (
+                <li key={n.slug} className="border-b border-ink/15">
+                  <Link
+                    href={`/news/${encodeURIComponent(n.slug)}`}
+                    className="flex flex-col gap-0.5 py-3.5 text-[0.95rem] hover:text-accent-ink sm:flex-row sm:gap-4"
+                  >
+                    <time dateTime={n.date} className="shrink-0 text-[0.85rem] text-ink-faint tabular-nums">
+                      {n.date.replace(/-/g, '.')}
+                    </time>
+                    <span className="text-ink">{n.title}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 text-[0.9rem]">
+              <Link href="/news" className="prose-link">
+                お知らせをもっと見る
+              </Link>
+            </p>
+          </div>
         </div>
       </Container>
     </section>
   );
 }
 
-/* --------------------------------------------------------------- アクセス */
+/* --------------------------------------------------------------- 行き方 */
 
 export function Access() {
   return (
-    <section className={`cv-auto bg-surface ${SECTION}`}>
+    <section className="cv-auto bg-paper py-20 sm:py-28">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-16">
           <div>
-            <Heading>お店への行き方</Heading>
-            <p className={`mt-6 ${BODY}`}>
-              大阪メトロ御堂筋線 中津駅1番出口から歩いて3分。阪急大阪梅田駅 茶屋町口からは10分ほどです。
+            <h2 className={H2}>中津駅から徒歩3分、ビルの3階です</h2>
+            <address className="mt-6 text-[1rem] leading-[2] text-ink not-italic">{shop.address.full}</address>
+            <p className={`mt-4 ${BODY}`}>
+              大阪メトロ御堂筋線 中津駅1番出口から徒歩3分。阪急大阪梅田駅の茶屋町口からは徒歩10分ほどです。
             </p>
-            <p className="mt-4 text-[0.92rem] leading-[2] text-ink-soft">{shop.accessDirections}</p>
-            <address className="mt-5 text-[0.88rem] leading-[1.9] text-ink-soft not-italic">
-              {shop.address.full}
-              <br />
-              TEL {shop.tel.value}（席のご予約は電話では承っていません）
-            </address>
+            <p className="mt-4 text-[0.95rem] leading-[2] text-ink-soft">{shop.accessDirections}</p>
+            <p className="mt-4 text-[0.9rem] text-ink-soft">
+              TEL{' '}
+              <a href={`tel:${shop.tel.value.replace(/-/g, '')}`} className="prose-link">
+                {shop.tel.value}
+              </a>
+              （席のご予約は電話では承っていません）
+            </p>
             <p className="mt-7 flex flex-wrap gap-3">
               <Link href="/access" className={BTN_SOLID}>
-                地図と道順を見る
+                地図と道順
               </Link>
               <a href={shop.reservationUrl} target="_blank" rel="noopener noreferrer" className={BTN_OUTLINE}>
                 ご来店予約フォーム
               </a>
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-5">
-            <figure className="col-span-2">
-              <div className="relative aspect-[2/1] overflow-hidden rounded-3xl">
-                <Photo name="entrance-stairs" fill sizes="(max-width:1024px) 92vw, 46vw" className="object-cover" />
+          <div className="grid grid-cols-5 gap-4 self-start">
+            <figure className="col-span-5">
+              <div className="relative aspect-[2/1] overflow-hidden rounded-lg">
+                <Photo name="entrance-stairs" fill sizes="(max-width:1024px) 92vw, 40vw" className="object-cover" />
               </div>
-              <figcaption className={CAPTION}>ビル入口。階段で3階へ上がります（360度カメラの写真）。</figcaption>
+              <figcaption className={CAPTION}>1階の入口。階段で3階へ上がります（360度カメラの写真）。</figcaption>
             </figure>
-            <figure className="col-span-2 sm:col-span-1">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
-                <Photo name="chalkboard" fill sizes="(max-width:640px) 92vw, 23vw" className="object-cover" />
+            <figure className="col-span-3">
+              <div className="relative aspect-[3/2] overflow-hidden rounded-lg">
+                <Photo name="chalkboard" fill sizes="(max-width:1024px) 55vw, 24vw" className="object-cover" />
               </div>
               <figcaption className={CAPTION}>店頭の黒板。</figcaption>
             </figure>
@@ -517,23 +355,23 @@ export function Access() {
 
 export function SceneLinks() {
   return (
-    <section className="cv-auto bg-paper py-16 sm:py-20">
+    <section className="cv-auto border-t border-line bg-paper py-10 sm:py-12">
       <Container>
-        <h2 className="text-[1.1rem] font-bold text-ink">こんなときに</h2>
-        <ul className="mt-5 flex flex-wrap gap-2.5">
-          {SCENES.map((s) => (
-            <li key={s.slug}>
-              <Link href={`/scene/${s.slug}`} className={PILL}>
+        <p className="text-[0.92rem] leading-[2.1] text-ink-soft">
+          <span className="mr-2 font-bold text-ink">目的別のご案内</span>
+          {SCENES.map((s, i) => (
+            <span key={s.slug}>
+              {i > 0 ? '／' : ''}
+              <Link href={`/scene/${s.slug}`} className="prose-link">
                 {s.label}
               </Link>
-            </li>
+            </span>
           ))}
-          <li>
-            <Link href="/faq" className={PILL}>
-              よくあるご質問
-            </Link>
-          </li>
-        </ul>
+          ／
+          <Link href="/faq" className="prose-link">
+            よくあるご質問
+          </Link>
+        </p>
       </Container>
     </section>
   );

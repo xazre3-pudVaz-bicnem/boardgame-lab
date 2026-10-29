@@ -1,20 +1,60 @@
 {
   "_readme": [
-    "BODOlab.スタッフが実際に確認・推薦したものだけを書くファイル。ここに書いたものだけがサイトで『おすすめ』と表示される。",
+    "BODOlab.スタッフが実際に選んだ『おすすめ』だけを書くファイル。ここに書いたものだけがサイトで『おすすめ』と表示される。",
     "対応人数や時間などのデータから自動で『おすすめ』を付けることはしない。",
-    "書き方（例）",
+    "",
+    "lists … 場面ごとのおすすめ。お店から届いた順に並べる（画面にもこの順で出る）。",
+    "  two       … 2人で遊ぶなら（/games/for-two・トップ）",
+    "  couples   … デートで（/scene/indoor-date・トップ）",
+    "  beginners … はじめての人に（/scene/first-time・トップ）",
+    "  groups    … 大人数で（/games/for-groups・/scene/group・トップ）",
+    "  値はゲームの slug。このサイトにまだページが無いゲームは { \"name\": \"ゲーム名\" } と書く（名前だけ表示する）。",
+    "",
+    "games … ゲームごとの補足（任意）。",
     "  \"splendor\": {",
     "    \"staffReviewed\": true,             // 説明文をスタッフが確認した → 詳細ページに『BODOlab.スタッフ監修』と出る",
-    "    \"staffPick\": true,                 // スタッフおすすめ（/games の『スタッフおすすめ』に出る）",
-    "    \"forTwo\": \"best\",                  // 2人：\"best\"（2人が特におすすめ）/ \"good\"（2人でも十分楽しめる）/ \"more\"（より多人数向き・非掲載）",
-    "    \"forCouples\": true,                // デートにおすすめ（/scene/indoor-date に出る）",
-    "    \"forBeginners\": true,              // 初めての方におすすめ（/scene/first-time に出る）",
-    "    \"forGroups\": false,                // 大人数におすすめ（/scene/group に出る）",
     "    \"comments\": { \"two\": \"...\", \"couples\": \"...\", \"beginners\": \"...\", \"groups\": \"...\", \"general\": \"...\" }",
     "  }",
+    "",
     "書き換えたら node scripts/build-games.mjs を実行する。存在しない slug・拡張（単体不可）への推薦は build が止める。"
   ],
-  "reviewedBy": "",
-  "updatedAt": "",
+  "reviewedBy": "BODOlab.スタッフ",
+  "updatedAt": "2026-10-29",
+  "source": "店舗スタッフからのLINE（2026-10-29）",
+  "lists": {
+    "two": ["geister", "gobblet-gobblers", "patchwork", "battle-line", { "name": "cat and cucumber" }, "gun-and-gun"],
+    "couples": [
+      "spots",
+      "azato-karuta",
+      "love-phraser",
+      "geister",
+      "gobblet-gobblers",
+      "patchwork",
+      "battle-line",
+      { "name": "cat and cucumber" }
+    ],
+    "beginners": [
+      "strike",
+      "yes-man-wo-sagase",
+      "mojiate-aiuebattle",
+      "dancing-criminal",
+      "henken-profile",
+      "nana-toridori",
+      "ito",
+      { "name": "おばけパレード" },
+      "domemo"
+    ],
+    "groups": [
+      "dixit",
+      "spy-bar",
+      "cheese-thief",
+      "time-bomb-new-edition",
+      { "name": "ラクガキカルタ" },
+      "neu",
+      "hitster",
+      "hot-streak",
+      "nanigoe"
+    ]
+  },
   "games": {}
 }

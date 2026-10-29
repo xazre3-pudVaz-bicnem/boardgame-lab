@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import GameSearch from '@/components/games/GameSearch';
-import { GameCard } from '@/components/GameCard';
 import { Breadcrumbs, Container } from '@/components/ui';
-import { CONDITIONS, gamesWithCondition, genreList, staffPicks } from '@/lib/games';
+import { STAFF_KIND_HREF, StaffPickNote, StaffPicksOverview } from '@/components/games/StaffPicks';
+import { CONDITIONS, gamesWithCondition, genreList, STAFF_KIND_LABEL, type StaffKind, staffPicks } from '@/lib/games';
 import { breadcrumbSchema, buildMetadata, JsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = buildMetadata({
@@ -31,24 +31,40 @@ export default function GamesHubPage() {
             遊びたいゲームが決まっている場合は、事前にお問い合わせください。
           </p>
 
-          {/* スタッフおすすめ：登録されたものがあるときだけ出す */}
+          {/* 一覧は検索が主役。スタッフのおすすめは、上では一行の案内だけにして、全体は検索の後ろに置く */}
           {picks.length ? (
-            <section className="mt-10 rounded-2xl bg-cocoa-deep p-5 text-white sm:p-7">
-              <h2 className="text-[1.15rem] font-bold">BODOlab.スタッフのおすすめ</h2>
-              <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                {picks.map((g) => (
-                  <li key={g.slug}>
-                    <GameCard game={g} comment={g.staff.comments.general} />
-                  </li>
-                ))}
-              </ul>
-            </section>
+            <p className="mt-5 text-[0.92rem] leading-[2] text-ink-soft">
+              <span className="mr-2 font-bold text-ink">スタッフが選んだゲーム</span>
+              {(['two', 'couples', 'beginners', 'groups'] as StaffKind[]).map((k, i) => (
+                <span key={k}>
+                  {i > 0 ? '／' : ''}
+                  <Link href={STAFF_KIND_HREF[k]} className="prose-link">
+                    {STAFF_KIND_LABEL[k]}
+                  </Link>
+                </span>
+              ))}
+              ／
+              <a href="#staff-picks" className="prose-link">
+                まとめて見る
+              </a>
+            </p>
           ) : null}
 
-          <section id="search" className="mt-10">
+          <section id="search" className="mt-8">
             <h2 className="sr-only">条件で探す</h2>
             <GameSearch genres={genres} />
           </section>
+
+          {/* スタッフのおすすめ：登録されたものがあるときだけ出す。場面ごとの行で、お店から届いた順 */}
+          {picks.length ? (
+            <section id="staff-picks" className="mt-16 scroll-mt-24">
+              <h2 className="text-[1.25rem] font-bold text-ink">スタッフが選んだゲーム</h2>
+              <StaffPickNote className="mt-2" />
+              <div className="mt-6">
+                <StaffPicksOverview />
+              </div>
+            </section>
+          ) : null}
 
           <section className="mt-14 grid gap-10 border-t border-line pt-10 md:grid-cols-2">
             <div>

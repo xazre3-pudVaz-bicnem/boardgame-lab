@@ -123,7 +123,7 @@ export default function PartTimeJobPage() {
               <ol className="mt-7 space-y-4">
                 {job.flow.map((f, i) => (
                   <li key={f} className="flex gap-4">
-                    <span className="display shrink-0 text-[0.85rem] text-caramel-ink">0{i + 1}</span>
+                    <span className="display shrink-0 text-[0.85rem] text-accent-ink">0{i + 1}</span>
                     <p className="text-pretty text-[0.9rem] leading-[1.95] text-ink-soft">{f}</p>
                   </li>
                 ))}
@@ -131,11 +131,11 @@ export default function PartTimeJobPage() {
             </div>
 
             <aside className="space-y-8">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
                 <Photo name="room-empty" fill sizes="(max-width:1024px) 92vw, 38vw" className="object-cover" />
               </div>
 
-              <div className="rounded-2xl border border-line bg-white p-7">
+              <div className="rounded-lg border border-line bg-white p-7">
                 <h2 className="display text-[1.05rem] text-ink">こんな方におすすめ</h2>
                 <ul className="mt-4 space-y-2.5 text-[0.86rem] leading-[1.9] text-ink-soft">
                   {job.idealFor.map((t) => (
@@ -147,7 +147,7 @@ export default function PartTimeJobPage() {
                 </ul>
               </div>
 
-              <div className="rounded-2xl border border-cocoa/15 bg-surface p-7">
+              <div className="rounded-lg border border-cocoa/15 bg-surface p-7">
                 <Eyebrow>Entry</Eyebrow>
                 <h2 className="display mt-2 text-[1.05rem] text-ink">ご応募はこちら</h2>
                 <p className="text-pretty mt-3 text-[0.85rem] leading-[1.9] text-ink-soft">

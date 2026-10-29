@@ -7,7 +7,7 @@ import { emptyContactState, sendContact } from './actions';
 const CATEGORIES = ['在庫確認・お取り置き', '貸切・団体利用のご相談', 'メディア関連', 'その他のご質問'] as const;
 
 const field =
-  'w-full rounded-2xl border border-line bg-white px-4 py-3 text-[0.9rem] text-ink transition-colors placeholder:text-ink-faint focus:border-caramel focus:outline-none focus:ring-2 focus:ring-caramel/25';
+  'w-full rounded-lg border border-line bg-white px-4 py-3 text-[0.9rem] text-ink transition-colors placeholder:text-ink-faint focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/25';
 
 function Submit() {
   const { pending } = useFormStatus();
@@ -37,7 +37,7 @@ export default function ContactForm() {
 
   if (state.ok) {
     return (
-      <div className="rounded-2xl border border-caramel/35 bg-caramel-wash p-8 text-center">
+      <div className="rounded-lg border border-accent/35 bg-accent-wash p-8 text-center">
         <p className="display text-[1.1rem] text-cocoa">送信が完了しました</p>
         <p className="mt-3 text-[0.88rem] leading-[1.9] text-ink-soft">{state.message}</p>
       </div>
@@ -48,7 +48,7 @@ export default function ContactForm() {
     // key に attempt を入れて、送信のたびに defaultValue を入れ直す
     <form key={state.attempt} action={action} className="space-y-6" noValidate>
       {state.message ? (
-        <p role="alert" className="rounded-2xl border border-amber/40 bg-amber-wash px-4 py-3 text-[0.82rem] text-amber-ink">
+        <p role="alert" className="rounded-lg border border-amber/40 bg-amber-wash px-4 py-3 text-[0.82rem] text-amber-ink">
           {state.message}
         </p>
       ) : null}

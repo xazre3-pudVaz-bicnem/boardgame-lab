@@ -128,27 +128,25 @@ npm run check:games              # 件数・重複・数値の矛盾・リンク
 ## おすすめを登録する（スタッフ用）
 
 このサイトは、人数や時間のデータから自動で「おすすめ」を付けません。
-「2人におすすめ」「デートにおすすめ」「初めての方におすすめ」「スタッフのおすすめ」は、
-**`data/staff-picks.json` に書いたゲームだけ**が表示されます。今は1件も登録されていません。
+「2人向け」「デート向け」「初めての人向け」「大人数向け」のおすすめは、
+**`data/staff-picks.json` の `lists` に書いたゲームだけ**が表示されます（2026-10-29 にお店から届いた一覧を登録済み）。
 
 ```json
-"games": {
-  "splendor": {
-    "staffReviewed": true,
-    "staffPick": true,
-    "forTwo": "best",
-    "forCouples": true,
-    "forBeginners": true,
-    "forGroups": false,
-    "comments": { "two": "2人でも駆け引きがしっかり残ります", "general": "..." }
-  }
+"lists": {
+  "two": ["geister", "gobblet-gobblers", { "name": "cat and cucumber" }],
+  "couples": ["spots", "azato-karuta"],
+  "beginners": ["strike"],
+  "groups": ["dixit", "hitster"]
 }
 ```
 
-- `forTwo`: `"best"`（2人が特におすすめ）／`"good"`（2人でも十分楽しめる）／`"more"`（2人でも遊べるが多人数向き。一覧には出ない）
-- `staffReviewed: true` にすると、そのゲームの説明文に「BODOlab.スタッフ監修」と表示されます（説明文を確認したものだけにしてください）
-- 単体で遊べない拡張は推薦できません（ビルドが止まります）
-- 下書きとして、制作時に作った候補リストが `data/editorial-candidates.json` にあります（サイトには出ません。AIの判断を含むので、そのまま移さず確認してから使ってください）
+- 値はゲームの slug。お店から届いた順に並べ、画面にもこの順で出します（順位ではないので番号は付けません）。
+- このサイトにまだページが無いゲームは `{ "name": "ゲーム名" }` と書くと、名前だけ表示します（今は cat and cucumber・おばけパレード・ラクガキカルタ）。
+- 表示される場所：トップ「スタッフが選んだ、こんな日に遊ぶゲーム」、/games（検索の下）、/games/for-two、/games/for-groups、
+  /scene/indoor-date・/scene/first-time・/scene/group、各ゲームの詳細ページ（「BODOlab.スタッフのおすすめ：2人向け」など）。
+- おすすめの理由（コメント）は、届いたら `games` の `comments` に書くと一覧に出ます。理由をこちらで作文しないでください。
+- `staffReviewed: true` にすると、そのゲームの説明文に「BODOlab.スタッフ監修」と表示されます（説明文をスタッフが確認したものだけ。おすすめに選ばれただけでは付けない）。
+- 単体で遊べない拡張は推薦できません（ビルドが止まります）。存在しない slug もビルドが止まります。
 
 書き換えたら `node scripts/build-games.mjs` → `npm run check:games`。
 

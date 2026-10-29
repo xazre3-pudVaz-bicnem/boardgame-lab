@@ -60,7 +60,7 @@ export default function NewsIndexPage() {
                       </time>
                       <Chip>{n.category}</Chip>
                     </div>
-                    <h2 className="mt-2.5 line-clamp-2 text-[0.95rem] leading-snug font-semibold text-ink transition-colors group-hover:text-caramel-ink">
+                    <h2 className="mt-2.5 line-clamp-2 text-[0.95rem] leading-snug font-semibold text-ink transition-colors group-hover:text-accent-ink">
                       {n.title}
                     </h2>
                     <p className="text-pretty mt-2.5 line-clamp-3 flex-1 text-[0.8rem] leading-[1.85] text-ink-soft">
@@ -75,7 +75,7 @@ export default function NewsIndexPage() {
             ))}
           </ul>
 
-          <div className="mt-14 rounded-2xl border border-line bg-white p-7 sm:p-9">
+          <div className="mt-14 rounded-lg border border-line bg-white p-7 sm:p-9">
             <h2 className="display text-[1.1rem] text-ink">いまの営業情報をお探しですか？</h2>
             <p className="text-pretty mt-3 text-[0.88rem] leading-[1.95] text-ink-soft">
               現在の営業時間・定休日・料金は、ご利用案内のページにまとめています。

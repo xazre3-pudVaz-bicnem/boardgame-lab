@@ -35,133 +35,104 @@ export default function SystemPage() {
         lead="プレイ料金は1時間600円。上限があるので、長く遊んでも金額が読めます。はじめての方は「ご利用の流れ」からご覧ください。"
       />
 
-      {/* ------------------------------------------------ 料金表 */}
-      <section className="section-y bg-paper">
+      {/* ------------------------------------------------ 料金表（通常と相席可を1つの表で比べる） */}
+      <section className="bg-paper py-12 sm:py-16">
         <Container>
-          <Eyebrow>Price</Eyebrow>
-          <h2 className="display mt-3 text-[clamp(1.4rem,3.6vw,2.1rem)] text-ink">プレイ料金</h2>
+          <h2 className="text-[clamp(1.45rem,3.4vw,1.85rem)] font-bold text-ink">プレイ料金</h2>
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            {/* 通常 */}
-            <div className="rounded-2xl border border-line bg-white p-7 sm:p-9">
-              <p className="text-[0.78rem] font-semibold tracking-wide text-ink-faint">通常のご利用</p>
-              <p className="display mt-3 text-[2.6rem] leading-none text-cocoa">
-                {u.normal}
-                <span className="ml-1 text-[1rem] font-medium">円 / {u.label}</span>
-              </p>
-              <dl className="mt-7 space-y-0">
-                <div className="spec-row">
-                  <dt className="text-ink-soft">平日の上限</dt>
-                  <dd className="font-semibold text-ink">{c.weekday.normal.toLocaleString()}円</dd>
-                </div>
-                <div className="spec-row">
-                  <dt className="text-ink-soft">土日祝の上限</dt>
-                  <dd className="font-semibold text-ink">{c.weekend.normal.toLocaleString()}円</dd>
-                </div>
-              </dl>
-            </div>
-
-            {/* 相席 */}
-            <div className="rounded-2xl border border-caramel/30 bg-caramel-wash p-7 sm:p-9">
-              <p className="text-[0.78rem] font-semibold tracking-wide text-caramel-ink">相席可でのご利用</p>
-              <p className="display mt-3 text-[2.6rem] leading-none text-cocoa">
-                {u.share}
-                <span className="ml-1 text-[1rem] font-medium">円 / {u.label}</span>
-              </p>
-              <dl className="mt-7 space-y-0">
-                <div className="spec-row border-caramel/25">
-                  <dt className="text-ink-soft">平日の上限</dt>
-                  <dd className="font-semibold text-ink">{c.weekday.share.toLocaleString()}円</dd>
-                </div>
-                <div className="spec-row border-caramel/25">
-                  <dt className="text-ink-soft">土日祝の上限</dt>
-                  <dd className="font-semibold text-ink">{c.weekend.share.toLocaleString()}円</dd>
-                </div>
-              </dl>
-              <p className="mt-6 text-[0.8rem] leading-relaxed text-ink-soft">
-                他のお客様と同じテーブルで遊ぶことを希望される場合の料金です。相席は選択制なので、
-                お連れ様だけで過ごしたい日は通常料金でご利用ください。
-              </p>
-            </div>
+          <div className="mt-8 overflow-x-auto">
+            <table className="w-full min-w-[30rem] border-y border-line text-left text-[0.98rem]">
+              <caption className="sr-only">プレイ料金（1時間あたりと、1日の上限）</caption>
+              <thead className="text-[0.8rem] text-ink-faint">
+                <tr className="border-b border-line">
+                  <th scope="col" className="py-3 pr-4 font-medium">
+                    区分
+                  </th>
+                  <th scope="col" className="py-3 pr-4 text-right font-medium">
+                    {u.label}あたり
+                  </th>
+                  <th scope="col" className="py-3 pr-4 text-right font-medium">
+                    平日の上限
+                  </th>
+                  <th scope="col" className="py-3 text-right font-medium">
+                    土日祝の上限
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-line">
+                  <th scope="row" className="py-4 pr-4 font-bold text-ink">
+                    通常
+                  </th>
+                  <td className="py-4 pr-4 text-right text-[1.15rem] font-bold text-ink tabular-nums">{u.normal}円</td>
+                  <td className="py-4 pr-4 text-right tabular-nums">{c.weekday.normal.toLocaleString()}円</td>
+                  <td className="py-4 text-right tabular-nums">{c.weekend.normal.toLocaleString()}円</td>
+                </tr>
+                <tr>
+                  <th scope="row" className="py-4 pr-4 font-bold text-ink">
+                    相席可
+                  </th>
+                  <td className="py-4 pr-4 text-right text-[1.15rem] font-bold text-ink tabular-nums">{u.share}円</td>
+                  <td className="py-4 pr-4 text-right tabular-nums">{c.weekday.share.toLocaleString()}円</td>
+                  <td className="py-4 text-right tabular-nums">{c.weekend.share.toLocaleString()}円</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+          <p className="mt-4 max-w-2xl text-[0.9rem] leading-[1.9] text-ink-soft">
+            相席可は、ほかのお客様と同じテーブルで遊ぶことを希望される場合の料金です。相席は選択制なので、お連れ様だけで過ごしたい日は通常料金でご利用ください。
+            上限の金額を超えて料金がかかることはありません。
+          </p>
 
-          <ul className="mt-8 space-y-2.5 text-[0.85rem] leading-relaxed text-ink-soft">
+          <ul className="mt-8 max-w-2xl list-disc space-y-2 pl-5 text-[0.92rem] leading-[1.9] text-ink-soft marker:text-ink-faint">
+            <li>
+              学生の方は、お会計時に学生証をご提示いただくと{shop.pricing.studentDiscount.value}%引きの料金でご利用いただけます。
+            </li>
             {shop.pricing.kids.value.map((k) => (
-              <li key={k.label} className="flex gap-2">
-                <span aria-hidden="true" className="text-caramel-ink">
-                  ・
-                </span>
+              <li key={k.label}>
                 {k.label}のお客様は{k.rule}でご利用いただけます。
               </li>
             ))}
-            <li className="flex gap-2">
-              <span aria-hidden="true" className="text-caramel-ink">
-                ・
-              </span>
-              お会計時に学生証をご提示いただくと、{shop.pricing.studentDiscount.value}%引きの料金でご利用いただけます。
-            </li>
-            <li className="flex gap-2">
-              <span aria-hidden="true" className="text-caramel-ink">
-                ・
-              </span>
-              {shop.pricing.guaranteedHoursNote}
-            </li>
-            <li className="flex gap-2">
-              <span aria-hidden="true" className="text-caramel-ink">
-                ・
-              </span>
-              {shop.pricing.privateHire.value}
-            </li>
-            <li className="flex gap-2">
-              <span aria-hidden="true" className="text-caramel-ink">
-                ・
-              </span>
-              お支払いは{shop.payments.value.join('、')}に対応しています。
-            </li>
+            <li>{shop.pricing.guaranteedHoursNote}</li>
+            <li>{shop.pricing.privateHire.value}</li>
+            <li>お支払いは{shop.payments.value.join('、')}に対応しています。</li>
           </ul>
 
-          <p className="mt-6 text-[0.78rem] text-ink-faint">
-            ご利用の目安は{shop.pricing.averageBudget.value}です。
-          </p>
+          <p className="mt-6 text-[0.82rem] text-ink-faint">ご利用の目安は{shop.pricing.averageBudget.value}です。</p>
         </Container>
       </section>
 
-      {/* ------------------------------------------------ ご利用の流れ */}
-      <section className="cv-auto section-y bg-surface">
+      {/* ------------------------------------------------ ご利用の流れ（番号カードではなく、縦の文章で） */}
+      <section className="cv-auto bg-surface py-16 sm:py-20">
         <Container>
-          <Eyebrow>Flow</Eyebrow>
-          <h2 className="display mt-3 text-[clamp(1.4rem,3.6vw,2.1rem)] text-ink">ご利用の流れ</h2>
-
-          <ol className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                n: '01',
-                t: 'ご予約（任意）',
-                d: '空席があればご予約なしでもご利用いただけます。確実にお席を確保したい場合や人数が多い場合は、ご来店予約フォームからどうぞ。',
-              },
-              {
-                n: '02',
-                t: 'ご来店・受付',
-                d: '人数と、相席を希望されるかどうかをお伝えください。はじめての方はその旨も教えていただけると助かります。',
-              },
-              {
-                n: '03',
-                t: 'ゲーム選び・ルール説明',
-                d: '「2人でじっくり」「初めて」「大人数で盛り上がりたい」。遊ぶゲームが決まったら、スタッフがルールを説明します。',
-              },
-              {
-                n: '04',
-                t: 'お会計',
-                d: 'ご利用時間に応じてお帰りの際に精算します。時間内であれば、何本遊んでも料金は変わりません。',
-              },
-            ].map((s) => (
-              <li key={s.n} className="rounded-xl border border-line bg-white p-6">
-                <span className="display text-[0.85rem] tracking-widest text-caramel-ink">{s.n}</span>
-                <h3 className="mt-3 text-[0.95rem] font-semibold text-ink">{s.t}</h3>
-                <p className="text-pretty mt-2.5 text-[0.83rem] leading-[1.9] text-ink-soft">{s.d}</p>
-              </li>
-            ))}
-          </ol>
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] lg:gap-16">
+            <h2 className="text-[clamp(1.45rem,3.4vw,1.85rem)] font-bold text-ink">ご利用の流れ</h2>
+            <ol className="border-t border-line">
+              {[
+                {
+                  t: 'ご予約（しなくても大丈夫です）',
+                  d: '空席があれば、ご予約なしでもご利用いただけます。確実にお席を確保したい場合や人数が多い場合は、ご来店予約フォームからどうぞ。',
+                },
+                {
+                  t: 'ご来店・受付',
+                  d: '人数と、相席を希望されるかどうかをお伝えください。はじめての方は、その旨も教えていただけると助かります。',
+                },
+                {
+                  t: 'ゲームを選んで、遊ぶ',
+                  d: '棚からゲームを選んでください。遊ぶゲームが決まったら、スタッフがルールを説明します。',
+                },
+                {
+                  t: 'お会計',
+                  d: 'お帰りの際に、ご利用時間に応じて精算します。時間内であれば、何本遊んでも料金は変わりません。',
+                },
+              ].map((step) => (
+                <li key={step.t} className="border-b border-line py-5">
+                  <h3 className="text-[1.05rem] font-bold text-ink">{step.t}</h3>
+                  <p className="mt-1.5 text-[0.95rem] leading-[1.95] text-ink-soft">{step.d}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
         </Container>
       </section>
 
@@ -191,7 +162,7 @@ export default function SystemPage() {
               </div>
             </div>
 
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
               <Photo
                 name="room-empty"
                 fill
@@ -245,12 +216,12 @@ export default function SystemPage() {
               <ul className="mt-8 space-y-3 text-[0.88rem] leading-[1.9] text-ink-soft">
                 {shop.rules.food.map((r) => (
                   <li key={r} className="flex gap-2.5">
-                    <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-caramel" />
+                    <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
                     {r}
                   </li>
                 ))}
                 <li className="flex gap-2.5">
-                  <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-caramel" />
+                  <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
                   {shop.rules.minors}
                 </li>
               </ul>

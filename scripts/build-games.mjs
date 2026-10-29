@@ -25,7 +25,7 @@ const readJson = (p, fallback) => (fs.existsSync(path.join(ROOT, p)) ? JSON.pars
 const raw = readJson('data/source/games-raw.json');
 const detail = readJson('data/source/games-detail.json');
 const contentTypes = readJson('data/content-types.json', { games: {} }).games;
-const staffFile = readJson('data/staff-picks.json', { games: {}, updatedAt: '' });
+const staffFile = readJson('data/staff-picks.json', { games: {}, lists: {}, updatedAt: '' });
 const stockFile = readJson('data/stock.json', { updatedAt: '', games: {} });
 
 /* ------------------------------------------------------- 検索用の正規化 */
@@ -74,6 +74,36 @@ for (const file of fs.readdirSync(path.join(ROOT, 'content/games')).filter((f) =
 const STAFF = staffFile.games ?? {};
 const FOR_TWO = new Set(['best', 'good', 'more']);
 
+/**
+ * 場面ごとのおすすめ（lists）。お店から届いた順を保つ。
+ * 値は slug、またはこのサイトにページが無いゲームの { name }。
+ */
+const STAFF_KINDS = ['two', 'couples', 'beginners', 'groups'];
+const STAFF_LISTS = {};
+const staffOrder = new Map(); // slug -> { two: 0, couples: 3, ... }
+for (const kind of STAFF_KINDS) {
+  const list = staffFile.lists?.[kind] ?? [];
+  if (!Array.isArray(list)) throw new Error(`staff-picks.json: lists.${kind} は配列にしてください`);
+  const seen = new Set();
+  STAFF_LISTS[kind] = list.map((item, i) => {
+    if (typeof item === 'string') {
+      if (seen.has(item)) throw new Error(`staff-picks.json: lists.${kind} に "${item}" が2回あります`);
+      seen.add(item);
+      const o = staffOrder.get(item) ?? {};
+      o[kind] = i;
+      staffOrder.set(item, o);
+      return { slug: item };
+    }
+    if (item && typeof item.name === 'string' && item.name.trim()) {
+      const name = item.name.trim();
+      if (seen.has(`name:${name}`)) throw new Error(`staff-picks.json: lists.${kind} に "${name}" が2回あります`);
+      seen.add(`name:${name}`);
+      return { name };
+    }
+    throw new Error(`staff-picks.json: lists.${kind} の ${i + 1} 番目は slug か { "name": "..." } にしてください`);
+  });
+}
+
 /* ------------------------------------------------------- 組み立て */
 
 const games = [];
@@ -82,6 +112,7 @@ const known = new Set(raw.games.map((r) => r.slug));
 
 for (const [slug] of Object.entries(contentTypes)) if (!known.has(slug)) console.warn(`content-types.json: "${slug}" というゲームはありません`);
 for (const [slug] of Object.entries(STAFF)) if (!known.has(slug)) throw new Error(`staff-picks.json: "${slug}" というゲームはありません`);
+for (const slug of staffOrder.keys()) if (!known.has(slug)) throw new Error(`staff-picks.json: lists の "${slug}" というゲームはありません（ページが無いゲームは { "name": "..." } と書く）`);
 for (const slug of Object.keys(stockFile.games ?? {})) if (!known.has(slug)) console.warn(`stock.json: "${slug}" というゲームはありません`);
 
 for (const r of raw.games) {
@@ -102,19 +133,24 @@ for (const r of raw.games) {
   const requiresBaseGame = ct.contentType === 'expansion';
   const baseGameSlug = ct.baseGameSlug && known.has(ct.baseGameSlug) ? ct.baseGameSlug : null;
 
-  // スタッフの推薦（無ければすべて未設定）
+  // スタッフの推薦（無ければすべて未設定）。lists に入っていれば、その場面のおすすめ。
   const s = STAFF[r.slug] ?? {};
-  if (requiresBaseGame && (s.staffPick || s.forTwo || s.forCouples || s.forBeginners || s.forGroups)) {
+  const order = staffOrder.get(r.slug) ?? {};
+  const forTwo = FOR_TWO.has(s.forTwo) ? s.forTwo : order.two !== undefined ? 'best' : null;
+  const inAnyList = Object.keys(order).length > 0;
+  if (requiresBaseGame && (s.staffPick || forTwo || s.forCouples || s.forBeginners || s.forGroups || inAnyList)) {
     throw new Error(`staff-picks.json: "${r.slug}" は単体で遊べない拡張なので、単独のおすすめにできません`);
   }
   if (s.forTwo && !FOR_TWO.has(s.forTwo)) throw new Error(`staff-picks.json: "${r.slug}" の forTwo は best / good / more のどれかにしてください`);
   const staff = {
     reviewed: s.staffReviewed === true,
-    pick: s.staffPick === true,
-    forTwo: FOR_TWO.has(s.forTwo) ? s.forTwo : null,
-    forCouples: s.forCouples === true,
-    forBeginners: s.forBeginners === true,
-    forGroups: s.forGroups === true,
+    pick: s.staffPick === true || inAnyList,
+    forTwo,
+    forCouples: s.forCouples === true || order.couples !== undefined,
+    forBeginners: s.forBeginners === true || order.beginners !== undefined,
+    forGroups: s.forGroups === true || order.groups !== undefined,
+    // お店から届いた並び順（その場面のおすすめに入っていなければ無い）
+    order,
     comments: typeof s.comments === 'object' && s.comments ? s.comments : {},
   };
 
@@ -216,7 +252,14 @@ for (const g of games) {
 
 fs.writeFileSync(
   path.join(ROOT, 'src/data/games.json'),
-  JSON.stringify({ generatedAt: new Date().toISOString(), source: 'https://bodoge.hoobby.net/spaces/boardgame-lab/games', count: games.length, games }),
+  JSON.stringify({
+    generatedAt: new Date().toISOString(),
+    source: 'https://bodoge.hoobby.net/spaces/boardgame-lab/games',
+    count: games.length,
+    // スタッフのおすすめ（場面ごと・お店から届いた順）。ページの無いゲームは name だけ。
+    staff: { updatedAt: staffFile.updatedAt || null, reviewedBy: staffFile.reviewedBy || null, lists: STAFF_LISTS },
+    games,
+  }),
 );
 
 // クライアントの絞り込み用。本文は入れない。人気順で並べておく。
@@ -243,6 +286,7 @@ const count = (f) => games.filter(f).length;
 console.log(`games: ${games.length}`);
 console.log(`種類: 基本 ${count((g) => g.contentType === 'base')} / 拡張(単体不可) ${count((g) => g.requiresBaseGame)} / 独立拡張 ${count((g) => g.contentType === 'standalone-expansion')} / 別版 ${count((g) => g.contentType === 'edition')}`);
 console.log(`条件: 2人専用 ${count((g) => g.conditions.includes('two-only'))} / 6人以上 ${count((g) => g.conditions.includes('six-plus'))} / 30分以内 ${count((g) => g.conditions.includes('within-30'))} / 協力 ${count((g) => g.conditions.includes('cooperative'))}`);
+console.log(`スタッフのおすすめ（lists）: ${STAFF_KINDS.map((k) => `${k} ${STAFF_LISTS[k].length}（ページ無し ${STAFF_LISTS[k].filter((x) => x.name).length}）`).join(' / ')}`);
 console.log(`スタッフ: 監修済み ${count((g) => g.staff.reviewed)} / おすすめ ${count((g) => g.staff.pick)} / 2人 ${count((g) => g.staff.forTwo === 'best' || g.staff.forTwo === 'good')} / デート ${count((g) => g.staff.forCouples)} / 初心者 ${count((g) => g.staff.forBeginners)} / 大人数 ${count((g) => g.staff.forGroups)}`);
 console.log(`検索に載せるページ: ${count((g) => g.indexable)} / noindex: ${count((g) => !g.indexable)}`);
 console.log(`評価表現として外した文: ${removedSentences}`);

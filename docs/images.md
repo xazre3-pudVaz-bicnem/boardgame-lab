@@ -1,6 +1,6 @@
-# 写真の監査表（2026-09-27）
+# 写真の監査表（2026-09-27、2026-10-29 追記）
 
-店舗から提供された写真（`assets-src/`、41枚）を1枚ずつ開いて確認した結果。
+店舗から提供された写真（`assets-src/`。2026-09 の41枚と、2026-10-29 にLINEで届いた9枚）を1枚ずつ開いて確認した結果。
 ファイル名ではなく、写っている内容で判断している。**架空の写真・フリー素材・AI生成画像は使わない。**
 
 ## 使用ルール
@@ -18,41 +18,42 @@
 
 | name | 写っているもの | 使用箇所 |
 | --- | --- | --- |
-| room-empty | 無人の店内、白い棚とカラフルなゲーム | トップ ヒーロー（PC・スマホ）、OG画像、トップ「店内」、/scene/indoor-date、/system、/part-timejob |
-| game-boxes | テーブルに積まれたゲームの箱（奥に人の胴体のみ） | トップ「店内」 |
-| game-pawns | 木製コマのアップ | トップ ヒーロー（小さい写真）、トップ「店内」 |
-| game-catan-hand | 盤面にコマを置く手元 | トップ「イベント」 |
-| game-strategy | 大きく広げた盤面と手元 | /schedule |
-| game-catan-top | 六角形タイルの盤面 | /scene/rainy-day |
-| game-family | すごろく型ボードと数人の手元 | /scene/group |
-| entrance-stairs | 1階入口と階段（360度カメラで歪みあり） | トップ「アクセス」、/access |
-| chalkboard | 店頭の黒板「友達ができる場所」 | トップ「アクセス」 |
-| game-tokens / game-catan-close / game-family-close / game-grid / game-scenery | 盤面・手元のアップ | 予備 |
-| pano-a / pano-b / pano-c | 無人の店内の360度パノラマ（歪みが大きい） | 予備 |
-| price-poster | 料金・営業時間のポスター | 予備 |
+| room-empty | 無人の店内、白い棚とカラフルなゲーム | トップ ヒーロー、OG画像、/scene/rainy-day、/system、/part-timejob |
+| room-wide | 無人の店内（広角）。手前にテーブル席、奥にゲーム棚（2026-10 受領） | トップ「ボドラボで過ごす時間」、/scene/indoor-date |
+| play-halligalli | ベルとフルーツのカードのゲームと手元（2026-10 受領） | トップ「ボドラボで過ごす時間」 |
+| play-hitster | 音楽ゲーム「HITSTER」の卓。人は首から下だけ（2026-10 受領） | トップ「スタッフが選んだ…」の大人数向けの行、/scene/group |
+| entrance-stairs | 1階入口と階段（360度カメラで歪みあり） | トップ「行き方」、/access |
+| chalkboard | 店頭の黒板「友達ができる場所」 | トップ「行き方」 |
+| play-coffee / play-hanabi / play-cards-group | 盤面・手元（2026-10 受領。play-hanabi は上端の口元を切り落とした版） | 予備 |
+| game-* / pano-* / price-poster | 盤面・手元のアップ、店内の360度パノラマ、料金ポスター | 予備 |
 
-### 使わない写真（人の顔が写っている）
+### 使わない写真
 
-hero-floor / hero-floor-wide / hero-mobile / floor-evening / floor-evening-wide / floor-daytime / floor-group /
-room-daytime-wide / table-four / table-pairs / table-standing / shelf-staff / group-photo / group-peace /
-players-cards / players-longtable / game-map（背景に人物）
+- **人の顔が写っているもの**：hero-floor / hero-floor-wide / hero-mobile / floor-evening / floor-evening-wide / floor-daytime / floor-group /
+  room-daytime-wide / table-four / table-pairs / table-standing / shelf-staff / group-photo / group-peace /
+  players-cards / players-longtable / game-map（背景に人物）。いずれも `public/photos/` から削除済み。
+- **2026-10 受領の S__90062872・S__90062880（大勢が写った店内）**：お店がぼかしを入れているが、
+  横顔や下を向いた人など、ぼかしが十分でない人がいるため使わない。すべての顔が隠れた版が届いたら、大人数・イベントの案内に使える。
+- **2026-10 受領の S__90062868（ホワイトボードのゲームを囲む後ろ姿）**：左の人の頬と顎が写っているため使わない（Codex のレビューで指摘）。
 
-いずれも `public/photos/` から削除済み。
+### イベントの写真
+
+テスプ塾など、イベントの開催風景の写真はまだ無い。通常のプレイ写真をイベント欄に置くと開催風景と誤解されるので、イベント欄には写真を置かない。
 
 ## シーンページのヒーロー
 
 | ページ | 写真 | 理由 |
 | --- | --- | --- |
-| 雨の日・室内 | game-catan-top | 室内で遊ぶボードゲームの盤面 |
-| デート | room-empty | 落ち着いた無人の店内 |
-| 友達・グループ | game-family | 数人で1つの盤面を囲む手元（顔なし） |
+| 雨の日・室内 | room-empty | 室内で過ごせることが伝わる店内の全景 |
+| デート | room-wide | 落ち着いた無人の店内。お店が選んだゲームの一覧のあとに置く |
+| 友達・グループ | play-hitster | 大人数向けのおすすめに入っているゲームの卓。お店が選んだゲームの一覧のあとに置く |
 | 1人で | なし | 合う写真がない |
 | 仕事帰りに | なし | 顔が写っていない夜の写真がない |
 | はじめての方へ | なし | スタッフが説明している写真がない |
 
 ## 撮影をお願いしたい写真（すべて顔が写らない構図で）
 
-1. **2人で向かい合って遊んでいる手元**（デートページ・2人向けの案内）
+1. **2人で向かい合って遊んでいる手元**（デートページ・2人向けの案内。2026-10 受領分には2人だけの写真が無い）
 2. **スタッフがルールを説明している手元**（はじめての方へ）
 3. **相席のテーブルの手元**（1人で）
 4. **建物の外観と1階入口**（アクセス。360度でない通常の写真）

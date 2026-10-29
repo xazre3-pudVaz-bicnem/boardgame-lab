@@ -1,4 +1,70 @@
 {
+  "room-wide": {
+    "alt": "営業前の店内。手前にテーブル席、奥の白い棚にボードゲームの箱が並ぶ",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2296,
+    "height": 1824,
+    "src": "/photos/room-wide-1600.webp"
+  },
+  "play-coffee": {
+    "alt": "コーヒー豆が描かれたボードゲームで、コマを動かす手元",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2330,
+    "height": 1404,
+    "src": "/photos/play-coffee-1600.webp"
+  },
+  "play-hitster": {
+    "alt": "年代の書かれたカードを並べる音楽ゲーム「HITSTER」の卓",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2364,
+    "height": 1774,
+    "src": "/photos/play-hitster-1600.webp"
+  },
+  "play-hanabi": {
+    "alt": "ゲーム棚の前のテーブルで、花火の絵のカードを並べて遊ぶ協力ゲーム",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2364,
+    "height": 1490,
+    "src": "/photos/play-hanabi-1600.webp"
+  },
+  "play-cards-group": {
+    "alt": "カードを伏せて並べ、数人で囲んで遊ぶカードゲームの手元",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2364,
+    "height": 1774,
+    "src": "/photos/play-cards-group-1600.webp"
+  },
+  "play-halligalli": {
+    "alt": "ベルとフルーツのカードを使うゲームの手元",
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "width": 2364,
+    "height": 1774,
+    "src": "/photos/play-halligalli-1600.webp"
+  },
   "room-empty": {
     "alt": "木のテーブルと黒い椅子が並ぶBODOlab.の店内。壁一面のボードゲーム棚",
     "widths": [

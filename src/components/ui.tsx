@@ -60,7 +60,7 @@ export function Button({ href, children, variant = 'solid', className = '', exte
     solid: 'bg-cocoa text-white hover:bg-cocoa-deep hover:-translate-y-0.5 shadow-[0_2px_14px_rgba(75,56,45,0.22)]',
     amber: 'bg-amber text-ink hover:brightness-95 hover:-translate-y-0.5 shadow-[0_2px_14px_rgba(240,152,0,0.3)]',
     outline: 'border border-cocoa/25 text-cocoa hover:border-cocoa hover:bg-cocoa/5',
-    ghost: 'text-cocoa hover:text-caramel-ink underline underline-offset-4 px-0 py-1',
+    ghost: 'text-cocoa hover:text-accent-ink underline underline-offset-4 px-0 py-1',
   }[variant];
   const cls = `${base} ${styles} ${className}`;
 
@@ -90,12 +90,12 @@ export function Chip({
   className = '',
 }: {
   children: ReactNode;
-  tone?: 'plain' | 'caramel' | 'amber' | 'cocoa';
+  tone?: 'plain' | 'accent' | 'amber' | 'cocoa';
   className?: string;
 }) {
   const tones = {
     plain: 'bg-paper-2 text-ink-soft',
-    caramel: 'bg-caramel-wash text-caramel-ink',
+    accent: 'bg-accent-wash text-accent-ink',
     amber: 'bg-amber-wash text-amber-ink',
     cocoa: 'bg-cocoa text-white',
   }[tone];
@@ -130,7 +130,7 @@ export function Breadcrumbs({
             {it.href ? (
               <Link
                 href={it.href}
-                className={`inline-block py-1.5 transition-colors ${light ? 'hover:text-white' : 'hover:text-caramel-ink'}`}
+                className={`inline-block py-1.5 transition-colors ${light ? 'hover:text-white' : 'hover:text-accent-ink'}`}
               >
                 {it.name}
               </Link>
@@ -176,7 +176,7 @@ export function PageHeader({
 /** 未確認情報であることを明示する注記 */
 export function ConfirmNote({ children }: { children: ReactNode }) {
   return (
-    <p className="rounded-2xl border border-amber/40 bg-amber-wash px-4 py-3 text-[0.8rem] leading-relaxed text-amber-ink">
+    <p className="rounded-lg border border-amber/40 bg-amber-wash px-4 py-3 text-[0.8rem] leading-relaxed text-amber-ink">
       {children}
     </p>
   );

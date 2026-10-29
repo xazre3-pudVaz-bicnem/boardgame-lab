@@ -75,7 +75,7 @@ export default function Header() {
                   <Link
                     href={n.href}
                     className={`group flex flex-col items-center gap-0.5 text-[0.82rem] font-medium transition-colors ${
-                      active ? 'text-caramel-ink' : 'text-ink hover:text-caramel-ink'
+                      active ? 'text-accent-ink' : 'text-ink hover:text-accent-ink'
                     }`}
                   >
                     {n.label}

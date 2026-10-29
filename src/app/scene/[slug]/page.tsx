@@ -2,12 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Photo from '@/components/Photo';
-import { GameCard, GameTable } from '@/components/GameCard';
+import { GameTable } from '@/components/GameCard';
+import { StaffPickList } from '@/components/games/StaffPicks';
 import { FaqList } from '@/components/home/HomeFaq';
 import { Breadcrumbs, Button, Container } from '@/components/ui';
 import { getScene, SCENES } from '@/data/scenes';
 import { shop } from '@/data/shop';
-import { type Game, gamesWithCondition, CONDITIONS, staffForBeginners, staffForCouples, staffForGroups, staffForTwo } from '@/lib/games';
+import { gamesWithCondition, CONDITIONS } from '@/lib/games';
 import { breadcrumbSchema, buildMetadata, faqSchema, JsonLd } from '@/lib/seo';
 
 type Params = { params: Promise<{ slug: string }> };
@@ -24,13 +25,6 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return buildMetadata({ title: s.title, description: s.description, path: `/scene/${s.slug}` });
 }
 
-const STAFF: Record<string, () => Game[]> = {
-  couples: staffForCouples,
-  beginners: staffForBeginners,
-  groups: staffForGroups,
-  two: staffForTwo,
-};
-const COMMENT: Record<string, keyof Game['staff']['comments']> = { couples: 'couples', beginners: 'beginners', groups: 'groups', two: 'two' };
 
 export default async function ScenePage({ params }: Params) {
   const { slug } = await params;
@@ -38,7 +32,6 @@ export default async function ScenePage({ params }: Params) {
   if (!s) notFound();
 
   const crumbs = [{ name: 'ホーム', href: '/' }, { name: '目的別のご案内', href: '/scene' }, { name: s.label }];
-  const staff = s.staffList ? STAFF[s.staffList.kind]() : [];
   const objective = s.objective ? gamesWithCondition(s.objective.key).slice(0, s.objective.limit ?? 12) : [];
   const objectiveTotal = s.objective ? gamesWithCondition(s.objective.key).length : 0;
   const condition = s.objective ? CONDITIONS.find((c) => c.key === s.objective!.key) : null;
@@ -54,10 +47,17 @@ export default async function ScenePage({ params }: Params) {
           <h1 className="mt-6 text-[clamp(1.5rem,4.4vw,2.2rem)] leading-[1.35] font-bold text-ink">{s.h1}</h1>
           <p className="mt-4 text-[0.98rem] leading-[2] text-ink-soft">{s.lead}</p>
 
+          {/* お店が選んだゲームを、写真より先に見せる */}
+          {s.staffList ? (
+            <div className="mt-10">
+              <StaffPickList kind={s.staffList.kind} heading={s.staffList.heading} />
+            </div>
+          ) : null}
+
           {s.photo ? (
-            <figure className="mt-8">
-              <div className="relative aspect-[3/2] overflow-hidden rounded-2xl">
-                <Photo name={s.photo} fill priority sizes="(max-width:768px) 92vw, 46rem" className="object-cover" />
+            <figure className="mt-10">
+              <div className="relative aspect-[3/2] overflow-hidden rounded-lg">
+                <Photo name={s.photo} fill priority={!s.staffList} sizes="(max-width:768px) 92vw, 46rem" className="object-cover" />
               </div>
               {s.photoCaption ? <figcaption className="mt-2 text-[0.78rem] text-ink-faint">{s.photoCaption}</figcaption> : null}
             </figure>
@@ -83,19 +83,6 @@ export default async function ScenePage({ params }: Params) {
             </Button>
           </div>
         </Container>
-
-        {s.staffList && staff.length ? (
-          <Container className="mt-14">
-            <h2 className="text-[1.15rem] font-bold text-ink">{s.staffList.heading}</h2>
-            <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {staff.map((g) => (
-                <li key={g.slug}>
-                  <GameCard game={g} comment={g.staff.comments[COMMENT[s.staffList!.kind]]} />
-                </li>
-              ))}
-            </ul>
-          </Container>
-        ) : null}
 
         {s.objective && objective.length ? (
           <Container className="mt-14">

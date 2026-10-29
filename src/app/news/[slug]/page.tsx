@@ -76,7 +76,7 @@ export default async function NewsArticlePage({ params }: Params) {
               </div>
             ) : null}
 
-            <div className="overflow-hidden rounded-2xl border border-line bg-white">
+            <div className="overflow-hidden rounded-lg border border-line bg-white">
               <NewsImage name={article.image} alt={article.imageAlt} priority className="h-auto w-full" />
             </div>
 
@@ -88,7 +88,7 @@ export default async function NewsArticlePage({ params }: Params) {
               ))}
             </div>
 
-            <div className="mt-12 rounded-2xl border border-line bg-white p-7">
+            <div className="mt-12 rounded-lg border border-line bg-white p-7">
               <Eyebrow>Now</Eyebrow>
               <h2 className="display mt-2 text-[1.05rem] text-ink">現在のご案内</h2>
               <dl className="mt-5">
@@ -135,7 +135,7 @@ export default async function NewsArticlePage({ params }: Params) {
                       <time dateTime={n.date} className="display shrink-0 text-[0.75rem] text-ink-faint">
                         {n.date.replace(/-/g, '.')}
                       </time>
-                      <span className="text-[0.88rem] leading-snug text-ink transition-colors group-hover:text-caramel-ink">
+                      <span className="text-[0.88rem] leading-snug text-ink transition-colors group-hover:text-accent-ink">
                         {n.title}
                       </span>
                     </Link>

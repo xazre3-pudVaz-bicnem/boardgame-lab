@@ -39,7 +39,7 @@ export default function FaqPage() {
           <h2 className="display mt-3 mb-8 text-[clamp(1.3rem,3.4vw,1.9rem)] text-ink">ご利用についての詳細</h2>
           <FaqList items={EXTRA_FAQ} />
 
-          <div className="mt-16 rounded-2xl border border-line bg-white p-7 sm:p-9">
+          <div className="mt-16 rounded-lg border border-line bg-white p-7 sm:p-9">
             <h2 className="display text-[1.1rem] text-ink">解決しなかったときは</h2>
             <p className="text-pretty mt-3 text-[0.88rem] leading-[1.95] text-ink-soft">
               在庫確認・お取り置き、貸切のご相談、メディア関連のお問い合わせはフォームから承っています。

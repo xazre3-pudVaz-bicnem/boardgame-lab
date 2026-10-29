@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { GameCard, GameTable } from '@/components/GameCard';
+import { GameTable } from '@/components/GameCard';
+import { StaffPickList } from '@/components/games/StaffPicks';
 import { Breadcrumbs, Container } from '@/components/ui';
-import { CONDITIONS, type ConditionDef, type Game, gamesWithCondition, staffForGroups, staffForTwo } from '@/lib/games';
+import { CONDITIONS, type ConditionDef, type StaffKind, gamesWithCondition, staffList } from '@/lib/games';
 import { breadcrumbSchema, buildMetadata, JsonLd } from '@/lib/seo';
 
 /**
@@ -17,25 +18,20 @@ export function collectionMetadata(c: ConditionDef): Metadata {
   return buildMetadata({ title: c.title, description: c.description, path: `/games/${c.slug}` });
 }
 
-function staffListFor(c: ConditionDef): { heading: string; games: Game[]; comment: (g: Game) => string | undefined } | null {
-  if (c.key === 'two-only') {
-    const games = staffForTwo();
-    return games.length
-      ? { heading: 'スタッフが2人におすすめしているゲーム', games, comment: (g) => g.staff.comments.two }
-      : null;
-  }
-  if (c.key === 'six-plus') {
-    const games = staffForGroups();
-    return games.length
-      ? { heading: 'スタッフが大人数におすすめしているゲーム', games, comment: (g) => g.staff.comments.groups }
-      : null;
-  }
+/** この一覧に対応する、スタッフのおすすめの場面 */
+function staffKindFor(c: ConditionDef): { kind: StaffKind; heading: string } | null {
+  const pick = (kind: StaffKind, heading: string) => {
+    const l = staffList(kind);
+    return l.items.length ? { kind, heading } : null;
+  };
+  if (c.key === 'two-only') return pick('two', 'スタッフが選んだ、2人向けのゲーム');
+  if (c.key === 'six-plus') return pick('groups', 'スタッフが選んだ、大人数向けのゲーム');
   return null;
 }
 
 export default function CollectionPage({ collection: c }: { collection: ConditionDef }) {
   const games = gamesWithCondition(c.key);
-  const staff = staffListFor(c);
+  const staff = staffKindFor(c);
   const crumbs = [{ name: 'ホーム', href: '/' }, { name: 'ボードゲーム一覧', href: '/games' }, { name: c.heading }];
 
   return (
@@ -47,16 +43,9 @@ export default function CollectionPage({ collection: c }: { collection: Conditio
           <h1 className="mt-6 text-[clamp(1.5rem,4.4vw,2.2rem)] font-bold text-ink">{c.heading}</h1>
 
           {staff ? (
-            <section className="mt-8">
-              <h2 className="text-[1.1rem] font-bold text-ink">{staff.heading}</h2>
-              <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {staff.games.map((g) => (
-                  <li key={g.slug}>
-                    <GameCard game={g} comment={staff.comment(g)} />
-                  </li>
-                ))}
-              </ul>
-            </section>
+            <div className="mt-10">
+              <StaffPickList kind={staff.kind} heading={staff.heading} />
+            </div>
           ) : c.key === 'two-only' ? (
             <p className="mt-5 max-w-2xl text-[0.9rem] leading-[1.9] text-ink-soft">
               スタッフが2人におすすめするゲームは、確認がとれたものから掲載します。
@@ -64,7 +53,7 @@ export default function CollectionPage({ collection: c }: { collection: Conditio
             </p>
           ) : null}
 
-          <section className="mt-10">
+          <section className="mt-14">
             <h2 className="text-[1.1rem] font-bold text-ink">
               {c.label}のゲーム（{games.length}件）
             </h2>

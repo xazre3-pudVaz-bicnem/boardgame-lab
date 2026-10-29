@@ -84,7 +84,7 @@ export default function GameListPage() {
                       <li key={g.slug}>
                         <Link
                           href={`/games/${g.slug}`}
-                          className="flex items-baseline justify-between gap-4 border-b border-line py-2.5 transition-colors hover:text-caramel-ink"
+                          className="flex items-baseline justify-between gap-4 border-b border-line py-2.5 transition-colors hover:text-accent-ink"
                         >
                           <span className="text-[0.86rem] leading-snug">{g.nameJa}</span>
                           {meta ? <span className="shrink-0 text-[0.78rem] text-ink-faint">{meta}</span> : null}

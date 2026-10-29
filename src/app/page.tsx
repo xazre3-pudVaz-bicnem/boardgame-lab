@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Hero from '@/components/home/Hero';
-import { About, Access, Events, Games, HowAndPrice, SceneLinks, Space, StaffGuide } from '@/components/home/Sections';
+import { About, Access, Events, Games, HowAndPrice, SceneLinks } from '@/components/home/Sections';
 import { buildMetadata } from '@/lib/seo';
 
 /**
@@ -19,8 +19,6 @@ export default function HomePage() {
     <>
       <Hero />
       <About />
-      <Space />
-      <StaffGuide />
       <Games />
       <HowAndPrice />
       <Events />

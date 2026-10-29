@@ -56,7 +56,7 @@ export default async function AreaPage({ params }: Params) {
         <Container className="relative">
           <Breadcrumbs items={crumbs} tone="light-text" />
           <div className="mt-7 max-w-3xl">
-            <p className="eyebrow text-caramel">{area.en}</p>
+            <p className="eyebrow text-accent">{area.en}</p>
             <h1 className="display text-balance mt-3 text-[clamp(1.75rem,5vw,3rem)] leading-[1.3] text-white">
               {area.h1}
             </h1>
@@ -83,7 +83,7 @@ export default async function AreaPage({ params }: Params) {
             {area.routes.map((r) => (
               <li key={r.from} className="rounded-xl border border-line bg-white p-6">
                 <p className="text-[0.88rem] font-semibold text-ink">{r.from}</p>
-                <p className="display mt-2 text-[1.05rem] text-caramel-ink">{r.minutes}</p>
+                <p className="display mt-2 text-[1.05rem] text-accent-ink">{r.minutes}</p>
                 <p className="text-pretty mt-3 text-[0.83rem] leading-[1.9] text-ink-soft">{r.how}</p>
               </li>
             ))}
@@ -104,7 +104,7 @@ export default async function AreaPage({ params }: Params) {
             </div>
 
             <div>
-              <div className="overflow-hidden rounded-2xl border border-line">
+              <div className="overflow-hidden rounded-lg border border-line">
                 <iframe
                   title={`${shop.name}の地図`}
                   src={`https://www.google.com/maps?q=${mapQuery}&output=embed&hl=ja`}
@@ -169,7 +169,7 @@ export default async function AreaPage({ params }: Params) {
                 <li key={a.slug}>
                   <Link
                     href={`/area/${a.slug}`}
-                    className="block rounded-2xl border border-line bg-white px-4 py-3 text-[0.85rem] text-ink-soft transition-colors hover:border-cocoa/30 hover:text-ink"
+                    className="block rounded-lg border border-line bg-white px-4 py-3 text-[0.85rem] text-ink-soft transition-colors hover:border-cocoa/30 hover:text-ink"
                   >
                     {a.h1}
                   </Link>

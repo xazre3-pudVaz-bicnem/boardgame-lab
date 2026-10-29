@@ -3,40 +3,40 @@
 /*
   BODOlab. デザイントークン
 
-  2026-10 に「のんびりできるカフェのような雰囲気に」という店舗の要望で、紺と水色の配色から
-  生成りの地にココア色・キャラメル色を合わせた配色へ切り替えた。
-  店内の白い棚・明るい木のテーブル・黒い椅子の写真になじむ色を選んでいる。
+  店舗の要望（2026-10）：「のんびりできる、おしゃれなカフェのような雰囲気に。今はビジネスのホームページに見える」。
+  白い棚・明るい木のテーブル・黒い椅子・色とりどりのゲーム箱という実際の店内に合わせ、
+  白に近い生成りの地と墨色の文字を基本にして、色はゲームの写真とロゴに任せる。
+  （Codex との検討で、クリーム色＋キャラメル色の甘い配色から、もう少し静かな配色に寄せた）
 
-    cocoa   … ボタン・濃い面（以前の紺の役割）
-    caramel … リンク・選択中の印（以前の水色の役割）
-    amber   … ロゴのきらめきのオレンジ（#f09800、ロゴから実測）
-    sky     … ロゴのフラスコの水色（#29a8e0、ロゴから実測）。差し色としてだけ使う
+    paper   … 地の色（白に近い生成り）。paper-2 は帯で区切るときの色
+    cocoa   … ボタン・濃い面（墨に近いブラウングレー）
+    accent  … ロゴのフラスコの水色（#29a8e0、ロゴから実測）。線や印など、小さく使う
+    accent-ink … リンクの色（ロゴの水色を深くした青）。生成りの地の上でコントラスト比 6:1 以上
+    amber   … ロゴのきらめきのオレンジ（#f09800、ロゴから実測）。ごく小さく使う
 
-  本文に使う色は、生成りの地の上でコントラスト比 4.5:1 以上になる派生色（*-ink）を使う。
+  本文に使う色は、地の上でコントラスト比 4.5:1 以上になるもの（ink / ink-soft / ink-faint / *-ink）だけ。
 */
 @theme {
-  --color-ink: #2e2622;
-  --color-ink-soft: #5d5148;
-  --color-ink-faint: #6f6257;
+  --color-ink: #292723;
+  --color-ink-soft: #57524b;
+  --color-ink-faint: #6e685f;
 
-  --color-paper: #faf5ec;
-  --color-paper-2: #f2e9db;
-  --color-surface: #fffdf8;
-  --color-line: #e8ddcb;
+  --color-paper: #fbf9f5;
+  --color-paper-2: #f1ece3;
+  --color-surface: #ffffff;
+  --color-line: #ded8ce;
 
-  --color-cocoa: #4b382d;
-  --color-cocoa-deep: #34261e;
-  --color-cocoa-soft: #6a5244;
+  --color-cocoa: #413a34;
+  --color-cocoa-deep: #2e2925;
+  --color-cocoa-soft: #5a5149;
 
-  --color-caramel: #c8894e;
-  --color-caramel-ink: #9a5325;
-  --color-caramel-wash: #f8ecdc;
+  --color-accent: #29a8e0;
+  --color-accent-ink: #1f5f78;
+  --color-accent-wash: #e8f2f5;
 
   --color-amber: #f09800;
   --color-amber-ink: #8a5200;
   --color-amber-wash: #fdf2e0;
-
-  --color-sky: #29a8e0;
 
   /* 本文はシステムフォント（読み込みゼロ）。 */
   --font-sans: ui-sans-serif, system-ui, -apple-system, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic Medium', 'Yu Gothic', Meiryo, sans-serif;
@@ -102,7 +102,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-caramel-ink);
+    outline: 2px solid var(--color-accent-ink);
     outline-offset: 3px;
     border-radius: 2px;
   }
@@ -121,7 +121,7 @@
     font-weight: 600;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--color-caramel-ink);
+    color: var(--color-accent-ink);
   }
 
   .display {
@@ -132,7 +132,7 @@
 
   /* 本文リンク */
   .prose-link {
-    color: var(--color-caramel-ink);
+    color: var(--color-accent-ink);
     text-decoration: underline;
     text-underline-offset: 3px;
     text-decoration-thickness: 1px;
@@ -221,7 +221,7 @@
     content: '';
     flex: 1;
     min-width: 1.5rem;
-    border-bottom: 2px dotted color-mix(in srgb, var(--color-caramel) 45%, transparent);
+    border-bottom: 2px dotted var(--color-line);
     transform: translateY(-0.3em);
   }
 }
