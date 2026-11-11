@@ -19,6 +19,7 @@ const columns: { title: string; links: { href: string; label: string }[] }[] = [
     title: 'お店のこと',
     links: [
       { href: '/system', label: '料金・利用案内' },
+      { href: '/shop', label: 'ボードゲームの販売' },
       { href: '/access', label: 'アクセス' },
       { href: '/schedule', label: 'イベント' },
       { href: '/news', label: 'お知らせ' },

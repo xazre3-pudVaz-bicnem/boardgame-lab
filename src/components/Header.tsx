@@ -8,6 +8,7 @@ import { shop } from '@/data/shop';
 
 const nav = [
   { href: '/games', label: 'ゲーム', en: 'Games' },
+  { href: '/shop', label: '販売', en: 'Shop' },
   { href: '/system', label: '料金・利用案内', en: 'System' },
   { href: '/scene', label: '目的別', en: 'Scene' },
   { href: '/schedule', label: 'イベント', en: 'Event' },

@@ -100,6 +100,46 @@ for (const item of STORE_2610) {
   console.log(`${item.name}: ${r.width}x${r.height} -> ${r.widths.join(',')}`);
 }
 
+/*
+ * 2026-11-11 に店舗から届いた写真（LINE、assets-src/S__*.jpg）。
+ * 販売しているゲームの棚とガラスケース。人は写っていない（ガラスへの映り込みも確認した）。
+ * 値札が写っているが、店頭の実物の写真なのでそのまま使う（サイトの文章では値段を書かない）。
+ */
+const STORE_2611 = [
+  { file: 'S__92332036_0.jpg', name: 'shop-case', alt: 'ガラスケースに並ぶ、販売中のボードゲーム（値札つき）' },
+  { file: 'S__92332037_0.jpg', name: 'shop-case-small', alt: '販売中の小箱のボードゲーム。値札が付いている' },
+  { file: 'S__92332038_0.jpg', name: 'shop-shelf-large', alt: '棚に並ぶ販売中のボードゲーム。大きな箱のゲームやカタンのシリーズ' },
+  { file: 'S__92332039_0.jpg', name: 'shop-shelf-a', alt: '白い棚に並ぶ販売中のボードゲーム' },
+  { file: 'S__92332040_0.jpg', name: 'shop-shelf-b', alt: '白い棚に並ぶ販売中のボードゲーム（2段）' },
+];
+
+for (const item of STORE_2611) {
+  const r = await emit(path.join(SRC, item.file), item.name);
+  manifest[item.name] = { alt: item.alt, ...r, src: `/photos/${item.name}-${r.widths.at(-1)}.webp` };
+  console.log(`${item.name}: ${r.width}x${r.height} -> ${r.widths.join(',')}`);
+}
+
+/*
+ * 月ごとの営業カレンダー（店舗が作っている画像）。中身は src/data/calendar.ts に書き写してある。
+ * 文字を読めるように、画質を少し上げて書き出す。
+ */
+const CALENDARS = [
+  { file: 'S__90660937.jpg', name: 'calendar-2026-11', alt: 'ボードゲームラボの2026年11月の営業カレンダー。定休日とイベントの予定が書かれている' },
+];
+
+for (const item of CALENDARS) {
+  const file = path.join(SRC, item.file);
+  const meta = await sharp(file).metadata();
+  const widths = [];
+  for (const w of [480, 1080]) {
+    if (w > meta.width) continue;
+    await sharp(file).rotate().resize({ width: w }).webp({ quality: 88 }).toFile(path.join(OUT, `${item.name}-${w}.webp`));
+    widths.push(w);
+  }
+  manifest[item.name] = { alt: item.alt, widths, width: meta.width, height: meta.height, src: `/photos/${item.name}-${widths.at(-1)}.webp` };
+  console.log(`${item.name}: ${meta.width}x${meta.height} -> ${widths.join(',')}`);
+}
+
 for (const item of [...MAP, ...POSTERS]) {
   const r = await emit(P(item.n), item.name);
   manifest[item.name] = { alt: item.alt, ...r, src: `/photos/${item.name}-${r.widths.at(-1)}.webp` };

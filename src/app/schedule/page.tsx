@@ -1,22 +1,32 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Photo from '@/components/Photo';
+import { ClosedDays, MonthEventList } from '@/components/events/MonthEvents';
 import { Breadcrumbs, Button, Container } from '@/components/ui';
+import { currentCalendar, monthLabel } from '@/data/calendar';
 import { newsByDate } from '@/data/news';
 import { shop } from '@/data/shop';
 import { breadcrumbSchema, buildMetadata, JsonLd } from '@/lib/seo';
 
+/*
+ * その月の営業カレンダー（src/data/calendar.ts）を出しているので、1時間ごとに作り直す（ISR）。
+ * 月が終わったカレンダーは currentCalendar が null を返すので、月が変わってから1時間以内に表示が切り替わる。
+ */
+export const revalidate = 3600;
+
 export const metadata: Metadata = buildMetadata({
-  title: 'イベント｜ボドラボテスプ塾（テストプレイ会）・貸切｜大阪・中津 BODOlab.',
+  title: 'イベント・営業カレンダー｜ボドゲ会・テストプレイ会・貸切｜大阪・中津 BODOlab.',
   description:
-    'BODOlab.のイベント情報。自作ボードゲームのテストプレイ会兼交流会「ボドラボテスプ塾」を毎月開いています（参加費500円・TwiPlaで申し込み）。貸切のご相談も承ります。',
+    'BODOlab.のイベントと営業カレンダー。月ごとのボドゲ会の予定と定休日、自作ボードゲームのテストプレイ会「ボドラボテスプ塾」（参加費500円・TwiPlaで申し込み）、貸切のご相談について。',
   path: '/schedule',
 });
 
-const crumbs = [{ name: 'ホーム', href: '/' }, { name: 'イベント' }];
+const crumbs = [{ name: 'ホーム', href: '/' }, { name: 'イベント・営業カレンダー' }];
 const ev = shop.testPlayEvent.value;
 
 export default function SchedulePage() {
   const pastEvents = newsByDate().filter((n) => n.category === 'イベント');
+  const cal = currentCalendar();
 
   return (
     <>
@@ -25,14 +35,41 @@ export default function SchedulePage() {
       <div className="bg-paper-2 pt-24 pb-16 sm:pt-28 sm:pb-24">
         <Container>
           <Breadcrumbs items={crumbs} />
-          <h1 className="mt-6 text-[clamp(1.5rem,4.4vw,2.2rem)] font-bold text-ink">イベント</h1>
+          <h1 className="mt-6 text-[clamp(1.5rem,4.4vw,2.2rem)] font-bold text-ink">イベント・営業カレンダー</h1>
+
+          {/* その月のカレンダー（店舗が毎月作っている画像）。月が終わったら出さない（src/data/calendar.ts） */}
+          {cal ? (
+            <section id="calendar" className="mt-10 scroll-mt-24">
+              <h2 className="text-[1.35rem] font-bold text-ink">{monthLabel(cal.month)}のカレンダー</h2>
+              <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-14">
+                <figure>
+                  <div className="relative mx-auto aspect-[4/5] max-w-[30rem] overflow-hidden rounded-lg bg-surface">
+                    <Photo name={cal.image} fill priority sizes="(max-width:1024px) 92vw, 30rem" quality={85} className="object-contain" />
+                  </div>
+                  <figcaption className="mt-2 text-center text-[0.78rem] text-ink-faint">店舗が作っている{monthLabel(cal.month, false)}のカレンダー。</figcaption>
+                </figure>
+                <div>
+                  <MonthEventList cal={cal} />
+                  <ClosedDays cal={cal} className="mt-4" />
+                  <ul className="mt-4 list-disc space-y-1 pl-5 text-[0.88rem] leading-[1.9] text-ink-soft marker:text-ink-faint">
+                    {cal.notes.map((n) => (
+                      <li key={n}>{n}</li>
+                    ))}
+                  </ul>
+                  <p className="mt-4 text-[0.85rem] leading-relaxed text-ink-faint">
+                    会の内容や参加方法は、お店のInstagram・公式LINEでご確認いただくか、店舗へお問い合わせください。予定は変わることがあります。
+                  </p>
+                </div>
+              </div>
+            </section>
+          ) : null}
 
           {/*
             テスプ塾の開催風景の写真はまだ無いので、写真は置かない（通常のプレイ写真で埋めると開催風景と誤解されるため）。
             開催時の写真（顔が写らないもの）が届いたら、ここに足す。
           */}
-          <div className="mt-10 max-w-3xl">
-            <section>
+          <div className="mt-14 max-w-3xl">
+            <section id="test-play" className="scroll-mt-24">
               <h2 className="text-[1.35rem] font-bold text-ink">{ev.name}</h2>
               <p className="mt-4 text-[0.98rem] leading-[2] text-ink-soft">
                 ボードゲーム製作者を応援する、テストプレイ会兼交流会です。自作のゲームを持ち込む人、これから作りたい人、

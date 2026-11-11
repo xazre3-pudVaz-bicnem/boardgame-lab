@@ -74,7 +74,7 @@ export function localBusinessSchema() {
     name: `${shop.name}（${shop.nameJa}）`,
     alternateName: [shop.nameJa, shop.nickname, 'ボードゲームラボ'],
     description:
-      '大阪市北区豊崎、大阪メトロ中津駅から徒歩3分のボードゲームプレイスペース＆ショップ。ボードゲームをスタッフのルール説明つきで遊べます。飲食物の販売はしていません。',
+      '大阪市北区豊崎、大阪メトロ中津駅から徒歩3分のボードゲームプレイスペース＆ショップ。ボードゲームをスタッフのルール説明つきで遊べます。店内で遊べるゲームを中心に、ボードゲームの販売もしています。飲食物の販売はしていません。',
     url: SITE_URL,
     telephone: shop.tel.value,
     image: [abs('/og-image.jpg')],

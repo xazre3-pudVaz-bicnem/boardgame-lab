@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Photo from '@/components/Photo';
 import { Container } from '@/components/ui';
 import { StaffPickNote, StaffPicksOverview } from '@/components/games/StaffPicks';
+import { ClosedDays, MonthEventList } from '@/components/events/MonthEvents';
+import { currentCalendar, monthLabel } from '@/data/calendar';
 import { shop } from '@/data/shop';
 import { SCENES } from '@/data/scenes';
 import { newsByDate } from '@/data/news';
@@ -10,7 +12,8 @@ import { CONDITIONS } from '@/lib/games';
 /*
  * トップページ。
  *
- * 「どんな場所か → スタッフが選んだゲーム → 料金と使い方 → イベント・お知らせ → 行き方」の順。
+ * 「どんな場所か → スタッフが選んだゲーム → 販売 → 料金と使い方 → イベント・お知らせ → 行き方」の順。
+ * 紹介の比重は、店舗の希望で「スペース利用7割・販売3割」ほど（2026-11-11）。販売は1セクションと /shop で紹介する。
  *
  * 店舗の要望（2026-10）：「のんびりできる、おしゃれなカフェのような雰囲気に。今はビジネスのホームページに見える」。
  * Codex と検討して、次のことをやめた。
@@ -92,7 +95,6 @@ export function About() {
               <p>ルールはスタッフが説明するので、はじめてでも大丈夫です。料金は時間制で、遊ぶゲームの数では変わりません。</p>
               <p>
                 飲食物の販売はありませんが、持ち込みはできます。ふた付きの飲み物なら、遊びながらでも大丈夫です。
-                気に入ったゲームは、店頭で買うこともできます。
               </p>
             </div>
           </div>
@@ -161,6 +163,65 @@ export function Games() {
               ボードゲーム一覧へ
             </Link>
           </p>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+/* --------------------------------------------------------------- 販売 */
+
+export function Shop() {
+  const discounts = shop.pricing.shopDiscount.value;
+  return (
+    <section className="cv-auto bg-paper-2 py-20 sm:py-28">
+      <Container size="wide">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-x-12">
+          <div className="grid grid-cols-5 gap-4 self-start lg:col-span-7">
+            <figure className="col-span-5">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
+                <Photo name="shop-case" fill sizes="(max-width:1024px) 92vw, 55vw" className="object-cover" />
+              </div>
+            </figure>
+            <figure className="col-span-3">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
+                <Photo name="shop-shelf-large" fill sizes="(max-width:1024px) 55vw, 33vw" className="object-cover" />
+              </div>
+            </figure>
+            <figure className="col-span-2">
+              <div className="relative aspect-[3/4] overflow-hidden rounded-lg sm:aspect-[4/5]">
+                <Photo name="shop-case-small" fill sizes="(max-width:1024px) 37vw, 22vw" className="object-cover" />
+              </div>
+            </figure>
+            <p className="col-span-5 text-[0.78rem] text-ink-faint">店内で販売しているボードゲーム。</p>
+          </div>
+
+          <div className="lg:col-span-5 lg:pt-4">
+            <p className="text-[0.85rem] font-bold tracking-[0.06em] text-ink-soft">ボードゲームの販売</p>
+            <h2 className={`mt-2 ${H2}`}>遊んで気に入ったら、そのまま買えます</h2>
+            <div className={`mt-6 space-y-5 ${BODY}`}>
+              <p>
+                BODOlab.はボードゲームのショップでもあります。販売しているのは主に店内で遊べるゲームなので、実際に遊んでから選べます。
+              </p>
+            </div>
+            <dl className="mt-7 border-t border-ink/15 text-[0.95rem]">
+              {[
+                ['買い方', '店頭で。公式LINEからも購入できます'],
+                ['まとめ買い', discounts.map((d) => `${d.label}で${d.rule}`).join('、')],
+                ['取り置き', '最大1週間。お取り寄せもできます'],
+              ].map(([k, v]) => (
+                <div key={k} className="grid grid-cols-[5.5rem_1fr] gap-3 border-b border-ink/15 py-3.5">
+                  <dt className="text-ink-faint">{k}</dt>
+                  <dd className="leading-[1.8] text-ink">{v}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="mt-7">
+              <Link href="/shop" className={BTN_OUTLINE}>
+                ボードゲームの販売について
+              </Link>
+            </p>
+          </div>
         </div>
       </Container>
     </section>
@@ -236,41 +297,63 @@ export function HowAndPrice() {
 
 export function Events() {
   const ev = shop.testPlayEvent.value;
+  const cal = currentCalendar();
   const news = newsByDate().slice(0, 3);
   return (
     <section className="cv-auto bg-paper-2 py-16 sm:py-24">
       <Container>
         <div className="grid gap-14 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-20">
-          <div>
-            <p className="text-[0.85rem] font-bold tracking-[0.06em] text-ink-soft">毎月のイベント</p>
-            <h2 className={`mt-2 ${H2}`}>{ev.name}</h2>
-            <p className={`mt-5 ${BODY}`}>
-              自作のボードゲームを持ち寄って、テストプレイをする会です。作っている人も、遊んでみたい人も参加できます。
-            </p>
-            <dl className="mt-6 border-t border-ink/15 text-[0.95rem]">
-              {[
-                ['開催', `${ev.schedule} ${ev.hours}`],
-                ['参加費', `${ev.fee}円（${ev.feeNote}）`],
-                ['申し込み', `${ev.entry}の告知ページから`],
-              ].map(([k, v]) => (
-                <div key={k} className="grid grid-cols-[5.5rem_1fr] gap-3 border-b border-ink/15 py-3.5">
-                  <dt className="text-ink-faint">{k}</dt>
-                  <dd className="text-ink">{v}</dd>
-                </div>
-              ))}
-            </dl>
-            <p className="mt-3 text-[0.82rem] leading-relaxed text-ink-faint">
-              {ev.scheduleNote}。開催日は変わることがあるので、最新の告知をご確認ください。
-            </p>
-            <p className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-[0.92rem]">
-              <a href={shop.links.twipla} target="_blank" rel="noopener noreferrer" className="prose-link">
-                TwiPlaで開催予定を見る
-              </a>
-              <Link href="/schedule" className="prose-link">
-                イベントについて
-              </Link>
-            </p>
-          </div>
+          {cal ? (
+            <div>
+              <p className="text-[0.85rem] font-bold tracking-[0.06em] text-ink-soft">イベントと営業日</p>
+              <h2 className={`mt-2 ${H2}`}>{monthLabel(cal.month, false)}のイベント</h2>
+              <p className={`mt-5 ${BODY}`}>{monthLabel(cal.month, false)}は、次の会を予定しています。</p>
+              <MonthEventList cal={cal} className="mt-6" />
+              <ClosedDays cal={cal} className="mt-4" />
+              <p className="mt-3 text-[0.82rem] leading-relaxed text-ink-faint">
+                内容や参加方法は、お店のInstagram・公式LINEでご確認いただくか、店舗へお問い合わせください。予定は変わることがあります。
+              </p>
+              <p className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-[0.92rem]">
+                <Link href="/schedule#calendar" className="prose-link">
+                  {monthLabel(cal.month, false)}のカレンダーを見る
+                </Link>
+                <Link href="/schedule#test-play" className="prose-link">
+                  テストプレイ会（ボドラボテスプ塾）について
+                </Link>
+              </p>
+            </div>
+          ) : (
+            <div>
+              <p className="text-[0.85rem] font-bold tracking-[0.06em] text-ink-soft">毎月のイベント</p>
+              <h2 className={`mt-2 ${H2}`}>{ev.name}</h2>
+              <p className={`mt-5 ${BODY}`}>
+                自作のボードゲームを持ち寄って、テストプレイをする会です。作っている人も、遊んでみたい人も参加できます。
+              </p>
+              <dl className="mt-6 border-t border-ink/15 text-[0.95rem]">
+                {[
+                  ['開催', `${ev.schedule} ${ev.hours}`],
+                  ['参加費', `${ev.fee}円（${ev.feeNote}）`],
+                  ['申し込み', `${ev.entry}の告知ページから`],
+                ].map(([k, v]) => (
+                  <div key={k} className="grid grid-cols-[5.5rem_1fr] gap-3 border-b border-ink/15 py-3.5">
+                    <dt className="text-ink-faint">{k}</dt>
+                    <dd className="text-ink">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-3 text-[0.82rem] leading-relaxed text-ink-faint">
+                {ev.scheduleNote}。開催日は変わることがあるので、最新の告知をご確認ください。
+              </p>
+              <p className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-[0.92rem]">
+                <a href={shop.links.twipla} target="_blank" rel="noopener noreferrer" className="prose-link">
+                  TwiPlaで開催予定を見る
+                </a>
+                <Link href="/schedule" className="prose-link">
+                  イベントについて
+                </Link>
+              </p>
+            </div>
+          )}
 
           <div>
             <h2 className="text-[1.2rem] font-bold text-ink">お知らせ</h2>
@@ -290,7 +373,7 @@ export function Events() {
               ))}
             </ul>
             <p className="mt-4 text-[0.9rem]">
-              <Link href="/news" className="prose-link">
+              <Link href="/news" className="prose-link inline-block py-2">
                 お知らせをもっと見る
               </Link>
             </p>

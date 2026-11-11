@@ -10,7 +10,7 @@ import { breadcrumbSchema, buildMetadata, faqSchema, JsonLd } from '@/lib/seo';
 export const metadata: Metadata = buildMetadata({
   title: '料金・ご利用案内｜1時間600円・上限あり｜大阪 梅田中津のボードゲーム BODOlab.',
   description:
-    'BODOlab.の料金とご利用方法です。プレイ料金は1時間600円（相席500円）、上限は平日2,500円・土日祝3,000円。学生20%引き、小学生半額、未就学児無料。ご予約方法、飲食のルール、営業時間もこちらで確認いただけます。',
+    'BODOlab.の料金とご利用方法です。プレイ料金は1時間600円（相席500円）、上限は平日2,500円・土日祝3,000円。学生10%引き、小学生半額、未就学児無料。ご予約方法、飲食のルール、営業時間もこちらで確認いただけます。',
   path: '/system',
   keywords: ['大阪 ボードゲーム 料金', 'ボードゲームカフェ 料金 大阪', '梅田 ボードゲーム 値段', 'BODOlab 料金'],
 });

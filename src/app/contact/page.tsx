@@ -127,7 +127,7 @@ export default function ContactPage() {
                     <dt className="text-ink-soft">Instagram</dt>
                     <dd>
                       <a href={shop.links.instagram} target="_blank" rel="noopener noreferrer" className="prose-link">
-                        @bodo_lab_
+                        {shop.links.instagramHandle}
                       </a>
                     </dd>
                   </div>

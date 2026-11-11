@@ -40,6 +40,7 @@ export default function Hero() {
             <p className="mb-2 text-[0.85rem] font-medium tracking-[0.06em] text-ink-soft lg:hidden">{KIND}</p>
             <p className="text-[1rem] leading-[2] text-ink-soft">
               棚から気になる箱を選んで、テーブルでのんびり。ルールはスタッフが説明するので、はじめての方も手ぶらでどうぞ。
+              店内で遊べるゲームを中心に、ボードゲームの販売もしています。
             </p>
           </div>
         </div>

@@ -103,10 +103,11 @@ export const shop = {
       'official /system',
     ),
     /**
-     * 学生割引（%）。旧公式サイトのQ&A画像（20%）と本文（10%）で食い違っていたが、
-     * 店舗から「20%」と回答があった（2026-10-05）。学生証の提示が必要。
+     * 学生割引（%）。学生証の提示が必要。
+     * 旧公式サイトのQ&A画像（20%）と本文（10%）で食い違っていた。店舗の回答は
+     * 2026-10-05 に「20%」、その後 2026-11-11 に「やはり10%に」と変わったので、10% にしている。
      */
-    studentDiscount: v(20, 'store 2026-10-05 / faq-image'),
+    studentDiscount: v(10, 'store 2026-11-11 / official /system'),
     shopDiscount: v(
       [
         { label: '3点購入', rule: '10%引き' },
@@ -169,6 +170,13 @@ export const shop = {
     'line',
   ),
 
+  /**
+   * 販売しているゲームの考え方（店舗からのLINE、2026-11-11）。
+   * 「主にはプレイできるものを置いていて、遊んだ後にそのまま購入することができるようにしている」。
+   * サイトでの紹介の比重は、店舗の希望で「スペース利用7割・販売3割」ほどにする。
+   */
+  shopConcept: v('販売しているのは、主に店内で遊べるゲームです。遊んで気に入ったら、そのまま買って帰れます。', 'store 2026-11-11'),
+
   /** ボードゲーム販売について。 */
   shopService: v(
     [
@@ -196,7 +204,12 @@ export const shop = {
     '席のご予約はご来店予約フォームからのみ受け付けています。お問い合わせフォーム・メール・お電話では受け付けていません。',
 
   links: {
-    instagram: 'https://www.instagram.com/bodo_lab_/',
+    /**
+     * 公式Instagram。店舗の指定で @boardgame_lab_ にした（2026-11-11）。以前は @bodo_lab_ を載せていた。
+     * 店舗から届いたURLに付いていた共有用のパラメータ（igsh・utm_source）は外している。
+     */
+    instagram: 'https://www.instagram.com/boardgame_lab_/',
+    instagramHandle: '@boardgame_lab_',
     /**
      * 現在使われているのは @BODOlab_（ボドゲーマの店舗ページ・TwiPla の主催者アカウントが同じ）。
      * 旧アカウント @BOARDGAMELabDDT は使わない。

@@ -65,6 +65,66 @@
     "height": 1774,
     "src": "/photos/play-halligalli-1600.webp"
   },
+  "shop-case": {
+    "alt": "ガラスケースに並ぶ、販売中のボードゲーム（値札つき）",
+    "widths": [
+      480,
+      960
+    ],
+    "width": 1477,
+    "height": 1108,
+    "src": "/photos/shop-case-960.webp"
+  },
+  "shop-case-small": {
+    "alt": "販売中の小箱のボードゲーム。値札が付いている",
+    "widths": [
+      480,
+      960
+    ],
+    "width": 1477,
+    "height": 1108,
+    "src": "/photos/shop-case-small-960.webp"
+  },
+  "shop-shelf-large": {
+    "alt": "棚に並ぶ販売中のボードゲーム。大きな箱のゲームやカタンのシリーズ",
+    "widths": [
+      480,
+      960
+    ],
+    "width": 1477,
+    "height": 1108,
+    "src": "/photos/shop-shelf-large-960.webp"
+  },
+  "shop-shelf-a": {
+    "alt": "白い棚に並ぶ販売中のボードゲーム",
+    "widths": [
+      480,
+      960
+    ],
+    "width": 1477,
+    "height": 1108,
+    "src": "/photos/shop-shelf-a-960.webp"
+  },
+  "shop-shelf-b": {
+    "alt": "白い棚に並ぶ販売中のボードゲーム（2段）",
+    "widths": [
+      480,
+      960
+    ],
+    "width": 1477,
+    "height": 1108,
+    "src": "/photos/shop-shelf-b-960.webp"
+  },
+  "calendar-2026-11": {
+    "alt": "ボードゲームラボの2026年11月の営業カレンダー。定休日とイベントの予定が書かれている",
+    "widths": [
+      480,
+      1080
+    ],
+    "width": 1080,
+    "height": 1350,
+    "src": "/photos/calendar-2026-11-1080.webp"
+  },
   "room-empty": {
     "alt": "木のテーブルと黒い椅子が並ぶBODOlab.の店内。壁一面のボードゲーム棚",
     "widths": [
