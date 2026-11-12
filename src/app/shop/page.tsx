@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Photo from '@/components/Photo';
+import GameSearch from '@/components/games/GameSearch';
 import { Breadcrumbs, Container } from '@/components/ui';
 import { shop } from '@/data/shop';
 import { breadcrumbSchema, buildMetadata, JsonLd } from '@/lib/seo';
@@ -13,6 +14,10 @@ import { breadcrumbSchema, buildMetadata, JsonLd } from '@/lib/seo';
  *
  * 書いてよいのは、店舗から聞いた・旧公式サイトのQ&Aにあった事実だけ（shop.ts の shopConcept・shopService・shopDiscount）。
  * 値段・在庫・取り扱いタイトルは書かない（写真の値札はそのまま見える）。
+ *
+ * 「ゲームを探す」は店舗の依頼で追加した（2026-11-12「販売の項目にも検索機能を」）。
+ * 販売中の一覧（在庫）は預かっていないので、検索の対象は店内で遊べるゲームにして、
+ * 買えるかどうかは店頭・公式LINEで聞いてもらう。結果の各ゲームのページにも、同じ案内を出している。
  */
 
 export const metadata: Metadata = buildMetadata({
@@ -41,6 +46,18 @@ export default function ShopPage() {
               BODOlab.は、ボードゲームのプレイスペースであり、ショップでもあります。{shop.shopConcept.value}
             </p>
           </div>
+
+          <section id="search" aria-labelledby="shop-search" className="mt-10 max-w-4xl scroll-mt-24">
+            <h2 id="shop-search" className="text-[clamp(1.25rem,3vw,1.5rem)] font-bold text-ink">
+              ゲームを探す
+            </h2>
+            <p className="mt-3 text-[0.95rem] leading-[1.9] text-ink-soft [word-break:auto-phrase]">
+              店内で遊べるゲームを、名前・人数・プレイ時間で探せます。買えるかどうか（在庫）は、店頭か公式LINEでお問い合わせください。お取り寄せのご相談も承ります。
+            </p>
+            <div className="mt-5">
+              <GameSearch variant="shop" />
+            </div>
+          </section>
 
           {/* 写真は大きさと切り抜きを変えて並べる（同じ比率のカードを並べない） */}
           <div className="mt-10 grid gap-4 lg:grid-cols-12">

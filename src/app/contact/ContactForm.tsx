@@ -1,13 +1,18 @@
 'use client';
 
-import { useActionState } from 'react';
+import { useActionState, useEffect, useRef } from 'react';
 import { useFormStatus } from 'react-dom';
-import { emptyContactState, sendContact } from './actions';
-
-const CATEGORIES = ['在庫確認・お取り置き', '貸切・団体利用のご相談', 'メディア関連', 'その他のご質問'] as const;
+import { sendContact } from './actions';
+import { CATEGORIES, type ContactField, emptyContactState } from './shared';
 
 const field =
-  'w-full rounded-lg border border-line bg-white px-4 py-3 text-[0.9rem] text-ink transition-colors placeholder:text-ink-faint focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/25';
+  'w-full rounded-lg border border-line bg-white px-4 py-3 text-[1rem] text-ink transition-colors placeholder:text-ink-faint focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/25 aria-[invalid=true]:border-[#b3261e]';
+const labelCls = 'mb-2 block text-[0.85rem] font-medium text-ink';
+const Required = () => (
+  <span className="ml-1 text-[0.75rem] font-normal text-[#b3261e]">
+    必須
+  </span>
+);
 
 function Submit() {
   const { pending } = useFormStatus();
@@ -15,31 +20,61 @@ function Submit() {
     <button
       type="submit"
       disabled={pending}
-      className="ease-out-expo min-h-11 rounded-full bg-cocoa px-8 py-3.5 text-[0.9rem] font-semibold text-white shadow-[0_2px_14px_rgba(75,56,45,0.22)] transition-all duration-300 hover:bg-cocoa-deep disabled:cursor-not-allowed disabled:opacity-60"
+      className="min-h-12 rounded-full bg-cocoa px-9 py-3.5 text-[0.95rem] font-semibold text-white transition-colors hover:bg-cocoa-deep disabled:cursor-not-allowed disabled:opacity-60"
     >
-      {pending ? '送信中…' : '送信する'}
+      {pending ? '送信しています…' : '送信する'}
     </button>
   );
 }
 
-function Error({ children }: { children?: string }) {
+function FieldError({ id, children }: { id: string; children?: string }) {
   if (!children) return null;
   return (
-    <p role="alert" className="mt-1.5 text-[0.78rem] text-[#b3261e]">
+    <p id={id} className="mt-1.5 text-[0.8rem] text-[#b3261e]">
       {children}
     </p>
   );
 }
 
+const FIELD_ORDER: ContactField[] = ['name', 'email', 'tel', 'category', 'message'];
+
 export default function ContactForm() {
   const [state, action] = useActionState(sendContact, emptyContactState);
   const v = state.values ?? {};
+  const err = state.errors ?? {};
+  /** エラーのある欄には aria-invalid と、エラー文への aria-describedby を付ける */
+  const a11y = (k: ContactField) =>
+    err[k] ? { 'aria-invalid': true as const, 'aria-describedby': `${k}-error` } : {};
+
+  /*
+   * 送信のあと、結果が目に入る位置へ動かす。
+   * 送信ボタンはフォームの一番下なので、そのままだと（特にスマホでは）
+   * 完了の表示や、上のほうの欄のエラーが画面の外に出てしまう。
+   */
+  const doneRef = useRef<HTMLDivElement>(null);
+  const alertRef = useRef<HTMLParagraphElement>(null);
+  useEffect(() => {
+    if (state.attempt === 0) return;
+    if (state.ok) {
+      doneRef.current?.focus({ preventScroll: true });
+      doneRef.current?.scrollIntoView({ block: 'center' });
+      return;
+    }
+    const first = FIELD_ORDER.find((k) => state.errors?.[k]);
+    if (first) document.getElementById(first)?.focus();
+    else alertRef.current?.scrollIntoView({ block: 'center' });
+  }, [state]);
 
   if (state.ok) {
     return (
-      <div className="rounded-lg border border-accent/35 bg-accent-wash p-8 text-center">
-        <p className="display text-[1.1rem] text-cocoa">送信が完了しました</p>
-        <p className="mt-3 text-[0.88rem] leading-[1.9] text-ink-soft">{state.message}</p>
+      <div
+        ref={doneRef}
+        tabIndex={-1}
+        role="status"
+        className="rounded-lg border border-accent/35 bg-accent-wash p-8 text-center outline-none"
+      >
+        <p className="text-[1.1rem] font-bold text-cocoa">送信が完了しました</p>
+        <p className="mt-3 text-[0.92rem] leading-[1.9] text-ink-soft">{state.message}</p>
       </div>
     );
   }
@@ -48,23 +83,29 @@ export default function ContactForm() {
     // key に attempt を入れて、送信のたびに defaultValue を入れ直す
     <form key={state.attempt} action={action} className="space-y-6" noValidate>
       {state.message ? (
-        <p role="alert" className="rounded-lg border border-amber/40 bg-amber-wash px-4 py-3 text-[0.82rem] text-amber-ink">
+        <p
+          ref={alertRef}
+          role="alert"
+          className="rounded-lg border border-amber/40 bg-amber-wash px-4 py-3 text-[0.85rem] text-amber-ink"
+        >
           {state.message}
         </p>
       ) : null}
 
       <div>
-        <label htmlFor="name" className="mb-2 block text-[0.82rem] font-medium text-ink">
-          お名前 <span className="text-[#b3261e]">*</span>
+        <label htmlFor="name" className={labelCls}>
+          お名前
+          <Required />
         </label>
-        <input id="name" name="name" defaultValue={v.name} required autoComplete="name" className={field} />
-        <Error>{state.errors?.name}</Error>
+        <input id="name" name="name" defaultValue={v.name} required autoComplete="name" className={field} {...a11y('name')} />
+        <FieldError id="name-error">{err.name}</FieldError>
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <label htmlFor="email" className="mb-2 block text-[0.82rem] font-medium text-ink">
-            メールアドレス <span className="text-[#b3261e]">*</span>
+          <label htmlFor="email" className={labelCls}>
+            メールアドレス
+            <Required />
           </label>
           <input
             id="email"
@@ -75,12 +116,13 @@ export default function ContactForm() {
             required
             autoComplete="email"
             className={field}
+            {...a11y('email')}
           />
-          <Error>{state.errors?.email}</Error>
+          <FieldError id="email-error">{err.email}</FieldError>
         </div>
         <div>
-          <label htmlFor="tel" className="mb-2 block text-[0.82rem] font-medium text-ink">
-            電話番号<span className="ml-1 text-[0.72rem] text-ink-faint">（任意）</span>
+          <label htmlFor="tel" className={labelCls}>
+            電話番号<span className="ml-1 text-[0.75rem] font-normal text-ink-faint">（任意）</span>
           </label>
           <input
             id="tel"
@@ -90,31 +132,34 @@ export default function ContactForm() {
             defaultValue={v.tel}
             autoComplete="tel"
             className={field}
+            {...a11y('tel')}
           />
-          <Error>{state.errors?.tel}</Error>
+          <FieldError id="tel-error">{err.tel}</FieldError>
         </div>
       </div>
 
       <div>
-        <label htmlFor="category" className="mb-2 block text-[0.82rem] font-medium text-ink">
-          お問い合わせの種類 <span className="text-[#b3261e]">*</span>
+        <label htmlFor="category" className={labelCls}>
+          お問い合わせの種類
+          <Required />
         </label>
-        <select id="category" name="category" defaultValue={v.category || CATEGORIES[0]} className={field}>
+        <select id="category" name="category" defaultValue={v.category || CATEGORIES[0]} className={field} {...a11y('category')}>
           {CATEGORIES.map((c) => (
             <option key={c} value={c}>
               {c}
             </option>
           ))}
         </select>
-        <Error>{state.errors?.category}</Error>
+        <FieldError id="category-error">{err.category}</FieldError>
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-2 block text-[0.82rem] font-medium text-ink">
-          お問い合わせ内容 <span className="text-[#b3261e]">*</span>
+        <label htmlFor="message" className={labelCls}>
+          お問い合わせ内容
+          <Required />
         </label>
-        <textarea id="message" name="message" rows={7} defaultValue={v.message} required className={field} />
-        <Error>{state.errors?.message}</Error>
+        <textarea id="message" name="message" rows={7} defaultValue={v.message} required className={field} {...a11y('message')} />
+        <FieldError id="message-error">{err.message}</FieldError>
       </div>
 
       {/* 自動送信よけ。人には見えない。 */}
@@ -123,7 +168,12 @@ export default function ContactForm() {
         <input id="website" name="website" tabIndex={-1} autoComplete="off" />
       </div>
 
-      <Submit />
+      <div className="space-y-4 border-t border-line pt-6">
+        <p className="text-[0.82rem] leading-[1.9] text-ink-soft">
+          ご入力いただいた内容は、お問い合わせへのお返事のためだけに使います。お席のご予約は、このフォームでは承っていません。
+        </p>
+        <Submit />
+      </div>
     </form>
   );
 }

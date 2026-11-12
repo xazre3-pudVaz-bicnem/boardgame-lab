@@ -100,14 +100,14 @@ export default function BlogIndexPage() {
             <h2 className="display text-[1.05rem] text-ink">店舗からのお知らせをお探しですか？</h2>
             <p className="text-pretty mt-3 text-[0.88rem] leading-[1.95] text-ink-soft">
               営業時間・定休日・料金の変更、臨時休業などのお知らせは、お知らせのページにまとめています。
-              臨時の営業変更は公式Instagramでもお伝えしています。
+              臨時の営業変更は公式Xでもお伝えしています。
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button href="/news" variant="outline">
                 お知らせ一覧
               </Button>
-              <Button href={shop.links.instagram} variant="ghost" external>
-                公式Instagram
+              <Button href={shop.links.x} variant="ghost" external>
+                公式X
               </Button>
             </div>
           </div>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Photo from '@/components/Photo';
+import ShareNow from '@/components/ShareNow';
 import { GameTable } from '@/components/GameCard';
 import { StaffPickList } from '@/components/games/StaffPicks';
 import { FaqList } from '@/components/home/HomeFaq';
@@ -62,6 +63,8 @@ export default async function ScenePage({ params }: Params) {
               {s.photoCaption ? <figcaption className="mt-2 text-[0.78rem] text-ink-faint">{s.photoCaption}</figcaption> : null}
             </figure>
           ) : null}
+
+          {s.shareCounter ? <ShareNow soloLink={false} className="mt-10" /> : null}
 
           {s.sections.map((sec) => (
             <section key={sec.h2} className="mt-10">

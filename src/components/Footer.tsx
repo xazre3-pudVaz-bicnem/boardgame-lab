@@ -68,6 +68,13 @@ export default function Footer() {
                 </a>
               </div>
               <div>{hoursLine()}</div>
+              <div>
+                営業時間・定休日の変更は
+                <a href={shop.links.x} target="_blank" rel="noopener noreferrer" className="prose-link mx-0.5">
+                  公式X
+                </a>
+                でお知らせしています
+              </div>
             </address>
 
             <div className="mt-6 flex flex-wrap gap-3">
@@ -96,6 +103,14 @@ export default function Footer() {
                 className="inline-flex min-h-11 items-center rounded-full border border-line px-5 text-[0.82rem] font-medium text-ink-soft transition-colors hover:border-cocoa/30 hover:text-cocoa"
               >
                 Instagram
+              </a>
+              <a
+                href={shop.links.x}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center rounded-full border border-line px-5 text-[0.82rem] font-medium text-ink-soft transition-colors hover:border-cocoa/30 hover:text-cocoa"
+              >
+                X（旧Twitter）
               </a>
               <a
                 href={shop.links.bodogeGames}

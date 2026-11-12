@@ -144,6 +144,12 @@ export default function Header() {
                 コラム
               </Link>
             </li>
+            {/* 店舗の依頼（2026-11-12）：三本線のメニューからもお問い合わせページへ行けるように */}
+            <li>
+              <Link href="/contact" className="flex items-baseline gap-3 py-4 text-[1rem] font-medium text-ink">
+                お問い合わせ
+              </Link>
+            </li>
           </ul>
           <div className="mt-6 grid gap-3">
             <a
@@ -161,6 +167,26 @@ export default function Header() {
               電話で問い合わせる（{shop.tel.value}）
             </a>
           </div>
+          <ul aria-label="公式SNS" className="mt-5 flex flex-wrap justify-center gap-x-2 text-[0.88rem]">
+            {[
+              shop.links.line ? { href: shop.links.line, label: '公式LINE' } : null,
+              { href: shop.links.instagram, label: 'Instagram' },
+              { href: shop.links.x, label: 'X（旧Twitter）' },
+            ]
+              .filter((l) => l !== null)
+              .map((l) => (
+                <li key={l.href}>
+                  <a
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-11 items-center px-3 text-ink-soft underline decoration-line underline-offset-4"
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+          </ul>
         </nav>
       </div>
     </header>

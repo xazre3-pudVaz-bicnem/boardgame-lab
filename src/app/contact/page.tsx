@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Breadcrumbs, Button, Container, ConfirmNote, Eyebrow, PageHeader } from '@/components/ui';
 import { shop } from '@/data/shop';
+import { contactConfig } from '@/lib/contact';
 import { breadcrumbSchema, buildMetadata, JsonLd } from '@/lib/seo';
 import ContactForm from './ContactForm';
 
@@ -14,13 +15,14 @@ export const metadata: Metadata = buildMetadata({
 
 const crumbs = [{ name: 'ホーム', href: '/' }, { name: 'お問い合わせ' }];
 
-/** 送信先が設定されていないうちは、動かないフォームを置かずに連絡先だけ出す。 */
-const CONTACT_ENABLED = Boolean(
-  process.env.RESEND_API_KEY && process.env.CONTACT_TO_EMAIL && process.env.CONTACT_FROM_EMAIL,
-);
+/**
+ * 送信の設定（APIキーと受信先。lib/contact.ts）が揃うまでは、動かないフォームを置かずに連絡先だけ出す。
+ * 設定はビルド時に読むので、Vercel に環境変数を入れたら再デプロイする。
+ */
+const CONTACT_ENABLED = contactConfig() !== null;
 
 const TOPICS = [
-  '販売商品の在庫確認、お取り置き（最大1週間）',
+  '販売商品の在庫確認、お取り置き（最大1週間）、お取り寄せ',
   '貸切・団体でのご利用のご相談',
   'メディア関連のお問い合わせ',
   'その他のご質問',
@@ -128,6 +130,14 @@ export default function ContactPage() {
                     <dd>
                       <a href={shop.links.instagram} target="_blank" rel="noopener noreferrer" className="prose-link">
                         {shop.links.instagramHandle}
+                      </a>
+                    </dd>
+                  </div>
+                  <div className="spec-row">
+                    <dt className="text-ink-soft">公式X</dt>
+                    <dd>
+                      <a href={shop.links.x} target="_blank" rel="noopener noreferrer" className="prose-link">
+                        {shop.links.xHandle}
                       </a>
                     </dd>
                   </div>

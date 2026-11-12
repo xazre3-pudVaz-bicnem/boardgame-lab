@@ -8,7 +8,7 @@ import { breadcrumbSchema, buildMetadata, JsonLd } from '@/lib/seo';
 export const metadata: Metadata = buildMetadata({
   title: 'アルバイト募集｜中津駅徒歩3分のボードゲームショップ｜BODOlab.',
   description:
-    'BODOlab.（大阪市北区豊崎・中津駅徒歩3分）のアルバイト募集要項です。時給1,200円〜、交通費全額支給、月1〜週1程度から。履歴書不要、応募フォームから24時間受付しています。',
+    `BODOlab.（大阪市北区豊崎・中津駅徒歩3分）のアルバイト募集要項です。時給${job.wage.amount.toLocaleString()}円〜、交通費全額支給、月1〜週1程度から。履歴書不要、応募フォームから24時間受付しています。`,
   path: '/part-timejob',
   keywords: ['中津 バイト', '大阪 ボードゲーム バイト', '梅田 バイト ボードゲーム', 'ボードゲームショップ 求人 大阪'],
 });
@@ -109,7 +109,9 @@ export default function PartTimeJobPage() {
                   <dd className="text-right text-ink">
                     {job.wage.unit} {job.wage.amount.toLocaleString()}円〜
                     <span className="block text-[0.78rem] text-ink-faint">
-                      （{job.wage.trialNote}は{job.wage.trial.toLocaleString()}円）／{job.wage.transport}
+                      {/* 試用期間中の時給は、店舗に確認が取れるまで出さない（data/job.ts） */}
+                      {job.wage.trial !== null ? `（${job.wage.trialNote}は${job.wage.trial.toLocaleString()}円）／` : ''}
+                      {job.wage.transport}
                     </span>
                   </dd>
                 </div>
@@ -162,7 +164,7 @@ export default function PartTimeJobPage() {
 
               <ConfirmNote>
                 募集状況・条件は時期によって変わります。掲載内容は{job.confirmedOn.replace(/-/g, '/')}
-                時点で店舗が公開していたものです。詳細はお問い合わせください。
+                時点のものです。詳細はお問い合わせください。
               </ConfirmNote>
             </aside>
           </div>

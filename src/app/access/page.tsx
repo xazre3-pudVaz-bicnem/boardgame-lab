@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import HoursChangeNote from '@/components/HoursChangeNote';
 import Photo from '@/components/Photo';
-import { Breadcrumbs, Container, ConfirmNote, PageHeader } from '@/components/ui';
+import { Breadcrumbs, Container, PageHeader } from '@/components/ui';
 import { AREAS } from '@/data/areas';
 import { shop } from '@/data/shop';
 import { breadcrumbSchema, buildMetadata, JsonLd, localBusinessSchema } from '@/lib/seo';
@@ -95,7 +96,7 @@ export default function AccessPage() {
                 からお願いします。
               </p>
               <div className="mt-5">
-                <ConfirmNote>{shop.hours.changeNote}</ConfirmNote>
+                <HoursChangeNote />
               </div>
             </div>
 

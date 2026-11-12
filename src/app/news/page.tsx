@@ -79,14 +79,14 @@ export default function NewsIndexPage() {
             <h2 className="display text-[1.1rem] text-ink">いまの営業情報をお探しですか？</h2>
             <p className="text-pretty mt-3 text-[0.88rem] leading-[1.95] text-ink-soft">
               現在の営業時間・定休日・料金は、ご利用案内のページにまとめています。
-              臨時の営業変更は公式Instagramでお知らせしています。
+              臨時の営業変更は公式Xでお知らせしています。
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button href="/system" variant="solid">
                 料金・ご利用案内
               </Button>
-              <Button href={shop.links.instagram} variant="outline" external>
-                公式Instagram
+              <Button href={shop.links.x} variant="outline" external>
+                公式X
               </Button>
             </div>
           </div>

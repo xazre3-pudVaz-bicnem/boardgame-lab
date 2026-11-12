@@ -35,8 +35,17 @@ type Row = {
 };
 
 type Props = {
-  genres: { key: string; label: string; count: number }[];
+  genres?: { key: string; label: string; count: number }[];
+  /**
+   * 'shop' はボードゲームの販売ページ（/shop）用（店舗の依頼で追加、2026-11-12）。
+   * 名前・人数・時間だけで探し、ジャンル・拡張・並び順は出さない。
+   * 何も入力していないうちは一覧を出さない（販売ページに全タイトルを並べると、全部売っているように見えるため）。
+   * 検索の対象は「店内で遊べるゲーム」で、販売中かどうか（在庫）は扱わない。
+   */
+  variant?: 'games' | 'shop';
 };
+
+const NO_GENRES: NonNullable<Props['genres']> = [];
 
 const PAGE = 60;
 
@@ -104,7 +113,8 @@ function toSearch(st: State) {
   return s ? `?${s}` : '';
 }
 
-export default function GameSearch({ genres }: Props) {
+export default function GameSearch({ genres = NO_GENRES, variant = 'games' }: Props) {
+  const isShop = variant === 'shop';
   const genreKeys = useMemo(() => new Set(genres.map((g) => g.key)), [genres]);
   const [rows, setRows] = useState<Row[] | null>(null);
   const [loading, setLoading] = useState(false);
@@ -153,7 +163,8 @@ export default function GameSearch({ genres }: Props) {
     setShown(PAGE);
   };
 
-  const active = Boolean(st.q || st.players || st.time !== 'any' || st.genre || st.expansions || st.sort !== 'popular');
+  // 空白だけの入力は「未入力」と同じに扱う（販売ページで全件が並ばないように）
+  const active = Boolean(st.q.trim() || st.players || st.time !== 'any' || st.genre || st.expansions || st.sort !== 'popular');
 
   const results = useMemo(() => {
     if (!rows) return null;
@@ -259,78 +270,98 @@ export default function GameSearch({ genres }: Props) {
             </div>
           </fieldset>
 
-          <fieldset>
-            <legend className="mb-2.5 text-[0.8rem] font-medium text-ink">ジャンル</legend>
-            <div className="flex flex-wrap gap-2">
-              <button
-                type="button"
-                onClick={() => update({ genre: null })}
-                className={`${chipBase} ${st.genre === null ? chipOn : chipOff}`}
-              >
-                すべて
-              </button>
-              {genres.map((g) => (
+          {isShop ? null : (
+            <fieldset>
+              <legend className="mb-2.5 text-[0.8rem] font-medium text-ink">ジャンル</legend>
+              <div className="flex flex-wrap gap-2">
                 <button
-                  key={g.key}
                   type="button"
-                  aria-pressed={st.genre === g.key}
-                  onClick={() => update({ genre: st.genre === g.key ? null : g.key })}
-                  className={`${chipBase} ${st.genre === g.key ? chipOn : chipOff}`}
+                  onClick={() => update({ genre: null })}
+                  className={`${chipBase} ${st.genre === null ? chipOn : chipOff}`}
                 >
-                  {g.label}
-                  <span className="ml-1 text-[0.68rem] opacity-80">{g.count}</span>
+                  すべて
                 </button>
-              ))}
-            </div>
-          </fieldset>
+                {genres.map((g) => (
+                  <button
+                    key={g.key}
+                    type="button"
+                    aria-pressed={st.genre === g.key}
+                    onClick={() => update({ genre: st.genre === g.key ? null : g.key })}
+                    className={`${chipBase} ${st.genre === g.key ? chipOn : chipOff}`}
+                  >
+                    {g.label}
+                    <span className="ml-1 text-[0.68rem] opacity-80">{g.count}</span>
+                  </button>
+                ))}
+              </div>
+            </fieldset>
+          )}
 
-          <div className="flex flex-wrap items-center gap-3 border-t border-line pt-5">
-            <button
-              type="button"
-              aria-pressed={st.expansions}
-              onClick={() => update({ expansions: !st.expansions })}
-              className={`${chipBase} ${st.expansions ? chipOn : chipOff}`}
-            >
-              単体で遊べない拡張も表示
-            </button>
-
-            <label htmlFor="game-sort" className="ml-auto text-[0.78rem] text-ink-soft">
-              並び順
-            </label>
-            <select
-              id="game-sort"
-              value={st.sort}
-              onChange={(e) => update({ sort: e.target.value as State['sort'] })}
-              className="min-h-10 rounded-full border border-line bg-white px-3.5 py-1.5 text-[0.8rem] text-ink focus:border-accent focus:outline-none"
-            >
-              <option value="popular">人気順</option>
-              <option value="name">名前順</option>
-            </select>
-
-            {active ? (
+          {isShop ? (
+            active ? (
+              <div className="border-t border-line pt-4">
+                <button
+                  type="button"
+                  onClick={reset}
+                  className="min-h-10 text-[0.8rem] text-cocoa underline underline-offset-4 hover:text-accent-ink"
+                >
+                  条件をリセット
+                </button>
+              </div>
+            ) : null
+          ) : (
+            <div className="flex flex-wrap items-center gap-3 border-t border-line pt-5">
               <button
                 type="button"
-                onClick={reset}
-                className="min-h-10 text-[0.8rem] text-cocoa underline underline-offset-4 hover:text-accent-ink"
+                aria-pressed={st.expansions}
+                onClick={() => update({ expansions: !st.expansions })}
+                className={`${chipBase} ${st.expansions ? chipOn : chipOff}`}
               >
-                条件をリセット
+                単体で遊べない拡張も表示
               </button>
-            ) : null}
-          </div>
+
+              <label htmlFor="game-sort" className="ml-auto text-[0.78rem] text-ink-soft">
+                並び順
+              </label>
+              <select
+                id="game-sort"
+                value={st.sort}
+                onChange={(e) => update({ sort: e.target.value as State['sort'] })}
+                className="min-h-10 rounded-full border border-line bg-white px-3.5 py-1.5 text-[0.8rem] text-ink focus:border-accent focus:outline-none"
+              >
+                <option value="popular">人気順</option>
+                <option value="name">名前順</option>
+              </select>
+
+              {active ? (
+                <button
+                  type="button"
+                  onClick={reset}
+                  className="min-h-10 text-[0.8rem] text-cocoa underline underline-offset-4 hover:text-accent-ink"
+                >
+                  条件をリセット
+                </button>
+              ) : null}
+            </div>
+          )}
         </div>
       </div>
 
       {/* ------------------------------------------------ 結果 */}
       <div aria-live="polite" className="mt-8 scroll-mt-24">
-        {!rows && !loading ? (
+        {isShop ? (
+          active ? null : (
+            <p className="text-[0.85rem] text-ink-faint">ゲーム名・人数・プレイ時間で探すと、ここに店内で遊べるゲームが出ます。</p>
+          )
+        ) : !rows && !loading ? (
           <p className="text-[0.85rem] text-ink-faint">
             条件を選ぶと、その場で絞り込みます。下には人気順の一覧を表示しています。
           </p>
         ) : null}
 
-        {loading ? <p className="text-[0.85rem] text-ink-faint">読み込んでいます…</p> : null}
+        {loading && (!isShop || active) ? <p className="text-[0.85rem] text-ink-faint">読み込んでいます…</p> : null}
 
-        {results ? (
+        {results && (!isShop || active) ? (
           <>
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
               {/* 件数は絞り込んだときだけ出す。全体の数は日々増えるので表示しない（店舗の指示）。 */}

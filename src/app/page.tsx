@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Hero from '@/components/home/Hero';
+import ShareNow from '@/components/ShareNow';
 import { About, Access, Events, Games, HowAndPrice, SceneLinks, Shop } from '@/components/home/Sections';
 import { buildMetadata } from '@/lib/seo';
 
@@ -24,6 +25,8 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      {/* 店舗の相席カウンター（2026-11-12 依頼）。ヒーローの中ではなく、すぐ下に置く */}
+      <ShareNow variant="band" />
       <About />
       <Games />
       <Shop />

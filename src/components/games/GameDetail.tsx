@@ -204,6 +204,13 @@ export default function GameDetail({ game }: { game: Game }) {
             <p className="mt-1">
               プレイ料金は1時間{shop.pricing.unit.value.normal}円（相席可は{shop.pricing.unit.value.share}円）、ルールはスタッフが説明します。
             </p>
+            {/* 販売中かどうか（在庫）は預かっていないので、問い合わせてもらう（/shop の検索から来た人向け） */}
+            <p className="mt-1">
+              このゲームを買いたい場合は、在庫を店頭か公式LINEでお問い合わせください（お取り寄せのご相談も承ります）。
+              <Link href="/shop" className="prose-link ml-1">
+                ボードゲームの販売について
+              </Link>
+            </p>
             <div className="mt-4 flex flex-wrap gap-3">
               <Button href={shop.reservationUrl} variant="solid" external>
                 ご来店予約

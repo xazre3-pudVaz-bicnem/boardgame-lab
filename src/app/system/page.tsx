@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import HoursChangeNote from '@/components/HoursChangeNote';
 import Photo from '@/components/Photo';
+import ShareNow from '@/components/ShareNow';
 import { FaqList } from '@/components/home/HomeFaq';
-import { Breadcrumbs, Button, Container, ConfirmNote, Eyebrow, PageHeader } from '@/components/ui';
+import { Breadcrumbs, Button, Container, Eyebrow, PageHeader } from '@/components/ui';
 import { HOME_FAQ } from '@/data/faq';
 import { shop } from '@/data/shop';
 import { breadcrumbSchema, buildMetadata, faqSchema, JsonLd } from '@/lib/seo';
@@ -79,26 +81,32 @@ export default function SystemPage() {
               </tbody>
             </table>
           </div>
-          <p className="mt-4 max-w-2xl text-[0.9rem] leading-[1.9] text-ink-soft">
-            相席可は、ほかのお客様と同じテーブルで遊ぶことを希望される場合の料金です。相席は選択制なので、お連れ様だけで過ごしたい日は通常料金でご利用ください。
-            上限の金額を超えて料金がかかることはありません。
-          </p>
+          {/* 相席可の説明の横に、店舗の相席カウンター（いま相席で遊んでいる人数）を置く */}
+          <div className="grid gap-x-14 gap-y-10 lg:grid-cols-[minmax(0,1fr)_22rem]">
+            <div>
+              <p className="mt-4 max-w-2xl text-[0.9rem] leading-[1.9] text-ink-soft">
+                相席可は、ほかのお客様と同じテーブルで遊ぶことを希望される場合の料金です。相席は選択制なので、お連れ様だけで過ごしたい日は通常料金でご利用ください。
+                上限の金額を超えて料金がかかることはありません。
+              </p>
 
-          <ul className="mt-8 max-w-2xl list-disc space-y-2 pl-5 text-[0.92rem] leading-[1.9] text-ink-soft marker:text-ink-faint">
-            <li>
-              学生の方は、お会計時に学生証をご提示いただくと{shop.pricing.studentDiscount.value}%引きの料金でご利用いただけます。
-            </li>
-            {shop.pricing.kids.value.map((k) => (
-              <li key={k.label}>
-                {k.label}のお客様は{k.rule}でご利用いただけます。
-              </li>
-            ))}
-            <li>{shop.pricing.guaranteedHoursNote}</li>
-            <li>{shop.pricing.privateHire.value}</li>
-            <li>お支払いは{shop.payments.value.join('、')}に対応しています。</li>
-          </ul>
+              <ul className="mt-8 max-w-2xl list-disc space-y-2 pl-5 text-[0.92rem] leading-[1.9] text-ink-soft marker:text-ink-faint">
+                <li>
+                  学生の方は、お会計時に学生証をご提示いただくと{shop.pricing.studentDiscount.value}%引きの料金でご利用いただけます。
+                </li>
+                {shop.pricing.kids.value.map((k) => (
+                  <li key={k.label}>
+                    {k.label}のお客様は{k.rule}でご利用いただけます。
+                  </li>
+                ))}
+                <li>{shop.pricing.guaranteedHoursNote}</li>
+                <li>{shop.pricing.privateHire.value}</li>
+                <li>お支払いは{shop.payments.value.join('、')}に対応しています。</li>
+              </ul>
 
-          <p className="mt-6 text-[0.82rem] text-ink-faint">ご利用の目安は{shop.pricing.averageBudget.value}です。</p>
+              <p className="mt-6 text-[0.82rem] text-ink-faint">ご利用の目安は{shop.pricing.averageBudget.value}です。</p>
+            </div>
+            <ShareNow as="h3" className="lg:mt-4" />
+          </div>
         </Container>
       </section>
 
@@ -206,7 +214,7 @@ export default function SystemPage() {
               </dl>
               <p className="mt-6 text-[0.82rem] leading-relaxed text-ink-soft">{shop.hours.earlyCloseNote}</p>
               <div className="mt-6">
-                <ConfirmNote>{shop.hours.changeNote}</ConfirmNote>
+                <HoursChangeNote />
               </div>
             </div>
 

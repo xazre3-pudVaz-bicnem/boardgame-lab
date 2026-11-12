@@ -75,12 +75,15 @@ export const shop = {
     closedDays: v(['月曜日'], 'official / faq-image / bodoge'),
     closedDaysNote: '祝日の場合は営業します。',
     /**
-     * ノーゲスト時の早仕舞い。旧公式サイトの営業時間欄は20時、公式LINE・Q&A画像は21時と食い違っていたが、
-     * 店舗から「21時で」と回答があった（2026-10-02）。
+     * ノーゲスト時の早仕舞い。旧公式サイトの営業時間欄は20時、公式LINE・Q&A画像は21時と食い違っていた。
+     * 店舗の回答は 2026-10-02 に「21時で」、その後 2026-11-12 に「お客様がいないと22時で閉める」に変わった。
      */
-    earlyClose: v('21:00', 'store 2026-10-02 / line / faq-image'),
-    earlyCloseNote: '21:00の時点でお客様がいらっしゃらない場合は、閉店させていただくことがあります。',
-    changeNote: '営業時間・定休日は変更になる場合があります。ご来店前に公式Instagramでご確認ください。',
+    earlyClose: v('22:00', 'store 2026-11-12'),
+    earlyCloseNote: '22:00の時点でお客様がいらっしゃらない場合は、閉店させていただくことがあります。',
+    /*
+     * 営業時間・定休日の確認先は公式X（店舗の指定、2026-11-12。以前は Instagram と案内していた）。
+     * 画面ではリンク付きで出すので、文言は components/HoursChangeNote.tsx にある。
+     */
   },
 
   pricing: {
@@ -211,10 +214,13 @@ export const shop = {
     instagram: 'https://www.instagram.com/boardgame_lab_/',
     instagramHandle: '@boardgame_lab_',
     /**
-     * 現在使われているのは @BODOlab_（ボドゲーマの店舗ページ・TwiPla の主催者アカウントが同じ）。
+     * 公式X。店舗から届いたURL（2026-11-12）から、共有用のパラメータ（?s=11）を外した。
+     * ボドゲーマの店舗ページ・TwiPla の主催者アカウント（BODOlab_）と同じアカウント（Xのユーザー名は大文字小文字を区別しない）。
      * 旧アカウント @BOARDGAMELabDDT は使わない。
+     * 営業時間・定休日の確認先にもなっている（店舗の指定、2026-11-12）。
      */
-    x: 'https://x.com/BODOlab_',
+    x: 'https://x.com/bodolab_',
+    xHandle: '@bodolab_',
     twipla: 'https://twipla.jp/users/BODOlab_',
     bodoge: 'https://bodoge.hoobby.net/spaces/boardgame-lab',
     bodogeGames: 'https://bodoge.hoobby.net/spaces/boardgame-lab/games',
@@ -225,6 +231,12 @@ export const shop = {
      * オーナー管理画面の「プロフィールを共有」「クチコミを依頼」のURLを店舗からもらって設定する。
      */
     googleBusiness: null as string | null,
+    /**
+     * 相席カウンター。店舗が予約フォームと同じ Netlify のサイトで公開している在籍状況のページで、
+     * 「相席中の人数」と「空席あり／なし」を、受付の記録から自動で更新して表示する。
+     * 店舗の依頼で埋め込んだ（2026-11-12）。表示は components/ShareCounter.tsx。
+     */
+    shareCounter: 'https://fantastic-semolina-c3a2d8.netlify.app/status.html',
     /** アルバイト応募フォーム（旧サイトは編集用URLを掲載していたため viewform に直した）。 */
     jobForm: 'https://docs.google.com/forms/d/e/1FAIpQLScrPzSO9if3yyyruiCEwsySqR8oaO7e9SS-OXoD8IUa18ixWg/viewform',
   },

@@ -35,6 +35,8 @@ export type SceneDef = {
   staffList?: { kind: 'couples' | 'beginners' | 'groups' | 'two'; heading: string };
   /** 客観条件の一覧（おすすめではない） */
   objective?: { key: ConditionKey; heading: string; note: string; limit?: number };
+  /** 店舗の相席カウンター（いま相席で遊んでいる人数）を本文の前に出す */
+  shareCounter?: boolean;
   faq: { q: string; a: string }[];
 };
 
@@ -148,6 +150,7 @@ export const SCENES: SceneDef[] = [
     description:
       '大阪で1人でも遊べる場所を探している方へ。相席可でご利用いただくと、他のお客様と一緒に遊べて料金は1時間500円です。毎月のテストプレイ会「ボドラボテスプ塾」もあります。中津駅から徒歩3分。',
     h1: '1人で来る場合（相席について）',
+    shareCounter: true,
     lead: 'ボードゲームの多くは2人以上で遊ぶものです。1人でご来店の場合は、受付で「相席可」を選ぶと、その場にいる他のお客様と同じ卓で遊べます。店頭の黒板には「友達ができる場所」と書いてあります。',
     sections: [
       {
@@ -185,7 +188,7 @@ export const SCENES: SceneDef[] = [
         h2: '営業時間',
         body: [
           '平日18:30〜23:30、土日祝13:00〜23:30です。定休日は月曜日（祝日の場合は営業）。',
-          '21:00の時点でお客様がいらっしゃらない場合は、閉店することがあります。21時以降に行く場合はご予約いただくと確実です。',
+          '22:00の時点でお客様がいらっしゃらない場合は、閉店することがあります。22時以降に行く場合はご予約いただくと確実です。',
         ],
       },
     ],
